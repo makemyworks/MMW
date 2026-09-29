@@ -1,4 +1,5 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
+import axios from "axios";
 import {
   Box,
   Button,
@@ -14,7 +15,6 @@ import {
   Theme,
 } from "@mui/material";
 import { motion, Variants } from "framer-motion";
-
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
@@ -29,6 +29,8 @@ const services = [
   "Full Growth Stack Strategy",
   "Other Custom Solutions",
 ];
+
+const DEFAULT_BUDGET = "₹1.5 lakh – ₹5 lakh";
 
 /* =========================================
    ANIMATION VARIANTS
@@ -80,6 +82,70 @@ const cardVariants: Variants = {
 ========================================= */
 
 const ProjectBrief: React.FC = () => {
+  /* ---------- API / FORM STATE ---------- */
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    budget: DEFAULT_BUDGET,
+    notes: "",
+  });
+  const [selectedServices, setSelectedServices] = useState<string[]>([
+    services[0],
+  ]);
+  const [loading, setLoading] = useState(false);
+  const [successMsg, setSuccessMsg] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleServiceToggle = (service: string, checked: boolean) => {
+    setSelectedServices((prev) =>
+      checked ? [...prev, service] : prev.filter((s) => s !== service)
+    );
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccessMsg("");
+
+    try {
+      await axios.post(
+        "https://alphazetaworld.onrender.com/api/contacts",
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: `${selectedServices[0] || "General"} inquiry`,
+          Message: `${formData.notes}\n\nCompany: ${formData.company}\nBudget: ${formData.budget}`,
+          service: selectedServices.join(", "),
+        },
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+      setSuccessMsg(
+        "Project brief sent successfully! We'll get back to you soon."
+      );
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        budget: DEFAULT_BUDGET,
+        notes: "",
+      });
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -114,7 +180,6 @@ const ProjectBrief: React.FC = () => {
         {/* =================================
             MAIN TWO COLUMN LAYOUT
         ================================== */}
-
         <Box
           sx={{
             display: "grid",
@@ -136,7 +201,6 @@ const ProjectBrief: React.FC = () => {
           {/* =================================
               LEFT — PROJECT BRIEF
           ================================== */}
-
           <MotionBox
             variants={cardVariants}
             sx={{
@@ -162,331 +226,339 @@ const ProjectBrief: React.FC = () => {
                 md: "26px",
               },
               boxSizing: "border-box",
-              transition:
-                "border-color 0.3s ease, box-shadow 0.3s ease",
-
+              transition: "border-color 0.3s ease, box-shadow 0.3s ease",
               "&:hover": {
                 borderColor: "#3d3d42",
                 boxShadow: "0 15px 50px rgba(0,0,0,0.18)",
               },
             }}
           >
-            <Box component="form" sx={{ width: "100%" }}>
-            {/* Title */}
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              sx={{ width: "100%" }}
+            >
+              {/* Title */}
+              <MotionBox variants={fadeUp} sx={{ mb: "21px" }}>
+                <Typography
+                  component="div"
+                  sx={{
+                    fontFamily: "Arial, Helvetica, sans-serif",
+                    fontSize: {
+                      xs: "15px",
+                      sm: "16px",
+                    },
+                    lineHeight: "20px",
+                    fontWeight: 700,
+                    color: "#f5f5f5",
+                  }}
+                >
+                  Project Brief
+                </Typography>
+              </MotionBox>
 
-            <MotionBox variants={fadeUp} sx={{ mb: "21px" }}>
-              <Typography
-                component="div"
+              {/* NAME / EMAIL */}
+              <Box
                 sx={{
-                  fontFamily: "Arial, Helvetica, sans-serif",
-                  fontSize: {
-                    xs: "15px",
-                    sm: "16px",
+                  display: "grid",
+                  gridTemplateColumns: {
+                    xs: "1fr",
+                    sm: "repeat(2, minmax(0, 1fr))",
                   },
-                  lineHeight: "20px",
-                  fontWeight: 700,
-                  color: "#f5f5f5",
+                  columnGap: {
+                    xs: 0,
+                    sm: 1.25,
+                  },
+                  rowGap: {
+                    xs: 1.5,
+                    sm: 1.45,
+                  },
                 }}
               >
-                Project Brief
-              </Typography>
-            </MotionBox>
+                {/* FULL NAME */}
+                <MotionBox variants={fadeUp}>
+                  <FieldLabel>Full Name *</FieldLabel>
+                  <StyledTextField
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="e.g. John Miller"
+                    fullWidth
+                  />
+                </MotionBox>
 
-            {/* NAME / EMAIL */}
+                {/* EMAIL */}
+                <MotionBox variants={fadeUp}>
+                  <FieldLabel>Email Address *</FieldLabel>
+                  <StyledTextField
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="e.g. john@company.com"
+                    fullWidth
+                  />
+                </MotionBox>
 
-            <Box
-              sx={{
-                display: "grid",
-                gridTemplateColumns: {
-                  xs: "1fr",
-                  sm: "repeat(2, minmax(0, 1fr))",
-                },
-                columnGap: {
-                  xs: 0,
-                  sm: 1.25,
-                },
-                rowGap: {
-                  xs: 1.5,
-                  sm: 1.45,
-                },
-              }}
-            >
-              {/* FULL NAME */}
+                {/* PHONE */}
+                <MotionBox variants={fadeUp}>
+                  <FieldLabel>WhatsApp / Phone *</FieldLabel>
+                  <StyledTextField
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="e.g. +91 98765 43210"
+                    fullWidth
+                  />
+                </MotionBox>
 
-              <MotionBox variants={fadeUp}>
-                <FieldLabel>Full Name *</FieldLabel>
+                {/* COMPANY */}
+                <MotionBox variants={fadeUp}>
+                  <FieldLabel>Company Name</FieldLabel>
+                  <StyledTextField
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    placeholder="e.g. Stark Industries"
+                    fullWidth
+                  />
+                </MotionBox>
+              </Box>
 
-                <StyledTextField
-                  placeholder="e.g. John Miller"
-                  fullWidth
-                />
-              </MotionBox>
-
-              {/* EMAIL */}
-
-              <MotionBox variants={fadeUp}>
-                <FieldLabel>Email Address *</FieldLabel>
-
-                <StyledTextField
-                  placeholder="e.g. john@company.com"
-                  fullWidth
-                />
-              </MotionBox>
-
-              {/* PHONE */}
-
-              <MotionBox variants={fadeUp}>
-                <FieldLabel>WhatsApp / Phone *</FieldLabel>
-
-                <StyledTextField
-                  placeholder="e.g. +91 98765 43210"
-                  fullWidth
-                />
-              </MotionBox>
-
-              {/* COMPANY */}
-
-              <MotionBox variants={fadeUp}>
-                <FieldLabel>Company Name</FieldLabel>
-
-                <StyledTextField
-                  placeholder="e.g. Stark Industries"
-                  fullWidth
-                />
-              </MotionBox>
-            </Box>
-
-            {/* SERVICE */}
-
-            <MotionBox
-              variants={fadeUp}
-              sx={{
-                mt: {
-                  xs: "18px",
-                  sm: "11px",
-                },
-              }}
-            >
-              <FieldLabel>Service Needed *</FieldLabel>
-
-              <Box sx={{ mt: "2px" }}>
-                {services.map((service, index) => (
-                  <FormControlLabel
-                    key={service}
-                    control={
-                      <Checkbox
-                        defaultChecked={index === 0}
-                        size="small"
-                        sx={{
-                          p: 0,
-                          mr: "8px",
-                          color: "#353539",
-
-                          "&.Mui-checked": {
-                            color: "#7558f5",
+              {/* SERVICE */}
+              <MotionBox
+                variants={fadeUp}
+                sx={{
+                  mt: {
+                    xs: "18px",
+                    sm: "11px",
+                  },
+                }}
+              >
+                <FieldLabel>Service Needed *</FieldLabel>
+                <Box sx={{ mt: "2px" }}>
+                  {services.map((service, index) => (
+                    <FormControlLabel
+                      key={service}
+                      control={
+                        <Checkbox
+                          checked={selectedServices.includes(service)}
+                          onChange={(e) =>
+                            handleServiceToggle(service, e.target.checked)
+                          }
+                          size="small"
+                          sx={{
+                            p: 0,
+                            mr: "8px",
+                            color: "#353539",
+                            "&.Mui-checked": {
+                              color: "#7558f5",
+                            },
+                            "& .MuiSvgIcon-root": {
+                              fontSize: "16px",
+                            },
+                          }}
+                        />
+                      }
+                      label={service}
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        minHeight: "22px",
+                        height: "auto",
+                        m: 0,
+                        "& .MuiFormControlLabel-label": {
+                          fontFamily: "Arial, Helvetica, sans-serif",
+                          fontSize: {
+                            xs: "10.5px",
+                            sm: "11px",
                           },
-
-                          "& .MuiSvgIcon-root": {
-                            fontSize: "16px",
-                          },
-                        }}
-                      />
-                    }
-                    label={service}
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      minHeight: "22px",
-                      height: "auto",
-                      m: 0,
-
-                      "& .MuiFormControlLabel-label": {
-                        fontFamily: "Arial, Helvetica, sans-serif",
-                        fontSize: {
-                          xs: "10.5px",
-                          sm: "11px",
+                          lineHeight: "14px",
+                          color: index === 0 ? "#e3e3e3" : "#88888b",
+                          fontWeight: 400,
                         },
-                        lineHeight: "14px",
-                        color:
-                          index === 0 ? "#e3e3e3" : "#88888b",
-                        fontWeight: 400,
+                      }}
+                    />
+                  ))}
+                </Box>
+              </MotionBox>
+
+              {/* BUDGET */}
+              <MotionBox
+                variants={fadeUp}
+                sx={{
+                  mt: "14px",
+                }}
+              >
+                <FieldLabel>Estimate Budget *</FieldLabel>
+                <FormControl fullWidth>
+                  <Select
+                    value={formData.budget}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        budget: e.target.value as string,
+                      }))
+                    }
+                    IconComponent={ArrowForwardIcon}
+                    sx={{
+                      height: "36px",
+                      backgroundColor: "#1c1c1e",
+                      borderRadius: "6px",
+                      color: "#dddddf",
+                      fontFamily: "Arial, Helvetica, sans-serif",
+                      fontSize: "11px",
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#303033",
+                      },
+                      "&:hover .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#3b3b3f",
+                      },
+                      "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#4a4a4f",
+                      },
+                      "& .MuiSelect-select": {
+                        py: "9px",
+                        px: "10px",
+                      },
+                      "& .MuiSvgIcon-root": {
+                        color: "#8c8c8e",
+                        fontSize: "16px",
+                        right: "9px",
                       },
                     }}
-                  />
-                ))}
-              </Box>
-            </MotionBox>
-
-            {/* BUDGET */}
-
-            <MotionBox
-              variants={fadeUp}
-              sx={{
-                mt: "14px",
-              }}
-            >
-              <FieldLabel>Estimate Budget *</FieldLabel>
-
-              <FormControl fullWidth>
-                <Select
-                  defaultValue="₹1.5 lakh – ₹5 lakh"
-                  IconComponent={ArrowForwardIcon}
-                  sx={{
-                    height: "36px",
-                    backgroundColor: "#1c1c1e",
-                    borderRadius: "6px",
-                    color: "#dddddf",
-                    fontFamily: "Arial, Helvetica, sans-serif",
-                    fontSize: "11px",
-
-                    "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#303033",
-                    },
-
-                    "&:hover .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#3b3b3f",
-                    },
-
-                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#4a4a4f",
-                    },
-
-                    "& .MuiSelect-select": {
-                      py: "9px",
-                      px: "10px",
-                    },
-
-                    "& .MuiSvgIcon-root": {
-                      color: "#8c8c8e",
-                      fontSize: "16px",
-                      right: "9px",
-                    },
-                  }}
-                  MenuProps={{
-                    slotProps: {
-                      paper: {
-                        sx: {
-                          backgroundColor: "#222224",
-                          color: "#fff",
+                    MenuProps={{
+                      slotProps: {
+                        paper: {
+                          sx: {
+                            backgroundColor: "#222224",
+                            color: "#fff",
+                          },
                         },
                       },
+                    }}
+                  >
+                    <MenuItem value="₹1.5 lakh – ₹5 lakh">
+                      ₹1.5 lakh – ₹5 lakh
+                    </MenuItem>
+                    <MenuItem value="₹5 lakh – ₹10 lakh">
+                      ₹5 lakh – ₹10 lakh
+                    </MenuItem>
+                    <MenuItem value="₹10 lakh+">₹10 lakh+</MenuItem>
+                  </Select>
+                </FormControl>
+              </MotionBox>
+
+              {/* PROJECT NOTES */}
+              <MotionBox
+                variants={fadeUp}
+                sx={{
+                  mt: "14px",
+                }}
+              >
+                <FieldLabel>Project Scope & Notes *</FieldLabel>
+                <TextField
+                  name="notes"
+                  value={formData.notes}
+                  onChange={handleChange}
+                  fullWidth
+                  multiline
+                  rows={3}
+                  placeholder="Describe what you want us to build, targets, and any specific timelines."
+                  sx={{
+                    mt: "1px",
+                    "& .MuiOutlinedInput-root": {
+                      minHeight: "81px",
+                      alignItems: "flex-start",
+                      borderRadius: "6px",
+                      backgroundColor: "#1c1c1e",
+                      color: "#d8d8da",
+                      fontFamily: "Arial, Helvetica, sans-serif",
+                      fontSize: "11px",
+                      p: 0,
+                      "& fieldset": {
+                        borderColor: "#303033",
+                      },
+                      "&:hover fieldset": {
+                        borderColor: "#3b3b3f",
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#4a4a4f",
+                      },
+                      "& textarea": {
+                        padding: "10px",
+                        lineHeight: "16px",
+                      },
+                    },
+                    "& input::placeholder, & textarea::placeholder": {
+                      color: "#656568",
+                      opacity: 1,
+                    },
+                  }}
+                />
+              </MotionBox>
+
+              {/* SUBMIT */}
+              <MotionBox
+                variants={fadeUp}
+                whileHover={{
+                  scale: 1.015,
+                  boxShadow: "0 8px 25px rgba(244,217,111,0.12)",
+                }}
+                whileTap={{
+                  scale: 0.98,
+                }}
+                sx={{
+                  mt: "21px",
+                }}
+              >
+                <Button
+                  type="submit"
+                  disabled={loading}
+                  fullWidth
+                  disableElevation
+                  sx={{
+                    height: "38px",
+                    borderRadius: "22px",
+                    backgroundColor: "#f4d96f",
+                    color: "#111111",
+                    fontFamily: "Arial, Helvetica, sans-serif",
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    textTransform: "none",
+                    "&:hover": {
+                      backgroundColor: "#f4d96f",
+                    },
+                    "&.Mui-disabled": {
+                      backgroundColor: "#f4d96f",
+                      color: "#111111",
+                      opacity: 0.6,
                     },
                   }}
                 >
-                  <MenuItem value="₹1.5 lakh – ₹5 lakh">
-                    ₹1.5 lakh – ₹5 lakh
-                  </MenuItem>
+                  {loading ? "Sending..." : "Send Project Brief"}
+                </Button>
+              </MotionBox>
 
-                  <MenuItem value="₹5 lakh – ₹10 lakh">
-                    ₹5 lakh – ₹10 lakh
-                  </MenuItem>
-
-                  <MenuItem value="₹10 lakh+">
-                    ₹10 lakh+
-                  </MenuItem>
-                </Select>
-              </FormControl>
-            </MotionBox>
-
-            {/* PROJECT NOTES */}
-
-            <MotionBox
-              variants={fadeUp}
-              sx={{
-                mt: "14px",
-              }}
-            >
-              <FieldLabel>Project Scope & Notes *</FieldLabel>
-
-              <TextField
-                fullWidth
-                multiline
-                rows={3}
-                placeholder="Describe what you want us to build, targets, and any specific timelines."
-                sx={{
-                  mt: "1px",
-
-                  "& .MuiOutlinedInput-root": {
-                    minHeight: "81px",
-                    alignItems: "flex-start",
-                    borderRadius: "6px",
-                    backgroundColor: "#1c1c1e",
-                    color: "#d8d8da",
+              {/* SUCCESS MESSAGE */}
+              {successMsg && (
+                <Typography
+                  sx={{
+                    mt: "12px",
                     fontFamily: "Arial, Helvetica, sans-serif",
                     fontSize: "11px",
-                    p: 0,
-
-                    "& fieldset": {
-                      borderColor: "#303033",
-                    },
-
-                    "&:hover fieldset": {
-                      borderColor: "#3b3b3f",
-                    },
-
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#4a4a4f",
-                    },
-
-                    "& textarea": {
-                      padding: "10px",
-                      lineHeight: "16px",
-                    },
-                  },
-
-                  "& input::placeholder, & textarea::placeholder": {
-                    color: "#656568",
-                    opacity: 1,
-                  },
-                }}
-              />
-            </MotionBox>
-
-            {/* SUBMIT */}
-
-            <MotionBox
-              variants={fadeUp}
-              whileHover={{
-                scale: 1.015,
-                boxShadow:
-                  "0 8px 25px rgba(244,217,111,0.12)",
-              }}
-              whileTap={{
-                scale: 0.98,
-              }}
-              sx={{
-                mt: "21px",
-              }}
-            >
-              <Button
-                type="submit"
-                fullWidth
-                disableElevation
-                sx={{
-                  height: "38px",
-                  borderRadius: "22px",
-                  backgroundColor: "#f4d96f",
-                  color: "#111111",
-                  fontFamily: "Arial, Helvetica, sans-serif",
-                  fontSize: "11px",
-                  fontWeight: 700,
-                  textTransform: "none",
-
-                  "&:hover": {
-                    backgroundColor: "#f4d96f",
-                  },
-                }}
-              >
-                Send Project Brief
-              </Button>
-            </MotionBox>
+                    color: "#19d46c",
+                    textAlign: "center",
+                  }}
+                >
+                  {successMsg}
+                </Typography>
+              )}
             </Box>
           </MotionBox>
 
           {/* =================================
               RIGHT — ALTERNATIVE OPTIONS
           ================================== */}
-
           <MotionBox
             variants={containerVariants}
             sx={{
@@ -498,7 +570,6 @@ const ProjectBrief: React.FC = () => {
             }}
           >
             {/* Eyebrow */}
-
             <MotionBox
               variants={fadeUp}
               sx={{
@@ -521,7 +592,6 @@ const ProjectBrief: React.FC = () => {
             </MotionBox>
 
             {/* Heading */}
-
             <MotionBox
               variants={fadeUp}
               sx={{
@@ -547,7 +617,6 @@ const ProjectBrief: React.FC = () => {
             </MotionBox>
 
             {/* STRATEGY CALL */}
-
             <MotionBox variants={cardVariants}>
               <AlternativeCard>
                 <Box
@@ -566,17 +635,12 @@ const ProjectBrief: React.FC = () => {
                       }}
                     />
                   </IconCircle>
-
-                  <Typography sx={CardTitle}>
-                    Book a Strategy Call
-                  </Typography>
+                  <Typography sx={CardTitle}>Book a Strategy Call</Typography>
                 </Box>
-
                 <Typography sx={CardDescription}>
                   Schedule a 15-minute consultation directly with our
                   product team. Free, uncompromised technical advice.
                 </Typography>
-
                 <Box
                   component="a"
                   href="#"
@@ -593,7 +657,6 @@ const ProjectBrief: React.FC = () => {
                   }}
                 >
                   Schedule via Cal.com
-
                   <ArrowUpwardIcon
                     sx={{
                       fontSize: "13px",
@@ -605,7 +668,6 @@ const ProjectBrief: React.FC = () => {
             </MotionBox>
 
             {/* WHATSAPP */}
-
             <MotionBox
               variants={cardVariants}
               sx={{
@@ -629,17 +691,14 @@ const ProjectBrief: React.FC = () => {
                       }}
                     />
                   </IconCircle>
-
                   <Typography sx={CardTitle}>
                     Quick Chat on WhatsApp
                   </Typography>
                 </Box>
-
                 <Typography sx={CardDescription}>
                   Need answers immediately? Send us a quick brief
                   directly on WhatsApp for instant feedback.
                 </Typography>
-
                 <Box
                   component="a"
                   href="#"
@@ -656,7 +715,6 @@ const ProjectBrief: React.FC = () => {
                   }}
                 >
                   Open WhatsApp Chat
-
                   <ArrowUpwardIcon
                     sx={{
                       fontSize: "13px",
@@ -668,7 +726,6 @@ const ProjectBrief: React.FC = () => {
             </MotionBox>
 
             {/* OFFICE */}
-
             <MotionBox
               variants={cardVariants}
               sx={{
@@ -688,7 +745,6 @@ const ProjectBrief: React.FC = () => {
                 >
                   Studio Head Office
                 </Typography>
-
                 <Typography sx={CardDescription}>
                   Alpha Zeta Lab
                   <br />
@@ -743,29 +799,23 @@ const StyledTextField: React.FC<TextFieldProps> = (props) => (
         color: "#ddd",
         fontFamily: "Arial, Helvetica, sans-serif",
         fontSize: "11px",
-
         "& fieldset": {
           borderColor: "#303033",
         },
-
         "&:hover fieldset": {
           borderColor: "#3b3b3f",
         },
-
         "&.Mui-focused fieldset": {
           borderColor: "#4a4a4f",
         },
       },
-
       "& input": {
         padding: "9px 10px",
       },
-
       "& input::placeholder": {
         color: "#656568",
         opacity: 1,
       },
-
       ...props.sx,
     }}
   />
@@ -811,10 +861,7 @@ interface IconCircleProps {
   background: string;
 }
 
-const IconCircle: React.FC<IconCircleProps> = ({
-  children,
-  background,
-}) => (
+const IconCircle: React.FC<IconCircleProps> = ({ children, background }) => (
   <MotionBox
     whileHover={{
       scale: 1.08,
