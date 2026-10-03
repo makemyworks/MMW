@@ -1,4 +1,6 @@
+
 import React from "react";
+
 import { Box, Typography, Chip } from "@mui/material";
 import { motion } from "framer-motion";
 
@@ -25,8 +27,8 @@ const DevelopmentServicesSection: React.FC = () => {
       sx={{
         width: "100%",
         boxSizing: "border-box",
-        backgroundColor: "#0B0810",
-        color: "#FFFFFF",
+        backgroundColor: "#FFFFFF",
+        color: "#111827",
         px: {
           xs: 2.5,
           sm: 4,
@@ -89,13 +91,15 @@ const DevelopmentServicesSection: React.FC = () => {
               sm: "32px",
               md: "34px",
             },
-            color: "#FFFFFF",
+            color: "#6655EB",
             borderColor: "#6655EB",
+            backgroundColor: "#F7F5FF",
             borderRadius: "18px",
             transition: "all 0.3s ease",
 
             "&:hover": {
-              borderColor: "#8A7CFF",
+              borderColor: "#5141D9",
+              backgroundColor: "#EFEDFF",
             },
 
             "& .MuiChip-label": {
@@ -142,7 +146,6 @@ const DevelopmentServicesSection: React.FC = () => {
             margin: 0,
             fontFamily: "Sora, sans-serif",
             fontWeight: 700,
-
             fontSize: {
               xs: "34px",
               sm: "42px",
@@ -150,7 +153,6 @@ const DevelopmentServicesSection: React.FC = () => {
               lg: "64px",
               xl: "72px",
             },
-
             lineHeight: {
               xs: 1.15,
               sm: 1.15,
@@ -158,7 +160,6 @@ const DevelopmentServicesSection: React.FC = () => {
               lg: "76px",
               xl: "84px",
             },
-
             letterSpacing: {
               xs: "-1px",
               sm: "-1.5px",
@@ -166,8 +167,9 @@ const DevelopmentServicesSection: React.FC = () => {
               lg: "-2.5px",
             },
 
+            // Attractive purple/blue gradient
             background:
-              "linear-gradient(91.16deg, #6655EB 1.74%, #FFFFFF 43.78%, #FFFFFF 61.72%, #6655EB 102.64%)",
+              "linear-gradient(90deg, #111827 0%, #3B2FA3 35%, #6655EB 65%, #8B5CF6 100%)",
 
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -211,14 +213,12 @@ const DevelopmentServicesSection: React.FC = () => {
             margin: 0,
             fontFamily: "Sora, sans-serif",
             fontWeight: 400,
-
             fontSize: {
               xs: "14px",
               sm: "15px",
               md: "16px",
               lg: "18px",
             },
-
             lineHeight: {
               xs: "23px",
               sm: "25px",
@@ -226,7 +226,8 @@ const DevelopmentServicesSection: React.FC = () => {
               lg: "28px",
             },
 
-            color: "#8C8C8C",
+            // Dark gray for readability
+            color: "#5B6170",
 
             maxWidth: {
               xs: "100%",

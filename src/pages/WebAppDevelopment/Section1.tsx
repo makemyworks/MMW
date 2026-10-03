@@ -1,5 +1,7 @@
 import React from "react";
+
 import { Box, Typography, Chip } from "@mui/material";
+
 import { motion } from "framer-motion";
 
 const MotionBox = motion(Box);
@@ -25,8 +27,8 @@ const DevelopmentServicesSection: React.FC = () => {
       sx={{
         width: "100%",
         boxSizing: "border-box",
-        backgroundColor: "#0B0810",
-        color: "#FFFFFF",
+        backgroundColor: "#FFFFFF",
+        color: "#111111",
         px: {
           xs: 2.5,
           sm: 4,
@@ -34,15 +36,43 @@ const DevelopmentServicesSection: React.FC = () => {
           lg: 8,
         },
         py: {
-          xs: 7,
-          sm: 8,
-          md: 10,
-          lg: 12,
+          xs: 8,
+          sm: 10,
+          md: 13,
+          lg: 15,
         },
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
         overflow: "hidden",
+        position: "relative",
+        borderBottom: "1px solid #EAEAEA",
+
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          width: "700px",
+          height: "700px",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(102,85,235,0.10) 0%, rgba(102,85,235,0) 70%)",
+          top: "-420px",
+          right: "-180px",
+          pointerEvents: "none",
+        },
+
+        "&::after": {
+          content: '""',
+          position: "absolute",
+          width: "450px",
+          height: "450px",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(154,143,255,0.07) 0%, rgba(154,143,255,0) 70%)",
+          bottom: "-300px",
+          left: "-180px",
+          pointerEvents: "none",
+        },
       }}
     >
       {/* ================= SERVICE TAG ================= */}
@@ -71,6 +101,8 @@ const DevelopmentServicesSection: React.FC = () => {
             xs: 2.5,
             sm: 3,
           },
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <Chip
@@ -84,15 +116,23 @@ const DevelopmentServicesSection: React.FC = () => {
               sm: "11px",
               md: "12px",
             },
+            letterSpacing: "0.5px",
             height: {
               xs: "30px",
               sm: "32px",
               md: "34px",
             },
-            color: "#FFFFFF",
-            borderColor: "#6655EB",
-            borderRadius: "18px",
+            color: "#6655EB",
+            borderColor: "#D8D2FF",
+            backgroundColor: "#F8F7FF",
+            borderRadius: "100px",
             transition: "all 0.3s ease",
+
+            "&:hover": {
+              backgroundColor: "#F1EFFF",
+              borderColor: "#BDB5FF",
+            },
+
             "& .MuiChip-label": {
               px: {
                 xs: 1.5,
@@ -134,6 +174,8 @@ const DevelopmentServicesSection: React.FC = () => {
             sm: 3,
             md: 3.5,
           },
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <Typography
@@ -142,7 +184,6 @@ const DevelopmentServicesSection: React.FC = () => {
             width: "100%",
             fontFamily: "Sora, sans-serif",
             fontWeight: 700,
-
             fontSize: {
               xs: "34px",
               sm: "42px",
@@ -150,7 +191,6 @@ const DevelopmentServicesSection: React.FC = () => {
               lg: "64px",
               xl: "72px",
             },
-
             lineHeight: {
               xs: 1.15,
               sm: 1.15,
@@ -158,23 +198,25 @@ const DevelopmentServicesSection: React.FC = () => {
               lg: "76px",
               xl: "84px",
             },
-
             letterSpacing: {
               xs: "-1px",
               sm: "-1.5px",
               md: "-2px",
               lg: "-2.5px",
             },
-
-            background:
-              "linear-gradient(91.16deg, #6655EB 1.74%, #FFFFFF 43.78%, #FFFFFF 61.72%, #6655EB 102.64%)",
-
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
+            color: "#111111",
+            m: 0,
           }}
         >
-          Web & Mobile App Development
+          Web & Mobile App{" "}
+          <Box
+            component="span"
+            sx={{
+              color: "#6655EB",
+            }}
+          >
+            Development
+          </Box>
         </Typography>
       </MotionBox>
 
@@ -199,8 +241,10 @@ const DevelopmentServicesSection: React.FC = () => {
           maxWidth: {
             xs: "100%",
             sm: "600px",
-            md: "640px",
+            md: "680px",
           },
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <Typography
@@ -208,30 +252,55 @@ const DevelopmentServicesSection: React.FC = () => {
           sx={{
             fontFamily: "Sora, sans-serif",
             fontWeight: 400,
-
             fontSize: {
               xs: "14px",
               sm: "15px",
               md: "16px",
               lg: "18px",
             },
-
             lineHeight: {
               xs: "23px",
               sm: "25px",
               md: "27px",
-              lg: "28px",
+              lg: "29px",
             },
-
-            color: "#8C8C8C",
+            color: "#6B6B6B",
             m: 0,
           }}
         >
-          Custom responsive websites, SaaS platforms, and cross-platform
-          mobile applications engineered for exceptional performance, modern
-          design, and robust scalability.
+          Custom responsive websites, SaaS platforms, and cross-platform mobile
+          applications engineered for exceptional performance, modern design,
+          and robust scalability.
         </Typography>
       </MotionBox>
+
+      {/* ================= BOTTOM ACCENT ================= */}
+      <MotionBox
+        variants={{
+          hidden: {
+            opacity: 0,
+            scaleX: 0,
+          },
+          visible: {
+            opacity: 1,
+            scaleX: 1,
+            transition: {
+              duration: 0.8,
+              delay: 0.25,
+            },
+          },
+        }}
+        sx={{
+          width: "70px",
+          height: "3px",
+          borderRadius: "10px",
+          background: "linear-gradient(90deg, #6655EB, #9A8FFF)",
+          mt: 5,
+          transformOrigin: "left",
+          position: "relative",
+          zIndex: 1,
+        }}
+      />
     </MotionBox>
   );
 };

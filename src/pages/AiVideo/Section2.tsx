@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 
@@ -94,8 +95,8 @@ const WhatWeCreateSection: React.FC = () => {
         },
       }}
       sx={{
-        backgroundColor: "#0A0A0A",
-        color: "#FFFFFF",
+        backgroundColor: "#FFFFFF",
+        color: "#111827",
         px: {
           xs: 2.5,
           sm: 4,
@@ -110,7 +111,7 @@ const WhatWeCreateSection: React.FC = () => {
         },
         width: "100%",
         boxSizing: "border-box",
-        borderBottom: "1px solid #FFFFFF1A",
+        borderBottom: "1px solid #E8E7F0",
         overflow: "hidden",
       }}
     >
@@ -150,15 +151,20 @@ const WhatWeCreateSection: React.FC = () => {
               md: "44px",
               lg: "48px",
             },
-            lineHeight: {
-              xs: 1.2,
-              md: 1.2,
-            },
+            lineHeight: 1.2,
             letterSpacing: {
               xs: "-0.5px",
               md: "-1px",
             },
-            color: "#FFFFFF",
+
+            // Attractive dark-to-purple gradient
+            background:
+              "linear-gradient(90deg, #111827 0%, #3B2FA3 45%, #6655EB 75%, #8B5CF6 100%)",
+
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+
             mb: {
               xs: 1,
               md: 1.5,
@@ -183,7 +189,7 @@ const WhatWeCreateSection: React.FC = () => {
               sm: "25px",
               md: "28px",
             },
-            color: "#8C8C8C",
+            color: "#5B6170",
             maxWidth: {
               xs: "100%",
               sm: "550px",
@@ -214,7 +220,7 @@ const WhatWeCreateSection: React.FC = () => {
           width: "100%",
         }}
       >
-        {servicesData.map((service, index) => (
+        {servicesData.map((service) => (
           <MotionBox
             key={service.title}
             variants={{
@@ -236,36 +242,50 @@ const WhatWeCreateSection: React.FC = () => {
             whileHover={{
               y: -8,
               borderColor: "#6655EB",
-              boxShadow: "0 15px 40px rgba(102, 85, 235, 0.12)",
+              boxShadow: "0 18px 45px rgba(102, 85, 235, 0.14)",
             }}
             whileTap={{
               scale: 0.98,
             }}
             sx={{
-              backgroundColor: "#141416",
-              border: "1px solid #1F1F24",
+              background:
+                "linear-gradient(145deg, #FFFFFF 0%, #FAF9FF 100%)",
+
+              border: "1px solid #E4E2EC",
+
               borderRadius: {
                 xs: "12px",
                 sm: "14px",
                 md: "16px",
               },
+
               p: {
                 xs: 2.5,
                 sm: 3,
                 md: 4,
               },
+
               minHeight: {
                 xs: "auto",
                 sm: "190px",
                 md: "210px",
               },
+
               height: "100%",
               boxSizing: "border-box",
+
               display: "flex",
               flexDirection: "column",
+
               transition:
-                "border-color 0.3s ease, box-shadow 0.3s ease",
+                "border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease",
+
               cursor: "default",
+
+              "&:hover": {
+                background:
+                  "linear-gradient(145deg, #FFFFFF 0%, #F6F3FF 100%)",
+              },
             }}
           >
             {/* Card Title Animation */}
@@ -300,11 +320,15 @@ const WhatWeCreateSection: React.FC = () => {
                     xs: "25px",
                     md: "28px",
                   },
-                  color: "#F4DC80",
+
+                  // Purple accent instead of yellow
+                  color: "#5141D9",
+
                   mb: {
                     xs: 1,
                     md: 1.5,
                   },
+
                   marginTop: 0,
                 }}
               >
@@ -327,7 +351,10 @@ const WhatWeCreateSection: React.FC = () => {
                   xs: "21px",
                   md: "24px",
                 },
-                color: "#8C8C8C",
+
+                // Dark gray for readability
+                color: "#687080",
+
                 m: 0,
               }}
             >

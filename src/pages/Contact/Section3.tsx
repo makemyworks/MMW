@@ -9,7 +9,7 @@ const StrategySessionSection: React.FC = () => {
     <Box
       sx={{
         width: "100%",
-        backgroundColor: "#141414",
+        backgroundColor: "#f8f9fa",
         boxSizing: "border-box",
         px: {
           xs: "12px",
@@ -26,7 +26,7 @@ const StrategySessionSection: React.FC = () => {
         overflow: "hidden",
       }}
     >
-      {/* Inner Purple Box */}
+      {/* Inner Banner Box */}
       <MotionBox
         initial={{
           opacity: 0,
@@ -54,7 +54,9 @@ const StrategySessionSection: React.FC = () => {
             sm: "260px",
             md: "280px",
           },
-          backgroundColor: "#6655EB",
+          backgroundColor: "#ffffff",
+          border: "1px solid #e2e8f0",
+          boxShadow: "0 10px 40px rgba(0, 0, 0, 0.04)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -91,7 +93,7 @@ const StrategySessionSection: React.FC = () => {
             },
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(255,255,255,0.13), transparent 70%)",
+              "radial-gradient(circle, rgba(99,102,241,0.06), transparent 70%)",
             top: "-120px",
             left: "-80px",
             pointerEvents: "none",
@@ -110,7 +112,7 @@ const StrategySessionSection: React.FC = () => {
             },
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(20,10,100,0.18), transparent 70%)",
+              "radial-gradient(circle, rgba(79,70,229,0.04), transparent 70%)",
             bottom: "-160px",
             right: "-100px",
             pointerEvents: "none",
@@ -164,7 +166,7 @@ const StrategySessionSection: React.FC = () => {
                 lg: "100%",
               },
               letterSpacing: "0%",
-              color: "#FFFFFF",
+              color: "#0f172a",
               textAlign: "center",
               maxWidth: {
                 xs: "100%",
@@ -192,6 +194,7 @@ const StrategySessionSection: React.FC = () => {
           whileHover={{
             scale: 1.05,
             y: -2,
+            boxShadow: "0 10px 25px rgba(99,102,241,0.2)",
           }}
           whileTap={{
             scale: 0.96,
@@ -235,8 +238,8 @@ const StrategySessionSection: React.FC = () => {
               },
               lineHeight: "24px",
               textTransform: "none",
-              backgroundColor: "#F4DC80",
-              color: "#1A1A1A",
+              backgroundColor: "#4f46e5",
+              color: "#ffffff",
               borderRadius: "28px",
               px: {
                 xs: "24px",
@@ -247,11 +250,11 @@ const StrategySessionSection: React.FC = () => {
                 xs: "10px",
                 sm: "12px",
               },
-              boxShadow: "none",
+              boxShadow: "0 4px 14px rgba(79, 70, 229, 0.35)",
 
               "&:hover": {
-                backgroundColor: "#E5C94F",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.18)",
+                backgroundColor: "#4338ca",
+                boxShadow: "0 6px 20px rgba(79, 70, 229, 0.45)",
               },
             }}
           >

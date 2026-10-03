@@ -1,5 +1,7 @@
 import React from "react";
+
 import { Box, Typography, Button, Stack } from "@mui/material";
+
 import { motion } from "framer-motion";
 
 const MotionBox = motion(Box);
@@ -24,8 +26,8 @@ const ReadyToBuildSection: React.FC = () => {
       }}
       sx={{
         position: "relative",
-        backgroundColor: "#0A0A0A",
-        color: "#FFFFFF",
+        backgroundColor: "#FFFFFF",
+        color: "#111111",
         px: {
           xs: 2.5,
           sm: 4,
@@ -35,8 +37,8 @@ const ReadyToBuildSection: React.FC = () => {
         py: {
           xs: 8,
           sm: 10,
-          md: 12,
-          lg: 14,
+          md: 13,
+          lg: 15,
         },
         width: "100%",
         boxSizing: "border-box",
@@ -45,24 +47,38 @@ const ReadyToBuildSection: React.FC = () => {
         alignItems: "center",
         textAlign: "center",
         overflow: "hidden",
+        borderBottom: "1px solid #EAEAEA",
 
         "&::before": {
           content: '""',
           position: "absolute",
           width: {
-            xs: "250px",
-            md: "450px",
+            xs: "300px",
+            md: "550px",
           },
           height: {
-            xs: "250px",
-            md: "450px",
+            xs: "300px",
+            md: "550px",
           },
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(102,85,235,0.12) 0%, rgba(102,85,235,0) 70%)",
+            "radial-gradient(circle, rgba(102,85,235,0.10) 0%, rgba(102,85,235,0) 70%)",
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
+          pointerEvents: "none",
+        },
+
+        "&::after": {
+          content: '""',
+          position: "absolute",
+          width: "300px",
+          height: "300px",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(154,143,255,0.07) 0%, rgba(154,143,255,0) 70%)",
+          bottom: "-180px",
+          right: "-100px",
           pointerEvents: "none",
         },
       }}
@@ -128,11 +144,19 @@ const ReadyToBuildSection: React.FC = () => {
                 xs: "-0.5px",
                 md: "-1px",
               },
-              color: "#F4DC80",
+              color: "#111111",
               m: 0,
             }}
           >
-            Ready to Build Your Platform?
+            Ready to Build{" "}
+            <Box
+              component="span"
+              sx={{
+                color: "#6655EB",
+              }}
+            >
+              Your Platform?
+            </Box>
           </Typography>
         </MotionBox>
 
@@ -181,7 +205,7 @@ const ReadyToBuildSection: React.FC = () => {
                 sm: "25px",
                 md: "28px",
               },
-              color: "#8C8C8C",
+              color: "#6B6B6B",
               m: 0,
             }}
           >
@@ -269,9 +293,10 @@ const ReadyToBuildSection: React.FC = () => {
                     md: "15px",
                   },
                   textTransform: "none",
-                  backgroundColor: "#F4DC80",
-                  color: "#1A1A1A",
-                  borderRadius: "28px",
+                  background:
+                    "linear-gradient(135deg, #6655EB 0%, #8577F5 100%)",
+                  color: "#FFFFFF",
+                  borderRadius: "100px",
                   px: {
                     xs: 3,
                     md: 4,
@@ -280,15 +305,18 @@ const ReadyToBuildSection: React.FC = () => {
                     xs: 1.3,
                     md: 1.5,
                   },
-                  boxShadow: "none",
+                  boxShadow: "0 10px 25px rgba(102, 85, 235, 0.18)",
+                  transition:
+                    "background 0.25s ease, box-shadow 0.25s ease",
                   "&:hover": {
-                    backgroundColor: "#E5C94F",
+                    background:
+                      "linear-gradient(135deg, #5B4BE0 0%, #7869ED 100%)",
                     boxShadow:
-                      "0 10px 30px rgba(244, 220, 128, 0.15)",
+                      "0 14px 32px rgba(102, 85, 235, 0.28)",
                   },
                 }}
               >
-                Start a Project
+                Start a Project&nbsp; ↗
               </Button>
             </MotionBox>
 
@@ -331,10 +359,10 @@ const ReadyToBuildSection: React.FC = () => {
                     md: "15px",
                   },
                   textTransform: "none",
-                  backgroundColor: "#141416",
-                  color: "#FFFFFF",
-                  borderColor: "#222226",
-                  borderRadius: "28px",
+                  backgroundColor: "#FFFFFF",
+                  color: "#222222",
+                  borderColor: "#DCDCDC",
+                  borderRadius: "100px",
                   px: {
                     xs: 3,
                     md: 4,
@@ -344,19 +372,49 @@ const ReadyToBuildSection: React.FC = () => {
                     md: 1.5,
                   },
                   boxShadow: "none",
+                  transition:
+                    "background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease",
                   "&:hover": {
-                    backgroundColor: "#1C1C21",
-                    borderColor: "#6655EB",
+                    backgroundColor: "#F8F7FF",
+                    borderColor: "#BDB5FF",
+                    color: "#6655EB",
                     boxShadow:
-                      "0 10px 30px rgba(102, 85, 235, 0.1)",
+                      "0 10px 30px rgba(102, 85, 235, 0.08)",
                   },
                 }}
               >
-                Book a Strategy Call
+                Book a Strategy Call&nbsp; ↗
               </Button>
             </MotionBox>
           </Stack>
         </MotionBox>
+
+        {/* ================= ACCENT ================= */}
+        <MotionBox
+          variants={{
+            hidden: {
+              opacity: 0,
+              scaleX: 0,
+            },
+            visible: {
+              opacity: 1,
+              scaleX: 1,
+              transition: {
+                duration: 0.8,
+                delay: 0.3,
+              },
+            },
+          }}
+          sx={{
+            width: "70px",
+            height: "3px",
+            borderRadius: "10px",
+            background:
+              "linear-gradient(90deg, #6655EB, #9A8FFF)",
+            mt: 5,
+            transformOrigin: "center",
+          }}
+        />
       </Box>
     </MotionBox>
   );

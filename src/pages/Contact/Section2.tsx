@@ -33,7 +33,7 @@ const services = [
 const DEFAULT_BUDGET = "₹1.5 lakh – ₹5 lakh";
 
 /* =========================================
-   ANIMATION VARIANTS
+    ANIMATION VARIANTS
 ========================================= */
 
 const containerVariants: Variants = {
@@ -78,7 +78,7 @@ const cardVariants: Variants = {
 };
 
 /* =========================================
-   MAIN COMPONENT
+    MAIN COMPONENT
 ========================================= */
 
 const ProjectBrief: React.FC = () => {
@@ -151,8 +151,8 @@ const ProjectBrief: React.FC = () => {
       sx={{
         width: "100%",
         minHeight: "100vh",
-        backgroundColor: "#111111",
-        color: "#fff",
+        backgroundColor: "#f8f9fa",
+        color: "#111111",
         px: {
           xs: "16px",
           sm: "24px",
@@ -208,8 +208,8 @@ const ProjectBrief: React.FC = () => {
               minHeight: {
                 md: "594px",
               },
-              backgroundColor: "#1c1c1e",
-              border: "1px solid #303033",
+              backgroundColor: "#ffffff",
+              border: "1px solid #e2e8f0",
               borderRadius: {
                 xs: "12px",
                 sm: "14px",
@@ -226,10 +226,11 @@ const ProjectBrief: React.FC = () => {
                 md: "26px",
               },
               boxSizing: "border-box",
+              boxShadow: "0 4px 20px rgba(0,0,0,0.03)",
               transition: "border-color 0.3s ease, box-shadow 0.3s ease",
               "&:hover": {
-                borderColor: "#3d3d42",
-                boxShadow: "0 15px 50px rgba(0,0,0,0.18)",
+                borderColor: "#cbd5e1",
+                boxShadow: "0 15px 40px rgba(0,0,0,0.08)",
               },
             }}
           >
@@ -245,12 +246,12 @@ const ProjectBrief: React.FC = () => {
                   sx={{
                     fontFamily: "Arial, Helvetica, sans-serif",
                     fontSize: {
-                      xs: "15px",
-                      sm: "16px",
+                      xs: "16px",
+                      sm: "18px",
                     },
-                    lineHeight: "20px",
-                    fontWeight: 700,
-                    color: "#f5f5f5",
+                    lineHeight: "22px",
+                    fontWeight: 800,
+                    color: "#0f172a",
                   }}
                 >
                   Project Brief
@@ -349,9 +350,9 @@ const ProjectBrief: React.FC = () => {
                           sx={{
                             p: 0,
                             mr: "8px",
-                            color: "#353539",
+                            color: "#cbd5e1",
                             "&.Mui-checked": {
-                              color: "#7558f5",
+                              color: "#6366f1",
                             },
                             "& .MuiSvgIcon-root": {
                               fontSize: "16px",
@@ -369,12 +370,12 @@ const ProjectBrief: React.FC = () => {
                         "& .MuiFormControlLabel-label": {
                           fontFamily: "Arial, Helvetica, sans-serif",
                           fontSize: {
-                            xs: "10.5px",
-                            sm: "11px",
+                            xs: "11px",
+                            sm: "11.5px",
                           },
                           lineHeight: "14px",
-                          color: index === 0 ? "#e3e3e3" : "#88888b",
-                          fontWeight: 400,
+                          color: index === 0 ? "#1e293b" : "#475569",
+                          fontWeight: index === 0 ? 600 : 400,
                         },
                       }}
                     />
@@ -402,26 +403,26 @@ const ProjectBrief: React.FC = () => {
                     IconComponent={ArrowForwardIcon}
                     sx={{
                       height: "36px",
-                      backgroundColor: "#1c1c1e",
+                      backgroundColor: "#ffffff",
                       borderRadius: "6px",
-                      color: "#dddddf",
+                      color: "#1e293b",
                       fontFamily: "Arial, Helvetica, sans-serif",
                       fontSize: "11px",
                       "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#303033",
+                        borderColor: "#cbd5e1",
                       },
                       "&:hover .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#3b3b3f",
+                        borderColor: "#94a3b8",
                       },
                       "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#4a4a4f",
+                        borderColor: "#6366f1",
                       },
                       "& .MuiSelect-select": {
                         py: "9px",
                         px: "10px",
                       },
                       "& .MuiSvgIcon-root": {
-                        color: "#8c8c8e",
+                        color: "#64748b",
                         fontSize: "16px",
                         right: "9px",
                       },
@@ -430,8 +431,9 @@ const ProjectBrief: React.FC = () => {
                       slotProps: {
                         paper: {
                           sx: {
-                            backgroundColor: "#222224",
-                            color: "#fff",
+                            backgroundColor: "#ffffff",
+                            color: "#1e293b",
+                            boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
                           },
                         },
                       },
@@ -470,19 +472,19 @@ const ProjectBrief: React.FC = () => {
                       minHeight: "81px",
                       alignItems: "flex-start",
                       borderRadius: "6px",
-                      backgroundColor: "#1c1c1e",
-                      color: "#d8d8da",
+                      backgroundColor: "#ffffff",
+                      color: "#1e293b",
                       fontFamily: "Arial, Helvetica, sans-serif",
                       fontSize: "11px",
                       p: 0,
                       "& fieldset": {
-                        borderColor: "#303033",
+                        borderColor: "#cbd5e1",
                       },
                       "&:hover fieldset": {
-                        borderColor: "#3b3b3f",
+                        borderColor: "#94a3b8",
                       },
                       "&.Mui-focused fieldset": {
-                        borderColor: "#4a4a4f",
+                        borderColor: "#6366f1",
                       },
                       "& textarea": {
                         padding: "10px",
@@ -490,7 +492,7 @@ const ProjectBrief: React.FC = () => {
                       },
                     },
                     "& input::placeholder, & textarea::placeholder": {
-                      color: "#656568",
+                      color: "#94a3b8",
                       opacity: 1,
                     },
                   }}
@@ -502,7 +504,7 @@ const ProjectBrief: React.FC = () => {
                 variants={fadeUp}
                 whileHover={{
                   scale: 1.015,
-                  boxShadow: "0 8px 25px rgba(244,217,111,0.12)",
+                  boxShadow: "0 8px 25px rgba(99,102,241,0.25)",
                 }}
                 whileTap={{
                   scale: 0.98,
@@ -519,18 +521,18 @@ const ProjectBrief: React.FC = () => {
                   sx={{
                     height: "38px",
                     borderRadius: "22px",
-                    backgroundColor: "#f4d96f",
-                    color: "#111111",
+                    backgroundColor: "#4f46e5",
+                    color: "#ffffff",
                     fontFamily: "Arial, Helvetica, sans-serif",
                     fontSize: "11px",
                     fontWeight: 700,
                     textTransform: "none",
                     "&:hover": {
-                      backgroundColor: "#f4d96f",
+                      backgroundColor: "#4338ca",
                     },
                     "&.Mui-disabled": {
-                      backgroundColor: "#f4d96f",
-                      color: "#111111",
+                      backgroundColor: "#4f46e5",
+                      color: "#ffffff",
                       opacity: 0.6,
                     },
                   }}
@@ -546,8 +548,9 @@ const ProjectBrief: React.FC = () => {
                     mt: "12px",
                     fontFamily: "Arial, Helvetica, sans-serif",
                     fontSize: "11px",
-                    color: "#19d46c",
+                    color: "#16a34a",
                     textAlign: "center",
+                    fontWeight: 600,
                   }}
                 >
                   {successMsg}
@@ -583,7 +586,7 @@ const ProjectBrief: React.FC = () => {
                   fontSize: "9px",
                   lineHeight: "11px",
                   fontWeight: 700,
-                  color: "#e5ca56",
+                  color: "#4f46e5",
                   textTransform: "uppercase",
                 }}
               >
@@ -607,8 +610,8 @@ const ProjectBrief: React.FC = () => {
                     sm: "21px",
                   },
                   lineHeight: "24px",
-                  fontWeight: 700,
-                  color: "#f4f4f4",
+                  fontWeight: 800,
+                  color: "#0f172a",
                   m: 0,
                 }}
               >
@@ -627,7 +630,7 @@ const ProjectBrief: React.FC = () => {
                     mb: "12px",
                   }}
                 >
-                  <IconCircle background="#6950e9">
+                  <IconCircle background="#6366f1">
                     <AutoAwesomeIcon
                       sx={{
                         fontSize: "14px",
@@ -649,7 +652,7 @@ const ProjectBrief: React.FC = () => {
                     alignItems: "center",
                     gap: "5px",
                     mt: "11px",
-                    color: "#ead45c",
+                    color: "#4f46e5",
                     fontFamily: "Arial, Helvetica, sans-serif",
                     fontSize: "10px",
                     fontWeight: 700,
@@ -683,7 +686,7 @@ const ProjectBrief: React.FC = () => {
                     mb: "12px",
                   }}
                 >
-                  <IconCircle background="#1acb68">
+                  <IconCircle background="#10b981">
                     <WhatsAppIcon
                       sx={{
                         fontSize: "14px",
@@ -707,7 +710,7 @@ const ProjectBrief: React.FC = () => {
                     alignItems: "center",
                     gap: "5px",
                     mt: "11px",
-                    color: "#19d46c",
+                    color: "#059669",
                     fontFamily: "Arial, Helvetica, sans-serif",
                     fontSize: "10px",
                     fontWeight: 700,
@@ -762,7 +765,7 @@ const ProjectBrief: React.FC = () => {
 };
 
 /* =========================================
-   REUSABLE COMPONENTS
+    REUSABLE COMPONENTS
 ========================================= */
 
 interface FieldLabelProps {
@@ -778,7 +781,7 @@ const FieldLabel: React.FC<FieldLabelProps> = ({ children }) => (
       fontSize: "10px",
       lineHeight: "13px",
       fontWeight: 700,
-      color: "#dedee0",
+      color: "#334155",
       mb: "5px",
     }}
   >
@@ -795,25 +798,25 @@ const StyledTextField: React.FC<TextFieldProps> = (props) => (
       "& .MuiOutlinedInput-root": {
         height: "35px",
         borderRadius: "5px",
-        backgroundColor: "#1c1c1e",
-        color: "#ddd",
+        backgroundColor: "#ffffff",
+        color: "#1e293b",
         fontFamily: "Arial, Helvetica, sans-serif",
         fontSize: "11px",
         "& fieldset": {
-          borderColor: "#303033",
+          borderColor: "#cbd5e1",
         },
         "&:hover fieldset": {
-          borderColor: "#3b3b3f",
+          borderColor: "#94a3b8",
         },
         "&.Mui-focused fieldset": {
-          borderColor: "#4a4a4f",
+          borderColor: "#6366f1",
         },
       },
       "& input": {
         padding: "9px 10px",
       },
       "& input::placeholder": {
-        color: "#656568",
+        color: "#94a3b8",
         opacity: 1,
       },
       ...props.sx,
@@ -833,8 +836,8 @@ const AlternativeCard: React.FC<AlternativeCardProps> = ({
   <MotionBox
     whileHover={{
       y: -4,
-      borderColor: "#424247",
-      boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
+      borderColor: "#94a3b8",
+      boxShadow: "0 12px 30px rgba(0,0,0,0.06)",
     }}
     transition={{
       duration: 0.25,
@@ -844,11 +847,12 @@ const AlternativeCard: React.FC<AlternativeCardProps> = ({
       width: "100%",
       minHeight: "123px",
       boxSizing: "border-box",
-      backgroundColor: "#1c1c1e",
-      border: "1px solid #303033",
+      backgroundColor: "#ffffff",
+      border: "1px solid #e2e8f0",
       borderRadius: "11px",
       px: "16px",
       py: "15px",
+      boxShadow: "0 2px 10px rgba(0,0,0,0.02)",
       ...sx,
     }}
   >
@@ -890,7 +894,7 @@ const CardTitle = {
   fontSize: "13px",
   lineHeight: "17px",
   fontWeight: 700,
-  color: "#f0f0f1",
+  color: "#0f172a",
 };
 
 const CardDescription = {
@@ -898,7 +902,7 @@ const CardDescription = {
   fontSize: "10.5px",
   lineHeight: "15px",
   fontWeight: 400,
-  color: "#858589",
+  color: "#64748b",
 };
 
 export default ProjectBrief;

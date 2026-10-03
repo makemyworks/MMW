@@ -1,4 +1,7 @@
+import React from "react";
+
 import { Box, Typography, Grid } from "@mui/material";
+
 import { motion } from "framer-motion";
 
 const MotionBox = motion(Box);
@@ -57,7 +60,7 @@ const servicesData = [
   },
 ];
 
-const WhatWeBuildSection = () => {
+const WhatWeBuildSection: React.FC = () => {
   return (
     <MotionBox
       initial="hidden"
@@ -76,8 +79,8 @@ const WhatWeBuildSection = () => {
         },
       }}
       sx={{
-        backgroundColor: "#0A0A0A",
-        color: "#FFFFFF",
+        backgroundColor: "#FFFFFF",
+        color: "#111111",
         px: {
           xs: 2.5,
           sm: 4,
@@ -85,18 +88,45 @@ const WhatWeBuildSection = () => {
           lg: 8,
         },
         py: {
-          xs: 7,
-          sm: 8,
-          md: 10,
-          lg: 12,
+          xs: 8,
+          sm: 10,
+          md: 13,
+          lg: 15,
         },
         width: "100%",
         boxSizing: "border-box",
-        borderBottom: "1px solid #FFFFFF1A",
+        borderBottom: "1px solid #EAEAEA",
         overflow: "hidden",
+        position: "relative",
+
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          width: "700px",
+          height: "700px",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(102,85,235,0.09) 0%, rgba(102,85,235,0) 70%)",
+          top: "-400px",
+          right: "-220px",
+          pointerEvents: "none",
+        },
+
+        "&::after": {
+          content: '""',
+          position: "absolute",
+          width: "500px",
+          height: "500px",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(154,143,255,0.07) 0%, rgba(154,143,255,0) 70%)",
+          bottom: "-300px",
+          left: "-220px",
+          pointerEvents: "none",
+        },
       }}
     >
-      {/* Section Header */}
+      {/* ================= SECTION HEADER ================= */}
       <MotionBox
         variants={{
           hidden: {
@@ -114,12 +144,33 @@ const WhatWeBuildSection = () => {
         }}
         sx={{
           mb: {
-            xs: 4,
-            sm: 5,
-            md: 6,
+            xs: 5,
+            sm: 6,
+            md: 7,
           },
+          position: "relative",
+          zIndex: 1,
         }}
       >
+        {/* Small Section Label */}
+        <Typography
+          sx={{
+            fontFamily: "Sora, sans-serif",
+            fontWeight: 600,
+            fontSize: {
+              xs: "10px",
+              sm: "11px",
+              md: "12px",
+            },
+            letterSpacing: "1.2px",
+            textTransform: "uppercase",
+            color: "#6655EB",
+            mb: 1.5,
+          }}
+        >
+          Engineering Capabilities
+        </Typography>
+
         <Typography
           component="h2"
           sx={{
@@ -137,16 +188,24 @@ const WhatWeBuildSection = () => {
             },
             letterSpacing: {
               xs: "-0.5px",
-              md: "-1px",
+              md: "-1.2px",
             },
-            color: "#FFFFFF",
+            color: "#111111",
             mb: {
               xs: 1,
               md: 1.5,
             },
           }}
         >
-          What We Build
+          What We{" "}
+          <Box
+            component="span"
+            sx={{
+              color: "#6655EB",
+            }}
+          >
+            Build
+          </Box>
         </Typography>
 
         <Typography
@@ -164,11 +223,11 @@ const WhatWeBuildSection = () => {
               sm: "25px",
               md: "28px",
             },
-            color: "#8C8C8C",
+            color: "#6B6B6B",
             maxWidth: {
               xs: "100%",
               sm: "550px",
-              md: "600px",
+              md: "620px",
             },
             m: 0,
           }}
@@ -176,10 +235,32 @@ const WhatWeBuildSection = () => {
           An overview of our core engineering capabilities and high-fidelity
           tech deployment.
         </Typography>
+
+        {/* Accent Line */}
+        <Box
+          sx={{
+            width: "60px",
+            height: "3px",
+            borderRadius: "10px",
+            background: "linear-gradient(90deg, #6655EB, #9A8FFF)",
+            mt: 3,
+          }}
+        />
       </MotionBox>
 
-      {/* Services Grid */}
-      <Grid container spacing={{ xs: 2, sm: 2.5, md: 3 }}>
+      {/* ================= SERVICES GRID ================= */}
+      <Grid
+        container
+        spacing={{
+          xs: 2,
+          sm: 2.5,
+          md: 3,
+        }}
+        sx={{
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
         {servicesData.map((service, index) => (
           <Grid
             size={{
@@ -207,25 +288,25 @@ const WhatWeBuildSection = () => {
                 },
               }}
               whileHover={{
-                y: -8,
-                borderColor: "#6655EB",
-                boxShadow: "0 15px 40px rgba(102, 85, 235, 0.12)",
+                y: -7,
+                borderColor: "#D8D2FF",
+                boxShadow: "0 16px 40px rgba(102, 85, 235, 0.10)",
               }}
               whileTap={{
                 scale: 0.98,
               }}
               sx={{
-                backgroundColor: "#141416",
-                border: "1px solid #1F1F24",
+                backgroundColor: "#FFFFFF",
+                border: "1px solid #E7E7E7",
                 borderRadius: {
-                  xs: "12px",
-                  sm: "14px",
-                  md: "16px",
+                  xs: "14px",
+                  sm: "16px",
+                  md: "18px",
                 },
                 p: {
                   xs: 2.5,
                   sm: 3,
-                  md: 4,
+                  md: 3.5,
                 },
                 minHeight: {
                   xs: "auto",
@@ -236,11 +317,43 @@ const WhatWeBuildSection = () => {
                 boxSizing: "border-box",
                 display: "flex",
                 flexDirection: "column",
+                position: "relative",
+                overflow: "hidden",
                 transition:
-                  "border-color 0.3s ease, box-shadow 0.3s ease",
-                cursor: "default",
+                  "border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease",
+
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "3px",
+                  background:
+                    "linear-gradient(90deg, #6655EB, #9A8FFF)",
+                  opacity: 0,
+                  transition: "opacity 0.3s ease",
+                },
+
+                "&:hover::before": {
+                  opacity: 1,
+                },
               }}
             >
+              {/* Service Number */}
+              <Typography
+                sx={{
+                  fontFamily: "Sora, sans-serif",
+                  fontWeight: 600,
+                  fontSize: "10px",
+                  letterSpacing: "1px",
+                  color: "#A0A0A0",
+                  mb: 2,
+                }}
+              >
+                {String(index + 1).padStart(2, "0")}
+              </Typography>
+
               <MotionTypography
                 initial={{ opacity: 0, x: -15 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -255,13 +368,13 @@ const WhatWeBuildSection = () => {
                   fontSize: {
                     xs: "17px",
                     sm: "18px",
-                    md: "20px",
+                    md: "19px",
                   },
                   lineHeight: {
                     xs: "25px",
                     md: "28px",
                   },
-                  color: "#F4DC80",
+                  color: "#161616",
                   mb: {
                     xs: 1,
                     md: 1.5,
@@ -285,12 +398,47 @@ const WhatWeBuildSection = () => {
                     xs: "21px",
                     md: "24px",
                   },
-                  color: "#8C8C8C",
+                  color: "#707070",
                   m: 0,
                 }}
               >
                 {service.description}
               </Typography>
+
+              {/* Bottom Accent */}
+              <Box
+                sx={{
+                  mt: "auto",
+                  pt: 2.5,
+                  display: "flex",
+                  justifyContent: "flex-end",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: "24px",
+                    height: "24px",
+                    borderRadius: "50%",
+                    backgroundColor: "#F8F7FF",
+                    border: "1px solid #E6E1FF",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#6655EB",
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    transition:
+                      "background-color 0.25s ease, transform 0.25s ease",
+                    ".MuiBox-root:hover &": {
+                      backgroundColor: "#6655EB",
+                      color: "#FFFFFF",
+                      transform: "rotate(45deg)",
+                    },
+                  }}
+                >
+                  ↗
+                </Box>
+              </Box>
             </MotionBox>
           </Grid>
         ))}

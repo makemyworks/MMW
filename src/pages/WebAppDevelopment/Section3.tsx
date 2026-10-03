@@ -1,5 +1,7 @@
 import React from "react";
+
 import { Box, Typography } from "@mui/material";
+
 import { motion } from "framer-motion";
 
 const MotionBox = motion(Box);
@@ -38,8 +40,8 @@ const TechStackSection: React.FC = () => {
         },
       }}
       sx={{
-        backgroundColor: "#0A0A0A",
-        color: "#FFFFFF",
+        backgroundColor: "#FFFFFF",
+        color: "#111111",
         px: {
           xs: 2.5,
           sm: 4,
@@ -47,14 +49,42 @@ const TechStackSection: React.FC = () => {
           lg: 8,
         },
         py: {
-          xs: 6,
-          sm: 7,
-          md: 8,
-          lg: 10,
+          xs: 7,
+          sm: 8,
+          md: 10,
+          lg: 12,
         },
         width: "100%",
         boxSizing: "border-box",
+        borderBottom: "1px solid #EAEAEA",
         overflow: "hidden",
+        position: "relative",
+
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          width: "600px",
+          height: "600px",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(102,85,235,0.09) 0%, rgba(102,85,235,0) 70%)",
+          top: "-360px",
+          right: "-180px",
+          pointerEvents: "none",
+        },
+
+        "&::after": {
+          content: '""',
+          position: "absolute",
+          width: "400px",
+          height: "400px",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(154,143,255,0.07) 0%, rgba(154,143,255,0) 70%)",
+          bottom: "-250px",
+          left: "-180px",
+          pointerEvents: "none",
+        },
       }}
     >
       {/* ================= SECTION TITLE ================= */}
@@ -77,12 +107,32 @@ const TechStackSection: React.FC = () => {
         }}
         sx={{
           mb: {
-            xs: 3,
-            sm: 3.5,
-            md: 4,
+            xs: 3.5,
+            sm: 4,
+            md: 5,
           },
+          position: "relative",
+          zIndex: 1,
         }}
       >
+        <Typography
+          sx={{
+            fontFamily: "Sora, sans-serif",
+            fontWeight: 600,
+            fontSize: {
+              xs: "10px",
+              sm: "11px",
+              md: "12px",
+            },
+            letterSpacing: "1.2px",
+            textTransform: "uppercase",
+            color: "#6655EB",
+            mb: 1.2,
+          }}
+        >
+          Technology
+        </Typography>
+
         <Typography
           component="h2"
           sx={{
@@ -99,12 +149,31 @@ const TechStackSection: React.FC = () => {
               xs: "-0.5px",
               md: "-1px",
             },
-            color: "#FFFFFF",
+            color: "#111111",
             m: 0,
           }}
         >
-          Our Tech Stack
+          Our{" "}
+          <Box
+            component="span"
+            sx={{
+              color: "#6655EB",
+            }}
+          >
+            Tech Stack
+          </Box>
         </Typography>
+
+        {/* Accent Line */}
+        <Box
+          sx={{
+            width: "55px",
+            height: "3px",
+            borderRadius: "10px",
+            background: "linear-gradient(90deg, #6655EB, #9A8FFF)",
+            mt: 2,
+          }}
+        />
       </MotionBox>
 
       {/* ================= TECH STACK ================= */}
@@ -113,11 +182,13 @@ const TechStackSection: React.FC = () => {
           display: "flex",
           flexWrap: "wrap",
           gap: {
-            xs: 1,
+            xs: 1.2,
             sm: 1.5,
             md: 1.5,
           },
           width: "100%",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         {techStack.map((tech, index) => (
@@ -142,16 +213,16 @@ const TechStackSection: React.FC = () => {
             whileHover={{
               y: -5,
               scale: 1.05,
-              borderColor: "#6655EB",
-              boxShadow:
-                "0 8px 25px rgba(102, 85, 235, 0.15)",
+              borderColor: "#BDB5FF",
+              backgroundColor: "#F8F7FF",
+              boxShadow: "0 10px 28px rgba(102, 85, 235, 0.10)",
             }}
             whileTap={{
               scale: 0.96,
             }}
             sx={{
-              backgroundColor: "#141416",
-              border: "1px solid #222226",
+              backgroundColor: "#FFFFFF",
+              border: "1px solid #E4E4E4",
               borderRadius: {
                 xs: "20px",
                 sm: "22px",
@@ -171,7 +242,7 @@ const TechStackSection: React.FC = () => {
               alignItems: "center",
               justifyContent: "center",
               transition:
-                "border-color 0.3s ease, box-shadow 0.3s ease",
+                "border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease",
               cursor: "default",
               flexShrink: 0,
             }}
@@ -190,9 +261,10 @@ const TechStackSection: React.FC = () => {
                   xs: "18px",
                   md: "20px",
                 },
-                color: "#FFFFFF",
+                color: "#333333",
                 whiteSpace: "nowrap",
                 m: 0,
+                transition: "color 0.25s ease",
               }}
             >
               {tech}

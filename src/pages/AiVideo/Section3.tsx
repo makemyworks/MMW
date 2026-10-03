@@ -1,4 +1,6 @@
+
 import React from "react";
+
 import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 
@@ -62,8 +64,8 @@ const WhyAIPoweredSection: React.FC = () => {
         },
       }}
       sx={{
-        backgroundColor: "#0A0A0A",
-        color: "#FFFFFF",
+        backgroundColor: "#FFFFFF",
+        color: "#111827",
         px: {
           xs: 2.5,
           sm: 4,
@@ -78,7 +80,7 @@ const WhyAIPoweredSection: React.FC = () => {
         },
         width: "100%",
         boxSizing: "border-box",
-        borderBottom: "1px solid #FFFFFF1A",
+        borderBottom: "1px solid #E8E7F0",
         overflow: "hidden",
       }}
     >
@@ -94,12 +96,14 @@ const WhyAIPoweredSection: React.FC = () => {
           gap: {
             xs: 6,
             md: 8,
+            lg: 10,
           },
         }}
       >
         {/* ======================================
             LEFT COLUMN — WHY AI-POWERED?
         ======================================= */}
+
         <Box>
           {/* Heading Animation */}
           <MotionBox
@@ -135,7 +139,14 @@ const WhyAIPoweredSection: React.FC = () => {
                   md: "38px",
                 },
                 lineHeight: 1.2,
-                color: "#FFFFFF",
+                letterSpacing: "-0.8px",
+
+                background:
+                  "linear-gradient(90deg, #111827 0%, #3B2FA3 50%, #6655EB 100%)",
+
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
               }}
             >
               Why AI-Powered?
@@ -169,6 +180,22 @@ const WhyAIPoweredSection: React.FC = () => {
                     },
                   },
                 }}
+                whileHover={{
+                  x: 6,
+                }}
+                sx={{
+                  position: "relative",
+                  pl: {
+                    xs: 2,
+                    md: 2.5,
+                  },
+                  borderLeft: "2px solid #DDD9FF",
+                  transition: "all 0.3s ease",
+
+                  "&:hover": {
+                    borderLeftColor: "#6655EB",
+                  },
+                }}
               >
                 <Typography
                   component="h3"
@@ -182,7 +209,9 @@ const WhyAIPoweredSection: React.FC = () => {
                       md: "18px",
                     },
                     lineHeight: "26px",
-                    color: "#F4DC80",
+
+                    color: "#5141D9",
+
                     mb: 0.5,
                   }}
                 >
@@ -200,7 +229,9 @@ const WhyAIPoweredSection: React.FC = () => {
                       md: "15px",
                     },
                     lineHeight: "22px",
-                    color: "#8C8C8C",
+
+                    color: "#687080",
+
                     m: 0,
                   }}
                 >
@@ -214,6 +245,7 @@ const WhyAIPoweredSection: React.FC = () => {
         {/* ======================================
             RIGHT COLUMN — WHO IS THIS FOR?
         ======================================= */}
+
         <Box>
           {/* Heading Animation */}
           <MotionBox
@@ -249,7 +281,14 @@ const WhyAIPoweredSection: React.FC = () => {
                   md: "38px",
                 },
                 lineHeight: 1.2,
-                color: "#FFFFFF",
+                letterSpacing: "-0.8px",
+
+                background:
+                  "linear-gradient(90deg, #111827 0%, #3B2FA3 50%, #6655EB 100%)",
+
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
               }}
             >
               Who Is This For?
@@ -283,6 +322,22 @@ const WhyAIPoweredSection: React.FC = () => {
                     },
                   },
                 }}
+                whileHover={{
+                  x: 6,
+                }}
+                sx={{
+                  position: "relative",
+                  pl: {
+                    xs: 2,
+                    md: 2.5,
+                  },
+                  borderLeft: "2px solid #DDD9FF",
+                  transition: "all 0.3s ease",
+
+                  "&:hover": {
+                    borderLeftColor: "#6655EB",
+                  },
+                }}
               >
                 <Typography
                   component="h3"
@@ -296,7 +351,9 @@ const WhyAIPoweredSection: React.FC = () => {
                       md: "18px",
                     },
                     lineHeight: "26px",
-                    color: "#6655EB",
+
+                    color: "#5141D9",
+
                     mb: 0.5,
                   }}
                 >
@@ -314,7 +371,9 @@ const WhyAIPoweredSection: React.FC = () => {
                       md: "15px",
                     },
                     lineHeight: "22px",
-                    color: "#8C8C8C",
+
+                    color: "#687080",
+
                     m: 0,
                   }}
                 >
