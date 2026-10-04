@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 import {
   Box,
   Button,
@@ -23,10 +23,14 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 const MotionBox = motion.create(Box);
 
 const services = [
-  "Web & Mobile App Development",
-  "AI Video Ads & Content Creation",
-  "Google SEO & AI Search Optimization",
-  "Full Growth Stack Strategy",
+  "Website & App Development",
+  "AI Solutions & Automation",
+  "Branding & Graphic Design",
+  "Video & Creative Content",
+  "Product Image & Fashion Visuals",
+  "SEO & Digital Marketing",
+  "E-commerce & Business Solutions",
+  "Maintenance & Technical Support",
   "Other Custom Solutions",
 ];
 
@@ -79,7 +83,91 @@ const cardVariants: Variants = {
    MAIN COMPONENT
 ========================================= */
 
+const API_URL = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/+$/, "");
+
 const ProjectBrief: React.FC = () => {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorText, setErrorText] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
+    const data = new FormData(form);
+    const selected = data.getAll("service").map(String);
+    const name = String(data.get("name") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    const phone = String(data.get("phone") || "").trim();
+    const company = String(data.get("company") || "").trim();
+    const budget = String(data.get("budget") || "");
+    const message = String(data.get("message") || "").trim();
+
+    if (selected.length === 0) {
+      setStatus("error");
+      setErrorText("Please select at least one service.");
+      return;
+    }
+
+    setStatus("sending");
+    setErrorText("");
+
+    // 1) Preferred: save the enquiry in our database (visible in the admin panel)
+    if (API_URL) {
+      try {
+        const res = await fetch(API_URL + "/contacts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fullName: name,
+            email,
+            contactNumber: phone,
+            services: selected,
+            description: [message, company && "Company: " + company, "Budget: " + budget]
+              .filter(Boolean)
+              .join("\n"),
+          }),
+        });
+        if (res.ok) {
+          setStatus("sent");
+          form.reset();
+          return;
+        }
+        if (res.status === 400) {
+          const body = await res.json().catch(() => null);
+          setStatus("error");
+          setErrorText(body?.message || "Please check your details and try again.");
+          return;
+        }
+      } catch {
+        /* server unreachable: use the email backup below */
+      }
+    }
+
+    // 2) Backup: send by email so no enquiry is ever lost
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/alphazetaworld@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: "New project brief from the website",
+          _template: "table",
+          "Full Name": name,
+          Email: email,
+          "WhatsApp / Phone": phone,
+          Company: company,
+          "Services Needed": selected.join(", "),
+          Budget: budget,
+          "Project Scope & Notes": message,
+        }),
+      });
+      if (!res.ok) throw new Error("failed");
+      setStatus("sent");
+      form.reset();
+    } catch {
+      setStatus("error");
+      setErrorText("We could not send your brief. Please WhatsApp us on +91 77039 77002 or email alphazetaworld@gmail.com.");
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -171,7 +259,7 @@ const ProjectBrief: React.FC = () => {
               },
             }}
           >
-            <Box component="form" sx={{ width: "100%" }}>
+            <Box component="form" onSubmit={handleSubmit} sx={{ width: "100%" }}>
             {/* Title */}
 
             <MotionBox variants={fadeUp} sx={{ mb: "21px" }}>
@@ -218,6 +306,8 @@ const ProjectBrief: React.FC = () => {
 
                 <StyledTextField
                   placeholder="e.g. John Miller"
+                  name="name"
+                  required
                   fullWidth
                 />
               </MotionBox>
@@ -229,6 +319,9 @@ const ProjectBrief: React.FC = () => {
 
                 <StyledTextField
                   placeholder="e.g. john@company.com"
+                  name="email"
+                  type="email"
+                  required
                   fullWidth
                 />
               </MotionBox>
@@ -240,6 +333,8 @@ const ProjectBrief: React.FC = () => {
 
                 <StyledTextField
                   placeholder="e.g. +91 98765 43210"
+                  name="phone"
+                  required
                   fullWidth
                 />
               </MotionBox>
@@ -251,6 +346,7 @@ const ProjectBrief: React.FC = () => {
 
                 <StyledTextField
                   placeholder="e.g. Stark Industries"
+                  name="company"
                   fullWidth
                 />
               </MotionBox>
@@ -275,6 +371,8 @@ const ProjectBrief: React.FC = () => {
                     key={service}
                     control={
                       <Checkbox
+                        name="service"
+                        value={service}
                         defaultChecked={index === 0}
                         size="small"
                         sx={{
@@ -329,6 +427,7 @@ const ProjectBrief: React.FC = () => {
 
               <FormControl fullWidth>
                 <Select
+                  name="budget"
                   defaultValue="₹1.5 lakh – ₹5 lakh"
                   IconComponent={ArrowForwardIcon}
                   sx={{
@@ -399,6 +498,8 @@ const ProjectBrief: React.FC = () => {
               <FieldLabel>Project Scope & Notes *</FieldLabel>
 
               <TextField
+                name="message"
+                required
                 fullWidth
                 multiline
                 rows={3}
@@ -460,6 +561,7 @@ const ProjectBrief: React.FC = () => {
             >
               <Button
                 type="submit"
+                disabled={status === "sending"}
                 fullWidth
                 disableElevation
                 sx={{
@@ -477,8 +579,18 @@ const ProjectBrief: React.FC = () => {
                   },
                 }}
               >
-                Send Project Brief
+                {status === "sending" ? "Sending..." : "Send Project Brief"}
               </Button>
+              {status === "sent" && (
+                <Typography role="status" sx={{ mt: "12px", fontSize: "12px", color: "#7ddfb0", fontFamily: "Arial, Helvetica, sans-serif" }}>
+                  Thank you! Your brief has been sent. We will reply within 24 hours.
+                </Typography>
+              )}
+              {status === "error" && (
+                <Typography role="alert" sx={{ mt: "12px", fontSize: "12px", color: "#f4d96f", fontFamily: "Arial, Helvetica, sans-serif" }}>
+                  {errorText}
+                </Typography>
+              )}
             </MotionBox>
             </Box>
           </MotionBox>
