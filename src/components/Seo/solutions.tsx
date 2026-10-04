@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Search, 
   FileText, 
@@ -266,10 +267,10 @@ const ComprehensiveServices: React.FC = () => {
                 <p className="cs-card-desc">{service.description}</p>
                 
                 {/* Learn More Link */}
-                <a href="#" className="cs-learn-more">
+                <Link to="/contact" className="cs-learn-more">
                   Learn More 
                   <ArrowRight size={14} strokeWidth={2.5} />
-                </a>
+                </Link>
                 
               </div>
             ))}

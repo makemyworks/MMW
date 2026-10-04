@@ -2,11 +2,15 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import RouteEffects from "./components/RouteEffects";
+import FloatingActions from "./components/FloatingActions";
 
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Services from "./pages/Services";
 import Products from "./pages/Products";
+import Legal from "./pages/Legal";
+import NotFound from "./pages/NotFound";
 
 import Contact from "./pages/Contact/Contact";
 import WebAppDevelopment from "./pages/WebAppDevelopment/WebAppDevelopment";
@@ -24,6 +28,7 @@ function MainLayout() {
       </main>
 
       <Footer />
+      <FloatingActions />
     </>
   );
 }
@@ -31,6 +36,7 @@ function MainLayout() {
 export default function App() {
   return (
     <BrowserRouter>
+      <RouteEffects />
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
@@ -45,6 +51,10 @@ export default function App() {
           <Route path="/ai-video" element={<AiVideo />} />
           <Route path="/products-lab" element={<ProductsLab />} />
           <Route path="/seo-ai" element={<SeoAi />} />
+          <Route path="/privacy-policy" element={<Legal kind="privacy" />} />
+          <Route path="/terms-and-conditions" element={<Legal kind="terms" />} />
+          <Route path="/cookie-policy" element={<Legal kind="cookies" />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

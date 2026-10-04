@@ -77,6 +77,9 @@ export default function Header() {
               alt="Alpha Zeta World"
               className="header-logo"
             />
+            <span className="header-brand-text">
+              Alpha Zeta <span className="header-brand-accent">World</span>
+            </span>
           </NavLink>
 
 
@@ -325,9 +328,10 @@ export default function Header() {
         .site-header .header-brand {
           width: auto;
           height: 64px;
-          min-width: 190px;
+          min-width: 0;
           margin: 0;
           padding: 0;
+          gap: 10px;
           display: flex;
           align-items: center;
           justify-content: flex-start;
@@ -375,6 +379,40 @@ export default function Header() {
           box-shadow: none;
         }
 
+
+
+        .site-header .header-brand-text {
+          font-size: 1.12rem;
+          font-weight: 800;
+          letter-spacing: -0.2px;
+          line-height: 1;
+          color: #0a4b3f;
+          white-space: nowrap;
+        }
+
+        .site-header .header-brand-accent {
+          color: #4fb3a2;
+        }
+
+        @media (max-width: 1000px) {
+          .site-header .header-brand-text { font-size: 1.02rem; }
+        }
+
+        @media (max-width: 760px) {
+          .site-header .header-brand-text { font-size: 0.95rem; }
+        }
+
+        @media (max-width: 420px) {
+          .site-header .header-brand-text { font-size: 0.86rem; }
+        }
+
+        .site-header .header-link:focus-visible,
+        .site-header .header-cta:focus-visible,
+        .site-header .header-dropdown-item:focus-visible,
+        .site-header .header-menu-btn:focus-visible {
+          outline: 2px solid #4fb3a2;
+          outline-offset: 2px;
+        }
 
         /* =====================================================
            NAV LINKS
@@ -662,7 +700,7 @@ export default function Header() {
 
           .site-header .header-brand {
             height: 60px;
-            min-width: 180px;
+            min-width: 0;
           }
 
 

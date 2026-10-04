@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Monitor, 
   BarChart2, 
@@ -267,10 +268,10 @@ const ServicesWeOffer: React.FC = () => {
                 <p className="swo-card-desc">{service.description}</p>
                 
                 {/* Learn More Link */}
-                <a href="#" className="swo-learn-more">
+                <Link to="/contact" className="swo-learn-more">
                   Learn More 
                   <ArrowRight size={14} strokeWidth={2.5} />
-                </a>
+                </Link>
                 
               </div>
             ))}

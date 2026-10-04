@@ -100,7 +100,7 @@ const Footer: React.FC = () => {
 
             <img
               src={logoUrl}
-              alt="Alpha Zeta Logo"
+              alt="Alpha Zeta World logo"
               className="ft-logo"
             />
 
@@ -111,7 +111,7 @@ const Footer: React.FC = () => {
             </p>
 
             <a
-              href="mailto:hello@alphazetaworld.com"
+              href="mailto:alphazetaworld@gmail.com"
               className="ft-email-link"
             >
              alphazetaworld@gmail.com
@@ -186,7 +186,7 @@ const Footer: React.FC = () => {
         <div className="ft-bottom-section">
 
           <p className="ft-copyright">
-            @2026 Alpha Zeta World. All Rights Reserved.
+            ©2026 Alpha Zeta World. All Rights Reserved.
           </p>
 
           {/* 🎯 SOCIAL ICONS — RIGHT SIDE */}
@@ -206,21 +206,21 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="ft-legal-links">
-            <a href="#" className="ft-legal-link">
+            <Link to="/privacy-policy" className="ft-legal-link">
               Privacy Policy
-            </a>
+            </Link>
 
             <span className="ft-separator">|</span>
 
-            <a href="#" className="ft-legal-link">
+            <Link to="/terms-and-conditions" className="ft-legal-link">
               Terms &amp; Conditions
-            </a>
+            </Link>
 
             <span className="ft-separator">|</span>
 
-            <a href="#" className="ft-legal-link">
+            <Link to="/cookie-policy" className="ft-legal-link">
               Cookie Policy
-            </a>
+            </Link>
           </div>
 
         </div>
