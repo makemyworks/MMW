@@ -11,3 +11,27 @@
 .footer{background:#003b34;color:#dcece8;padding:70px 0 0}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:45px}.footer-brand{display:flex;align-items:center;gap:10px;font:800 20px Manrope;color:white}.footer p{max-width:320px;color:#aac8c1}.footer h4{color:white;margin:0 0 16px}.footer-grid a,.footer-grid span{display:block;color:#aac8c1;margin:9px 0;font-size:14px}.footer-grid a:hover{color:white}.footer-bottom{margin-top:55px;padding:20px;text-align:center;border-top:1px solid rgba(255,255,255,.12);font-size:13px;color:#aac8c1}
 @media(max-width:850px){.menu-btn{display:block}.nav{display:none;position:absolute;top:78px;left:0;right:0;background:white;padding:20px;flex-direction:column;align-items:stretch;border-bottom:1px solid var(--line);box-shadow:0 15px 30px rgba(0,0,0,.08)}.nav.open{display:flex}.nav-cta{text-align:center}.hero-grid,.two-col,.contact-grid{grid-template-columns:1fr}.hero{padding:70px 0}.hero-art{height:350px}.service-grid,.product-grid,.values{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.hero h1{font-size:46px}.page-hero h1{font-size:43px}.section{padding:70px 0}.service-grid,.product-grid,.values,.footer-grid{grid-template-columns:1fr}.section-heading,.cta-inner{align-items:start;flex-direction:column}.service-list article{grid-template-columns:45px 1fr}.service-list article>b{display:none}}
+
+
+/* ===== Alpha Zeta World: global safety, responsiveness & accessibility ===== */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:clip;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img,video,canvas{max-width:100%;height:auto}
+img{-webkit-user-drag:none}
+main{display:block;min-width:0}
+[id]{scroll-margin-top:84px}
+:focus-visible{outline:3px solid #4fb3a2;outline-offset:2px}
+.azw-skip{position:absolute;left:-9999px;top:8px;z-index:3000;background:#0a4b3f;color:#fff;padding:.7rem 1.1rem;border-radius:8px;font-weight:700}
+.azw-skip:focus{left:8px}
+/* Prevent iOS Safari from zooming into form fields */
+@media (max-width:760px){
+  input,select,textarea,.MuiInputBase-input,.MuiSelect-select{font-size:16px !important}
+  .MuiFormControlLabel-label{font-size:13px !important;line-height:1.35 !important}
+  button,.MuiButton-root{min-height:44px}
+}
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+@media print{.site-header,.azw-float,.azw-cookie{display:none !important}}

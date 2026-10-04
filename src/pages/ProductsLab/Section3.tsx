@@ -2,8 +2,8 @@ import React from "react";
 import { Box, Typography, Grid, Chip, Link } from "@mui/material";
 import { motion } from "framer-motion";
 
-const MotionBox = motion(Box);
-const MotionTypography = motion(Typography);
+const MotionBox = motion.create(Box);
+const MotionTypography = motion.create(Typography);
 
 interface PortfolioItem {
   title: string;

@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography, Button, Stack, Chip } from "@mui/material";
 import { motion } from "framer-motion";
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 const DigitalProductLabSection: React.FC = () => {
   return (

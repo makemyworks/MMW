@@ -7,6 +7,7 @@ import Whatwebuild from "../components/Home/whatwebuild";
 import Ourwork from  "../components/Home/ourwork";
 import Testimonials from "../components/Home/Testimonials";
 import Service from "../components/Home/service";
+import HomeFAQ from "../components/Home/HomeFAQ";
 import CTA from "../components/Home/CTA";
 
 
@@ -22,6 +23,7 @@ export default function Home() {
       <Ourwork />
      <Testimonials />
       <Service/>
+      <HomeFAQ />
       <CTA />
       
     </>

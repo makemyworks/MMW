@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode } from "react";
 import {
   Box,
   Button,
@@ -20,17 +20,13 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 const services = [
-  "Website & App Development",
-  "AI Solutions & Automation",
-  "Branding & Graphic Design",
-  "Video & Creative Content",
-  "Product Image & Fashion Visuals",
-  "SEO & Digital Marketing",
-  "E-commerce & Business Solutions",
-  "Maintenance & Technical Support",
+  "Web & Mobile App Development",
+  "AI Video Ads & Content Creation",
+  "Google SEO & AI Search Optimization",
+  "Full Growth Stack Strategy",
   "Other Custom Solutions",
 ];
 
@@ -84,50 +80,6 @@ const cardVariants: Variants = {
 ========================================= */
 
 const ProjectBrief: React.FC = () => {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-
-  const handleSubmit = async (e: React.FormEvent<HTMLElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget as HTMLFormElement;
-    const data = new FormData(form);
-    const selected = data.getAll("service").map(String);
-    const payload = {
-      _subject: "New project brief from alphazetaworld.com",
-      _template: "table",
-      "Full Name": String(data.get("name") || ""),
-      Email: String(data.get("email") || ""),
-      "WhatsApp / Phone": String(data.get("phone") || ""),
-      Company: String(data.get("company") || ""),
-      "Services Needed": selected.join(", ") || "Not selected",
-      Budget: String(data.get("budget") || ""),
-      "Project Scope & Notes": String(data.get("message") || ""),
-    };
-
-    setStatus("sending");
-    try {
-      const res = await fetch("https://formsubmit.co/ajax/alphazetaworld@gmail.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error("Request failed");
-      setStatus("sent");
-      form.reset();
-    } catch {
-      // Fallback: open the visitor's email app with the brief pre-filled
-      const body = Object.entries(payload)
-        .filter(([k]) => !k.startsWith("_"))
-        .map(([k, v]) => k + ": " + v)
-        .join("\n");
-      window.location.href =
-        "mailto:alphazetaworld@gmail.com?subject=" +
-        encodeURIComponent("New project brief") +
-        "&body=" +
-        encodeURIComponent(body);
-      setStatus("error");
-    }
-  };
-
   return (
     <Box
       sx={{
@@ -219,7 +171,7 @@ const ProjectBrief: React.FC = () => {
               },
             }}
           >
-            <Box component="form" onSubmit={handleSubmit} sx={{ width: "100%" }}>
+            <Box component="form" sx={{ width: "100%" }}>
             {/* Title */}
 
             <MotionBox variants={fadeUp} sx={{ mb: "21px" }}>
@@ -266,8 +218,6 @@ const ProjectBrief: React.FC = () => {
 
                 <StyledTextField
                   placeholder="e.g. John Miller"
-                  name="name"
-                  required
                   fullWidth
                 />
               </MotionBox>
@@ -279,9 +229,6 @@ const ProjectBrief: React.FC = () => {
 
                 <StyledTextField
                   placeholder="e.g. john@company.com"
-                  name="email"
-                  type="email"
-                  required
                   fullWidth
                 />
               </MotionBox>
@@ -293,8 +240,6 @@ const ProjectBrief: React.FC = () => {
 
                 <StyledTextField
                   placeholder="e.g. +91 98765 43210"
-                  name="phone"
-                  required
                   fullWidth
                 />
               </MotionBox>
@@ -306,7 +251,6 @@ const ProjectBrief: React.FC = () => {
 
                 <StyledTextField
                   placeholder="e.g. Stark Industries"
-                  name="company"
                   fullWidth
                 />
               </MotionBox>
@@ -331,8 +275,6 @@ const ProjectBrief: React.FC = () => {
                     key={service}
                     control={
                       <Checkbox
-                        name="service"
-                        value={service}
                         defaultChecked={index === 0}
                         size="small"
                         sx={{
@@ -387,7 +329,6 @@ const ProjectBrief: React.FC = () => {
 
               <FormControl fullWidth>
                 <Select
-                  name="budget"
                   defaultValue="₹1.5 lakh – ₹5 lakh"
                   IconComponent={ArrowForwardIcon}
                   sx={{
@@ -458,8 +399,6 @@ const ProjectBrief: React.FC = () => {
               <FieldLabel>Project Scope & Notes *</FieldLabel>
 
               <TextField
-                name="message"
-                required
                 fullWidth
                 multiline
                 rows={3}
@@ -521,7 +460,6 @@ const ProjectBrief: React.FC = () => {
             >
               <Button
                 type="submit"
-                disabled={status === "sending"}
                 fullWidth
                 disableElevation
                 sx={{
@@ -539,18 +477,8 @@ const ProjectBrief: React.FC = () => {
                   },
                 }}
               >
-                {status === "sending" ? "Sending..." : "Send Project Brief"}
+                Send Project Brief
               </Button>
-              {status === "sent" && (
-                <Typography role="status" sx={{ mt: "12px", fontSize: "12px", color: "#7ddfb0", fontFamily: "Arial, Helvetica, sans-serif" }}>
-                  Thank you! Your brief has been sent. We will reply within 24 hours.
-                </Typography>
-              )}
-              {status === "error" && (
-                <Typography role="alert" sx={{ mt: "12px", fontSize: "12px", color: "#f4d96f", fontFamily: "Arial, Helvetica, sans-serif" }}>
-                  We could not send it online, so we opened your email app instead. You can also WhatsApp us on +91 77039 77002.
-                </Typography>
-              )}
             </MotionBox>
             </Box>
           </MotionBox>

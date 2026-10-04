@@ -1,39 +1,49 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import RouteEffects from "./components/RouteEffects";
 import FloatingActions from "./components/FloatingActions";
+import CookieBanner from "./components/CookieBanner";
+import ErrorBoundary from "./components/ErrorBoundary";
+import PageLoader from "./components/PageLoader";
 
 import Home from "./pages/Home";
-import AboutUs from "./pages/AboutUs";
-import Services from "./pages/Services";
-import Products from "./pages/Products";
-import Legal from "./pages/Legal";
-import NotFound from "./pages/NotFound";
-import OurServices from "./pages/OurServices";
-import ServicePage from "./pages/ServicePage";
-import Solutions from "./pages/Solutions";
-import OurWork from "./pages/OurWork";
-import OurTeam from "./pages/OurTeam";
+const AboutUs = lazy(() => import("./pages/AboutUs"));
+const Services = lazy(() => import("./pages/Services"));
+const Products = lazy(() => import("./pages/Products"));
+const Legal = lazy(() => import("./pages/Legal"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const OurServices = lazy(() => import("./pages/OurServices"));
+const ServicePage = lazy(() => import("./pages/ServicePage"));
+const Solutions = lazy(() => import("./pages/Solutions"));
+const OurWork = lazy(() => import("./pages/OurWork"));
+const OurTeam = lazy(() => import("./pages/OurTeam"));
 
-import Contact from "./pages/Contact/Contact";
-import WebAppDevelopment from "./pages/WebAppDevelopment/WebAppDevelopment";
-import AiVideo from "./pages/AiVideo/AiVideo";
-import ProductsLab from "./pages/ProductsLab/ProductsLab";
-import SeoAi from "./pages/SeoAi";
+const Contact = lazy(() => import("./pages/Contact/Contact"));
+const WebAppDevelopment = lazy(() => import("./pages/WebAppDevelopment/WebAppDevelopment"));
+const AiVideo = lazy(() => import("./pages/AiVideo/AiVideo"));
+const ProductsLab = lazy(() => import("./pages/ProductsLab/ProductsLab"));
+const SeoAi = lazy(() => import("./pages/SeoAi"));
 
 function MainLayout() {
   return (
     <>
+      <a href="#main-content" className="azw-skip">Skip to main content</a>
       <Header />
 
-      <main>
-        <Outlet />
+      <main id="main-content">
+        <ErrorBoundary>
+          <Suspense fallback={<PageLoader />}>
+            <Outlet />
+          </Suspense>
+        </ErrorBoundary>
       </main>
 
       <Footer />
       <FloatingActions />
+      <CookieBanner />
     </>
   );
 }
