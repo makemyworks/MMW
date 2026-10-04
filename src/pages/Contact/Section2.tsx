@@ -23,10 +23,14 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 const MotionBox = motion(Box);
 
 const services = [
-  "Web & Mobile App Development",
-  "AI Video Ads & Content Creation",
-  "Google SEO & AI Search Optimization",
-  "Full Growth Stack Strategy",
+  "Website & App Development",
+  "AI Solutions & Automation",
+  "Branding & Graphic Design",
+  "Video & Creative Content",
+  "Product Image & Fashion Visuals",
+  "SEO & Digital Marketing",
+  "E-commerce & Business Solutions",
+  "Maintenance & Technical Support",
   "Other Custom Solutions",
 ];
 

@@ -7,22 +7,19 @@ type ServiceItem = {
 };
 
 const serviceDropdown: ServiceItem[] = [
-  {
-    label: "Digital Solution",
-    path: "/services",
-  },
-  {
-    label: "Web App Development",
-    path: "/web-app-development",
-  },
-  {
-    label: "AI Video Content",
-    path: "/ai-video",
-  },
-  {
-    label: "SEO AI Search",
-    path: "/seo-ai",
-  },
+  { label: "All Services", path: "/our-services" },
+  { label: "Website & App Development", path: "/services/website-app-development" },
+  { label: "AI Solutions & Automation", path: "/services/ai-solutions-automation" },
+  { label: "Branding & Graphic Design", path: "/services/branding-graphic-design" },
+  { label: "Video & Creative Content", path: "/services/video-creative-content" },
+  { label: "Product Image & Fashion Visuals", path: "/services/product-image-fashion-visuals" },
+  { label: "SEO & Digital Marketing", path: "/services/seo-digital-marketing" },
+  { label: "E-commerce & Business Solutions", path: "/services/ecommerce-business-solutions" },
+  { label: "Maintenance & Technical Support", path: "/services/maintenance-technical-support" },
+  { label: "Digital Solution", path: "/services" },
+  { label: "Web App Development", path: "/web-app-development" },
+  { label: "AI Video Content", path: "/ai-video" },
+  { label: "SEO AI Search", path: "/seo-ai" },
 ];
 
 export default function Header() {
@@ -211,6 +208,42 @@ export default function Header() {
 
             </div>
 
+
+            <NavLink
+              to="/solutions"
+              className={({ isActive }) =>
+                isActive
+                  ? "header-link header-link-active"
+                  : "header-link"
+              }
+              onClick={closeMenu}
+            >
+              Solutions
+            </NavLink>
+
+            <NavLink
+              to="/our-work"
+              className={({ isActive }) =>
+                isActive
+                  ? "header-link header-link-active"
+                  : "header-link"
+              }
+              onClick={closeMenu}
+            >
+              Our Work
+            </NavLink>
+
+            <NavLink
+              to="/our-team"
+              className={({ isActive }) =>
+                isActive
+                  ? "header-link header-link-active"
+                  : "header-link"
+              }
+              onClick={closeMenu}
+            >
+              Our Team
+            </NavLink>
 
             {/* PRODUCTS */}
 
@@ -897,7 +930,7 @@ export default function Header() {
 
 
           .site-header .header-dropdown-open {
-            max-height: 400px;
+            max-height: 640px;
             padding: 0.15rem 0;
           }
 
@@ -988,6 +1021,14 @@ export default function Header() {
 
         }
 
+
+        @media (min-width: 761px) and (max-width: 1180px) {
+          .site-header .header-nav { gap: 1rem; }
+          .site-header .header-link { font-size: 0.82rem; }
+          .site-header .header-cta { display: none; }
+        }
+
+        .site-header .header-dropdown-menu { max-height: calc(100vh - 90px); overflow-y: auto; min-width: 270px; }
       `}</style>
     </>
   );

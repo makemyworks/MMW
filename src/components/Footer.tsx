@@ -6,18 +6,27 @@ const footerLinks = {
   company: [
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
+    { label: "Our Work", path: "/our-work" },
+    { label: "Our Team", path: "/our-team" },
+    { label: "Solutions", path: "/solutions" },
     { label: "Contact", path: "/contact" },
   ],
   services: [
-    { label: "Web & App Development", path: "/web-app-development" },
-    { label: "AI Video & Content", path: "/ai-video" },
-    { label: "Google SEO & AI Search", path: "/seo-ai" },
-    { label: "Digital Solution", path: "/services" },
+    { label: "Website & App Development", path: "/services/website-app-development" },
+    { label: "AI Solutions & Automation", path: "/services/ai-solutions-automation" },
+    { label: "Branding & Graphic Design", path: "/services/branding-graphic-design" },
+    { label: "Video & Creative Content", path: "/services/video-creative-content" },
+    { label: "Product Image & Fashion Visuals", path: "/services/product-image-fashion-visuals" },
+    { label: "SEO & Digital Marketing", path: "/services/seo-digital-marketing" },
+    { label: "E-commerce & Business Solutions", path: "/services/ecommerce-business-solutions" },
+    { label: "Maintenance & Support", path: "/services/maintenance-technical-support" },
   ],
   products: [
     { label: "Digital Product Lab", path: "/products-lab" },
-    { label: "SaaS Tools", path: "/products-lab" },
-    { label: "Consumer Apps", path: "/products-lab" },
+    { label: "Digital Solution", path: "/services" },
+    { label: "Web & App Development Page", path: "/web-app-development" },
+    { label: "AI Video & Content Page", path: "/ai-video" },
+    { label: "Google SEO & AI Search Page", path: "/seo-ai" },
   ],
 };
 
@@ -462,12 +471,12 @@ const Footer: React.FC = () => {
           grid-template-columns:
             repeat(
               auto-fit,
-              minmax(150px, 1fr)
+              minmax(170px, 1fr)
             );
 
           gap: 3rem;
 
-          flex: 2 1 500px;
+          flex: 2 1 560px;
         }
 
         .ft-link-column {

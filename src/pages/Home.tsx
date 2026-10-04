@@ -1,5 +1,6 @@
 import Hero from "../components/Home/Hero";
 import Banner from "../components/Home/banner";
+import AgencyIntro from "../components/Home/AgencyIntro";
 import Howwework from "../components/Home/Howwework";
 import Whyweare from "../components/Home/whyweare";
 import Whatwebuild from "../components/Home/whatwebuild";
@@ -14,6 +15,7 @@ export default function Home() {
     <>
       <Hero />
       <Banner/>
+      <AgencyIntro />
       <Howwework />
       <Whyweare />
       <Whatwebuild/>

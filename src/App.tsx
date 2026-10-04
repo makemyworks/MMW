@@ -11,6 +11,11 @@ import Services from "./pages/Services";
 import Products from "./pages/Products";
 import Legal from "./pages/Legal";
 import NotFound from "./pages/NotFound";
+import OurServices from "./pages/OurServices";
+import ServicePage from "./pages/ServicePage";
+import Solutions from "./pages/Solutions";
+import OurWork from "./pages/OurWork";
+import OurTeam from "./pages/OurTeam";
 
 import Contact from "./pages/Contact/Contact";
 import WebAppDevelopment from "./pages/WebAppDevelopment/WebAppDevelopment";
@@ -51,6 +56,11 @@ export default function App() {
           <Route path="/ai-video" element={<AiVideo />} />
           <Route path="/products-lab" element={<ProductsLab />} />
           <Route path="/seo-ai" element={<SeoAi />} />
+          <Route path="/our-services" element={<OurServices />} />
+          <Route path="/services/:slug" element={<ServicePage />} />
+          <Route path="/solutions" element={<Solutions />} />
+          <Route path="/our-work" element={<OurWork />} />
+          <Route path="/our-team" element={<OurTeam />} />
           <Route path="/privacy-policy" element={<Legal kind="privacy" />} />
           <Route path="/terms-and-conditions" element={<Legal kind="terms" />} />
           <Route path="/cookie-policy" element={<Legal kind="cookies" />} />
