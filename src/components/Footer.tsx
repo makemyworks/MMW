@@ -6,18 +6,27 @@ const footerLinks = {
   company: [
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
+    { label: "Our Work", path: "/our-work" },
+    { label: "Our Team", path: "/our-team" },
+    { label: "Solutions", path: "/solutions" },
     { label: "Contact", path: "/contact" },
   ],
   services: [
-    { label: "Web & App Development", path: "/web-app-development" },
-    { label: "AI Video & Content", path: "/ai-video" },
-    { label: "Google SEO & AI Search", path: "/seo-ai" },
-    { label: "Digital Solution", path: "/services" },
+    { label: "Website & App Development", path: "/services/website-app-development" },
+    { label: "AI Solutions & Automation", path: "/services/ai-solutions-automation" },
+    { label: "Branding & Graphic Design", path: "/services/branding-graphic-design" },
+    { label: "Video & Creative Content", path: "/services/video-creative-content" },
+    { label: "Product Image & Fashion Visuals", path: "/services/product-image-fashion-visuals" },
+    { label: "SEO & Digital Marketing", path: "/services/seo-digital-marketing" },
+    { label: "E-commerce & Business Solutions", path: "/services/ecommerce-business-solutions" },
+    { label: "Maintenance & Support", path: "/services/maintenance-technical-support" },
   ],
   products: [
     { label: "Digital Product Lab", path: "/products-lab" },
-    { label: "SaaS Tools", path: "/products-lab" },
-    { label: "Consumer Apps", path: "/products-lab" },
+    { label: "Digital Solution", path: "/services" },
+    { label: "Web & App Development Page", path: "/web-app-development" },
+    { label: "AI Video & Content Page", path: "/ai-video" },
+    { label: "Google SEO & AI Search Page", path: "/seo-ai" },
   ],
 };
 
@@ -58,7 +67,7 @@ const socialLinks = [
 ];
 
 const Footer: React.FC = () => {
-  const logoUrl = "/Images/logo.png";
+  const logoUrl = "/Images/logo.webp";
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -100,7 +109,7 @@ const Footer: React.FC = () => {
 
             <img
               src={logoUrl}
-              alt="Alpha Zeta Logo"
+              alt="Alpha Zeta World logo"
               className="ft-logo"
             />
 
@@ -111,7 +120,7 @@ const Footer: React.FC = () => {
             </p>
 
             <a
-              href="mailto:hello@alphazetaworld.com"
+              href="mailto:alphazetaworld@gmail.com"
               className="ft-email-link"
             >
              alphazetaworld@gmail.com
@@ -186,7 +195,7 @@ const Footer: React.FC = () => {
         <div className="ft-bottom-section">
 
           <p className="ft-copyright">
-            @2025 Alpha Zeta World. All Rights Reserved.
+            ©2026 Alpha Zeta World. All Rights Reserved.
           </p>
 
           {/* 🎯 SOCIAL ICONS — RIGHT SIDE */}
@@ -206,21 +215,21 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="ft-legal-links">
-            <a href="#" className="ft-legal-link">
+            <Link to="/privacy-policy" className="ft-legal-link">
               Privacy Policy
-            </a>
+            </Link>
 
             <span className="ft-separator">|</span>
 
-            <a href="#" className="ft-legal-link">
+            <Link to="/terms-and-conditions" className="ft-legal-link">
               Terms &amp; Conditions
-            </a>
+            </Link>
 
             <span className="ft-separator">|</span>
 
-            <a href="#" className="ft-legal-link">
+            <Link to="/cookie-policy" className="ft-legal-link">
               Cookie Policy
-            </a>
+            </Link>
           </div>
 
         </div>
@@ -257,7 +266,7 @@ const Footer: React.FC = () => {
           overflow: hidden;
         }
 
-        /* Subtle gradient overlay for depth */
+   
         .ft-footer::before {
           content: "";
 
@@ -399,9 +408,7 @@ const Footer: React.FC = () => {
           width: 100%;
         }
 
-        /* =========================
-           🎯 FLOATING SOCIAL ICONS — RIGHT SIDE
-        ========================= */
+       
 
         .ft-social-row {
           display: flex;
@@ -464,12 +471,12 @@ const Footer: React.FC = () => {
           grid-template-columns:
             repeat(
               auto-fit,
-              minmax(150px, 1fr)
+              minmax(170px, 1fr)
             );
 
           gap: 3rem;
 
-          flex: 2 1 500px;
+          flex: 2 1 560px;
         }
 
         .ft-link-column {
@@ -625,9 +632,7 @@ const Footer: React.FC = () => {
           font-size: 0.875rem;
         }
 
-        /* =========================
-           VISIBLE STATE — Animations
-        ========================= */
+       
 
         .ft-footer.ft-visible .ft-logo {
           animation:
@@ -656,7 +661,7 @@ const Footer: React.FC = () => {
             forwards;
         }
 
-        /* 🎯 Social icons — staggered pop-in from right */
+       
         .ft-footer.ft-visible .ft-social-row {
           animation:
             ftSocialRowIn
@@ -1060,9 +1065,8 @@ const Footer: React.FC = () => {
             gap: 0.75rem;
           }
 
-          /* 🎯 Social icons — mobile (right side alignment removed, centered) */
           .ft-social-row {
-            order: -1;         /* Moves social icons to TOP of bottom section */
+            order: -1;    
             justify-content: center;
             gap: 0.6rem;
           }

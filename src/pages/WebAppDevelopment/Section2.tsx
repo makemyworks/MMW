@@ -4,8 +4,8 @@ import { Box, Typography, Grid } from "@mui/material";
 
 import { motion } from "framer-motion";
 
-const MotionBox = motion(Box);
-const MotionTypography = motion(Typography);
+const MotionBox = motion.create(Box);
+const MotionTypography = motion.create(Typography);
 
 const servicesData = [
   {

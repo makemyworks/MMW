@@ -4,7 +4,7 @@ import { Box, Typography, Button, Stack } from "@mui/material";
 
 import { motion } from "framer-motion";
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 const ReadyToBuildSection: React.FC = () => {
   return (

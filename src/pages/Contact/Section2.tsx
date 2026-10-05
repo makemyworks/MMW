@@ -20,13 +20,17 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 const services = [
-  "Web & Mobile App Development",
-  "AI Video Ads & Content Creation",
-  "Google SEO & AI Search Optimization",
-  "Full Growth Stack Strategy",
+  "Website & App Development",
+  "AI Solutions & Automation",
+  "Branding & Graphic Design",
+  "Video & Creative Content",
+  "Product Image & Fashion Visuals",
+  "SEO & Digital Marketing",
+  "E-commerce & Business Solutions",
+  "Maintenance & Technical Support",
   "Other Custom Solutions",
 ];
 
@@ -80,6 +84,8 @@ const cardVariants: Variants = {
 /* =========================================
     MAIN COMPONENT
 ========================================= */
+
+const API_URL = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/+$/, "");
 
 const ProjectBrief: React.FC = () => {
   /* ---------- API / FORM STATE ---------- */
