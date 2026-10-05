@@ -1,5 +1,8 @@
+
 import React from "react";
+
 import { Box, Typography } from "@mui/material";
+
 import { motion } from "framer-motion";
 
 const MotionBox = motion.create(Box);
@@ -14,8 +17,8 @@ const VisionSection: React.FC = () => {
           sm: "253px",
           md: "253px",
         },
-        backgroundColor: "#141414",
-        color: "#ffffff",
+        backgroundColor: "#FFFFFF",
+        color: "#111827",
         boxSizing: "border-box",
         px: {
           xs: "20px",
@@ -33,6 +36,20 @@ const VisionSection: React.FC = () => {
           md: "60px",
         },
         overflow: "hidden",
+        position: "relative",
+
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: "-180px",
+          left: "8%",
+          width: "520px",
+          height: "320px",
+          background:
+            "radial-gradient(circle, rgba(102,85,235,0.10) 0%, rgba(139,92,246,0.05) 35%, transparent 72%)",
+          pointerEvents: "none",
+          filter: "blur(20px)",
+        },
       }}
     >
       <MotionBox
@@ -50,8 +67,10 @@ const VisionSection: React.FC = () => {
         sx={{
           width: "100%",
           maxWidth: "843px",
-          borderBottom: "1px solid #242424",
+          borderBottom: "1px solid #E8E7F0",
           pb: "16px",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         {/* ================= SMALL HEADING ================= */}
@@ -90,7 +109,7 @@ const VisionSection: React.FC = () => {
               fontWeight: 600,
               letterSpacing: "0.03em",
               textTransform: "uppercase",
-              color: "#F4DC80",
+              color: "#5141D9",
               m: 0,
             }}
           >
@@ -143,7 +162,7 @@ const VisionSection: React.FC = () => {
               fontWeight: 700,
               letterSpacing: "0%",
               background:
-                "linear-gradient(91.16deg, #6655EB 1.74%, #FFFFFF 43.78%, #FFFFFF 61.72%, #6655EB 102.64%)",
+                "linear-gradient(90deg, #111827 0%, #3B2FA3 45%, #6655EB 75%, #8B5CF6 100%)",
               backgroundSize: "200% auto",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -204,7 +223,7 @@ const VisionSection: React.FC = () => {
               },
               fontWeight: 400,
               letterSpacing: "0%",
-              color: "#8C8C8C",
+              color: "#687080",
             }}
           >
             Complete the design brief below, and our engineering partners will

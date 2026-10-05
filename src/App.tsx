@@ -1,5 +1,5 @@
-import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { lazy, Suspense, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Outlet, useLocation } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -26,6 +26,20 @@ const WebAppDevelopment = lazy(() => import("./pages/WebAppDevelopment/WebAppDev
 const AiVideo = lazy(() => import("./pages/AiVideo/AiVideo"));
 const ProductsLab = lazy(() => import("./pages/ProductsLab/ProductsLab"));
 const SeoAi = lazy(() => import("./pages/SeoAi"));
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [pathname]);
+
+  return null;
+}
 
 function MainLayout() {
   return (
@@ -55,16 +69,24 @@ export default function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
+
           <Route path="/about" element={<AboutUs />} />
+
           <Route path="/services" element={<Services />} />
+
           <Route path="/products" element={<Products />} />
+
           <Route path="/contact" element={<Contact />} />
+
           <Route
             path="/web-app-development"
             element={<WebAppDevelopment />}
           />
+
           <Route path="/ai-video" element={<AiVideo />} />
+
           <Route path="/products-lab" element={<ProductsLab />} />
+
           <Route path="/seo-ai" element={<SeoAi />} />
           <Route path="/our-services" element={<OurServices />} />
           <Route path="/services/:slug" element={<ServicePage />} />
