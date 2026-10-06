@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://makemyworks.com/sitemap.xml
+Sitemap: https://www.makemyworks.com/sitemap.xml

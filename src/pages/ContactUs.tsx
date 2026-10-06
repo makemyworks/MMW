@@ -25,7 +25,7 @@ export default function Contact() {
     }
     setStatus("sending");
     try {
-      const res = await fetch(`https://formsubmit.co/ajax/${CONTACT.email}`, {
+      const res = await fetch(`https://formsubmit.co/ajax/${CONTACT.formEmail}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
@@ -78,6 +78,10 @@ export default function Contact() {
             <a className="mw-info-card" href={`mailto:${CONTACT.email}`}>
               <span className="mw-icon"><Icon name="mail" size={24} /></span>
               <span><b>Email</b><small>{CONTACT.email}</small></span>
+            </a>
+            <a className="mw-info-card" href={`mailto:${CONTACT.email2}`}>
+              <span className="mw-icon"><Icon name="mail" size={24} /></span>
+              <span><b>Email (alternate)</b><small>{CONTACT.email2}</small></span>
             </a>
             <div className="mw-info-card">
               <span className="mw-icon"><Icon name="clock" size={24} /></span>

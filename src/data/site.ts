@@ -9,11 +9,14 @@ export const BRAND = {
   name: "Make My Works",
   short: "MMW",
   tagline: "We Make You Grow",
-  url: "https://makemyworks.com",
+  url: "https://www.makemyworks.com",
 };
 
 export const CONTACT = {
-  email: "alphazetaworld@gmail.com",
+  email: "info@makemyworks.com",
+  email2: "makemyworks.studio@gmail.com",
+  /* The contact form delivers to this inbox */
+  formEmail: "makemyworks.studio@gmail.com",
   phoneDisplay: "+91 77039 77002",
   phoneTel: "tel:+917703977002",
   whatsappNumber: "917703977002",
