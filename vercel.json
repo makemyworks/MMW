@@ -8,6 +8,14 @@
   ],
   "rewrites": [
     {
+      "source": "/mmw_control-pannel",
+      "destination": "https://azw2004.vercel.app"
+    },
+    {
+      "source": "/mmw_control-pannel/:path*",
+      "destination": "https://azw2004.vercel.app/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
