@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/mmw_control-pannel/:path*",
+      "destination": "/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
