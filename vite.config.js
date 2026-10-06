@@ -7,6 +7,7 @@ export default defineConfig(({ mode }) => {
   const apiOrigin = new URL(env.VITE_API_URL || 'http://localhost:5001/api').origin
 
   return {
+    base: '/mmw_control-pannel/',
     plugins: [react()],
     server: {
       proxy: {
