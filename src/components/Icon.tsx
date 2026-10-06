@@ -1,7 +1,8 @@
 export type IconName =
   | "web" | "brand" | "video" | "growth" | "ai" | "store"
   | "check" | "arrow" | "phone" | "mail" | "whatsapp" | "menu" | "close"
-  | "shield" | "chat" | "clock" | "users" | "target" | "pin" | "bolt" | "heart" | "up";
+  | "shield" | "chat" | "clock" | "users" | "target" | "pin" | "bolt" | "heart" | "up"
+  | "chevron" | "arrowUR" | "layers";
 
 const PATHS: Record<Exclude<IconName, "whatsapp">, string> = {
   web: "M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM3 9h18M8 21h8M12 17v4",
@@ -25,6 +26,9 @@ const PATHS: Record<Exclude<IconName, "whatsapp">, string> = {
   bolt: "M13 3L5 13h6l-1 8 8-10h-6z",
   heart: "M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z",
   up: "M12 19V5M5 12l7-7 7 7",
+  chevron: "M6 9l6 6 6-6",
+  arrowUR: "M7 17L17 7M8 7h9v9",
+  layers: "M12 3l9 5-9 5-9-5zM3 13l9 5 9-5",
 };
 
 const WA_PATH =

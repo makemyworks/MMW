@@ -1,11 +1,12 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import Icon from "../components/Icon";
 import { PageHero } from "../components/Bits";
-import { CONTACT, services, whatsappLink } from "../data/site";
+import { Link } from "react-router-dom";
+import { CONTACT, budgets, services, whatsappLink } from "../data/site";
 
 type Status = "idle" | "sending" | "ok" | "error";
 
-const EMPTY = { name: "", email: "", phone: "", service: "", message: "", honey: "" };
+const EMPTY = { name: "", email: "", phone: "", service: "", budget: "", message: "", honey: "" };
 
 export default function Contact() {
   const [form, setForm] = useState(EMPTY);
@@ -36,6 +37,7 @@ export default function Contact() {
           Email: form.email,
           Phone: form.phone || "Not given",
           Service: form.service || "Not sure yet",
+          Budget: form.budget || "Not given",
           Message: form.message,
         }),
       });
@@ -87,6 +89,15 @@ export default function Contact() {
               <span className="mw-icon"><Icon name="clock" size={24} /></span>
               <span><b>{CONTACT.reply}</b><small>{CONTACT.location}</small></span>
             </div>
+
+            <div className="mw-next">
+              <h3>What happens next?</h3>
+              <ol>
+                <li><span>1</span> We read your message and understand your goal.</li>
+                <li><span>2</span> We reply within 24 hours with a clear plan and price.</li>
+                <li><span>3</span> You decide. There is no pressure and no cost to ask.</li>
+              </ol>
+            </div>
           </div>
 
           <form className="mw-form" onSubmit={onSubmit}>
@@ -119,6 +130,16 @@ export default function Contact() {
             </div>
 
             <div className="mw-field">
+              <label htmlFor="budget">Size of your project</label>
+              <select id="budget" name="budget" value={form.budget} onChange={onChange}>
+                <option value="">Select one (optional)</option>
+                {budgets.map((b) => (
+                  <option key={b} value={b}>{b}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="mw-field">
               <label htmlFor="message">Tell us about your business *</label>
               <textarea id="message" name="message" rows={5} required value={form.message} onChange={onChange} placeholder="What do you sell, and what would you like to achieve?" />
             </div>
@@ -132,6 +153,10 @@ export default function Contact() {
             <button type="submit" className="mw-btn mw-btn-primary mw-btn-lg" disabled={status === "sending"}>
               {status === "sending" ? "Sending..." : "Send Message"} <Icon name="arrow" size={18} />
             </button>
+
+            <p className="mw-consent">
+              By sending this form you agree to our <Link to="/privacy-policy">Privacy Policy</Link>. We never share your details.
+            </p>
 
             {status === "ok" && (
               <p className="mw-alert mw-alert-ok" role="status">

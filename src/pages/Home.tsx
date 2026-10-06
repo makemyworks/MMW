@@ -1,43 +1,26 @@
 import { Link } from "react-router-dom";
 import Icon from "../components/Icon";
-import { CTA, SectionHead } from "../components/Bits";
-import { faqs, reasons, services, steps, whatsappLink, work } from "../data/site";
+import Reveal from "../components/Reveal";
+import { CTA, Faq, SectionHead } from "../components/Bits";
+import { faqs, industries, marquee, promises, reasons, services, steps, whatsappLink, work } from "../data/site";
 
-function HeroVisual() {
+function Collage() {
   return (
-    <div className="mw-hero-visual" aria-hidden="true">
-      <div className="mw-hv-card">
-        <div className="mw-hv-top">
-          <span className="mw-dot r" /><span className="mw-dot y" /><span className="mw-dot g" />
-          <b>Your business growth</b>
-        </div>
-        <svg viewBox="0 0 420 230" className="mw-hv-chart">
-          <defs>
-            <linearGradient id="mwBar" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#0a72ff" stopOpacity="0.9" />
-              <stop offset="1" stopColor="#0a72ff" stopOpacity="0.25" />
-            </linearGradient>
-          </defs>
-          <g fill="url(#mwBar)">
-            <rect x="20" y="170" width="42" height="40" rx="8" />
-            <rect x="85" y="140" width="42" height="70" rx="8" />
-            <rect x="150" y="115" width="42" height="95" rx="8" />
-            <rect x="215" y="85" width="42" height="125" rx="8" />
-            <rect x="280" y="55" width="42" height="155" rx="8" />
-            <rect x="345" y="25" width="42" height="185" rx="8" />
-          </g>
-          <path d="M20 150 L85 125 L150 100 L215 70 L280 45 L378 8" fill="none" stroke="#0b1730" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M360 6 L384 4 L376 28 Z" fill="#0b1730" />
-        </svg>
-        <div className="mw-hv-legend">
-          <span>More visitors</span>
-          <span>More enquiries</span>
-          <span>More sales</span>
-        </div>
-      </div>
-      <div className="mw-chip mw-chip-1"><Icon name="web" size={18} /> New website live</div>
-      <div className="mw-chip mw-chip-2"><Icon name="whatsapp" size={18} /> New customer enquiry</div>
-      <div className="mw-chip mw-chip-3"><Icon name="growth" size={18} /> Ranking on Google</div>
+    <div className="mw-collage">
+      <figure className="mw-frame mw-frame-main">
+        <div className="mw-frame-bar"><i /><i /><i /><span>yourstore.com</span></div>
+        <img src="/Images/eco.webp" alt="Sample online store design" width={1672} height={941} />
+      </figure>
+      <figure className="mw-frame mw-frame-2">
+        <div className="mw-frame-bar"><i /><i /><i /><span>dashboard</span></div>
+        <img src="/Images/dash.webp" alt="Sample business dashboard" width={1672} height={941} loading="lazy" />
+      </figure>
+      <figure className="mw-frame mw-frame-3">
+        <div className="mw-frame-bar"><i /><i /><i /><span>clinic.com</span></div>
+        <img src="/Images/hospital.webp" alt="Sample hospital website" width={1672} height={941} loading="lazy" />
+      </figure>
+      <div className="mw-badge mw-badge-1"><span className="mw-badge-ic"><Icon name="check" size={16} /></span><div><b>Website live</b><small>Ready for customers</small></div></div>
+      <div className="mw-badge mw-badge-2"><span className="mw-badge-ic"><Icon name="growth" size={16} /></span><div><b>More enquiries</b><small>Every month</small></div></div>
     </div>
   );
 }
@@ -48,19 +31,19 @@ export default function Home() {
       <section className="mw-hero">
         <div className="mw-wrap mw-hero-grid">
           <div className="mw-hero-copy">
-            <span className="mw-pill"><Icon name="bolt" size={16} /> Your growth partner</span>
+            <span className="mw-pill"><i /> Digital agency for growing businesses</span>
             <h1>
               We Make You <span className="mw-grad">Grow.</span>
             </h1>
             <p>
               Websites, branding, marketing and AI tools for your business, all from one friendly team.
-              Tell us your goal in simple words, and we take care of the rest.
+              Tell us your goal in simple words and we take care of the rest.
             </p>
             <div className="mw-btn-row">
               <Link to="/contact" className="mw-btn mw-btn-primary mw-btn-lg">
                 Get Free Quote <Icon name="arrow" size={18} />
               </Link>
-              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="mw-btn mw-btn-ghost mw-btn-lg">
+              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="mw-btn mw-btn-outline mw-btn-lg">
                 <Icon name="whatsapp" size={20} /> WhatsApp Us
               </a>
             </div>
@@ -70,41 +53,66 @@ export default function Home() {
               <li><Icon name="check" size={18} /> Reply within 24 hours</li>
             </ul>
           </div>
-          <HeroVisual />
+          <Collage />
         </div>
       </section>
+
+      <div className="mw-marquee" aria-hidden="true">
+        <div className="mw-marquee-track">
+          {[...marquee, ...marquee].map((m, i) => (
+            <span key={i}>{m}</span>
+          ))}
+        </div>
+      </div>
 
       <section className="mw-section">
         <div className="mw-wrap">
           <SectionHead
             eyebrow="What we do"
             title="Everything your business needs, in one place"
-            text="Pick what you need. Not sure? Just tell us your goal and we will suggest the best way."
+            text="Pick what you need. Not sure? Tell us your goal and we will suggest the simplest way to reach it."
           />
           <div className="mw-grid mw-grid-3">
-            {services.map((s) => (
-              <Link key={s.id} to={`/services#${s.id}`} className="mw-card mw-service-card">
-                <span className="mw-icon"><Icon name={s.icon} size={26} /></span>
-                <h3>{s.title}</h3>
-                <p>{s.simple}</p>
-                <span className="mw-more">Learn more <Icon name="arrow" size={16} /></span>
-              </Link>
+            {services.map((s, i) => (
+              <Reveal key={s.id} delay={(i % 3) * 80}>
+                <Link to={`/services#${s.id}`} className="mw-card mw-service-card">
+                  <div className="mw-card-top">
+                    <span className="mw-icon"><Icon name={s.icon} size={26} /></span>
+                    <span className="mw-num">0{i + 1}</span>
+                  </div>
+                  <span className="mw-tag">{s.tag}</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.simple}</p>
+                  <span className="mw-more">Learn more <Icon name="arrowUR" size={16} /></span>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       <section className="mw-section mw-soft">
-        <div className="mw-wrap">
-          <SectionHead eyebrow="How it works" title="Four easy steps from idea to growth" />
-          <div className="mw-grid mw-grid-4">
-            {steps.map((s, i) => (
-              <div key={s.title} className="mw-step">
-                <span className="mw-step-num">{i + 1}</span>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
-              </div>
-            ))}
+        <div className="mw-wrap mw-split">
+          <Reveal>
+            <div className="mw-photo">
+              <img src="/Images/why.webp" alt="Our team planning a project together" width={1536} height={1024} loading="lazy" />
+            </div>
+          </Reveal>
+          <div>
+            <SectionHead center={false} eyebrow="How it works" title="From your idea to real growth in four steps" />
+            <div className="mw-timeline">
+              {steps.map((s, i) => (
+                <Reveal key={s.title} delay={i * 70}>
+                  <div className="mw-tl-item">
+                    <span className="mw-step-num">{i + 1}</span>
+                    <div>
+                      <h3>{s.title}</h3>
+                      <p>{s.text}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -118,12 +126,14 @@ export default function Home() {
             text="We keep everything simple, honest and focused on your growth."
           />
           <div className="mw-grid mw-grid-3">
-            {reasons.map((r) => (
-              <div key={r.title} className="mw-card mw-card-dark">
-                <span className="mw-icon mw-icon-dark"><Icon name={r.icon} size={24} /></span>
-                <h3>{r.title}</h3>
-                <p>{r.text}</p>
-              </div>
+            {reasons.map((r, i) => (
+              <Reveal key={r.title} delay={(i % 3) * 80}>
+                <div className="mw-card mw-card-dark">
+                  <span className="mw-icon mw-icon-dark"><Icon name={r.icon} size={24} /></span>
+                  <h3>{r.title}</h3>
+                  <p>{r.text}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -132,20 +142,41 @@ export default function Home() {
       <section className="mw-section">
         <div className="mw-wrap">
           <SectionHead
+            eyebrow="Who we help"
+            title="Made for businesses like yours"
+            text="From a small local shop to a fast-growing brand, we shape our work around your size and budget."
+          />
+          <Reveal>
+            <ul className="mw-chips">
+              {industries.map((n) => (
+                <li key={n}><i /> {n}</li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="mw-section mw-soft">
+        <div className="mw-wrap">
+          <SectionHead
             eyebrow="Our work"
             title="See the kind of work we create"
             text="Sample and concept projects that show our style and quality."
           />
           <div className="mw-grid mw-grid-3">
-            {work.slice(0, 3).map((w) => (
-              <article key={w.title} className="mw-card mw-work-card">
-                <img src={w.img} alt={w.title} loading="lazy" width={1672} height={941} />
-                <div className="mw-work-body">
-                  <span className="mw-tag">{w.tag}</span>
-                  <h3>{w.title}</h3>
-                  <p>{w.text}</p>
-                </div>
-              </article>
+            {work.slice(0, 3).map((w, i) => (
+              <Reveal key={w.title} delay={i * 80}>
+                <article className="mw-card mw-work-card">
+                  <div className="mw-work-img">
+                    <img src={w.img} alt={w.title} loading="lazy" width={1672} height={941} />
+                  </div>
+                  <div className="mw-work-body">
+                    <span className="mw-tag">{w.tag}</span>
+                    <h3>{w.title}</h3>
+                    <p>{w.text}</p>
+                  </div>
+                </article>
+              </Reveal>
             ))}
           </div>
           <div className="mw-center-btn">
@@ -156,17 +187,29 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="mw-section">
+        <div className="mw-wrap">
+          <SectionHead eyebrow="Our promise" title="What you can always count on" />
+          <div className="mw-grid mw-grid-4">
+            {promises.map((p, i) => (
+              <Reveal key={p.title} delay={i * 70}>
+                <div className="mw-card mw-center-card">
+                  <span className="mw-icon"><Icon name={p.icon} size={26} /></span>
+                  <h3>{p.title}</h3>
+                  <p>{p.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="mw-section mw-soft">
         <div className="mw-wrap mw-narrow">
           <SectionHead eyebrow="Questions" title="Quick answers" />
-          <div className="mw-faq">
-            {faqs.map((f) => (
-              <details key={f.q}>
-                <summary>{f.q}</summary>
-                <p>{f.a}</p>
-              </details>
-            ))}
-          </div>
+          <Reveal>
+            <Faq items={faqs} />
+          </Reveal>
         </div>
       </section>
 

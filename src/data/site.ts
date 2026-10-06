@@ -29,6 +29,8 @@ export const whatsappLink = (text = "Hi Make My Works, I would like to talk abou
 
 export type Service = {
   id: string;
+  tag: string;
+  faqs: { q: string; a: string }[];
   icon: IconName;
   title: string;
   simple: string;
@@ -39,6 +41,11 @@ export type Service = {
 export const services: Service[] = [
   {
     id: "websites-apps",
+    tag: "Build",
+    faqs: [
+      { q: "How long does a website take?", a: "A simple business website usually takes 2 to 4 weeks. Bigger websites and apps take longer, and we share a clear timeline before we start." },
+      { q: "Will I be able to update it myself?", a: "Yes. We can build it so you can edit text and images easily, and we show you how." },
+    ],
     icon: "web",
     title: "Websites & Apps",
     simple:
@@ -54,6 +61,11 @@ export const services: Service[] = [
   },
   {
     id: "logo-branding",
+    tag: "Brand",
+    faqs: [
+      { q: "What do I get in a brand identity?", a: "Usually a logo, colour palette, fonts and simple usage rules, plus stationery and social templates if you need them." },
+      { q: "Can I ask for changes?", a: "Yes. The number of revision rounds is agreed upfront so you always know what is included." },
+    ],
     icon: "brand",
     title: "Logo & Branding",
     simple:
@@ -69,6 +81,11 @@ export const services: Service[] = [
   },
   {
     id: "video-social",
+    tag: "Create",
+    faqs: [
+      { q: "Do I need to send my own videos?", a: "You can send your footage and we edit it, or we can create motion graphics and AI-assisted visuals for you." },
+      { q: "Can you make a monthly content pack?", a: "Yes. Many clients take a monthly plan with a set number of reels, posts and thumbnails." },
+    ],
     icon: "video",
     title: "Video & Social Media",
     simple:
@@ -84,6 +101,11 @@ export const services: Service[] = [
   },
   {
     id: "google-marketing",
+    tag: "Grow",
+    faqs: [
+      { q: "How long does SEO take to work?", a: "Most businesses see early movement in 2 to 3 months, with stronger results over 6 months. We never promise instant or guaranteed rankings." },
+      { q: "Do you buy followers or likes?", a: "No. We only use honest growth: real content, real audiences and paid advertising." },
+    ],
     icon: "growth",
     title: "Google & Online Marketing",
     simple:
@@ -99,6 +121,11 @@ export const services: Service[] = [
   },
   {
     id: "ai-automation",
+    tag: "Automate",
+    faqs: [
+      { q: "Is AI content good enough for real ads?", a: "Yes, when skilled people guide and check it. We review every piece for quality, accuracy and brand fit before delivery." },
+      { q: "What can be automated?", a: "Lead follow-ups, enquiry routing, reminders, report sending and data entry are common examples." },
+    ],
     icon: "ai",
     title: "AI & Automation",
     simple:
@@ -114,6 +141,11 @@ export const services: Service[] = [
   },
   {
     id: "online-store",
+    tag: "Sell",
+    faqs: [
+      { q: "Can customers pay online safely?", a: "Yes. We connect trusted payment gateways that suit your country and business type." },
+      { q: "Can you work with photos taken on a phone?", a: "Yes. We clean and enhance them so they look professional." },
+    ],
     icon: "store",
     title: "Online Store & Product Photos",
     simple:
@@ -128,6 +160,32 @@ export const services: Service[] = [
     goodFor: "Shops moving online and brands with many products to show.",
   },
 ];
+
+export const industries = [
+  "Local shops & retail", "Restaurants & cafes", "Clinics & hospitals", "Real estate",
+  "Fashion & e-commerce", "Schools & coaching", "Startups", "Service companies",
+];
+
+export const promises = [
+  { icon: "clock" as IconName, title: "24-hour reply", text: "Send a message today and hear from a real person within one day." },
+  { icon: "layers" as IconName, title: "Clear price first", text: "You approve the scope and price before any work begins. No surprises." },
+  { icon: "shield" as IconName, title: "Honest growth only", text: "No fake followers, no false promises. Only real work for real results." },
+  { icon: "heart" as IconName, title: "Support after launch", text: "We stay with you once you are live, whenever you need help." },
+];
+
+export const marquee = [
+  "Websites", "Mobile Apps", "Logo Design", "Branding", "SEO", "Google Ads", "Social Media",
+  "Video Editing", "AI Chatbots", "Online Stores", "Product Photos", "Automation",
+];
+
+export const budgets = [
+  "I need advice",
+  "Small (one task)",
+  "Medium (a few services)",
+  "Large (full business setup)",
+];
+
+export const workFilters = ["All", "Websites", "Online Stores", "Apps", "Video & AI", "Branding"];
 
 export const steps = [
   { icon: "chat" as IconName, title: "Tell us your goal", text: "Share your idea on the form or WhatsApp. No technical words needed." },
@@ -155,11 +213,11 @@ export const faqs = [
 ];
 
 export const work = [
-  { img: "/Images/eco.webp", title: "Furniture Online Store", tag: "Online Store", text: "A clean shop with easy browsing, product highlights and a clear path to buy." },
-  { img: "/Images/hospital.webp", title: "Hospital Website", tag: "Website", text: "A trusted look with doctor details, departments and simple appointment booking." },
-  { img: "/Images/dash.webp", title: "Business Dashboard", tag: "Web App", text: "Leads and sales turned into clear charts and simple tables." },
-  { img: "/Images/homemo.webp", title: "Video Ads & Reels", tag: "Video & AI", text: "Short ads for Instagram, YouTube and TikTok, made with AI and expert editing." },
-  { img: "/Images/homedigi.webp", title: "Property App Design", tag: "App Design", text: "Mobile and web screens for a smooth property browsing experience." },
+  { img: "/Images/eco.webp", title: "Furniture Online Store", tag: "Online Store", cat: "Online Stores", text: "A clean shop with easy browsing, product highlights and a clear path to buy." },
+  { img: "/Images/hospital.webp", title: "Hospital Website", tag: "Website", cat: "Websites", text: "A trusted look with doctor details, departments and simple appointment booking." },
+  { img: "/Images/dash.webp", title: "Business Dashboard", tag: "Web App", cat: "Apps", text: "Leads and sales turned into clear charts and simple tables." },
+  { img: "/Images/homemo.webp", title: "Video Ads & Reels", tag: "Video & AI", cat: "Video & AI", text: "Short ads for Instagram, YouTube and TikTok, made with AI and expert editing." },
+  { img: "/Images/homedigi.webp", title: "Property App Design", tag: "App Design", cat: "Apps", text: "Mobile and web screens for a smooth property browsing experience." },
 ];
 
 export const teams = [

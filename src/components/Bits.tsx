@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Icon from "./Icon";
+import Reveal from "./Reveal";
 import { BRAND, whatsappLink } from "../data/site";
 
 export function SectionHead({
@@ -16,11 +17,13 @@ export function SectionHead({
   light?: boolean;
 }) {
   return (
-    <div className={`mw-head${center ? " center" : ""}${light ? " light" : ""}`}>
-      {eyebrow && <span className="mw-eyebrow">{eyebrow}</span>}
-      <h2>{title}</h2>
-      {text && <p>{text}</p>}
-    </div>
+    <Reveal>
+      <div className={`mw-head${center ? " center" : ""}${light ? " light" : ""}`}>
+        {eyebrow && <span className="mw-eyebrow">{eyebrow}</span>}
+        <h2>{title}</h2>
+        {text && <p>{text}</p>}
+      </div>
+    </Reveal>
   );
 }
 
@@ -40,10 +43,10 @@ export function CTA({
           <p>{text}</p>
         </div>
         <div className="mw-cta-btns">
-          <Link to="/contact" className="mw-btn mw-btn-light">
+          <Link to="/contact" className="mw-btn mw-btn-light mw-btn-lg">
             Get Free Quote <Icon name="arrow" size={18} />
           </Link>
-          <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="mw-btn mw-btn-outline">
+          <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="mw-btn mw-btn-outline mw-btn-lg">
             <Icon name="whatsapp" size={18} /> WhatsApp Us
           </a>
         </div>
@@ -56,10 +59,25 @@ export function PageHero({ eyebrow, title, text }: { eyebrow: string; title: str
   return (
     <section className="mw-page-hero">
       <div className="mw-wrap">
-        <span className="mw-eyebrow">{eyebrow}</span>
+        <nav className="mw-crumb" aria-label="Breadcrumb">
+          <Link to="/">Home</Link> <span>/</span> {eyebrow}
+        </nav>
         <h1>{title}</h1>
         <p>{text}</p>
       </div>
     </section>
+  );
+}
+
+export function Faq({ items }: { items: { q: string; a: string }[] }) {
+  return (
+    <div className="mw-faq">
+      {items.map((f) => (
+        <details key={f.q}>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
   );
 }
