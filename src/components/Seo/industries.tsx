@@ -6,42 +6,47 @@ const IndustriesWeHelp: React.FC = () => {
     {
       icon: <Heart size={22} strokeWidth={2.5} />,
       title: "Healthcare",
-      subtitle: "Hospitals & Clinics"
+      subtitle: "Hospitals & Clinics",
+      image: "https://i.pinimg.com/736x/ec/f9/78/ecf978b589be35d7325b7270b55617d7.jpg"
     },
     {
       icon: <Home size={22} strokeWidth={2.5} />,
       title: "Real Estate",
-      subtitle: "Builders & Realtors"
+      subtitle: "Builders & Realtors",
+      image: "https://i.pinimg.com/736x/94/e8/b1/94e8b171b32348132445028405ccd9cb.jpg"
     },
     {
       icon: <ShoppingCart size={22} strokeWidth={2.5} />,
       title: "E-commerce",
-      subtitle: "Online Stores"
+      subtitle: "Online Stores",
+      image: "https://i.pinimg.com/736x/17/2f/5a/172f5af28c86ee70d43e20202d8eaa01.jpg"
     },
     {
       icon: <GraduationCap size={22} strokeWidth={2.5} />,
       title: "Education",
-      subtitle: "Schools & Colleges"
+      subtitle: "Schools & Colleges",
+      image: "https://i.pinimg.com/236x/33/33/e0/3333e0c143037340dd9663ef84418f7c.jpg"
     },
     {
       icon: <Landmark size={22} strokeWidth={2.5} />,
       title: "Finance",
-      subtitle: "Banks & Fintech"
+      subtitle: "Banks & Fintech",
+      image: "https://i.pinimg.com/1200x/33/bf/df/33bfdf3866d3a37ef6a7e62d76a2d36e.jpg"
     },
     {
       icon: <Rocket size={22} strokeWidth={2.5} />,
       title: "Startups",
-      subtitle: "Innovative Brands"
+      subtitle: "Innovative Brands",
+      image: "https://i.pinimg.com/1200x/70/95/9c/70959c03d7fd3d3006fdad6d54dd34cf.jpg"
     }
   ];
 
   return (
     <>
       <style>{`
-        /* ================= CSS STYLES ================= */
         .iwh-section {
           width: 100%;
-          background-color: #FAFAFA;
+          background-color: #F4F7FB;
           padding: 80px 24px;
           font-family: 'Inter', system-ui, -apple-system, sans-serif;
           box-sizing: border-box;
@@ -52,7 +57,6 @@ const IndustriesWeHelp: React.FC = () => {
           margin: 0 auto;
         }
 
-        /* --- Header Section --- */
         .iwh-header {
           display: grid;
           grid-template-columns: 1fr;
@@ -64,7 +68,7 @@ const IndustriesWeHelp: React.FC = () => {
           font-size: 32px;
           line-height: 1.2;
           font-weight: 700;
-          color: #111827;
+          color: #0F2044;
           margin: 0;
           letter-spacing: -0.02em;
         }
@@ -76,78 +80,134 @@ const IndustriesWeHelp: React.FC = () => {
 
         .iwh-description {
           font-size: 14px;
-          color: #6b7280;
+          color: #4E5963;
           line-height: 1.6;
           max-width: 420px;
           margin: 0;
         }
 
-        /* --- Industries Grid --- */
         .iwh-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 16px;
+          gap: 20px;
         }
 
         .iwh-card {
-          background-color: white;
-          border: 1px solid #f3f4f6;
-          border-radius: 10px;
-          padding: 24px 16px;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-          transition: all 0.3s ease;
+          position: relative;
+          background-color: #ffffff;
+          border: 1px solid #E6EEF7;
+          border-radius: 14px;
+          overflow: hidden;
+          box-shadow: 0 1px 3px rgba(15, 32, 68, 0.02);
+          transition: all 0.35s ease;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          gap: 12px;
         }
 
         .iwh-card:hover {
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-          transform: translateY(-2px);
-          border-color: #e5e7eb;
+          box-shadow: 0 15px 30px -8px rgba(0, 123, 255, 0.18);
+          transform: translateY(-5px);
+          border-color: #007BFF;
         }
 
+        /* Image Section */
+        .iwh-image-wrapper {
+          position: relative;
+          width: 100%;
+          height: 140px;
+          overflow: hidden;
+          background-color: #E6F0FF;
+        }
+
+        .iwh-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          transition: transform 0.5s ease;
+        }
+
+        .iwh-card:hover .iwh-image {
+          transform: scale(1.08);
+        }
+
+        /* Gradient overlay on image */
+        .iwh-image-wrapper::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            to bottom,
+            rgba(15, 32, 68, 0) 40%,
+            rgba(15, 32, 68, 0.35) 100%
+          );
+          pointer-events: none;
+        }
+
+        /* Icon floating on image */
         .iwh-icon-wrap {
+          position: absolute;
+          bottom: -22px;
+          left: 50%;
+          transform: translateX(-50%);
           width: 48px;
           height: 48px;
           border-radius: 50%;
-          background-color: #E8F3EF;
+          background-color: #ffffff;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #1A4D3F;
-          margin-bottom: 4px;
+          color: #007BFF;
+          border: 3px solid #F4F7FB;
+          box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
+          transition: all 0.35s ease;
+          z-index: 3;
         }
 
+        .iwh-card:hover .iwh-icon-wrap {
+          background-color: #007BFF;
+          color: #ffffff;
+          transform: translateX(-50%) scale(1.1);
+        }
+
+        /* Text Content */
         .iwh-text-wrap {
           display: flex;
           flex-direction: column;
+          align-items: center;
+          text-align: center;
           gap: 4px;
+          padding: 34px 16px 22px;
         }
 
         .iwh-name {
           font-size: 15px;
           font-weight: 700;
-          color: #111827;
+          color: #0F2044;
           margin: 0;
           line-height: 1.2;
+          transition: color 0.3s ease;
+        }
+
+        .iwh-card:hover .iwh-name {
+          color: #007BFF;
         }
 
         .iwh-type {
           font-size: 13px;
-          color: #6b7280;
+          color: #4E5963;
           font-weight: 500;
           margin: 0;
           line-height: 1.2;
         }
 
-        /* --- MEDIA QUERIES (Responsive) --- */
         @media (min-width: 640px) {
           .iwh-grid {
             grid-template-columns: repeat(3, 1fr);
+          }
+
+          .iwh-image-wrapper {
+            height: 160px;
           }
         }
 
@@ -168,6 +228,24 @@ const IndustriesWeHelp: React.FC = () => {
 
           .iwh-grid {
             grid-template-columns: repeat(6, 1fr);
+            gap: 18px;
+          }
+
+          .iwh-image-wrapper {
+            height: 130px;
+          }
+
+          .iwh-icon-wrap {
+            width: 44px;
+            height: 44px;
+          }
+
+          .iwh-name {
+            font-size: 14px;
+          }
+
+          .iwh-type {
+            font-size: 12px;
           }
         }
       `}</style>
@@ -175,17 +253,14 @@ const IndustriesWeHelp: React.FC = () => {
       <section className="iwh-section">
         <div className="iwh-container">
           
-          {/* --- Header Section --- */}
           <div className="iwh-header">
             
-            {/* Left: Title */}
             <div>
               <h2 className="iwh-title">
                 Industries We Help
               </h2>
             </div>
 
-            {/* Right: Paragraph */}
             <div className="iwh-description-wrap">
               <p className="iwh-description">
                 We work with businesses across different industries, providing 
@@ -195,17 +270,22 @@ const IndustriesWeHelp: React.FC = () => {
             
           </div>
 
-          {/* --- Industries Grid Section --- */}
           <div className="iwh-grid">
             {industries.map((industry, index) => (
               <div key={index} className="iwh-card">
                 
-                {/* Icon Circle */}
-                <div className="iwh-icon-wrap">
-                  {industry.icon}
+                <div className="iwh-image-wrapper">
+                  <img 
+                    src={industry.image} 
+                    alt={industry.title}
+                    className="iwh-image"
+                  />
+
+                  <div className="iwh-icon-wrap">
+                    {industry.icon}
+                  </div>
                 </div>
                 
-                {/* Text Content */}
                 <div className="iwh-text-wrap">
                   <h3 className="iwh-name">{industry.title}</h3>
                   <p className="iwh-type">{industry.subtitle}</p>

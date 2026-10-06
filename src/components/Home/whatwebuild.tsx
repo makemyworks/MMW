@@ -1,12 +1,9 @@
 import React from 'react';
 
-// ==========================================
-// 1. CSS STYLES
-// ==========================================
 const styles = `
   .build-deliver-section {
     width: 100%;
-    background-color: #FAFAF9;
+    background-color: #F4F7FB;
     padding: 60px 20px 80px 20px;
     font-family: system-ui, -apple-system, sans-serif;
     box-sizing: border-box;
@@ -21,7 +18,6 @@ const styles = `
     z-index: 10;
   }
 
-  /* Header Section */
   .build-header {
     text-align: center;
     margin-bottom: 40px;
@@ -37,7 +33,7 @@ const styles = `
   }
 
   .build-label span {
-    color: #0F3D2E;
+    color: #007BFF;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -47,13 +43,13 @@ const styles = `
   .label-line {
     height: 1px;
     width: 40px;
-    background-color: #9CA3AF;
+    background-color: #007BFF;
   }
 
   .build-title {
     font-size: 34px;
     font-weight: 800;
-    color: #111827;
+    color: #0F2044;
     margin: 0 0 12px 0;
     line-height: 1.2;
   }
@@ -62,19 +58,18 @@ const styles = `
     .build-title { font-size: 42px; }
   }
 
-  .highlight-green {
-    color: #0F3D2E;
+  .highlight-blue {
+    color: #007BFF;
   }
 
   .build-subtitle {
-    color: #6B7280;
+    color: #4E5963;
     font-size: 16px;
     max-width: 650px;
     margin: 0 auto;
     line-height: 1.5;
   }
 
-  /* Cards Grid */
   .cards-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -90,13 +85,12 @@ const styles = `
     .cards-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
   }
 
-  /* Individual Card */
   .service-card {
     background-color: white;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.05), 0 2px 6px -2px rgba(0, 0, 0, 0.03);
-    border: 1px solid #F3F4F6;
+    box-shadow: 0 4px 15px -3px rgba(15, 32, 68, 0.05), 0 2px 6px -2px rgba(15, 32, 68, 0.03);
+    border: 1px solid #E6EEF7;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -104,7 +98,7 @@ const styles = `
 
   .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 15px 25px -5px rgba(15, 32, 68, 0.1), 0 8px 10px -6px rgba(15, 32, 68, 0.05);
   }
 
   .card-image-wrapper {
@@ -123,14 +117,14 @@ const styles = `
     position: absolute;
     bottom: -16px;
     left: 16px;
-    background-color: #0F3D2E;
+    background-color: #007BFF;
     width: 40px;
     height: 40px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(15, 32, 68, 0.15);
     z-index: 2;
   }
 
@@ -144,24 +138,23 @@ const styles = `
   .card-title {
     font-size: 18px;
     font-weight: 700;
-    color: #111827;
+    color: #0F2044;
     margin: 0 0 8px 0;
   }
 
   .card-desc {
     font-size: 13px;
-    color: #4B5563;
+    color: #4E5963;
     line-height: 1.4;
     margin: 0 0 16px 0;
   }
 
   .card-desc a {
-    color: #0F3D2E;
+    color: #007BFF;
     text-decoration: underline;
     font-weight: 500;
   }
 
-  /* Feature List */
   .feature-list {
     list-style: none;
     padding: 0;
@@ -186,14 +179,13 @@ const styles = `
     margin-top: 2px;
   }
 
-  /* Learn More Link */
   .learn-more {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     font-size: 13px;
     font-weight: 700;
-    color: #111827;
+    color: #0F2044;
     text-decoration: none;
     margin-top: auto;
     transition: color 0.2s;
@@ -204,10 +196,9 @@ const styles = `
   }
 
   .learn-more:hover {
-    color: #0F3D2E;
+    color: #007BFF;
   }
 
-  /* Bottom Button */
   .explore-btn-wrapper {
     display: flex;
     justify-content: center;
@@ -216,7 +207,7 @@ const styles = `
   }
 
   .explore-btn {
-    background-color: #0F3D2E;
+    background-color: #007BFF;
     color: white;
     padding: 14px 28px;
     border-radius: 8px;
@@ -228,18 +219,15 @@ const styles = `
     border: none;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 10px 15px -3px rgba(15, 61, 46, 0.3);
+    box-shadow: 0 10px 15px -3px rgba(0, 123, 255, 0.3);
   }
 
   .explore-btn:hover {
-    background-color: #1a5c46;
+    background-color: #0F2044;
     transform: translateY(-2px);
   }
 `;
 
-// ==========================================
-// 2. SVG ICONS
-// ==========================================
 const ArrowRightIcon = ({ color = "currentColor" }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
@@ -247,7 +235,7 @@ const ArrowRightIcon = ({ color = "currentColor" }) => (
 );
 
 const CheckIcon = () => (
-  <svg className="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#0F3D2E">
+  <svg className="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#007BFF">
     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
   </svg>
 );
@@ -276,9 +264,6 @@ const ChartIcon = () => (
   </svg>
 );
 
-// ==========================================
-// 3. DATA FOR CARDS
-// ==========================================
 const servicesData = [
   {
     title: 'SEO',
@@ -310,9 +295,6 @@ const servicesData = [
   }
 ];
 
-// ==========================================
-// 4. MAIN COMPONENT
-// ==========================================
 const WhatWeBuildSection = () => {
   return (
     <>
@@ -321,7 +303,6 @@ const WhatWeBuildSection = () => {
       <section className="build-deliver-section">
         <div className="build-container">
           
-          {/* Header */}
           <div className="build-header">
             <div className="build-label">
               <div className="label-line"></div>
@@ -330,7 +311,7 @@ const WhatWeBuildSection = () => {
             </div>
             
             <h2 className="build-title">
-              What We <span className="highlight-green">Build & Deliver</span>
+              What We <span className="highlight-blue">Build & Deliver</span>
             </h2>
             
             <p className="build-subtitle">
@@ -338,12 +319,10 @@ const WhatWeBuildSection = () => {
             </p>
           </div>
 
-          {/* Cards Grid */}
           <div className="cards-grid">
             {servicesData.map((service, index) => (
               <div className="service-card" key={index}>
                 
-                {/* Image & Icon */}
                 <div className="card-image-wrapper">
                   <img src={service.img} alt={service.title} />
                   <div className="card-icon-badge">
@@ -351,7 +330,6 @@ const WhatWeBuildSection = () => {
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="card-content">
                   <h3 className="card-title">{service.title}</h3>
                   <p className="card-desc">{service.desc}</p>
@@ -375,7 +353,6 @@ const WhatWeBuildSection = () => {
             ))}
           </div>
 
-          {/* Bottom Button */}
           <div className="explore-btn-wrapper">
             <button className="explore-btn">
               Explore All Services

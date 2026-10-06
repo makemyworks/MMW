@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -55,203 +56,231 @@ const ComprehensiveServices: React.FC = () => {
       description: "Track rankings, traffic, leads and ROI with detailed reports."
     }
   ];
+=======
+import React from "react";
+>>>>>>> 1fbc728 (theme update)
 
+const SeoServices: React.FC = () => {
   return (
     <>
       <style>{`
-        /* ================= CSS STYLES ================= */
-        .cs-section {
-          width: 100%;
-          background-color: #FAFAFA;
-          padding: 80px 24px;
-          font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        * {
           box-sizing: border-box;
         }
 
-        .cs-container {
-          max-width: 1280px;
+        .seo-services {
+          width: 100%;
+          background: #ffffff;
+          padding: 80px 0 100px;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .seo-container {
+          width: 100%;
+          max-width: 1440px;
           margin: 0 auto;
+          padding: 0 8%;
         }
 
-        /* --- Header Section --- */
-        .cs-header {
+        /* --- Header --- */
+        .seo-header {
           display: grid;
-          grid-template-columns: 1fr;
-          gap: 24px;
-          margin-bottom: 48px;
+          grid-template-columns: 1.2fr 0.8fr;
+          align-items: flex-end;
+          gap: 40px;
+          margin-bottom: 55px;
         }
 
-        .cs-subtitle-wrap {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          margin-bottom: 16px;
-        }
-
-        .cs-subtitle {
-          font-size: 12px;
+        .seo-eyebrow {
+          font-size: 13px;
           font-weight: 700;
-          letter-spacing: 0.15em;
-          color: #1A4D3F;
+          letter-spacing: 1.5px;
+          color: #007BFF;
+          margin-bottom: 14px;
           text-transform: uppercase;
         }
 
-        .cs-line {
-          width: 32px;
-          height: 2px;
-          background-color: rgba(26, 77, 63, 0.3);
-        }
-
-        .cs-title {
-          font-size: 32px;
-          line-height: 1.2;
+        .seo-header h2 {
+          margin: 0;
+          font-size: clamp(32px, 3.5vw, 48px);
+          line-height: 1.08;
+          letter-spacing: -1.5px;
           font-weight: 700;
-          color: #111827;
-          margin: 0;
-          letter-spacing: -0.02em;
+          color: #0F2044;
         }
 
-        .cs-description-wrap {
-          display: flex;
-          align-items: flex-end;
+        .seo-header h2 .blue-text {
+          color: #007BFF;
         }
 
-        .cs-description {
+        .seo-header-desc {
           font-size: 15px;
-          color: #6b7280;
           line-height: 1.6;
-          max-width: 400px;
+          color: #4E5963;
           margin: 0;
         }
 
-        /* --- Cards Grid --- */
-        .cs-grid {
+        /* --- Grid --- */
+        .seo-grid {
           display: grid;
-          grid-template-columns: 1fr;
-          gap: 20px;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 22px;
         }
 
-        .cs-card {
-          background-color: white;
-          border: 1px solid #f3f4f6;
-          border-radius: 8px;
-          padding: 24px;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-          transition: all 0.3s ease;
+        /* --- Card --- */
+        .seo-card {
+          background: #ffffff;
+          border: 1px solid #E6EEF7;
+          border-radius: 14px;
+          padding: 26px 22px;
           display: flex;
           flex-direction: column;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .cs-card:hover {
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-          transform: translateY(-2px);
-          border-color: #e5e7eb;
+        .seo-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 18px 40px rgba(15, 32, 68, 0.08);
         }
 
-        .cs-icon-wrap {
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          background-color: #E8F3EF;
+        .seo-icon-box {
+          width: 42px;
+          height: 42px;
+          border-radius: 8px;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #1A4D3F;
           margin-bottom: 20px;
         }
 
-        .cs-card-title {
-          font-size: 16px;
+        /* Light blue variant — cards 1 & 3 */
+        .seo-icon-box.light-blue {
+          background: #EAF3FF;
+          color: #007BFF;
+          border: 1px solid #D6E4F0;
+        }
+
+        /* Dark blue variant — cards 2 & 4 */
+        .seo-icon-box.dark-blue {
+          background: #0F2044;
+          color: #ffffff;
+          border: 1px solid #0F2044;
+        }
+
+        .seo-icon-box svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        .seo-card h3 {
+          margin: 0 0 10px;
+          font-size: 17px;
           font-weight: 700;
-          color: #111827;
-          margin: 0 0 10px 0;
-          line-height: 1.3;
+          color: #0F2044;
+          letter-spacing: -0.3px;
         }
 
-        .cs-card-desc {
-          font-size: 14px;
-          color: #6b7280;
-          line-height: 1.6;
-          margin: 0 0 20px 0;
-          flex-grow: 1;
-        }
-
-        .cs-learn-more {
-          display: flex;
-          align-items: center;
-          gap: 6px;
+        .seo-card p {
+          margin: 0 0 22px;
           font-size: 13px;
-          font-weight: 600;
-          color: #111827;
-          text-decoration: none;
+          line-height: 1.55;
+          color: #5A6673;
+        }
+
+        /* --- Card Image --- */
+        .seo-card-image {
           margin-top: auto;
-          transition: color 0.2s ease;
+          width: 100%;
+          border-radius: 10px;
+          overflow: hidden;
+          border: 1px solid #E6EEF7;
+          background: #F4F7FB;
         }
 
-        .cs-learn-more:hover {
-          color: #1A4D3F;
+        .seo-card-image img {
+          display: block;
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          transition: transform 0.35s ease;
         }
 
-        .cs-learn-more svg {
-          transition: transform 0.2s ease;
+        .seo-card:hover .seo-card-image img {
+          transform: scale(1.03);
         }
 
-        .cs-learn-more:hover svg {
-          transform: translateX(4px);
-        }
-
-        /* --- MEDIA QUERIES (Responsive) --- */
-        @media (min-width: 768px) {
-          .cs-grid {
+        /* --- Responsive --- */
+        @media (max-width: 1100px) {
+          .seo-grid {
             grid-template-columns: repeat(2, 1fr);
           }
+
+          .seo-header {
+            grid-template-columns: 1fr;
+            gap: 20px;
+            align-items: flex-start;
+          }
+
+          .seo-header-desc {
+            max-width: 560px;
+          }
         }
 
-        @media (min-width: 1024px) {
-          .cs-header {
-            grid-template-columns: 1.5fr 1fr;
-            gap: 60px;
-            align-items: flex-end;
+        @media (max-width: 640px) {
+          .seo-services {
+            padding: 50px 0 70px;
           }
 
-          .cs-title {
-            font-size: 40px;
+          .seo-container {
+            padding: 0 22px;
           }
 
-          .cs-grid {
-            grid-template-columns: repeat(4, 1fr);
+          .seo-header {
+            margin-bottom: 35px;
+          }
+
+          .seo-header h2 {
+            font-size: 30px;
+            letter-spacing: -1px;
+          }
+
+          .seo-header-desc {
+            font-size: 14px;
+          }
+
+          .seo-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+
+          .seo-card {
+            padding: 22px 18px;
           }
         }
       `}</style>
 
-      <section className="cs-section">
-        <div className="cs-container">
-          
-          {/* --- Header Section --- */}
-          <div className="cs-header">
-            
-            {/* Left: Title */}
+      <section className="seo-services">
+        <div className="seo-container">
+
+          {/* --- Header --- */}
+          <div className="seo-header">
             <div>
-              <div className="cs-subtitle-wrap">
-                <span className="cs-subtitle">Our Services</span>
-                <div className="cs-line"></div>
-              </div>
-              
-              <h2 className="cs-title">
-                Comprehensive SEO & AI Search Services
+              <div className="seo-eyebrow">Our SEO Services</div>
+              <h2>
+                End-to-End SEO Solutions
+                <br />
+                for <span className="blue-text">Sustainable Growth</span>
               </h2>
             </div>
 
-            {/* Right: Paragraph */}
-            <div className="cs-description-wrap">
-              <p className="cs-description">
-                End-to-end solutions to help your brand rank higher on traditional 
-                search engines and modern AI search platforms.
-              </p>
-            </div>
-            
+            <p className="seo-header-desc">
+              From technical optimization to AI-powered search
+              visibility, we offer complete SEO services tailored
+              to your business goals.
+            </p>
           </div>
 
+<<<<<<< HEAD
           {/* --- Cards Grid Section --- */}
           <div className="cs-grid">
             {services.map((service, index) => (
@@ -272,14 +301,96 @@ const ComprehensiveServices: React.FC = () => {
                   <ArrowRight size={14} strokeWidth={2.5} />
                 </Link>
                 
-              </div>
-            ))}
-          </div>
+=======
+          {/* --- Cards --- */}
+          <div className="seo-grid">
 
+            {/* Card 1: Technical SEO — LIGHT BLUE */}
+            <div className="seo-card">
+              <div className="seo-icon-box light-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+>>>>>>> 1fbc728 (theme update)
+              </div>
+              <h3>Technical SEO</h3>
+              <p>
+                Improve site speed, crawlability,
+                indexing and overall performance.
+              </p>
+
+              <div className="seo-card-image">
+                <img src="/Images/seo1.png" alt="Technical SEO preview" />
+              </div>
+            </div>
+
+            {/* Card 2: On-Page SEO — DARK BLUE */}
+            <div className="seo-card">
+              <div className="seo-icon-box dark-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M8 8h8M8 12h5" />
+                  <circle cx="17" cy="15" r="2.5" />
+                </svg>
+              </div>
+              <h3>On-Page SEO</h3>
+              <p>
+                Optimize content, meta tags,
+                structure and internal linking
+                for better rankings.
+              </p>
+
+              <div className="seo-card-image">
+                <img src="/Images/seo2.png" alt="On-Page SEO preview" />
+              </div>
+            </div>
+
+            {/* Card 3: Local SEO — LIGHT BLUE */}
+            <div className="seo-card">
+              <div className="seo-icon-box light-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <h3>Local SEO</h3>
+              <p>
+                Help your business rank in
+                local searches and Google Maps.
+              </p>
+
+              <div className="seo-card-image">
+                <img src="/Images/seo3.png" alt="Local SEO preview" />
+              </div>
+            </div>
+
+            {/* Card 4: AI Search Optimization — DARK BLUE */}
+            <div className="seo-card">
+              <div className="seo-icon-box dark-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="4" y="4" width="16" height="16" rx="3" />
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" />
+                </svg>
+              </div>
+              <h3>AI Search Optimization</h3>
+              <p>
+                Optimize your brand for
+                ChatGPT, Google SGE, Perplexity
+                and other AI platforms.
+              </p>
+
+              <div className="seo-card-image">
+                <img src="/Images/seo4.png" alt="AI Search Optimization preview" />
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
     </>
   );
 };
 
-export default ComprehensiveServices;
+export default SeoServices;

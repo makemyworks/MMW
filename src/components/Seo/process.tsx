@@ -32,11 +32,9 @@ const HowWeWork: React.FC = () => {
   return (
     <>
       <style>{`
-        /* ================= CSS STYLES ================= */
         .hww-section {
           width: 100%;
-          background-color: #FAFAFA;
-         
+          background-color: #F4F7FB;
           padding: 50px 16px;
           font-family: 'Inter', system-ui, -apple-system, sans-serif;
           box-sizing: border-box;
@@ -51,7 +49,6 @@ const HowWeWork: React.FC = () => {
           align-items: center;
         }
 
-        /* --- LEFT COLUMN (Content) --- */
         .hww-content {
           max-width: 100%;
         }
@@ -67,33 +64,32 @@ const HowWeWork: React.FC = () => {
           font-size: 12px;
           font-weight: 700;
           letter-spacing: 0.15em;
-          color: #1A4D3F;
+          color: #007BFF;
           text-transform: uppercase;
         }
 
         .hww-line {
           width: 32px;
           height: 2px;
-          background-color: rgba(26, 77, 63, 0.3);
+          background-color: rgba(0, 123, 255, 0.3);
         }
 
         .hww-title {
           font-size: 28px;
           line-height: 1.2;
           font-weight: 700;
-          color: #111827;
+          color: #0F2044;
           margin: 0 0 14px 0;
           letter-spacing: -0.02em;
         }
 
         .hww-description {
           font-size: 15px;
-          color: #6b7280;
+          color: #4E5963;
           line-height: 1.6;
           margin: 0;
         }
 
-     
         .hww-process {
           display: flex;
           flex-direction: column;
@@ -115,39 +111,50 @@ const HowWeWork: React.FC = () => {
           width: 100%;
           position: relative;
           background-color: white;
-          border: 1px solid #f3f4f6;
+          border: 1px solid #E6EEF7;
           border-radius: 12px;
           padding: 20px;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+          box-shadow: 0 1px 3px rgba(15, 32, 68, 0.02);
+          transition: all 0.3s ease;
         }
 
-       
+        .hww-step:hover {
+          transform: translateY(-4px);
+          border-color: #007BFF;
+          box-shadow: 0 10px 25px -5px rgba(0, 123, 255, 0.15);
+        }
+
         .hww-step-number {
           position: absolute;
           top: 16px;
           right: 20px;
           font-size: 13px;
           font-weight: 600;
-          color: #9ca3af;
+          color: #007BFF;
           letter-spacing: 0.05em;
           z-index: 2;
         }
 
-        /* Icon Circle */
         .hww-icon-circle {
           width: 56px;
           height: 56px;
           border-radius: 50%;
-          background-color: #E8F3EF;
+          background-color: #E6F0FF;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #1A4D3F;
+          color: #007BFF;
           flex-shrink: 0;
-          border: 1px solid #f3f4f6;
+          border: 1px solid #E6EEF7;
+          transition: all 0.3s ease;
         }
 
-        /* Text Wrap */
+        .hww-step:hover .hww-icon-circle {
+          background-color: #007BFF;
+          color: #ffffff;
+          transform: scale(1.05);
+        }
+
         .hww-step-text-wrap {
           display: flex;
           flex-direction: column;
@@ -158,27 +165,28 @@ const HowWeWork: React.FC = () => {
         .hww-step-title {
           font-size: 15px;
           font-weight: 700;
-          color: #111827;
+          color: #0F2044;
           margin: 0 0 4px 0;
           line-height: 1.3;
+          transition: color 0.3s ease;
+        }
+
+        .hww-step:hover .hww-step-title {
+          color: #007BFF;
         }
 
         .hww-step-subtitle {
           font-size: 13px;
           font-weight: 500;
-          color: #6b7280;
+          color: #4E5963;
           margin: 0;
           line-height: 1.3;
         }
 
-        /* Hide arrow on mobile */
         .hww-arrow {
           display: none;
         }
 
-        /* --- MEDIA QUERIES (Responsive) --- */
-
-        /* Tablet */
         @media (min-width: 600px) {
           .hww-section {
             padding: 60px 24px;
@@ -189,7 +197,6 @@ const HowWeWork: React.FC = () => {
           }
         }
 
-        /* Desktop: Horizontal Layout */
         @media (min-width: 1024px) {
           .hww-section {
             padding: 80px 24px;
@@ -237,6 +244,12 @@ const HowWeWork: React.FC = () => {
             gap: 0;
           }
 
+          .hww-step:hover {
+            transform: translateY(-4px);
+            box-shadow: none;
+            border: none;
+          }
+
           .hww-step-number {
             position: relative;
             top: auto;
@@ -250,10 +263,10 @@ const HowWeWork: React.FC = () => {
           .hww-icon-circle {
             width: 80px;
             height: 80px;
-            background-color: #E8F3EF;
+            background-color: #E6F0FF;
             margin-bottom: 16px;
-            border: 4px solid #FAFAFA;
-            box-shadow: 0 0 0 1px rgba(26, 77, 63, 0.08);
+            border: 4px solid #F4F7FB;
+            box-shadow: 0 0 0 1px rgba(0, 123, 255, 0.15);
           }
 
           .hww-step-text-wrap {
@@ -269,12 +282,11 @@ const HowWeWork: React.FC = () => {
             font-size: 14px;
           }
 
-          /* Show arrow on desktop */
           .hww-arrow {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #1A4D3F;
+            color: #007BFF;
             margin-top: -56px;
             padding: 0 4px;
             flex-shrink: 0;
@@ -282,7 +294,6 @@ const HowWeWork: React.FC = () => {
           }
         }
 
-        /* Large Desktop */
         @media (min-width: 1200px) {
           .hww-icon-circle {
             width: 88px;
@@ -298,7 +309,6 @@ const HowWeWork: React.FC = () => {
       <section className="hww-section">
         <div className="hww-container">
           
-          {/* --- LEFT COLUMN (Content) --- */}
           <div className="hww-content">
             <div className="hww-subtitle-wrap">
               <span className="hww-subtitle">How We Work</span>
@@ -314,21 +324,17 @@ const HowWeWork: React.FC = () => {
             </p>
           </div>
 
-          {/* --- RIGHT COLUMN (Process Steps) --- */}
           <div className="hww-process">
             {steps.map((step, index) => (
               <div key={index} className="hww-step-wrapper">
                 <div className="hww-step">
                   
-                  {/* Step Number */}
                   <div className="hww-step-number">({step.number})</div>
                   
-                  {/* Icon Circle */}
                   <div className="hww-icon-circle">
                     {step.icon}
                   </div>
                   
-                  {/* Text Wrap */}
                   <div className="hww-step-text-wrap">
                     <h3 className="hww-step-title">{step.title}</h3>
                     <p className="hww-step-subtitle">{step.subtitle}</p>
@@ -336,7 +342,6 @@ const HowWeWork: React.FC = () => {
                   
                 </div>
                 
-                {/* Arrow (Only shows on desktop) */}
                 {index < steps.length - 1 && (
                   <div className="hww-arrow">
                     <ArrowRight size={20} strokeWidth={2.5} />

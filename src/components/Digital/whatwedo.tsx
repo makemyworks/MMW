@@ -28,10 +28,9 @@ const DigitalSolutions: React.FC = () => {
   return (
     <>
       <style>{`
-        /* ================= CSS STYLES ================= */
         .ds-section {
           width: 100%;
-          background-color: #FAFAFA;
+          background-color: #F4F7FB;
           padding: 80px 24px;
           font-family: 'Inter', system-ui, -apple-system, sans-serif;
           box-sizing: border-box;
@@ -42,7 +41,6 @@ const DigitalSolutions: React.FC = () => {
           margin: 0 auto;
         }
 
-        /* --- Header Section --- */
         .ds-header {
           display: grid;
           grid-template-columns: 1fr;
@@ -61,21 +59,21 @@ const DigitalSolutions: React.FC = () => {
           font-size: 12px;
           font-weight: 700;
           letter-spacing: 0.15em;
-          color: #1A4D3F;
+          color: #007BFF;
           text-transform: uppercase;
         }
 
         .ds-line {
           width: 32px;
           height: 2px;
-          background-color: rgba(26, 77, 63, 0.3);
+          background-color: rgba(0, 123, 255, 0.3);
         }
 
         .ds-title {
           font-size: 32px;
           line-height: 1.2;
           font-weight: 700;
-          color: #111827;
+          color: #0F2044;
           margin: 0;
           letter-spacing: -0.02em;
         }
@@ -87,13 +85,12 @@ const DigitalSolutions: React.FC = () => {
 
         .ds-description {
           font-size: 14px;
-          color: #6b7280;
+          color: #4E5963;
           line-height: 1.6;
           max-width: 450px;
           margin: 0;
         }
 
-        /* --- Features Grid --- */
         .ds-grid {
           display: grid;
           grid-template-columns: 1fr;
@@ -102,56 +99,93 @@ const DigitalSolutions: React.FC = () => {
         }
 
         .ds-card {
-          background-color: white;
-          border: 1px solid #f3f4f6;
-          border-radius: 10px;
-          padding: 24px;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-          transition: all 0.3s ease;
+          position: relative;
+          background-color: #ffffff;
+          border: 1px solid #E6EEF7;
+          border-radius: 12px;
+          padding: 28px 24px;
+          box-shadow: 0 1px 3px rgba(15, 32, 68, 0.02);
+          transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
           display: flex;
           flex-direction: column;
+          overflow: hidden;
+          z-index: 1;
+        }
+
+        /* Blue gradient background layer on hover */
+        .ds-card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, #007BFF 0%, #0F2044 100%);
+          opacity: 0;
+          transform: translateY(100%);
+          transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+          z-index: -1;
+        }
+
+        .ds-card:hover::before {
+          opacity: 1;
+          transform: translateY(0);
         }
 
         .ds-card:hover {
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-          transform: translateY(-2px);
-          border-color: #e5e7eb;
+          transform: translateY(-8px);
+          border-color: #007BFF;
+          box-shadow: 0 20px 40px -10px rgba(0, 123, 255, 0.35);
         }
 
         .ds-icon-wrap {
-          width: 44px;
-          height: 44px;
+          width: 48px;
+          height: 48px;
           border-radius: 50%;
-          background-color: #E8F3EF;
+          background-color: #E6F0FF;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #1A4D3F;
+          color: #007BFF;
           margin-bottom: 20px;
+          transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .ds-card:hover .ds-icon-wrap {
+          background-color: #ffffff;
+          color: #007BFF;
+          transform: scale(1.1) rotate(-6deg);
+          box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
         }
 
         .ds-card-title {
           font-size: 16px;
           font-weight: 700;
-          color: #111827;
+          color: #0F2044;
           margin: 0 0 10px 0;
           line-height: 1.3;
+          transition: color 0.35s ease;
+        }
+
+        .ds-card:hover .ds-card-title {
+          color: #ffffff;
         }
 
         .ds-card-desc {
           font-size: 14px;
-          color: #6b7280;
+          color: #4E5963;
           line-height: 1.6;
           margin: 0;
+          transition: color 0.35s ease;
         }
 
-        /* --- Bottom Strip (Our Digital Solutions) --- */
+        .ds-card:hover .ds-card-desc {
+          color: rgba(255, 255, 255, 0.9);
+        }
+
         .ds-bottom-strip {
           display: flex;
           justify-content: space-between;
           align-items: center;
           padding-top: 32px;
-          border-top: 1px solid #e5e7eb;
+          border-top: 1px solid #D6E4F0;
           flex-wrap: wrap;
           gap: 16px;
         }
@@ -160,19 +194,18 @@ const DigitalSolutions: React.FC = () => {
           font-size: 12px;
           font-weight: 700;
           letter-spacing: 0.15em;
-          color: #6b7280;
+          color: #4E5963;
           text-transform: uppercase;
           margin: 0;
         }
 
         .ds-bottom-desc {
           font-size: 14px;
-          color: #6b7280;
+          color: #4E5963;
           margin: 0;
           text-align: right;
         }
 
-        /* --- MEDIA QUERIES (Responsive) --- */
         @media (min-width: 768px) {
           .ds-grid {
             grid-template-columns: repeat(2, 1fr);
@@ -203,10 +236,8 @@ const DigitalSolutions: React.FC = () => {
       <section className="ds-section">
         <div className="ds-container">
           
-          {/* --- Top Header Section --- */}
           <div className="ds-header">
             
-            {/* Left: Title */}
             <div>
               <div className="ds-subtitle-wrap">
                 <span className="ds-subtitle">What We Do</span>
@@ -219,7 +250,6 @@ const DigitalSolutions: React.FC = () => {
               </h2>
             </div>
 
-            {/* Right: Paragraph */}
             <div className="ds-description-wrap">
               <p className="ds-description">
                 From strategy to execution, we help you build a strong digital 
@@ -230,25 +260,20 @@ const DigitalSolutions: React.FC = () => {
             
           </div>
 
-          {/* --- Features Grid Section --- */}
           <div className="ds-grid">
             {features.map((feature, index) => (
               <div key={index} className="ds-card">
                 
-                {/* Icon Circle */}
                 <div className="ds-icon-wrap">
                   {feature.icon}
                 </div>
                 
-                {/* Text Content */}
                 <h3 className="ds-card-title">{feature.title}</h3>
                 <p className="ds-card-desc">{feature.description}</p>
                 
               </div>
             ))}
           </div>
-
-          
 
         </div>
       </section>

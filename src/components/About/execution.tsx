@@ -1,12 +1,9 @@
 import React from 'react';
 
-// ==========================================
-// 1. CSS STYLES
-// ==========================================
 const styles = `
   .mvg-section {
     width: 100%;
-    background-color: #FAFAF9;
+    background-color: #F4F7FB;
     padding: 40px 20px 60px 20px;
     font-family: system-ui, -apple-system, sans-serif;
     box-sizing: border-box;
@@ -27,7 +24,6 @@ const styles = `
     }
   }
 
-  /* Card Style */
   .mvg-card {
     background-color: #FFFFFF;
     border-radius: 16px;
@@ -36,21 +32,20 @@ const styles = `
     flex-direction: column;
     align-items: center;
     text-align: center;
-    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
-    border: 1px solid #F3F4F6;
+    box-shadow: 0 4px 20px -2px rgba(15, 32, 68, 0.05);
+    border: 1px solid #E6EEF7;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .mvg-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 25px -3px rgba(15, 32, 68, 0.08);
   }
 
-  /* Icon Circle */
   .mvg-icon-wrapper {
     width: 64px;
     height: 64px;
-    background-color: #E8F0EA; /* Light green bg */
+    background-color: #E6F0FF;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -58,17 +53,16 @@ const styles = `
     margin-bottom: 20px;
   }
 
-  /* Text Content */
   .mvg-title {
     font-size: 20px;
     font-weight: 700;
-    color: #111827;
+    color: #0F2044;
     margin: 0 0 12px 0;
   }
 
   .mvg-desc {
     font-size: 14px;
-    color: #6B7280;
+    color: #4E5963;
     line-height: 1.6;
     margin: 0;
     max-width: 280px;
@@ -77,7 +71,7 @@ const styles = `
 
 
 const TargetIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F3D2E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#007BFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="10" />
     <circle cx="12" cy="12" r="6" />
     <circle cx="12" cy="12" r="2" />
@@ -87,14 +81,14 @@ const TargetIcon = () => (
 );
 
 const EyeIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F3D2E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#007BFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
     <circle cx="12" cy="12" r="3" />
   </svg>
 );
 
 const DiamondIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F3D2E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#007BFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M6 3h12l4 6-10 13L2 9Z" />
     <path d="M11 3 8 9l4 13 4-13-3-6" />
     <path d="M2 9h20" />

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface Testimonial {
   name: string;
@@ -78,8 +78,6 @@ const Testimonials: React.FC = () => {
     setActiveIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
   };
 
- 
-
   useEffect(() => {
     const updateVisibleCards = () => {
       const w = window.innerWidth;
@@ -93,19 +91,16 @@ const Testimonials: React.FC = () => {
     return () => window.removeEventListener("resize", updateVisibleCards);
   }, []);
 
-  /* Reset index when visibleCards changes */
   useEffect(() => {
     setActiveIndex(0);
   }, [visibleCards]);
 
-  /* Translate percentage per visible card */
   const translatePercent = activeIndex * (100 / visibleCards);
 
   return (
     <section className="testimonials-section">
       <div className="testimonials-container">
 
-        {/* Heading */}
         <div className="testimonials-header">
           <h2>
             What Our <span>Clients Say</span>
@@ -117,7 +112,6 @@ const Testimonials: React.FC = () => {
           </p>
         </div>
 
-        {/* Slider */}
         <div className="testimonial-slider-wrapper">
           <div
             className="testimonial-slider"
@@ -156,7 +150,6 @@ const Testimonials: React.FC = () => {
           </div>
         </div>
 
-        {/* Slider Controls */}
         <div className="testimonial-controls">
           <button
             type="button"
@@ -184,13 +177,9 @@ const Testimonials: React.FC = () => {
           box-sizing: border-box;
         }
 
-        /* =========================
-           SECTION
-        ========================= */
-
         .testimonials-section {
           width: 100%;
-          background: #ffffff;
+          background: #F4F7FB;
           padding: 32px 3% 35px;
           overflow: hidden;
           font-family: Arial, Helvetica, sans-serif;
@@ -202,10 +191,6 @@ const Testimonials: React.FC = () => {
           margin: 0 auto;
         }
 
-        /* =========================
-           HEADER
-        ========================= */
-
         .testimonials-header {
           text-align: center;
           margin-bottom: 0;
@@ -216,12 +201,12 @@ const Testimonials: React.FC = () => {
           font-size: 38px;
           line-height: 1.1;
           font-weight: 700;
-          color: #111111;
+          color: #0F2044;
           letter-spacing: -0.7px;
         }
 
         .testimonials-header h2 span {
-          color: #0A4B3F;
+          color: #007BFF;
         }
 
         .testimonials-header p {
@@ -229,12 +214,8 @@ const Testimonials: React.FC = () => {
           max-width: 650px;
           font-size: 14px;
           line-height: 1.6;
-          color: #666666;
+          color: #4E5963;
         }
-
-        /* =========================
-           SLIDER
-        ========================= */
 
         .testimonial-slider-wrapper {
           width: 100%;
@@ -256,28 +237,18 @@ const Testimonials: React.FC = () => {
           padding-bottom: 82px;
         }
 
-        /* =========================
-           CARD
-        ========================= */
-
         .testimonial-card {
           position: relative;
           width: 100%;
           height: 225px;
-
           padding: 25px 24px 22px;
-
           background: #ffffff;
-          border: 1px solid #d7e1de;
+          border: 1px solid #D6E4F0;
           border-radius: 14px;
-
-          box-shadow: 0 4px 12px rgba(10, 75, 63, 0.04);
-
+          box-shadow: 0 4px 12px rgba(15, 32, 68, 0.04);
           display: flex;
           align-items: flex-start;
-
           overflow: hidden;
-
           transition:
             transform 0.35s ease,
             box-shadow 0.35s ease,
@@ -286,86 +257,60 @@ const Testimonials: React.FC = () => {
 
         .testimonial-card:hover {
           transform: translateY(-7px);
-          border-color: #0A4B3F;
+          border-color: #007BFF;
           box-shadow:
-            0 14px 30px rgba(10, 75, 63, 0.14),
-            0 4px 8px rgba(10, 75, 63, 0.06);
+            0 14px 30px rgba(0, 123, 255, 0.14),
+            0 4px 8px rgba(15, 32, 68, 0.06);
         }
-
-        /* =========================
-           TEXT
-        ========================= */
 
         .testimonial-text {
           position: relative;
           z-index: 2;
-
           margin: 0;
-
           font-size: 15px;
           line-height: 1.7;
-          color: #333333;
+          color: #4E5963;
           font-weight: 400;
-
           transition:
             color 0.3s ease,
             transform 0.3s ease;
         }
 
         .testimonial-card:hover .testimonial-text {
-          color: #0A4B3F;
+          color: #0F2044;
           transform: translateX(2px);
         }
-
-        /* =========================
-           CARD POINTER
-        ========================= */
 
         .testimonial-pointer {
           position: absolute;
           left: 34px;
           bottom: -9px;
-
           width: 18px;
           height: 18px;
-
           background: #ffffff;
-          border-right: 1px solid #d7e1de;
-          border-bottom: 1px solid #d7e1de;
-
+          border-right: 1px solid #D6E4F0;
+          border-bottom: 1px solid #D6E4F0;
           transform: rotate(45deg);
-
           transition: border-color 0.3s ease;
         }
 
         .testimonial-card:hover .testimonial-pointer {
-          border-color: #0A4B3F;
+          border-color: #007BFF;
         }
-
-        /* =========================
-           USER
-        ========================= */
 
         .testimonial-user {
           display: flex;
           align-items: center;
           gap: 12px;
-
           margin-top: 16px;
           padding-left: 22px;
         }
-
-        /* =========================
-           IMAGE
-        ========================= */
 
         .testimonial-image-wrapper {
           width: 62px;
           height: 62px;
           flex-shrink: 0;
-
           border-radius: 50%;
-
           transition:
             transform 0.35s ease,
             box-shadow 0.35s ease;
@@ -374,15 +319,11 @@ const Testimonials: React.FC = () => {
         .testimonial-image {
           width: 62px;
           height: 62px;
-
           border-radius: 50%;
           object-fit: cover;
-
-          border: 2px solid #0A4B3F;
+          border: 2px solid #007BFF;
           background: #ffffff;
-
           display: block;
-
           transition:
             transform 0.35s ease,
             border-color 0.35s ease;
@@ -390,17 +331,13 @@ const Testimonials: React.FC = () => {
 
         .testimonial-slide:hover .testimonial-image-wrapper {
           transform: translateY(-4px);
-          box-shadow: 0 8px 18px rgba(10, 75, 63, 0.18);
+          box-shadow: 0 8px 18px rgba(0, 123, 255, 0.18);
         }
 
         .testimonial-slide:hover .testimonial-image {
           transform: scale(1.06);
-          border-color: #073B32;
+          border-color: #0F2044;
         }
-
-        /* =========================
-           USER INFO
-        ========================= */
 
         .testimonial-user-info {
           min-width: 0;
@@ -408,38 +345,28 @@ const Testimonials: React.FC = () => {
 
         .testimonial-user-info h3 {
           margin: 0 0 4px;
-
           font-size: 15px;
           line-height: 1.2;
           font-weight: 700;
-
-          color: #111111;
-
+          color: #0F2044;
           transition: color 0.3s ease;
         }
 
         .testimonial-slide:hover .testimonial-user-info h3 {
-          color: #0A4B3F;
+          color: #007BFF;
         }
 
         .testimonial-user-info p {
           margin: 0;
-
           font-size: 12px;
           line-height: 1.4;
-
-          color: #707070;
+          color: #4E5963;
         }
-
-        /* =========================
-           CONTROLS
-        ========================= */
 
         .testimonial-controls {
           display: flex;
           justify-content: center;
           align-items: center;
-
           gap: 10px;
           margin-top: 2px;
         }
@@ -447,22 +374,16 @@ const Testimonials: React.FC = () => {
         .testimonial-arrow {
           width: 38px;
           height: 38px;
-
-          border: 1px solid #0A4B3F;
+          border: 1px solid #007BFF;
           border-radius: 50%;
-
           background: #ffffff;
-          color: #0A4B3F;
-
+          color: #007BFF;
           display: flex;
           align-items: center;
           justify-content: center;
-
           font-size: 18px;
           line-height: 1;
-
           cursor: pointer;
-
           transition:
             background 0.25s ease,
             color 0.25s ease,
@@ -471,18 +392,13 @@ const Testimonials: React.FC = () => {
         }
 
         .testimonial-arrow:hover {
-          background: #0A4B3F;
+          background: #007BFF;
           color: #ffffff;
           transform: translateY(-2px);
-          box-shadow: 0 6px 14px rgba(10, 75, 63, 0.20);
+          box-shadow: 0 6px 14px rgba(0, 123, 255, 0.20);
         }
 
-        /* =========================
-           TABLET
-        ========================= */
-
         @media (max-width: 900px) {
-
           .testimonials-section {
             padding: 28px 4% 32px;
           }
@@ -495,7 +411,6 @@ const Testimonials: React.FC = () => {
             gap: 16px;
           }
 
-          /* 2 cards visible: total 2 cards + 1 gap (16px) */
           .testimonial-slide {
             flex: 0 0 calc((100% - 16px) / 2);
           }
@@ -509,12 +424,7 @@ const Testimonials: React.FC = () => {
           }
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
-
         @media (max-width: 600px) {
-
           .testimonials-section {
             padding: 25px 5% 28px;
           }
@@ -537,7 +447,6 @@ const Testimonials: React.FC = () => {
             gap: 0;
           }
 
-          /* 1 card visible: 100% width, no gap issues */
           .testimonial-slide {
             flex: 0 0 100%;
             padding-bottom: 72px;
@@ -581,12 +490,7 @@ const Testimonials: React.FC = () => {
           }
         }
 
-        /* =========================
-           SMALL MOBILE
-        ========================= */
-
         @media (max-width: 480px) {
-
           .testimonials-section {
             padding: 22px 4% 25px;
           }
@@ -619,10 +523,6 @@ const Testimonials: React.FC = () => {
             height: 52px;
           }
         }
-
-        /* =========================
-           REDUCE MOTION
-        ========================= */
 
         @media (prefers-reduced-motion: reduce) {
           .testimonials-section *,

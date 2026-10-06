@@ -28,10 +28,9 @@ const RealResults: React.FC = () => {
   return (
     <>
       <style>{`
-        /* ================= CSS STYLES ================= */
         .rr-section {
           width: 100%;
-          background-color: #FAFAFA;
+          background-color: #F4F7FB;
           padding: 80px 24px;
           font-family: 'Inter', system-ui, -apple-system, sans-serif;
           box-sizing: border-box;
@@ -42,7 +41,6 @@ const RealResults: React.FC = () => {
           margin: 0 auto;
         }
 
-        /* --- Header Section --- */
         .rr-header {
           display: grid;
           grid-template-columns: 1fr;
@@ -54,7 +52,7 @@ const RealResults: React.FC = () => {
           font-size: 32px;
           line-height: 1.2;
           font-weight: 700;
-          color: #111827;
+          color: #0F2044;
           margin: 0;
           letter-spacing: -0.02em;
         }
@@ -66,13 +64,12 @@ const RealResults: React.FC = () => {
 
         .rr-description {
           font-size: 14px;
-          color: #6b7280;
+          color: #4E5963;
           line-height: 1.6;
           max-width: 400px;
           margin: 0;
         }
 
-        /* --- Stats Grid --- */
         .rr-grid {
           display: grid;
           grid-template-columns: 1fr;
@@ -81,10 +78,10 @@ const RealResults: React.FC = () => {
 
         .rr-card {
           background-color: white;
-          border: 1px solid #f3f4f6;
+          border: 1px solid #E6EEF7;
           border-radius: 10px;
           padding: 24px;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+          box-shadow: 0 1px 3px rgba(15, 32, 68, 0.02);
           transition: all 0.3s ease;
           display: flex;
           align-items: center;
@@ -92,20 +89,28 @@ const RealResults: React.FC = () => {
         }
 
         .rr-card:hover {
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 8px 20px rgba(0, 123, 255, 0.08);
           transform: translateY(-2px);
+          border-color: #007BFF;
         }
 
         .rr-icon-wrap {
           width: 52px;
           height: 52px;
           border-radius: 50%;
-          background-color: #E8F3EF;
+          background-color: #E6F0FF;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #1A4D3F;
+          color: #007BFF;
           flex-shrink: 0;
+          transition: all 0.3s ease;
+        }
+
+        .rr-card:hover .rr-icon-wrap {
+          background-color: #007BFF;
+          color: #ffffff;
+          transform: scale(1.08);
         }
 
         .rr-text-wrap {
@@ -116,20 +121,24 @@ const RealResults: React.FC = () => {
         .rr-value {
           font-size: 24px;
           font-weight: 700;
-          color: #111827;
+          color: #0F2044;
           margin: 0 0 2px 0;
           line-height: 1;
+          transition: color 0.3s ease;
+        }
+
+        .rr-card:hover .rr-value {
+          color: #007BFF;
         }
 
         .rr-label {
           font-size: 13px;
-          color: #6b7280;
+          color: #4E5963;
           font-weight: 500;
           margin: 0;
           line-height: 1.3;
         }
 
-        /* --- MEDIA QUERIES (Responsive) --- */
         @media (min-width: 768px) {
           .rr-grid {
             grid-template-columns: repeat(2, 1fr);
@@ -160,17 +169,14 @@ const RealResults: React.FC = () => {
       <section className="rr-section">
         <div className="rr-container">
           
-          {/* --- Header Section --- */}
           <div className="rr-header">
             
-            {/* Left: Title */}
             <div>
               <h2 className="rr-title">
                 Real Results, Measurable Growth
               </h2>
             </div>
 
-            {/* Right: Paragraph */}
             <div className="rr-description-wrap">
               <p className="rr-description">
                 Our SEO and AI search strategies have helped businesses 
@@ -180,17 +186,14 @@ const RealResults: React.FC = () => {
             
           </div>
 
-          {/* --- Stats Grid Section --- */}
           <div className="rr-grid">
             {stats.map((stat, index) => (
               <div key={index} className="rr-card">
                 
-                {/* Icon Circle */}
                 <div className="rr-icon-wrap">
                   {stat.icon}
                 </div>
                 
-                {/* Text Content */}
                 <div className="rr-text-wrap">
                   <h3 className="rr-value">{stat.value}</h3>
                   <p className="rr-label">{stat.label}</p>

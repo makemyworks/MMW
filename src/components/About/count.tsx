@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 const styles = `
   .achievements-section {
     width: 100%;
-    background-color: #FAFAF9;
+    background-color: #F4F7FB;
     padding: 80px 20px;
     font-family: system-ui, -apple-system, sans-serif;
     box-sizing: border-box;
@@ -15,7 +15,6 @@ const styles = `
     margin: 0 auto;
   }
 
- 
   .achievements-header {
     text-align: center;
     margin-bottom: 64px;
@@ -24,7 +23,6 @@ const styles = `
     align-items: center;
   }
 
-  
   .achievements-label {
     display: flex;
     align-items: center;
@@ -34,25 +32,23 @@ const styles = `
   }
 
   .achievements-label span {
-    color: #0F3D2E;
+    color: #007BFF;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
     font-size: 13px;
   }
 
- 
   .achievements-line {
     height: 1px;
     width: 40px;
-    background-color: #9CA3AF;
+    background-color: #007BFF;
   }
-
 
   .achievements-heading {
     font-size: 36px;
     font-weight: 800;
-    color: #111827;
+    color: #0F2044;
     margin: 0 0 16px 0;
     line-height: 1.2;
     letter-spacing: -0.5px;
@@ -64,11 +60,11 @@ const styles = `
   }
 
   .achievements-highlight {
-    color: #0F3D2E;
+    color: #007BFF;
   }
 
   .achievements-description {
-    color: #4B5563;
+    color: #4E5963;
     font-size: 17px;
     line-height: 1.6;
     max-width: 600px;
@@ -76,7 +72,6 @@ const styles = `
     text-align: center;
   }
 
- 
   .stats-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -91,7 +86,6 @@ const styles = `
     .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 0; }
   }
 
-  
   .stat-item {
     display: flex;
     flex-direction: column;
@@ -102,7 +96,6 @@ const styles = `
     padding: 0 16px;
   }
 
-  /* Vertical Divider Line (Desktop only) */
   .stat-item:not(:last-child)::after {
     content: '';
     position: absolute;
@@ -110,7 +103,7 @@ const styles = `
     top: 10%;
     height: 80%;
     width: 1px;
-    background-color: #E5E7EB;
+    background-color: #D6E4F0;
     display: none;
   }
 
@@ -120,34 +113,30 @@ const styles = `
     }
   }
 
-  /* Number */
   .stat-number {
     font-size: 56px;
     font-weight: 400;
-    color: #111827;
+    color: #0F2044;
     margin: 0 0 12px 0;
     line-height: 1;
     letter-spacing: -1px;
   }
 
-  /* Label */
   .stat-label {
     font-size: 16px;
-    color: #4B5563;
+    color: #4E5963;
     margin: 0 0 16px 0;
     font-weight: 500;
     text-align: center;
   }
 
-  /* Small line under label */
   .stat-underline {
     width: 40px;
     height: 2px;
-    background-color: #0F3D2E;
+    background-color: #007BFF;
     border-radius: 2px;
   }
 
-  /* Mobile Adjustments */
   @media (max-width: 1024px) {
     .achievements-heading { font-size: 32px; }
     .achievements-description { font-size: 15px; }
@@ -230,7 +219,6 @@ const AchievementsSection = () => {
       <section className="achievements-section">
         <div className="achievements-container">
           
-          {/* Header */}
           <div className="achievements-header">
            
             <div className="achievements-label">
@@ -239,18 +227,15 @@ const AchievementsSection = () => {
               <div className="achievements-line"></div>
             </div>
 
-       
             <h2 className="achievements-heading">
               Numbers That Tell <span className="achievements-highlight">Our Story</span>
             </h2>
 
-         
             <p className="achievements-description">
               These numbers reflect the trust our clients place in us and the impact we've created together.
             </p>
           </div>
 
-          {/* Stats Grid */}
           <div className="stats-grid">
             {statsData.map((stat, index) => (
               <div className="stat-item" key={index}>

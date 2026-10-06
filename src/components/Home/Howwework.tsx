@@ -1,12 +1,9 @@
 import React from 'react';
 
-// ==========================================
-// 1. CSS STYLES
-// ==========================================
 const styles = `
   .process-section {
     width: 100%;
-    background-color: #FAFAF9;
+    background-color: #F4F7FB;
     padding: 80px 20px;
     font-family: system-ui, -apple-system, sans-serif;
     box-sizing: border-box;
@@ -14,7 +11,6 @@ const styles = `
     position: relative;
   }
 
-  /* Background decorative curves */
   .process-section::before {
     content: '';
     position: absolute;
@@ -22,7 +18,7 @@ const styles = `
     left: 0;
     width: 300px;
     height: 300px;
-    border: 1px solid #E5E7EB;
+    border: 1px solid #D6E4F0;
     border-radius: 50%;
     transform: translate(-50%, 50%);
     pointer-events: none;
@@ -34,7 +30,7 @@ const styles = `
     left: -100px;
     width: 200px;
     height: 200px;
-    border: 1px solid #E5E7EB;
+    border: 1px solid #D6E4F0;
     border-radius: 50%;
     pointer-events: none;
   }
@@ -46,7 +42,6 @@ const styles = `
     z-index: 10;
   }
 
-  /* Header Section */
   .process-header {
     text-align: center;
     margin-bottom: 64px;
@@ -62,7 +57,7 @@ const styles = `
   }
 
   .process-label span {
-    color: #0F3D2E;
+    color: #007BFF;
     font-weight: bold;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -72,13 +67,13 @@ const styles = `
   .label-line {
     height: 1px;
     width: 40px;
-    background-color: #9CA3AF;
+    background-color: #007BFF;
   }
 
   .process-title {
     font-size: 36px;
     font-weight: 800;
-    color: #111827;
+    color: #0F2044;
     margin: 0 0 16px 0;
     line-height: 1.2;
   }
@@ -87,19 +82,18 @@ const styles = `
     .process-title { font-size: 46px; }
   }
 
-  .highlight-green {
-    color: #0F3D2E;
+  .highlight-blue {
+    color: #007BFF;
   }
 
   .process-subtitle {
-    color: #6B7280;
+    color: #4E5963;
     font-size: 18px;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
   }
 
-  /* Handwritten Note */
   .handwritten-note {
     position: absolute;
     top: -20px;
@@ -115,7 +109,7 @@ const styles = `
   .handwritten-note .text {
     font-family: 'Brush Script MT', cursive;
     font-size: 24px;
-    color: #1F2937;
+    color: #0F2044;
     line-height: 1;
     text-align: center;
   }
@@ -125,7 +119,6 @@ const styles = `
     margin-top: -5px;
   }
 
-  /* Steps Grid */
   .steps-wrapper {
     display: flex;
     flex-direction: column;
@@ -153,7 +146,6 @@ const styles = `
     max-width: 220px;
   }
 
-  /* Image Wrapper */
   .step-image-wrapper {
     position: relative;
     width: 160px;
@@ -165,18 +157,17 @@ const styles = `
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%; /* Perfect Circle */
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15); /* Subtle shadow to lift it */
+    border-radius: 50%;
+    box-shadow: 0 10px 25px -5px rgba(15, 32, 68, 0.18);
     position: relative;
     z-index: 2;
   }
 
-  /* Step Number Badge */
   .step-number {
     position: absolute;
     bottom: 5px;
     left: 5px;
-    background-color: #0F3D2E;
+    background-color: #007BFF;
     color: white;
     width: 44px;
     height: 44px;
@@ -187,26 +178,25 @@ const styles = `
     font-weight: bold;
     font-size: 16px;
     z-index: 3;
-    border: 3px solid #FAFAF9;
+    border: 3px solid #F4F7FB;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
 
   .step-title {
     font-size: 18px;
     font-weight: 700;
-    color: #111827;
+    color: #0F2044;
     margin-bottom: 12px;
     margin-top: 0;
   }
 
   .step-desc {
     font-size: 14px;
-    color: #4B5563;
+    color: #4E5963;
     line-height: 1.5;
     margin: 0;
   }
 
-  /* Connecting Arrow (Desktop Only) */
   .connector {
     display: none;
   }
@@ -231,7 +221,8 @@ const styles = `
   .connector-line {
     width: 100%;
     height: 1px;
-    border-top: 2px dashed #9CA3AF;
+    border-top: 2px dashed #007BFF;
+    opacity: 0.5;
     position: relative;
   }
 
@@ -247,11 +238,10 @@ const styles = `
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #E5E7EB;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid #D6E4F0;
+    box-shadow: 0 2px 4px rgba(15, 32, 68, 0.08);
   }
 
-  /* For mobile connecting lines */
   @media (max-width: 1023px) {
     .step-item:not(:last-child)::after {
       content: '';
@@ -261,30 +251,25 @@ const styles = `
       transform: translateX(-50%);
       width: 2px;
       height: 30px;
-      border-left: 2px dashed #9CA3AF;
+      border-left: 2px dashed #007BFF;
+      opacity: 0.5;
     }
   }
 `;
 
-// ==========================================
-// 2. SVG ICONS
-// ==========================================
 const ArrowRightSmall = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F2044" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
   </svg>
 );
 
 const HandDrawnArrow = () => (
   <svg width="60" height="50" viewBox="0 0 60 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M50 5 C 55 15, 40 25, 30 30 C 20 35, 15 40, 10 45" stroke="#1F2937" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
-    <path d="M10 45 L 18 42 M10 45 L 15 38" stroke="#1F2937" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+    <path d="M50 5 C 55 15, 40 25, 30 30 C 20 35, 15 40, 10 45" stroke="#0F2044" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+    <path d="M10 45 L 18 42 M10 45 L 15 38" stroke="#0F2044" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
   </svg>
 );
 
-// ==========================================
-// 3. DATA FOR STEPS
-// ==========================================
 const stepsData = [
   {
     id: '01',
@@ -318,9 +303,6 @@ const stepsData = [
   }
 ];
 
-// ==========================================
-// 4. MAIN COMPONENT
-// ==========================================
 const ProcessSection = () => {
   return (
     <>
@@ -329,7 +311,6 @@ const ProcessSection = () => {
       <section className="process-section">
         <div className="process-container">
           
-          {/* Header */}
           <div className="process-header">
             <div className="process-label">
               <div className="label-line"></div>
@@ -338,36 +319,31 @@ const ProcessSection = () => {
             </div>
             
             <h2 className="process-title">
-              A Simple Process. <span className="highlight-green">Real Results.</span>
+              A Simple Process. <span className="highlight-blue">Real Results.</span>
             </h2>
             
             <p className="process-subtitle">
               We follow a clear and collaborative process to turn your ideas into impactful digital solutions.
             </p>
 
-            {/* Handwritten Note */}
             <div className="handwritten-note">
               <div className="text">From<br/>Idea to Impact</div>
               <HandDrawnArrow />
             </div>
           </div>
 
-          {/* Steps */}
           <div className="steps-wrapper">
             {stepsData.map((step, index) => (
               <div className="step-item" key={index}>
                 
-                {/* Image and Number */}
                 <div className="step-image-wrapper">
                   <img src={step.img} alt={step.title} className="step-img" />
                   <div className="step-number">{step.id}</div>
                 </div>
 
-                {/* Text Content */}
                 <h3 className="step-title">{step.title}</h3>
                 <p className="step-desc">{step.desc}</p>
 
-                {/* Connector Arrow (Not on last item) */}
                 {index !== stepsData.length - 1 && (
                   <div className="connector">
                     <div className="connector-line">

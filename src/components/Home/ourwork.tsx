@@ -1,12 +1,9 @@
 import React from 'react';
 
-// ==========================================
-// 1. CSS STYLES
-// ==========================================
 const styles = `
   .projects-section {
     width: 100%;
-    background-color: #FAFAF9;
+    background-color: #F4F7FB;
     padding: 60px 20px 80px 20px;
     font-family: system-ui, -apple-system, sans-serif;
     box-sizing: border-box;
@@ -18,7 +15,6 @@ const styles = `
     margin: 0 auto;
   }
 
-  /* Header Section */
   .projects-header {
     display: flex;
     flex-direction: column;
@@ -47,7 +43,7 @@ const styles = `
   }
 
   .section-label span {
-    color: #0F3D2E;
+    color: #007BFF;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -57,13 +53,13 @@ const styles = `
   .label-line {
     height: 1px;
     width: 40px;
-    background-color: #9CA3AF;
+    background-color: #007BFF;
   }
 
   .section-title {
     font-size: 32px;
     font-weight: 800;
-    color: #111827;
+    color: #0F2044;
     margin: 0;
     line-height: 1.2;
   }
@@ -78,7 +74,7 @@ const styles = `
     gap: 8px;
     font-size: 15px;
     font-weight: 600;
-    color: #0F3D2E;
+    color: #007BFF;
     text-decoration: none;
     cursor: pointer;
     transition: color 0.2s;
@@ -88,11 +84,10 @@ const styles = `
   }
 
   .view-all-link:hover {
-    color: #1a5c46;
+    color: #0F2044;
     text-decoration: underline;
   }
 
-  /* Cards Grid */
   .projects-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -107,7 +102,6 @@ const styles = `
     .projects-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
   }
 
-  /* Individual Project Card */
   .project-card {
     display: flex;
     flex-direction: column;
@@ -125,8 +119,8 @@ const styles = `
     height: 180px;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.08);
-    border: 1px solid #F3F4F6;
+    box-shadow: 0 4px 15px -3px rgba(15, 32, 68, 0.08);
+    border: 1px solid #E6EEF7;
     background-color: #FFFFFF;
   }
 
@@ -150,30 +144,24 @@ const styles = `
   .project-title {
     font-size: 16px;
     font-weight: 700;
-    color: #111827;
+    color: #0F2044;
     margin: 0;
   }
 
   .project-category {
     font-size: 13px;
-    color: #6B7280;
+    color: #4E5963;
     margin: 0;
     font-weight: 500;
   }
 `;
 
-// ==========================================
-// 2. SVG ICONS
-// ==========================================
 const ArrowRightIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
   </svg>
 );
 
-// ==========================================
-// 3. DATA FOR PROJECTS
-// ==========================================
 const projectsData = [
   {
     title: 'E-commerce Website',
@@ -197,9 +185,6 @@ const projectsData = [
   }
 ];
 
-// ==========================================
-// 4. MAIN COMPONENT
-// ==========================================
 const ProjectsSection = () => {
   return (
     <>
@@ -208,12 +193,10 @@ const ProjectsSection = () => {
       <section className="projects-section">
         <div className="projects-container">
           
-          {/* Header */}
           <div className="projects-header">
             <div className="header-left">
               <div className="section-label">
                 <span>Our Work</span>
-            
               </div>
               <h2 className="section-title">
                 Projects That Create Impact
@@ -226,17 +209,14 @@ const ProjectsSection = () => {
             </button>
           </div>
 
-          {/* Projects Grid */}
           <div className="projects-grid">
             {projectsData.map((project, index) => (
               <div className="project-card" key={index}>
                 
-                {/* Image */}
                 <div className="project-image-wrapper">
                   <img src={project.img} alt={project.title} />
                 </div>
 
-                {/* Info */}
                 <div className="project-info">
                   <h3 className="project-title">{project.title}</h3>
                   <p className="project-category">{project.category}</p>

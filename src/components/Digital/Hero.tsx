@@ -10,7 +10,6 @@ const DigitalSolutionsHero: React.FC = () => {
 
         .digital-hero {
           width: 100%;
-       
           min-height: 600px;
           background: #ffffff;
           overflow: hidden;
@@ -27,10 +26,6 @@ const DigitalSolutionsHero: React.FC = () => {
           align-items: center; 
         }
 
-        /* ==========================================
-           LEFT SIDE
-        ========================================== */
-
         .digital-left {
           display: flex;
           flex-direction: column;
@@ -45,13 +40,13 @@ const DigitalSolutionsHero: React.FC = () => {
           font-size: 15px;
           font-weight: 700;
           letter-spacing: 1.5px;
-          color: #6f7b80;
+          color: #007BFF;
           margin-bottom: 18px;
         }
 
         .digital-title {
           margin: 0;
-          color: #101415;
+          color: #0F2044;
           font-size: clamp(46px, 4.7vw, 72px);
           line-height: 0.98;
           letter-spacing: -3px;
@@ -59,20 +54,16 @@ const DigitalSolutionsHero: React.FC = () => {
         }
 
         .digital-title span {
-          color: #075c4d;
+          color: #007BFF;
         }
 
         .digital-description {
           margin: 27px 0 30px;
-          color: #6c777c;
+          color: #4E5963;
           font-size: 16px;
           line-height: 1.55;
           max-width: 560px;
         }
-
-        /* ==========================================
-           BUTTONS
-        ========================================== */
 
         .digital-buttons {
           display: flex;
@@ -96,25 +87,25 @@ const DigitalSolutionsHero: React.FC = () => {
 
         .digital-btn-primary {
           min-width: 185px;
-          background: #075c4d;
+          background: #007BFF;
           color: #ffffff;
         }
 
         .digital-btn-primary:hover {
-          background: #064d41;
+          background: #0F2044;
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(7, 92, 77, 0.2);
+          box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2);
         }
 
         .digital-btn-secondary {
           min-width: 115px;
           background: #ffffff;
-          color: #202729;
-          border: 1px solid #d9dfe1;
+          color: #0F2044;
+          border: 1px solid #D6E4F0;
         }
 
         .digital-btn-secondary:hover {
-          background: #f5f7f7;
+          background: #F4F7FB;
           transform: translateY(-2px);
         }
 
@@ -122,10 +113,6 @@ const DigitalSolutionsHero: React.FC = () => {
           font-size: 17px;
           line-height: 1;
         }
-
-        /* ==========================================
-           RIGHT SIDE (IMAGE CARD)
-        ========================================== */
 
         .digital-right {
           position: relative;
@@ -137,17 +124,16 @@ const DigitalSolutionsHero: React.FC = () => {
           padding: 40px 40px 40px 20px; 
         }
 
-        
         .digital-image-card {
           width: 100%;
           height: 100%;
           max-width: 700px;
           max-height: 520px;
-          border-radius: 16px; /* Rounded corners */
+          border-radius: 16px;
           overflow: hidden;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); /* Card shadow */
-          border: 1px solid #f0f0f0;
-          background-color: #f9f9f9;
+          box-shadow: 0 20px 40px rgba(15, 32, 68, 0.08);
+          border: 1px solid #E6EEF7;
+          background-color: #F4F7FB;
         }
 
         .digital-image-card img {
@@ -157,10 +143,6 @@ const DigitalSolutionsHero: React.FC = () => {
           object-position: center;
           display: block;
         }
-
-        /* ==========================================
-           TABLET
-        ========================================== */
 
         @media (max-width: 1100px) {
           .digital-left {
@@ -179,10 +161,6 @@ const DigitalSolutionsHero: React.FC = () => {
             padding: 30px 30px 30px 10px;
           }
         }
-
-        /* ==========================================
-           MOBILE
-        ========================================== */
 
         @media (max-width: 768px) {
           .digital-hero {
@@ -238,7 +216,6 @@ const DigitalSolutionsHero: React.FC = () => {
             min-width: 105px;
           }
 
-        
           .digital-right {
             order: 2;
             width: 100%;
@@ -250,10 +227,6 @@ const DigitalSolutionsHero: React.FC = () => {
             border-radius: 12px;
           }
         }
-
-        /* ==========================================
-           SMALL MOBILE
-        ========================================== */
 
         @media (max-width: 480px) {
           .digital-left {
@@ -277,8 +250,6 @@ const DigitalSolutionsHero: React.FC = () => {
 
       <section className="digital-hero">
         <div className="digital-hero-container">
-
-     
 
           <div className="digital-left">
 
@@ -329,14 +300,10 @@ const DigitalSolutionsHero: React.FC = () => {
 
           </div>
 
-          {/* ======================================
-              RIGHT IMAGE (AS CARD)
-          ====================================== */}
-
           <div className="digital-right">
             <div className="digital-image-card">
               <img
-                src="/Images/digitalhero.webp"
+                src="/Images/digitalhero.png"
                 alt="Digital solutions dashboard"
               />
             </div>

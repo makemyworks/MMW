@@ -6,31 +6,27 @@ const teamData = [
     name: "Alex Carter",
     role: "Partner & Head of Tech",
     image:
-      "https://images.unsplash.comto=format&fit=crop&q=80&w=400&h=300",
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=300",
   },
   {
     id: 2,
     name: "Elena Rostova",
     role: "Partner & Head of Product",
     image:
-      "https://images.unsplash.comb8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=300",
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=300",
   },
   {
     id: 3,
     name: "Devon Miller",
     role: "Director of AI Systems",
     image:
-      "https://images.unsplash.cof7cbe7?auto=format&fit=crop&q=80&w=400&h=300",
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=300",
   },
 ];
 
 const LeadershipSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-
-  /* =====================================================
-     INTERSECTION OBSERVER — Repeats on scroll up/down
-  ===================================================== */
 
   useEffect(() => {
     const node = sectionRef.current;
@@ -62,7 +58,6 @@ const LeadershipSection: React.FC = () => {
     >
       <div className="ls-container">
 
-        {/* Header */}
         <div className="ls-header">
 
           <div>
@@ -73,7 +68,6 @@ const LeadershipSection: React.FC = () => {
             </h2>
           </div>
 
-          {/* Nav buttons */}
           <div className="ls-nav-buttons">
             <button
               type="button"
@@ -85,7 +79,7 @@ const LeadershipSection: React.FC = () => {
                 height="20"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#0A4B3F"
+                stroke="#007BFF"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -104,7 +98,7 @@ const LeadershipSection: React.FC = () => {
                 height="20"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#0A4B3F"
+                stroke="#007BFF"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -116,13 +110,11 @@ const LeadershipSection: React.FC = () => {
 
         </div>
 
-        {/* Cards Grid */}
         <div className="ls-grid">
 
           {teamData.map((member) => (
             <div key={member.id} className="ls-card">
 
-              {/* Image */}
               <div className="ls-image-container">
                 <img
                   src={member.image}
@@ -131,7 +123,6 @@ const LeadershipSection: React.FC = () => {
                 />
               </div>
 
-              {/* Content */}
               <div className="ls-text-content">
                 <h3 className="ls-name">{member.name}</h3>
 
@@ -152,13 +143,9 @@ const LeadershipSection: React.FC = () => {
           box-sizing: border-box;
         }
 
-        /* =========================
-           WRAPPER
-        ========================= */
-
         .ls-wrapper {
           width: 100%;
-          background: #ffffff;
+          background: #F4F7FB;
 
           padding: 4rem 2rem;
 
@@ -178,10 +165,6 @@ const LeadershipSection: React.FC = () => {
           width: 100%;
         }
 
-        /* =========================
-           HEADER
-        ========================= */
-
         .ls-header {
           display: flex;
           justify-content: space-between;
@@ -197,7 +180,7 @@ const LeadershipSection: React.FC = () => {
           font-size: 0.75rem;
           font-weight: 700;
           letter-spacing: 0.1em;
-          color: #0A4B3F;
+          color: #007BFF;
           text-transform: uppercase;
 
           display: block;
@@ -209,16 +192,12 @@ const LeadershipSection: React.FC = () => {
         .ls-title {
           font-size: 2.5rem;
           font-weight: 700;
-          color: #142235;
+          color: #0F2044;
           margin: 0;
           letter-spacing: -0.025em;
 
           opacity: 0;
         }
-
-        /* =========================
-           NAV BUTTONS
-        ========================= */
 
         .ls-nav-buttons {
           display: flex;
@@ -233,7 +212,7 @@ const LeadershipSection: React.FC = () => {
 
           border-radius: 50%;
 
-          border: 1px solid #dce8e3;
+          border: 1px solid #D6E4F0;
 
           background: #ffffff;
 
@@ -255,23 +234,19 @@ const LeadershipSection: React.FC = () => {
         }
 
         .ls-nav-button:hover {
-          background: #0A4B3F;
+          background: #007BFF;
 
-          border-color: #0A4B3F;
+          border-color: #007BFF;
 
           transform: translateY(-2px);
 
           box-shadow:
-            0 8px 18px rgba(10, 75, 63, 0.20);
+            0 8px 18px rgba(0, 123, 255, 0.20);
         }
 
         .ls-nav-button:hover svg {
           stroke: #ffffff;
         }
-
-        /* =========================
-           GRID
-        ========================= */
 
         .ls-grid {
           display: grid;
@@ -284,10 +259,6 @@ const LeadershipSection: React.FC = () => {
 
           gap: 2rem;
         }
-
-        /* =========================
-           CARD
-        ========================= */
 
         .ls-card {
           display: flex;
@@ -302,10 +273,6 @@ const LeadershipSection: React.FC = () => {
           transform: translateY(-8px);
         }
 
-        /* =========================
-           IMAGE
-        ========================= */
-
         .ls-image-container {
           position: relative;
 
@@ -317,12 +284,11 @@ const LeadershipSection: React.FC = () => {
 
           margin-bottom: 1.25rem;
 
-          background: #eaf2f0;
+          background: #E6F0FF;
 
           opacity: 0;
         }
 
-        /* Gradient overlay for polish */
         .ls-image-container::after {
           content: "";
 
@@ -333,7 +299,7 @@ const LeadershipSection: React.FC = () => {
             linear-gradient(
               to bottom,
               transparent 55%,
-              rgba(10, 75, 63, 0.06) 100%
+              rgba(0, 123, 255, 0.06) 100%
             );
 
           pointer-events: none;
@@ -361,10 +327,6 @@ const LeadershipSection: React.FC = () => {
           transform: scale(1.06);
         }
 
-        /* =========================
-           TEXT CONTENT
-        ========================= */
-
         .ls-text-content {
           display: flex;
           flex-direction: column;
@@ -374,7 +336,7 @@ const LeadershipSection: React.FC = () => {
         .ls-name {
           font-size: 1.25rem;
           font-weight: 700;
-          color: #142235;
+          color: #0F2044;
 
           margin: 0 0 0.25rem 0;
 
@@ -383,7 +345,7 @@ const LeadershipSection: React.FC = () => {
 
         .ls-role {
           font-size: 0.875rem;
-          color: #5b6472;
+          color: #4E5963;
 
           margin: 0 0 0.75rem 0;
 
@@ -397,8 +359,8 @@ const LeadershipSection: React.FC = () => {
           background:
             linear-gradient(
               90deg,
-              #0A4B3F,
-              #4fb3a2
+              #007BFF,
+              #66B2FF
             );
 
           border-radius: 2px;
@@ -409,10 +371,6 @@ const LeadershipSection: React.FC = () => {
 
           opacity: 0;
         }
-
-        /* =========================
-           VISIBLE STATE — Animations
-        ========================= */
 
         .ls-wrapper.ls-visible .ls-subtitle {
           animation:
@@ -441,7 +399,6 @@ const LeadershipSection: React.FC = () => {
             forwards;
         }
 
-        /* Card entrance — stagger */
         .ls-wrapper.ls-visible .ls-card {
           animation:
             lsCardIn
@@ -462,7 +419,6 @@ const LeadershipSection: React.FC = () => {
           animation-delay: 0.75s;
         }
 
-        /* Image reveal */
         .ls-wrapper.ls-visible .ls-image-container {
           animation:
             lsImageIn
@@ -486,7 +442,6 @@ const LeadershipSection: React.FC = () => {
           animation-delay: 0.85s;
         }
 
-        /* Name */
         .ls-wrapper.ls-visible .ls-name {
           animation:
             lsFadeUp
@@ -510,7 +465,6 @@ const LeadershipSection: React.FC = () => {
           animation-delay: 1.05s;
         }
 
-        /* Role */
         .ls-wrapper.ls-visible .ls-role {
           animation:
             lsFadeUp
@@ -534,7 +488,6 @@ const LeadershipSection: React.FC = () => {
           animation-delay: 1.2s;
         }
 
-        /* Underline */
         .ls-wrapper.ls-visible .ls-underline {
           animation:
             lsLineGrow
@@ -557,10 +510,6 @@ const LeadershipSection: React.FC = () => {
         .ls-card:nth-child(3) .ls-underline {
           animation-delay: 1.35s;
         }
-
-        /* =========================
-           KEYFRAMES
-        ========================= */
 
         @keyframes lsSlideDown {
           from {
@@ -660,10 +609,6 @@ const LeadershipSection: React.FC = () => {
           }
         }
 
-        /* =========================
-           TABLET
-        ========================= */
-
         @media (max-width: 900px) {
           .ls-wrapper {
             padding: 3.5rem 1.75rem;
@@ -681,10 +626,6 @@ const LeadershipSection: React.FC = () => {
             height: 260px;
           }
         }
-
-        /* =========================
-           MOBILE
-        ========================= */
 
         @media (max-width: 600px) {
           .ls-wrapper {
@@ -709,10 +650,6 @@ const LeadershipSection: React.FC = () => {
           }
         }
 
-        /* =========================
-           SMALL MOBILE
-        ========================= */
-
         @media (max-width: 420px) {
           .ls-wrapper {
             padding: 2.5rem 1rem;
@@ -735,10 +672,6 @@ const LeadershipSection: React.FC = () => {
             height: 2.25rem;
           }
         }
-
-        /* =========================
-           REDUCED MOTION
-        ========================= */
 
         @media (prefers-reduced-motion: reduce) {
           .ls-wrapper *,

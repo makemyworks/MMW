@@ -4,7 +4,7 @@ import React from 'react';
 const styles = `
   .people-section {
     width: 100%;
-    background-color: #FAFAF9;
+    background-color: #F4F7FB;
     font-family: system-ui, -apple-system, sans-serif;
     box-sizing: border-box;
     overflow: hidden;
@@ -31,7 +31,6 @@ const styles = `
     }
   }
 
-  
   .people-left {
     padding: 60px 24px;
     display: flex;
@@ -48,7 +47,6 @@ const styles = `
     }
   }
 
- 
   .section-label {
     display: flex;
     align-items: center;
@@ -58,7 +56,7 @@ const styles = `
   }
 
   .section-label span {
-    color: #0F3D2E;
+    color: #007BFF;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -68,15 +66,14 @@ const styles = `
   .label-line {
     height: 1px;
     width: 40px;
-    background-color: #9CA3AF;
+    background-color: #007BFF;
   }
 
- 
   .main-heading {
     font-family: 'Georgia', 'Times New Roman', serif;
     font-size: 48px;           
     font-weight: 700;          
-    color: #1A1A1A;            
+    color: #0F2044;            
     line-height: 1.1;
     margin: 0 0 24px 0;
     letter-spacing: -1px;
@@ -86,19 +83,18 @@ const styles = `
     align-items: flex-start;   
   }
 
-  
   .main-heading span {
     display: block;          
     text-align: left;        
     width: 100%;               
   }
 
-  .highlight-green {
-    color: #0F3D2E;
+  .highlight-blue {
+    color: #007BFF;
   }
 
   .description {
-    color: #4B5563;
+    color: #4E5963;
     font-size: 17px;
     line-height: 1.6;
     margin-bottom: 32px;
@@ -109,7 +105,7 @@ const styles = `
   }
 
   .cta-button {
-    background-color: #0F3D2E;
+    background-color: #007BFF;
     color: white;
     padding: 14px 28px;
     border-radius: 8px;
@@ -126,18 +122,17 @@ const styles = `
   }
 
   .cta-button:hover {
-    background-color: #1a5c46;
+    background-color: #0F2044;
     transform: translateY(-2px);
   }
 
-  /* Dotted Pattern */
   .dots-pattern {
     position: absolute;
     bottom: 60px;
     right: 40px;
     width: 100px;
     height: 60px;
-    background-image: radial-gradient(#0F3D2E 2px, transparent 2px);
+    background-image: radial-gradient(#007BFF 2px, transparent 2px);
     background-size: 12px 12px;
     opacity: 0.3;
     z-index: 5;
@@ -148,7 +143,6 @@ const styles = `
     .dots-pattern { display: block; }
   }
 
-  
   .people-right {
     position: relative;
     width: 100%;
@@ -164,7 +158,7 @@ const styles = `
       min-height: 550px;
       border-top-left-radius: 150px;
       border-bottom-left-radius: 150px;
-      box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+      box-shadow: -10px 0 30px rgba(15, 32, 68, 0.05);
       margin-top: 0;
     }
   }
@@ -176,14 +170,12 @@ const styles = `
     display: block;
   }
 
-  
   @media (max-width: 1024px) {
     .people-left { padding: 40px 20px; }
     .main-heading { font-size: 34px; }
     .description { font-size: 15px; }
     .people-right { height: 260px; }
   }
-
 
   @media (max-width: 480px) {
     .people-left { padding: 32px 18px; }
@@ -193,9 +185,6 @@ const styles = `
   }
 `;
 
-// ==========================================
-// 2. SVG ICONS
-// ==========================================
 const ArrowRightIcon: React.FC = () => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
@@ -213,9 +202,6 @@ const ArrowRightIcon: React.FC = () => (
   </svg>
 );
 
-// ==========================================
-// 3. MAIN COMPONENT
-// ==========================================
 const PeopleBehindSection: React.FC = () => {
   return (
     <>
@@ -224,7 +210,6 @@ const PeopleBehindSection: React.FC = () => {
       <section className="people-section">
         <div className="people-container">
           
-          {/* Left Section */}
           <div className="people-left">
             
             <div className="section-label">
@@ -232,11 +217,10 @@ const PeopleBehindSection: React.FC = () => {
               <div className="label-line"></div>
             </div>
 
-          
             <h1 className="main-heading">
               <span>PEOPLE BEHIND</span>
-              <span className="highlight-green">DIGITAL</span>
-              <span className="highlight-green">POSSIBILITIES</span>
+              <span className="highlight-blue">DIGITAL</span>
+              <span className="highlight-blue">POSSIBILITIES</span>
             </h1>
 
             <p className="description">
@@ -251,7 +235,6 @@ const PeopleBehindSection: React.FC = () => {
             <div className="dots-pattern"></div>
           </div>
 
-          {/* Right Section */}
           <div className="people-right">
             <img 
               src="/Images/abouthero.webp" 

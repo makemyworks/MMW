@@ -53,13 +53,9 @@ const CTASection: React.FC = () => {
           text-align: center;
         }
 
-        /* =========================
-           HEADING
-        ========================= */
-
         .cta-title {
           margin: 0;
-          color: #152535;
+          color: #0F2044;
           font-size: 48px;
           line-height: 1.1;
           font-weight: 700;
@@ -67,36 +63,24 @@ const CTASection: React.FC = () => {
         }
 
         .cta-title span {
-          color: #0A4B3F;
+          color: #007BFF;
         }
-
-        /* =========================
-           DESCRIPTION
-        ========================= */
 
         .cta-description {
           margin: 24px auto 0;
-          color: #536174;
+          color: #4E5963;
           font-size: 18px;
           line-height: 1.5;
           font-weight: 400;
         }
 
-        /* =========================
-           SUBTITLE
-        ========================= */
-
         .cta-subtitle {
           margin: 30px 0 25px;
-          color: #0A4B3F;
+          color: #007BFF;
           font-size: 22px;
           line-height: 1.3;
           font-weight: 600;
         }
-
-        /* =========================
-           BUTTONS
-        ========================= */
 
         .cta-buttons {
           display: flex;
@@ -118,10 +102,6 @@ const CTASection: React.FC = () => {
           transition: all 0.3s ease;
         }
 
-        /* =========================
-           PRIMARY BUTTON
-        ========================= */
-
         .cta-primary {
           position: relative;
 
@@ -131,13 +111,13 @@ const CTASection: React.FC = () => {
           gap: 20px;
 
           border: none;
-          background: #0A4B3F;
+          background: #007BFF;
           color: #ffffff;
 
           overflow: hidden;
 
           box-shadow:
-            0 0 0 rgba(10, 75, 63, 0);
+            0 0 0 rgba(0, 123, 255, 0);
         }
 
         .cta-arrow {
@@ -152,34 +132,26 @@ const CTASection: React.FC = () => {
           transform: translateY(-3px);
 
           box-shadow:
-            0 12px 28px rgba(10, 75, 63, 0.28);
+            0 12px 28px rgba(0, 123, 255, 0.28);
         }
 
         .cta-primary:hover .cta-arrow {
           transform: translateX(6px);
         }
 
-        /* =========================
-           SECONDARY BUTTON
-        ========================= */
-
         .cta-secondary {
-          border: 1.5px solid #0A4B3F;
+          border: 1.5px solid #007BFF;
           background: #ffffff;
-          color: #0A4B3F;
+          color: #007BFF;
         }
 
         .cta-secondary:hover {
-          background: #eaf2f0;
+          background: #E6F0FF;
           transform: translateY(-3px);
 
           box-shadow:
-            0 12px 24px rgba(10, 75, 63, 0.12);
+            0 12px 24px rgba(0, 123, 255, 0.12);
         }
-
-        /* =========================
-           TABLET
-        ========================= */
 
         @media (max-width: 900px) {
           .cta-section {
@@ -205,10 +177,6 @@ const CTASection: React.FC = () => {
             font-size: 16px;
           }
         }
-
-        /* =========================
-           MOBILE
-        ========================= */
 
         @media (max-width: 600px) {
           .cta-section {

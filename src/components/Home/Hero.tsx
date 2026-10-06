@@ -3,59 +3,40 @@ import React from "react";
 const Hero: React.FC = () => {
   return (
     <>
-      {/* =====================================================
-          HERO SECTION
-      ===================================================== */}
       <section className="hero-section">
-
-        {/* Background Image */}
         <div className="hero-image"></div>
-
-        {/* White Gradient */}
         <div className="hero-overlay"></div>
 
-        {/* Hero Container */}
         <div className="hero-container">
-
           <div className="hero-content">
-
-            {/* Eyebrow */}
             <div className="hero-eyebrow">
               <span>
                 DIGITAL SOLUTIONS FOR A BRIGHTER TOMORROW
               </span>
-
               <i></i>
             </div>
 
-            {/* Main Heading */}
             <h1>
               Ideas Today.
               <br />
-
-              <span>Greater Possibilities</span>
-
+              <span className="heading-dark">Greater</span>{" "}
+              <span className="heading-light">Possibilities</span>
               <br />
-
               Tomorrow.
             </h1>
 
-            {/* Description */}
             <p className="hero-description">
               At AlphaZetaWorld, we help businesses grow with
               innovative digital solutions in SEO, AI Videos,
               Web Development and Digital Solutions.
             </p>
 
-            {/* Buttons */}
             <div className="hero-buttons">
-
               <a
                 href="/contact"
                 className="primary-button"
               >
                 <span>Get Started</span>
-
                 <span className="button-arrow">
                   →
                 </span>
@@ -67,12 +48,9 @@ const Hero: React.FC = () => {
               >
                 Explore Services
               </a>
-
             </div>
 
-            {/* Stats */}
             <div className="hero-stats">
-
               <div className="stat">
                 <h3>150+</h3>
                 <p>Projects Delivered</p>
@@ -98,59 +76,37 @@ const Hero: React.FC = () => {
                 <h3>98%</h3>
                 <p>Client Satisfaction</p>
               </div>
-
             </div>
-
           </div>
         </div>
-
       </section>
 
-
-      {/* =====================================================
-          TRUSTED BY SECTION
-      ===================================================== */}
       <section className="trusted-section">
-
         <div className="trusted-container">
-
-          {/* Trusted Heading */}
           <div className="trusted-heading">
-
             <h2>
               Trusted by
               <br />
               <strong>Leading Brands</strong>
             </h2>
-
           </div>
 
-
-          {/* Divider */}
           <div className="trusted-main-divider"></div>
 
-
-          {/* Brand Slider */}
           <div className="brand-slider">
-
             <div className="brand-list">
-
-              {/* Google */}
               <div className="brand">
                 <span className="google-logo">Google</span>
               </div>
 
-              {/* Meta */}
               <div className="brand">
                 <span className="meta-logo"><b>∞</b>Meta</span>
               </div>
 
-              {/* AWS */}
               <div className="brand">
                 <span className="aws-logo">aws</span>
               </div>
 
-              {/* Microsoft */}
               <div className="brand">
                 <span className="microsoft-logo">
                   <b className="microsoft-icon">
@@ -160,22 +116,18 @@ const Hero: React.FC = () => {
                 </span>
               </div>
 
-              {/* HubSpot */}
               <div className="brand">
                 <span className="hubspot-logo">HubSpot</span>
               </div>
 
-              {/* Canva */}
               <div className="brand">
                 <span className="canva-logo">Canva</span>
               </div>
 
-              {/* Notion */}
               <div className="brand">
                 <span className="notion-logo"><b>N</b>Notion</span>
               </div>
 
-              {/* ===== Duplicate set for seamless slider (desktop + mobile) ===== */}
               <div className="brand brand-duplicate"><span className="google-logo">Google</span></div>
               <div className="brand brand-duplicate"><span className="meta-logo"><b>∞</b>Meta</span></div>
               <div className="brand brand-duplicate"><span className="aws-logo">aws</span></div>
@@ -188,26 +140,12 @@ const Hero: React.FC = () => {
               <div className="brand brand-duplicate"><span className="hubspot-logo">HubSpot</span></div>
               <div className="brand brand-duplicate"><span className="canva-logo">Canva</span></div>
               <div className="brand brand-duplicate"><span className="notion-logo"><b>N</b>Notion</span></div>
-
             </div>
-
           </div>
-
         </div>
-
       </section>
 
-
-      {/* =====================================================
-          CSS
-      ===================================================== */}
-
       <style>{`
-
-        /* =====================================================
-           RESET
-        ===================================================== */
-
         .hero-section,
         .hero-section *,
         .trusted-section,
@@ -215,25 +153,15 @@ const Hero: React.FC = () => {
           box-sizing: border-box;
         }
 
-
-        /* =====================================================
-           HERO
-        ===================================================== */
-
         .hero-section {
           position: relative;
           width: 100%;
           min-height: 615px;
           overflow: hidden;
-          background: #f5f7f6;
+          background: #f4f7fb;
           margin: 0;
           padding: 0;
         }
-
-
-        /* =====================================================
-           BACKGROUND IMAGE
-        ===================================================== */
 
         .hero-image {
           position: absolute;
@@ -246,11 +174,6 @@ const Hero: React.FC = () => {
           background-position: center right;
           background-repeat: no-repeat;
         }
-
-
-        /* =====================================================
-           HERO OVERLAY
-        ===================================================== */
 
         .hero-overlay {
           position: absolute;
@@ -269,11 +192,6 @@ const Hero: React.FC = () => {
             );
         }
 
-
-        /* =====================================================
-           HERO CONTAINER
-        ===================================================== */
-
         .hero-container {
           position: relative;
           z-index: 2;
@@ -285,27 +203,17 @@ const Hero: React.FC = () => {
           align-items: flex-start;
         }
 
-
-        /* =====================================================
-           HERO CONTENT
-        ===================================================== */
-
         .hero-content {
           width: 650px;
           padding-top: 48px;
         }
-
-
-        /* =====================================================
-           EYEBROW
-        ===================================================== */
 
         .hero-eyebrow {
           display: flex;
           align-items: center;
           gap: 12px;
           margin: 0 0 18px 0;
-          color: #4e5963;
+          color: #007bff;
           font-size: 12px;
           font-weight: 600;
           letter-spacing: 2.5px;
@@ -313,55 +221,42 @@ const Hero: React.FC = () => {
           white-space: nowrap;
         }
 
-
         .hero-eyebrow i {
           display: block;
           width: 42px;
           height: 2px;
           flex-shrink: 0;
-          background: #6c7975;
+          background: #007bff;
         }
-
-
-        /* =====================================================
-           HEADING
-        ===================================================== */
 
         .hero-content h1 {
           margin: 0;
           padding: 0;
-          color: #0c131a;
+          color: #0f2044;
           font-size: clamp(50px, 4.4vw, 68px);
           line-height: 1.04;
           font-weight: 700;
           letter-spacing: -2.8px;
         }
 
-
-        .hero-content h1 span {
-          color: #075b43;
+        .heading-dark {
+          color: #0f2044;
         }
 
-
-        /* =====================================================
-           DESCRIPTION
-        ===================================================== */
+        .heading-light {
+          color: #007bff;
+        }
 
         .hero-description {
           width: 100%;
           max-width: 580px;
           margin: 20px 0 0 0;
           padding: 0;
-          color: #59636e;
+          color: #4e5963;
           font-size: 17px;
           line-height: 1.55;
           font-weight: 400;
         }
-
-
-        /* =====================================================
-           BUTTONS
-        ===================================================== */
 
         .hero-buttons {
           display: flex;
@@ -369,7 +264,6 @@ const Hero: React.FC = () => {
           gap: 18px;
           margin-top: 23px;
         }
-
 
         .primary-button,
         .secondary-button {
@@ -389,51 +283,34 @@ const Hero: React.FC = () => {
             color 0.25s ease;
         }
 
-
-        /* =====================================================
-           PRIMARY BUTTON
-        ===================================================== */
-
         .primary-button {
           gap: 15px;
-          background: #075b43;
+          background: #007bff;
           color: #ffffff;
         }
-
 
         .button-arrow {
           font-size: 20px;
           line-height: 1;
         }
 
-
         .primary-button:hover {
-          background: #043f2f;
+          background: #0f2044;
           transform: translateY(-2px);
         }
-
-
-        /* =====================================================
-           SECONDARY BUTTON
-        ===================================================== */
 
         .secondary-button {
-          border: 1px solid #075b43;
+          border: 1px solid #0f2044;
           background: rgba(255, 255, 255, 0.78);
-          color: #075b43;
+          color: #0f2044;
         }
-
 
         .secondary-button:hover {
-          background: #075b43;
+          background: #007bff;
           color: #ffffff;
+          border-color: #007bff;
           transform: translateY(-2px);
         }
-
-
-        /* =====================================================
-           STATS
-        ===================================================== */
 
         .hero-stats {
           width: 640px;
@@ -442,45 +319,37 @@ const Hero: React.FC = () => {
           margin-top: 28px;
         }
 
-
         .stat {
           min-width: 125px;
           display: flex;
           flex-direction: column;
         }
 
-
         .stat h3 {
           margin: 0;
           padding: 0;
-          color: #111820;
+          color: #0f2044;
           font-size: 27px;
           line-height: 1.1;
           font-weight: 700;
         }
 
-
         .stat p {
           margin: 5px 0 0 0;
           padding: 0;
-          color: #59636e;
+          color: #4e5963;
           font-size: 13px;
           line-height: 1.3;
         }
-
 
         .stat-divider {
           width: 1px;
           height: 45px;
           margin: 0 22px;
           flex-shrink: 0;
-          background: #cbd1d0;
+          background: #007bff;
+          opacity: 0.4;
         }
-
-
-        /* =====================================================
-           TRUSTED SECTION
-        ===================================================== */
 
         .trusted-section {
           width: 100%;
@@ -492,7 +361,6 @@ const Hero: React.FC = () => {
           overflow: hidden;
         }
 
-
         .trusted-container {
           width: min(1280px, calc(100% - 64px));
           min-height: 130px;
@@ -501,16 +369,10 @@ const Hero: React.FC = () => {
           align-items: center;
         }
 
-
-        /* =====================================================
-           TRUSTED HEADING
-        ===================================================== */
-
         .trusted-heading {
           width: 235px;
           flex-shrink: 0;
         }
-
 
         .trusted-label {
           display: flex;
@@ -519,43 +381,34 @@ const Hero: React.FC = () => {
           margin-bottom: 7px;
         }
 
-
         .trusted-label span {
           width: 32px;
           height: 2px;
           flex-shrink: 0;
-          background: #075b43;
+          background: #007bff;
         }
-
 
         .trusted-label p {
           margin: 0;
-          color: #59636e;
+          color: #4e5963;
           font-size: 10px;
           font-weight: 600;
           letter-spacing: 1.7px;
         }
 
-
         .trusted-heading h2 {
           margin: 0;
-          color: #111820;
+          color: #0f2044;
           font-size: 24px;
           line-height: 1.15;
           font-weight: 700;
           letter-spacing: -0.6px;
         }
 
-
         .trusted-heading h2 strong {
-          color: #075b43;
+          color: #007bff;
           font-weight: 700;
         }
-
-
-        /* =====================================================
-           TRUSTED DIVIDER
-        ===================================================== */
 
         .trusted-main-divider {
           width: 1px;
@@ -565,11 +418,6 @@ const Hero: React.FC = () => {
           background: #d8dddb;
         }
 
-
-        /* =====================================================
-           BRAND SLIDER  (DESKTOP)
-        ===================================================== */
-
         .brand-slider {
           flex: 1;
           min-width: 0;
@@ -577,77 +425,52 @@ const Hero: React.FC = () => {
           position: relative;
         }
 
-
-       
-
         .brand-list {
           display: flex;
           align-items: center;
           justify-content: flex-start;
           flex-wrap: nowrap;
-
           width: max-content;
           min-width: max-content;
           height: 54px;
-
           margin: 0;
           padding: 0;
-
           animation: trustedPartnersSlide 28s linear infinite;
-
           will-change: transform;
         }
-
 
         .brand-slider:hover .brand-list {
           animation-play-state: paused;
         }
 
-
         @keyframes trustedPartnersSlide {
           0% {
             transform: translateX(0);
           }
-
           100% {
             transform: translateX(-50%);
           }
         }
-
-
-        /* =====================================================
-           BRAND
-        ===================================================== */
 
         .brand {
           width: 160px;
           min-width: 160px;
           height: 54px;
           padding: 0 14px;
-
           display: flex;
           align-items: center;
           justify-content: center;
-
           flex: 0 0 160px;
-
           border-right: 1px solid #e4e7e6;
         }
-
 
         .brand:last-child {
           border-right: none;
         }
 
-
         .brand-duplicate {
           display: flex;
         }
-
-
-        /* =====================================================
-           GOOGLE
-        ===================================================== */
 
         .google-logo {
           color: #555d66;
@@ -655,11 +478,6 @@ const Hero: React.FC = () => {
           font-weight: 500;
           letter-spacing: -1px;
         }
-
-
-        /* =====================================================
-           META
-        ===================================================== */
 
         .meta-logo {
           display: flex;
@@ -670,28 +488,17 @@ const Hero: React.FC = () => {
           font-weight: 500;
         }
 
-
         .meta-logo b {
           font-size: 30px;
           font-weight: 400;
           line-height: 1;
         }
 
-
-        /* =====================================================
-           AWS
-        ===================================================== */
-
         .aws-logo {
           color: #555d66;
           font-size: 27px;
           font-weight: 700;
         }
-
-
-        /* =====================================================
-           MICROSOFT
-        ===================================================== */
 
         .microsoft-logo {
           display: flex;
@@ -702,7 +509,6 @@ const Hero: React.FC = () => {
           font-weight: 600;
         }
 
-
         .microsoft-icon {
           width: 24px;
           height: 24px;
@@ -712,27 +518,16 @@ const Hero: React.FC = () => {
           gap: 2px;
         }
 
-
         .microsoft-icon i {
           display: block;
           background: #555d66;
         }
-
-
-        /* =====================================================
-           HUBSPOT
-        ===================================================== */
 
         .hubspot-logo {
           color: #555d66;
           font-size: 18px;
           font-weight: 600;
         }
-
-
-        /* =====================================================
-           CANVA
-        ===================================================== */
 
         .canva-logo {
           color: #555d66;
@@ -742,11 +537,6 @@ const Hero: React.FC = () => {
           font-weight: 600;
         }
 
-
-        /* =====================================================
-           NOTION
-        ===================================================== */
-
         .notion-logo {
           display: flex;
           align-items: center;
@@ -755,7 +545,6 @@ const Hero: React.FC = () => {
           font-size: 17px;
           font-weight: 600;
         }
-
 
         .notion-logo b {
           width: 24px;
@@ -768,77 +557,57 @@ const Hero: React.FC = () => {
           font-size: 14px;
         }
 
-
-        /* =====================================================
-           TABLET
-        ===================================================== */
-
         @media (max-width: 1000px) {
-
           .hero-section {
             min-height: 570px;
           }
-
 
           .hero-container {
             width: calc(100% - 48px);
             min-height: 570px;
           }
 
-
           .hero-content {
             width: 570px;
             padding-top: 42px;
           }
-
 
           .hero-content h1 {
             font-size: 54px;
             letter-spacing: -2.3px;
           }
 
-
           .hero-description {
             font-size: 16px;
           }
-
 
           .hero-stats {
             width: 570px;
           }
 
-
           .stat {
             min-width: 110px;
           }
-
 
           .stat-divider {
             margin: 0 13px;
           }
 
-
-          /* Trusted */
-
           .trusted-container {
             width: calc(100% - 48px);
           }
-
 
           .trusted-heading {
             width: 190px;
           }
 
-
           .trusted-heading h2 {
             font-size: 21px;
           }
 
-
           .trusted-main-divider {
             margin-right: 10px;
           }
-
 
           .brand {
             width: 120px;
@@ -847,50 +616,33 @@ const Hero: React.FC = () => {
             padding: 0 7px;
           }
 
-
           .google-logo,
           .meta-logo {
             font-size: 18px;
           }
 
-
           .aws-logo {
             font-size: 21px;
           }
-
 
           .microsoft-logo {
             font-size: 13px;
           }
 
-
           .hubspot-logo {
             font-size: 14px;
           }
-
 
           .canva-logo {
             font-size: 20px;
           }
 
-
           .notion-logo {
             font-size: 13px;
           }
-
         }
 
-
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
         @media (max-width: 760px) {
-
-          /* =====================================================
-             MOBILE HERO
-          ===================================================== */
-
           .hero-section {
             min-height: 0;
             height: auto;
@@ -899,7 +651,6 @@ const Hero: React.FC = () => {
             overflow: hidden;
             background: #ffffff;
           }
-
 
           .hero-container {
             width: calc(100% - 28px);
@@ -911,7 +662,6 @@ const Hero: React.FC = () => {
             flex-direction: column;
           }
 
-
           .hero-content {
             order: 1;
             width: 100%;
@@ -920,8 +670,6 @@ const Hero: React.FC = () => {
             z-index: 3;
           }
 
-
-          /* Mobile-specific image */
           .hero-image {
             position: relative;
             inset: auto;
@@ -938,11 +686,9 @@ const Hero: React.FC = () => {
             z-index: 1;
           }
 
-
           .hero-overlay {
             display: none;
           }
-
 
           .hero-eyebrow {
             width: 100%;
@@ -956,18 +702,15 @@ const Hero: React.FC = () => {
             white-space: normal;
           }
 
-
           .hero-eyebrow span {
             max-width: calc(100% - 30px);
           }
-
 
           .hero-eyebrow i {
             width: 22px;
             height: 1.5px;
             flex-shrink: 0;
           }
-
 
           .hero-content h1 {
             max-width: 100%;
@@ -977,7 +720,6 @@ const Hero: React.FC = () => {
             letter-spacing: -1.4px;
           }
 
-
           .hero-description {
             width: 100%;
             max-width: 100%;
@@ -986,7 +728,6 @@ const Hero: React.FC = () => {
             line-height: 1.52;
           }
 
-
           .hero-buttons {
             width: 100%;
             display: flex;
@@ -994,7 +735,6 @@ const Hero: React.FC = () => {
             gap: 8px;
             margin-top: 19px;
           }
-
 
           .primary-button,
           .secondary-button {
@@ -1006,22 +746,18 @@ const Hero: React.FC = () => {
             white-space: nowrap;
           }
 
-
           .primary-button {
             flex: 1;
             gap: 8px;
           }
 
-
           .secondary-button {
             flex: 1;
           }
 
-
           .button-arrow {
             font-size: 16px;
           }
-
 
           .hero-stats {
             width: 100%;
@@ -1031,11 +767,9 @@ const Hero: React.FC = () => {
             margin-top: 25px;
           }
 
-
           .stat {
             min-width: 0;
           }
-
 
           .stat h3 {
             margin: 0;
@@ -1043,20 +777,15 @@ const Hero: React.FC = () => {
             line-height: 1.1;
           }
 
-
           .stat p {
             margin: 4px 0 0 0;
             font-size: 10.5px;
             line-height: 1.3;
           }
 
-
           .stat-divider {
             display: none;
           }
-
-
-          
 
           .trusted-section {
             width: 100%;
@@ -1064,7 +793,6 @@ const Hero: React.FC = () => {
             padding: 0 0 20px;
             overflow: hidden;
           }
-
 
           .trusted-container {
             width: calc(100% - 28px);
@@ -1074,13 +802,11 @@ const Hero: React.FC = () => {
             display: block;
           }
 
-
           .trusted-heading {
             width: 100%;
             margin: 0 0 20px;
             text-align: center;
           }
-
 
           .trusted-label {
             display: flex;
@@ -1089,12 +815,9 @@ const Hero: React.FC = () => {
             margin: 0 0 7px;
           }
 
-
-          /* Remove line before OUR PARTNERS */
           .trusted-label span {
             display: none;
           }
-
 
           .trusted-label p {
             margin: 0;
@@ -1104,7 +827,6 @@ const Hero: React.FC = () => {
             text-align: center;
           }
 
-
           .trusted-heading h2 {
             margin: 0;
             text-align: center;
@@ -1112,13 +834,10 @@ const Hero: React.FC = () => {
             line-height: 1.05;
           }
 
-
           .trusted-main-divider {
             display: none;
           }
 
-
-          /* Slider viewport */
           .brand-slider {
             display: block;
             width: 100%;
@@ -1131,117 +850,87 @@ const Hero: React.FC = () => {
             opacity: 1;
           }
 
-
-          /* Moving track */
           .brand-list {
             display: flex;
             align-items: center;
             justify-content: flex-start;
             flex-wrap: nowrap;
-
             width: max-content;
             min-width: max-content;
             height: 72px;
-
             margin: 0;
             padding: 0;
-
             animation: trustedPartnersSlide 32s linear infinite;
-
             will-change: transform;
           }
 
-
-          /* Every logo is always visible */
           .brand {
             width: 150px;
             min-width: 150px;
             height: 72px;
-
             padding: 8px 15px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             flex: 0 0 150px;
-
             border-right: 1px solid #e4e7e6;
             border-bottom: none;
-
             background: #ffffff;
           }
-
 
           .brand-duplicate {
             display: flex;
           }
 
-
           .brand-slider:hover .brand-list {
             animation-play-state: paused;
           }
-
 
           .google-logo {
             font-size: 18px;
           }
 
-
           .meta-logo {
             font-size: 18px;
           }
-
 
           .meta-logo b {
             font-size: 25px;
           }
 
-
           .aws-logo {
             font-size: 21px;
           }
 
-
           .microsoft-logo {
             font-size: 13px;
           }
-
 
           .microsoft-icon {
             width: 21px;
             height: 21px;
           }
 
-
           .hubspot-logo {
             font-size: 14px;
           }
-
 
           .canva-logo {
             font-size: 21px;
           }
 
-
           .notion-logo {
             font-size: 13px;
           }
-
 
           .notion-logo b {
             width: 21px;
             height: 21px;
             font-size: 12px;
           }
-
         }
 
-
         @media (max-width: 420px) {
-
-          /* HERO ONLY */
-
           .hero-container {
             width: calc(100% - 26px);
             min-height: 0;
@@ -1249,11 +938,9 @@ const Hero: React.FC = () => {
             padding-bottom: 30px;
           }
 
-
           .hero-content {
             padding-top: 24px;
           }
-
 
           .hero-content h1 {
             font-size: 34px;
@@ -1261,18 +948,15 @@ const Hero: React.FC = () => {
             letter-spacing: -1.2px;
           }
 
-
           .hero-description {
             font-size: 13px;
             line-height: 1.5;
           }
 
-
           .hero-buttons {
             gap: 7px;
             margin-top: 18px;
           }
-
 
           .primary-button,
           .secondary-button {
@@ -1281,40 +965,31 @@ const Hero: React.FC = () => {
             font-size: 10.5px;
           }
 
-
           .hero-stats {
             gap: 15px 8px;
             margin-top: 23px;
           }
 
-
           .stat h3 {
             font-size: 21px;
           }
-
 
           .stat p {
             font-size: 10px;
           }
 
-
-          /* TRUSTED PARTNERS */
-
           .trusted-section {
             margin-top: 24px;
           }
-
 
           .trusted-container {
             width: calc(100% - 26px);
             padding-top: 32px;
           }
 
-
           .trusted-heading h2 {
             font-size: 22px;
           }
-
 
           .brand {
             width: 140px;
@@ -1322,15 +997,12 @@ const Hero: React.FC = () => {
             flex-basis: 140px;
           }
 
-
           .hero-image {
             height: 220px;
             margin-top: 8px;
             background-position: center;
           }
-
         }
-
       `}</style>
     </>
   );

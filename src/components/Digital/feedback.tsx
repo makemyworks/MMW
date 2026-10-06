@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const ClientFeedback: React.FC = () => {
@@ -7,23 +7,47 @@ const ClientFeedback: React.FC = () => {
       quote: "The team helped us improve our online presence significantly. We saw a 3X increase in website traffic and better quality leads.",
       name: "Rahul Mehta",
       role: "Founder, RealEstatePro",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200&auto=format&fit=crop" 
     },
     {
       quote: "Professional, creative and result-oriented. Their digital marketing strategies have helped our brand grow consistently.",
       name: "Priya Sharma",
       role: "Marketing Head, HealthPlus",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop"
-    }
+    },
+    {
+      quote: "Their SEO and AI search work brought us to the first page of Google in under 3 months. Incredible results from a talented team.",
+      name: "Arjun Reddy",
+      role: "CEO, TechNova",
+    },
+    {
+      quote: "Working with Alpha Zeta World was smooth from day one. They delivered a fast, scalable digital platform for our business.",
+      name: "Sneha Kapoor",
+      role: "Product Lead, FinEdge",
+    },
   ];
+
+  const [startIndex, setStartIndex] = useState(0);
+  const visibleCount = 2;
+
+  const nextSlide = () => {
+    setStartIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevSlide = () => {
+    setStartIndex((prev) =>
+      prev === 0 ? testimonials.length - 1 : prev - 1
+    );
+  };
+
+  const visibleTestimonials = Array.from({ length: visibleCount }, (_, i) => {
+    return testimonials[(startIndex + i) % testimonials.length];
+  });
 
   return (
     <>
       <style>{`
-        /* ================= CSS STYLES ================= */
         .cf-section {
           width: 100%;
-          background-color: #FAFAFA;
+          background-color: #F4F7FB;
           padding: 80px 24px;
           font-family: 'Inter', system-ui, -apple-system, sans-serif;
           box-sizing: border-box;
@@ -34,12 +58,13 @@ const ClientFeedback: React.FC = () => {
           margin: 0 auto;
         }
 
-        /* --- Header Section --- */
         .cf-header {
           display: flex;
           justify-content: space-between;
           align-items: flex-end;
           margin-bottom: 40px;
+          gap: 16px;
+          flex-wrap: wrap;
         }
 
         .cf-title-wrap {
@@ -52,7 +77,7 @@ const ClientFeedback: React.FC = () => {
           font-size: 12px;
           font-weight: 700;
           letter-spacing: 0.15em;
-          color: #1A4D3F;
+          color: #007BFF;
           text-transform: uppercase;
         }
 
@@ -60,12 +85,11 @@ const ClientFeedback: React.FC = () => {
           font-size: 32px;
           line-height: 1.2;
           font-weight: 700;
-          color: #111827;
+          color: #0F2044;
           margin: 0;
           letter-spacing: -0.02em;
         }
 
-        /* Arrow Buttons */
         .cf-nav-buttons {
           display: flex;
           gap: 12px;
@@ -75,23 +99,23 @@ const ClientFeedback: React.FC = () => {
           width: 40px;
           height: 40px;
           border-radius: 50%;
-          border: 1px solid #e5e7eb;
+          border: 1px solid #D6E4F0;
           background-color: white;
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          color: #1A4D3F;
+          color: #007BFF;
           transition: all 0.2s ease;
         }
 
         .cf-nav-btn:hover {
-          background-color: #1A4D3F;
+          background-color: #007BFF;
           color: white;
-          border-color: #1A4D3F;
+          border-color: #007BFF;
+          transform: translateY(-2px);
         }
 
-        /* --- Testimonials Grid --- */
         .cf-grid {
           display: grid;
           grid-template-columns: 1fr;
@@ -100,59 +124,79 @@ const ClientFeedback: React.FC = () => {
 
         .cf-card {
           background-color: white;
-          border: 1px solid #f3f4f6;
+          border: 1px solid #E6EEF7;
           border-radius: 12px;
           padding: 32px;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+          box-shadow: 0 1px 3px rgba(15, 32, 68, 0.02);
           display: flex;
-          gap: 20px;
-          transition: all 0.3s ease;
-          align-items: flex-start;
+          flex-direction: column;
+          gap: 24px;
+          transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+          animation: cfCardIn 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .cf-card::before {
+          content: "“";
+          position: absolute;
+          top: -30px;
+          right: 10px;
+          font-size: 140px;
+          line-height: 1;
+          font-family: Georgia, serif;
+          color: rgba(0, 123, 255, 0.08);
+          pointer-events: none;
         }
 
         .cf-card:hover {
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 10px 25px rgba(0, 123, 255, 0.08);
           transform: translateY(-2px);
+          border-color: #007BFF;
         }
 
-        /* Avatar */
-        .cf-avatar {
-          width: 64px;
-          height: 64px;
-          border-radius: 50%;
-          object-fit: cover;
-          flex-shrink: 0;
-        }
-
-        /* Content */
-        .cf-content {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
+        @keyframes cfCardIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px) scale(0.98);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
         }
 
         .cf-quote {
           font-size: 15px;
-          color: #4b5563;
-          line-height: 1.6;
-          margin: 0 0 20px 0;
+          color: #4E5963;
+          line-height: 1.7;
+          margin: 0;
           font-style: normal;
+          position: relative;
+          z-index: 1;
+        }
+
+        .cf-author {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          padding-top: 16px;
+          border-top: 1px solid #E6EEF7;
         }
 
         .cf-author-name {
           font-size: 15px;
           font-weight: 700;
-          color: #111827;
-          margin: 0 0 4px 0;
+          color: #0F2044;
+          margin: 0;
         }
 
         .cf-author-role {
           font-size: 13px;
-          color: #6b7280;
+          color: #4E5963;
           margin: 0;
         }
 
-        /* --- MEDIA QUERIES (Responsive) --- */
         @media (min-width: 1024px) {
           .cf-title {
             font-size: 40px;
@@ -167,7 +211,6 @@ const ClientFeedback: React.FC = () => {
       <section className="cf-section">
         <div className="cf-container">
           
-          {/* --- Header Section --- */}
           <div className="cf-header">
             <div className="cf-title-wrap">
               <span className="cf-subtitle">Client Feedback</span>
@@ -175,37 +218,38 @@ const ClientFeedback: React.FC = () => {
             </div>
             
             <div className="cf-nav-buttons">
-              <button className="cf-nav-btn" aria-label="Previous testimonial">
+              <button
+                className="cf-nav-btn"
+                aria-label="Previous testimonial"
+                onClick={prevSlide}
+                type="button"
+              >
                 <ArrowLeft size={18} strokeWidth={2.5} />
               </button>
-              <button className="cf-nav-btn" aria-label="Next testimonial">
+
+              <button
+                className="cf-nav-btn"
+                aria-label="Next testimonial"
+                onClick={nextSlide}
+                type="button"
+              >
                 <ArrowRight size={18} strokeWidth={2.5} />
               </button>
             </div>
           </div>
 
-          {/* --- Testimonials Grid --- */}
           <div className="cf-grid">
-            {testimonials.map((item, index) => (
-              <div key={index} className="cf-card">
-                
-                {/* Avatar Image */}
-                <img 
-                  src={item.image} 
-                  alt={item.name} 
-                  className="cf-avatar"
-                />
-                
-                {/* Quote & Author */}
-                <div className="cf-content">
-                  <p className="cf-quote">"{item.quote}"</p>
-                  
-                  <div>
-                    <h4 className="cf-author-name">{item.name}</h4>
-                    <p className="cf-author-role">{item.role}</p>
-                  </div>
-                </div>
+            {visibleTestimonials.map((item, index) => (
+              <div
+                key={`${startIndex}-${index}`}
+                className="cf-card"
+              >
+                <p className="cf-quote">"{item.quote}"</p>
 
+                <div className="cf-author">
+                  <h4 className="cf-author-name">{item.name}</h4>
+                  <p className="cf-author-role">{item.role}</p>
+                </div>
               </div>
             ))}
           </div>

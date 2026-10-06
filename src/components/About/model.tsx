@@ -24,7 +24,6 @@ const styles = `
     gap: 50px;
   }
 
-
   .story-images-wrapper {
     flex: 1;
     width: 100%;
@@ -38,7 +37,7 @@ const styles = `
     height: 250px;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(15, 32, 68, 0.1);
   }
 
   .story-img-grid {
@@ -52,7 +51,7 @@ const styles = `
     height: 220px;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(15, 32, 68, 0.1);
   }
 
   .story-img-large img,
@@ -62,7 +61,6 @@ const styles = `
     object-fit: cover;
     display: block;
   }
-
 
   .story-content-wrapper {
     flex: 1;
@@ -83,33 +81,33 @@ const styles = `
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.2em;
-    color: #64748b;
+    color: #007BFF;
     text-transform: uppercase;
   }
 
   .story-line {
     height: 1px;
     width: 48px;
-    background-color: #cbd5e1;
+    background-color: #007BFF;
   }
 
   .story-title {
     font-size: 48px;
     font-weight: 800;
-    color: #0f172a;
+    color: #0F2044;
     line-height: 1.2;
     margin: 0 0 24px 0;
   }
 
   .story-title-highlight {
-    color: #1a3c34;
+    color: #007BFF;
   }
 
   .story-text {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    color: #475569;
+    color: #4E5963;
     font-size: 15px;
     line-height: 1.6;
     margin-bottom: 40px;
@@ -127,7 +125,7 @@ const styles = `
   .story-signature {
     font-family: 'Dancing Script', cursive;
     font-size: 36px;
-    color: #1a3c34;
+    color: #007BFF;
     margin: 0 0 4px 0;
     font-weight: 700;
   }
@@ -135,11 +133,10 @@ const styles = `
   .story-signature-sub {
     font-size: 14px;
     font-weight: 500;
-    color: #64748b;
+    color: #4E5963;
     margin: 0;
   }
 
-  
   @media (max-width: 1024px) {
     .our-story-container {
       flex-direction: column;
@@ -155,7 +152,6 @@ const styles = `
       height: 180px;
     }
   }
-
 
   @media (max-width: 768px) {
     .our-story-section {
@@ -196,10 +192,8 @@ const OurStory: React.FC = () => {
       <section className="our-story-section">
         <div className="our-story-container">
           
-          {/* LEFT SIDE: Image Grid */}
           <div className="story-images-wrapper">
             
-            {/* Top Large Image */}
             <div className="story-img-large">
               <img 
                 src="/Images/story1.webp" 
@@ -207,7 +201,6 @@ const OurStory: React.FC = () => {
               />
             </div>
 
-            {/* Bottom Two Images */}
             <div className="story-img-grid">
               
               <div className="story-img-small">
@@ -227,7 +220,6 @@ const OurStory: React.FC = () => {
             </div>
           </div>
 
-          {/* RIGHT SIDE: Text Content */}
           <div className="story-content-wrapper">
             
             <div className="story-subtitle-wrapper">

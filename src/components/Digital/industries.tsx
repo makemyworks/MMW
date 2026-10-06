@@ -6,32 +6,38 @@ const IndustriesWeServe: React.FC = () => {
     {
       icon: <Heart size={22} strokeWidth={2.5} />,
       title: "Healthcare",
-      subtitle: "Hospitals, Clinics & Wellness Brands"
+      subtitle: "Hospitals, Clinics & Wellness Brands",
+      image: "https://i.pinimg.com/736x/be/8b/7e/be8b7ecd97bbf990f52b3883d58f41e2.jpg"
     },
     {
       icon: <Home size={22} strokeWidth={2.5} />,
       title: "Real Estate",
-      subtitle: "Builders, Realtors & Property Platforms"
+      subtitle: "Builders, Realtors & Property Platforms",
+      image: "https://i.pinimg.com/1200x/e1/f6/c0/e1f6c056a4055ff3422ee0d85a89cec1.jpg"
     },
     {
       icon: <ShoppingCart size={22} strokeWidth={2.5} />,
       title: "E-commerce",
-      subtitle: "Online Stores & Marketplaces"
+      subtitle: "Online Stores & Marketplaces",
+      image: "https://i.pinimg.com/736x/25/d7/2f/25d72fd718218d1367c2162054f9cc5d.jpg"
     },
     {
       icon: <GraduationCap size={22} strokeWidth={2.5} />,
       title: "Education",
-      subtitle: "Schools, Colleges & EdTech Brands"
+      subtitle: "Schools, Colleges & EdTech Brands",
+      image: "https://i.pinimg.com/736x/a5/71/f5/a571f5225ece8b4bd570a4bad355e0ba.jpg"
     },
     {
       icon: <Landmark size={22} strokeWidth={2.5} />,
       title: "Finance",
-      subtitle: "Banks, Fintech & Financial Services"
+      subtitle: "Banks, Fintech & Financial Services",
+      image: "https://i.pinimg.com/736x/33/8d/19/338d1967513402cdd7d148a62438d43c.jpg"
     },
     {
       icon: <Rocket size={22} strokeWidth={2.5} />,
       title: "Startups",
-      subtitle: "Innovative Ideas to Scalable Brands"
+      subtitle: "Innovative Ideas to Scalable Brands",
+      image: "https://i.pinimg.com/1200x/7f/56/b8/7f56b82d4a30dbbe671442218a2d6fce.jpg"
     }
   ];
 
@@ -41,7 +47,7 @@ const IndustriesWeServe: React.FC = () => {
         /* ================= CSS STYLES ================= */
         .iws-section {
           width: 100%;
-          background-color: #FAFAFA;
+          background-color: #F4F7FB;
           padding: 80px 24px;
           font-family: 'Inter', system-ui, -apple-system, sans-serif;
           box-sizing: border-box;
@@ -64,7 +70,7 @@ const IndustriesWeServe: React.FC = () => {
           font-size: 12px;
           font-weight: 700;
           letter-spacing: 0.15em;
-          color: #1A4D3F;
+          color: #007BFF;
           text-transform: uppercase;
           margin-bottom: 12px;
           display: block;
@@ -74,7 +80,7 @@ const IndustriesWeServe: React.FC = () => {
           font-size: 32px;
           line-height: 1.2;
           font-weight: 700;
-          color: #111827;
+          color: #0F2044;
           margin: 0;
           letter-spacing: -0.02em;
         }
@@ -86,7 +92,7 @@ const IndustriesWeServe: React.FC = () => {
 
         .iws-description {
           font-size: 14px;
-          color: #6b7280;
+          color: #4E5963;
           line-height: 1.6;
           max-width: 420px;
           margin: 0;
@@ -101,54 +107,62 @@ const IndustriesWeServe: React.FC = () => {
 
         .iws-card {
           background-color: white;
-          border: 1px solid #f3f4f6;
+          border: 1px solid #E6EEF7;
           border-radius: 10px;
-          padding: 24px 16px;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+          overflow: hidden;
+          box-shadow: 0 1px 3px rgba(15, 32, 68, 0.02);
           transition: all 0.3s ease;
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center;
           text-align: center;
-          gap: 12px;
         }
 
         .iws-card:hover {
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 8px 20px rgba(0, 123, 255, 0.08);
           transform: translateY(-2px);
-          border-color: #e5e7eb;
+          border-color: #007BFF;
+        }
+
+        /* Image on top — height increased */
+        .iws-card-image {
+          width: 100%;
+          height: 170px;
+          object-fit: cover;
+          display: block;
         }
 
         .iws-icon-wrap {
           width: 48px;
           height: 48px;
           border-radius: 50%;
-          background-color: #E8F3EF;
+          background-color: #E6F0FF;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #1A4D3F;
-          margin-bottom: 4px;
+          color: #007BFF;
+          margin-top: 16px;
+          margin-bottom: 12px;
         }
 
         .iws-text-wrap {
           display: flex;
           flex-direction: column;
           gap: 4px;
+          padding: 0 16px 22px;
         }
 
         .iws-name {
           font-size: 15px;
           font-weight: 700;
-          color: #111827;
+          color: #0F2044;
           margin: 0;
           line-height: 1.2;
         }
 
         .iws-type {
           font-size: 12px;
-          color: #6b7280;
+          color: #4E5963;
           font-weight: 500;
           margin: 0;
           line-height: 1.4;
@@ -158,6 +172,10 @@ const IndustriesWeServe: React.FC = () => {
         @media (min-width: 640px) {
           .iws-grid {
             grid-template-columns: repeat(3, 1fr);
+          }
+
+          .iws-card-image {
+            height: 190px;
           }
         }
 
@@ -180,6 +198,23 @@ const IndustriesWeServe: React.FC = () => {
           .iws-grid {
             grid-template-columns: repeat(6, 1fr);
           }
+
+          .iws-card-image {
+            height: 160px;
+          }
+
+          .iws-icon-wrap {
+            width: 44px;
+            height: 44px;
+          }
+
+          .iws-name {
+            font-size: 14px;
+          }
+
+          .iws-type {
+            font-size: 11px;
+          }
         }
       `}</style>
 
@@ -193,7 +228,7 @@ const IndustriesWeServe: React.FC = () => {
             <div>
               <span className="iws-subtitle">Industries We Help</span>
               <h2 className="iws-title">
-                Industries We Serve
+                Digital Solutions for Every Industry
               </h2>
             </div>
 
@@ -212,6 +247,13 @@ const IndustriesWeServe: React.FC = () => {
             {industries.map((industry, index) => (
               <div key={index} className="iws-card">
                 
+                {/* Image on top */}
+                <img 
+                  src={industry.image} 
+                  alt={industry.title}
+                  className="iws-card-image"
+                />
+
                 {/* Icon Circle */}
                 <div className="iws-icon-wrap">
                   {industry.icon}

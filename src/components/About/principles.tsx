@@ -1,12 +1,9 @@
 import React from 'react';
 
-// ==========================================
-// 1. CSS STYLES
-// ==========================================
 const styles = `
   .values-section {
     width: 100%;
-    background-color: #FAFAF9;
+    background-color: #F4F7FB;
     padding: 60px 20px 80px 20px;
     font-family: system-ui, -apple-system, sans-serif;
     box-sizing: border-box;
@@ -18,9 +15,6 @@ const styles = `
     margin: 0 auto;
   }
 
-  /* ============================
-     HEADER SECTION
-     ============================ */
   .values-header {
     display: grid;
     grid-template-columns: 1fr;
@@ -36,13 +30,11 @@ const styles = `
     }
   }
 
-
   .values-header-left {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
-
 
   .values-label {
     display: flex;
@@ -51,25 +43,23 @@ const styles = `
   }
 
   .values-label span {
-    color: #0F3D2E;
+    color: #0F2044;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
     font-size: 13px;
   }
 
-
   .values-line {
     height: 1px;
     width: 40px;
-    background-color: #9CA3AF;
+    background-color: #007BFF;
   }
-
 
   .values-heading {
     font-size: 40px;
     font-weight: 800;
-    color: #111827;
+    color: #0F2044;
     margin: 0;
     line-height: 1.1;
     letter-spacing: -1px;
@@ -79,23 +69,19 @@ const styles = `
     .values-heading { font-size: 52px; }
   }
 
-  
   .values-header-right {
     display: flex;
     align-items: flex-end;
   }
 
   .values-description {
-    color: #4B5563;
+    color: #4E5963;
     font-size: 16px;
     line-height: 1.6;
     margin: 0;
     max-width: 480px;
   }
 
-  /* ============================
-     VALUES GRID
-     ============================ */
   .values-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -110,7 +96,6 @@ const styles = `
     .values-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
   }
 
-  /* Individual Value Item */
   .value-item {
     display: flex;
     flex-direction: column;
@@ -120,7 +105,6 @@ const styles = `
     padding: 0 16px;
   }
 
-  /* Vertical Divider Line (Desktop only) */
   .value-item:not(:last-child)::after {
     content: '';
     position: absolute;
@@ -128,7 +112,7 @@ const styles = `
     top: 20%;
     height: 60%;
     width: 1px;
-    background-color: #E5E7EB;
+    background-color: #D6E4F0;
     display: none;
   }
 
@@ -141,7 +125,7 @@ const styles = `
   .value-icon-wrapper {
     width: 72px;
     height: 72px;
-    background-color: #E8F0EA;
+    background-color: #E6F0FF;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -157,24 +141,21 @@ const styles = `
   .value-title {
     font-size: 18px;
     font-weight: 700;
-    color: #111827;
+    color: #0F2044;
     margin: 0 0 10px 0;
   }
 
   .value-desc {
     font-size: 14px;
-    color: #6B7280;
+    color: #4E5963;
     line-height: 1.6;
     margin: 0;
     max-width: 240px;
   }
 `;
 
-// ==========================================
-// 2. SVG ICONS
-// ==========================================
 const LightbulbIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0F3D2E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#007BFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
     <path d="M9 18h6" />
     <path d="M10 22h4" />
@@ -182,7 +163,7 @@ const LightbulbIcon = () => (
 );
 
 const UsersGroupIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0F3D2E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#007BFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
     <circle cx="9" cy="7" r="4" />
     <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
@@ -191,14 +172,14 @@ const UsersGroupIcon = () => (
 );
 
 const AwardIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0F3D2E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#007BFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="8" r="6" />
     <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
   </svg>
 );
 
 const HeartHandshakeIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0F3D2E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#007BFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
     <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66" />
     <path d="m18 15-2-2" />
@@ -230,9 +211,6 @@ const valuesData = [
   }
 ];
 
-// ==========================================
-// 4. MAIN COMPONENT
-// ==========================================
 const OurValuesSection = () => {
   return (
     <>
@@ -241,7 +219,6 @@ const OurValuesSection = () => {
       <section className="values-section">
         <div className="values-container">
           
-          {/* Header */}
           <div className="values-header">
             
             <div className="values-header-left">
@@ -265,7 +242,6 @@ const OurValuesSection = () => {
             </div>
           </div>
 
-          {/* Values Grid */}
           <div className="values-grid">
             {valuesData.map((value, index) => (
               <div className="value-item" key={index}>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -9,259 +10,265 @@ import {
   PieChart, 
   ArrowRight 
 } from 'lucide-react';
+=======
+import React from "react";
+>>>>>>> 1fbc728 (theme update)
 
-const ServicesWeOffer: React.FC = () => {
-  const services = [
+const DigitalSolutions: React.FC = () => {
+  const solutions = [
     {
-      icon: <Monitor size={22} strokeWidth={2.5} />,
-      title: "Digital Marketing",
-      description: "SEO, social media, paid ads and content marketing to boost your online presence."
+      icon: "code",
+      title: "Web & App Development",
+      description: "Custom websites and web applications tailored to your business goals.",
+      image: "/Images/web1.png",
+      features: ["Custom Development", "Scalable Architecture", "Modern Technologies"],
     },
     {
-      icon: <BarChart2 size={22} strokeWidth={2.5} />,
-      title: "Performance Marketing",
-      description: "Data-driven campaigns focused on measurable results and higher ROI."
+      icon: "gear",
+      title: "Business Automation",
+      description: "Automate repetitive tasks and streamline your business workflows.",
+      image: "/Images/web2.png",
+      features: ["Workflow Automation", "Integrations", "Save Time & Cost"],
     },
     {
-      icon: <PenTool size={22} strokeWidth={2.5} />,
-      title: "Brand Strategy & Consulting",
-      description: "Build a strong brand identity and positioning for long-term growth."
+      icon: "database",
+      title: "CRM Solutions",
+      description: "Manage leads, customers and sales with a powerful CRM system.",
+      image: "/Images/web3.png",
+      features: ["Lead Management", "Sales Tracking", "Reports & Analytics"],
     },
     {
-      icon: <Users size={22} strokeWidth={2.5} />,
-      title: "Social Media Management",
-      description: "Engage your audience with creative content and consistent brand communication."
+      icon: "cloud",
+      title: "Cloud & IT Solutions",
+      description: "Scalable cloud infrastructure and IT solutions for business growth.",
+      image: "/Images/web4.png",
+      features: ["Cloud Deployment", "Secure Infrastructure", "24/7 Support"],
     },
-    {
-      icon: <FileText size={22} strokeWidth={2.5} />,
-      title: "Content Creation",
-      description: "High-quality content that connects with your audience and drives action."
-    },
-    {
-      icon: <PieChart size={22} strokeWidth={2.5} />,
-      title: "Analytics & Reporting",
-      description: "Track performance with detailed reports and insights for continuous improvement."
-    }
   ];
 
   return (
     <>
       <style>{`
-        /* ================= CSS STYLES ================= */
-        .swo-section {
+        * { box-sizing: border-box; }
+
+        .dsc-section {
           width: 100%;
-          background-color: #FAFAFA;
-   
-          padding: 10px 24px 60px;
+          background: #ffffff;
+          padding: 50px 24px 55px;
           font-family: 'Inter', system-ui, -apple-system, sans-serif;
-          box-sizing: border-box;
         }
 
-        .swo-container {
+        .dsc-container {
           max-width: 1280px;
           margin: 0 auto;
         }
 
-        /* --- Header Section --- */
-        .swo-header {
+        /* ---------- Header ---------- */
+        .dsc-header {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 24px;
-          margin-bottom: 24px;
+          gap: 18px;
+          margin-bottom: 32px;
         }
 
-        .swo-subtitle {
-          font-size: 12px;
+        .dsc-eyebrow {
+          font-size: 11px;
           font-weight: 700;
-          letter-spacing: 0.15em;
-          color: #1A4D3F;
+          letter-spacing: 0.18em;
+          color: #007BFF;
           text-transform: uppercase;
-          margin-bottom: 12px;
-          display: block;
+          margin-bottom: 10px;
         }
 
-        .swo-title {
-          font-size: 32px;
-          line-height: 1.2;
+        .dsc-title {
+          font-size: clamp(26px, 3vw, 38px);
+          line-height: 1.1;
           font-weight: 700;
-          color: #111827;
-          margin: 0;
+          color: #0F2044;
           letter-spacing: -0.02em;
-        }
-
-        .swo-description-wrap {
-          display: flex;
-          align-items: center;
-        }
-
-        .swo-description {
-          font-size: 14px;
-          color: #6b7280;
-          line-height: 1.6;
-          max-width: 450px;
           margin: 0;
         }
 
-        /* --- Services Grid --- */
-        .swo-grid {
+        .dsc-desc {
+          font-size: 14px;
+          line-height: 1.55;
+          color: #4E5963;
+          margin: 0;
+          max-width: 520px;
+        }
+
+        /* ---------- Grid ---------- */
+        .dsc-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 20px;
+          gap: 16px;
         }
 
-        .swo-card {
-          background-color: white;
-          border: 1px solid #f3f4f6;
-          border-radius: 10px;
-          padding: 24px;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-          transition: all 0.3s ease;
+        /* ---------- Card ---------- */
+        .dsc-card {
+          background: #ffffff;
+          border: 1px solid #E6EEF7;
+          border-radius: 14px;
+          padding: 20px 18px 22px;
           display: flex;
           flex-direction: column;
-          cursor: pointer;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* HOVER EFFECT: Card becomes Dark Green */
-        .swo-card:hover {
-          background-color: #1A4D3F;
-          border-color: #1A4D3F;
-          box-shadow: 0 10px 25px rgba(26, 77, 63, 0.3);
+        .dsc-card:hover {
           transform: translateY(-4px);
+          box-shadow: 0 16px 32px -14px rgba(15, 32, 68, 0.12);
         }
 
-        .swo-icon-wrap {
-          width: 44px;
-          height: 44px;
+        /* ---------- Icon badge ---------- */
+        .dsc-icon-wrap {
+          width: 48px;
+          height: 48px;
           border-radius: 50%;
-          background-color: #E8F3EF;
+          background: radial-gradient(circle at 30% 25%, #EAF3FF 0%, #D6E4F0 100%);
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #1A4D3F;
-          margin-bottom: 20px;
-          transition: all 0.3s ease;
+          margin-bottom: 14px;
+          color: #007BFF;
         }
 
-        /* HOVER: Icon Circle changes */
-        .swo-card:hover .swo-icon-wrap {
-          background-color: rgba(255, 255, 255, 0.15);
-          color: #ffffff;
+        .dsc-icon-wrap svg {
+          width: 22px;
+          height: 22px;
         }
 
-        .swo-card-title {
+        /* ---------- Text ---------- */
+        .dsc-card-title {
           font-size: 16px;
           font-weight: 700;
-          color: #111827;
-          margin: 0 0 10px 0;
-          line-height: 1.3;
-          transition: color 0.3s ease;
+          color: #0F2044;
+          margin: 0 0 8px;
+          letter-spacing: -0.2px;
         }
 
-        /* HOVER: Title becomes White */
-        .swo-card:hover .swo-card-title {
-          color: #ffffff;
+        .dsc-card-desc {
+          font-size: 13px;
+          line-height: 1.5;
+          color: #5A6673;
+          margin: 0 0 16px;
         }
 
-        .swo-card-desc {
-          font-size: 14px;
-          color: #6b7280;
-          line-height: 1.6;
-          margin: 0 0 20px 0;
-          flex-grow: 1;
-          transition: color 0.3s ease;
+        /* ---------- Image preview ---------- */
+        .dsc-card-image {
+          width: 100%;
+          border-radius: 9px;
+          overflow: hidden;
+          background: #F4F7FB;
+          margin-bottom: 16px;
         }
 
-        /* HOVER: Description becomes White */
-        .swo-card:hover .swo-card-desc {
-          color: rgba(255, 255, 255, 0.85);
+        .dsc-card-image img {
+          display: block;
+          width: 100%;
+          height: auto;
+          object-fit: cover;
         }
 
-        .swo-learn-more {
+        /* ---------- Features list ---------- */
+        .dsc-features {
+          list-style: none;
+          padding: 0;
+          margin: auto 0 0;
+          display: flex;
+          flex-direction: column;
+          gap: 9px;
+        }
+
+        .dsc-feature-item {
           display: flex;
           align-items: center;
-          gap: 6px;
-          font-size: 13px;
-          font-weight: 600;
-          color: #111827;
-          text-decoration: none;
-          margin-top: auto;
-          transition: color 0.3s ease;
+          gap: 9px;
+          font-size: 12.5px;
+          color: #0F2044;
+          font-weight: 500;
         }
 
-        /* HOVER: Learn More becomes White */
-        .swo-card:hover .swo-learn-more {
-          color: #ffffff;
+        .dsc-check {
+          flex-shrink: 0;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: #007BFF;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        .swo-learn-more svg {
-          transition: transform 0.2s ease;
+        .dsc-check svg {
+          width: 10px;
+          height: 10px;
         }
 
-        .swo-learn-more:hover svg {
-          transform: translateX(4px);
-        }
-
-        /* --- MEDIA QUERIES (Responsive) --- */
+        /* ---------- Responsive ---------- */
         @media (min-width: 768px) {
-          .swo-grid {
+          .dsc-grid {
             grid-template-columns: repeat(2, 1fr);
           }
         }
 
         @media (min-width: 1024px) {
-          .swo-header {
+          .dsc-section {
+            padding: 60px 24px 65px;
+          }
+
+          .dsc-header {
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
+            align-items: flex-end;
+            gap: 50px;
+            margin-bottom: 38px;
           }
 
-          .swo-title {
-            font-size: 40px;
+          .dsc-desc {
+            font-size: 14.5px;
           }
 
-          .swo-description-wrap {
-            justify-content: flex-end;
+          .dsc-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
           }
+        }
 
-          .swo-grid {
-            grid-template-columns: repeat(3, 1fr);
-          }
+        @media (max-width: 640px) {
+          .dsc-section { padding: 40px 18px 45px; }
+          .dsc-card { padding: 18px 16px 20px; }
         }
       `}</style>
 
-      <section className="swo-section">
-        <div className="swo-container">
-          
-          {/* --- Header Section --- */}
-          <div className="swo-header">
-            
-            {/* Left: Title */}
+      <section className="dsc-section">
+        <div className="dsc-container">
+
+          {/* ---------- Header ---------- */}
+          <div className="dsc-header">
             <div>
-              <span className="swo-subtitle">Our Digital Solutions</span>
-              <h2 className="swo-title">
-                Services We Offer
+              <div className="dsc-eyebrow">Our Digital Solutions</div>
+              <h2 className="dsc-title">
+                All-in-One Solutions for
+                <br />
+                a Connected Business
               </h2>
             </div>
-
-            {/* Right: Paragraph */}
-            <div className="swo-description-wrap">
-              <p className="swo-description">
-                A complete range of digital solutions to help your brand 
-                grow and stay ahead in a competitive market.
-              </p>
-            </div>
-            
+            <p className="dsc-desc">
+              From web and mobile solutions to automation, CRM and
+              cloud infrastructure, we help you build a stronger, more
+              efficient and future-ready business.
+            </p>
           </div>
 
-          {/* --- Services Grid Section --- */}
-          <div className="swo-grid">
-            {services.map((service, index) => (
-              <div key={index} className="swo-card">
-                
-                {/* Icon Circle */}
-                <div className="swo-icon-wrap">
-                  {service.icon}
+          {/* ---------- Cards ---------- */}
+          <div className="dsc-grid">
+            {solutions.map((s, i) => (
+              <div className="dsc-card" key={i}>
+
+                <div className="dsc-icon-wrap">
+                  <SolutionIcon name={s.icon} />
                 </div>
+<<<<<<< HEAD
                 
                 {/* Text Content */}
                 <h3 className="swo-card-title">{service.title}</h3>
@@ -273,6 +280,29 @@ const ServicesWeOffer: React.FC = () => {
                   <ArrowRight size={14} strokeWidth={2.5} />
                 </Link>
                 
+=======
+
+                <h3 className="dsc-card-title">{s.title}</h3>
+                <p className="dsc-card-desc">{s.description}</p>
+
+                <div className="dsc-card-image">
+                  <img src={s.image} alt={`${s.title} preview`} />
+                </div>
+
+                <ul className="dsc-features">
+                  {s.features.map((f, j) => (
+                    <li className="dsc-feature-item" key={j}>
+                      <span className="dsc-check">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M5 12l5 5L20 7" />
+                        </svg>
+                      </span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+>>>>>>> 1fbc728 (theme update)
               </div>
             ))}
           </div>
@@ -283,4 +313,42 @@ const ServicesWeOffer: React.FC = () => {
   );
 };
 
-export default ServicesWeOffer;
+/* ---------- Top icons ---------- */
+const SolutionIcon: React.FC<{ name: string }> = ({ name }) => {
+  switch (name) {
+    case "code":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="4" width="20" height="14" rx="2" />
+          <path d="M8 21h8M12 18v3" />
+          <path d="M9 9l-2 2 2 2M15 9l2 2-2 2" />
+        </svg>
+      );
+    case "gear":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="3" />
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+        </svg>
+      );
+    case "database":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <ellipse cx="12" cy="5" rx="9" ry="3" />
+          <path d="M3 5v6c0 1.66 4.03 3 9 3s9-1.34 9-3V5" />
+          <path d="M3 11v6c0 1.66 4.03 3 9 3s9-1.34 9-3v-6" />
+        </svg>
+      );
+    case "cloud":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M17.5 19a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.6-1.5A4.5 4.5 0 0 0 6.5 19h11z" />
+          <path d="M12 14v4M10 16h4" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+};
+
+export default DigitalSolutions;

@@ -1,12 +1,9 @@
 import React from 'react';
 
-// ==========================================
-// 1. CSS STYLES
-// ==========================================
 const styles = `
   .different-section {
     width: 100%;
-    background-color: #FAFAF9;
+    background-color: #F4F7FB;
     padding: 80px 20px;
     font-family: system-ui, -apple-system, sans-serif;
     box-sizing: border-box;
@@ -18,9 +15,6 @@ const styles = `
     margin: 0 auto;
   }
 
-  /* ============================
-     HEADER SECTION
-     ============================ */
   .different-header {
     text-align: center;
     margin-bottom: 64px;
@@ -38,7 +32,7 @@ const styles = `
   }
 
   .different-label span {
-    color: #0F3D2E;
+    color: #007BFF;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -48,15 +42,14 @@ const styles = `
   .different-line {
     height: 1px;
     width: 40px;
-    background-color: #9CA3AF;
+    background-color: #007BFF;
   }
 
- 
   .different-heading {
     font-family: Georgia, 'Times New Roman', serif;
     font-size: 38px;
     font-weight: 700;
-    color: #111827;
+    color: #0F2044;
     margin: 0 0 16px 0;
     line-height: 1.2;
     letter-spacing: -0.5px;
@@ -68,11 +61,11 @@ const styles = `
   }
 
   .different-highlight {
-    color: #0F3D2E;
+    color: #007BFF;
   }
 
   .different-description {
-    color: #4B5563;
+    color: #4E5963;
     font-size: 17px;
     line-height: 1.6;
     max-width: 650px;
@@ -80,9 +73,6 @@ const styles = `
     text-align: center;
   }
 
-  /* ============================
-     CARDS GRID
-     ============================ */
   .different-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -97,7 +87,6 @@ const styles = `
     .different-grid { grid-template-columns: repeat(4, 1fr); gap: 0; }
   }
 
-  /* Individual Card */
   .diff-card {
     display: flex;
     flex-direction: column;
@@ -105,7 +94,6 @@ const styles = `
     padding: 0 24px;
   }
 
-  /* Vertical Divider Line (Desktop only) */
   .diff-card:not(:last-child)::after {
     content: '';
     position: absolute;
@@ -113,7 +101,7 @@ const styles = `
     top: 0;
     height: 100%;
     width: 1px;
-    background-color: #E5E7EB;
+    background-color: #D6E4F0;
     display: none;
   }
 
@@ -123,7 +111,6 @@ const styles = `
     }
   }
 
-  /* Top Row: Icon + Number */
   .card-top {
     display: flex;
     align-items: center;
@@ -134,7 +121,7 @@ const styles = `
   .icon-wrapper {
     width: 80px;
     height: 80px;
-    background-color: #E8F0EA;
+    background-color: #E6F0FF;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -151,36 +138,32 @@ const styles = `
   .card-number {
     font-size: 28px;
     font-weight: 300;
-    color: #9CA3AF;
+    color: #007BFF;
     line-height: 1;
   }
 
   .number-line {
     width: 40px;
     height: 1px;
-    background-color: #9CA3AF;
+    background-color: #007BFF;
   }
 
-  /* Text Content */
   .card-title {
     font-family: Georgia, 'Times New Roman', serif;
     font-size: 22px;
     font-weight: 700;
-    color: #111827;
+    color: #0F2044;
     margin: 0 0 12px 0;
     line-height: 1.3;
   }
 
   .card-desc {
     font-size: 15px;
-    color: #4B5563;
+    color: #4E5963;
     line-height: 1.6;
     margin: 0;
   }
 
-  /* ============================
-     MOBILE ADJUSTMENTS
-     ============================ */
   @media (max-width: 1024px) {
     .different-section {
       padding: 60px 16px;
@@ -198,7 +181,7 @@ const styles = `
     .diff-card { 
       padding: 0; 
       padding-bottom: 32px;
-      border-bottom: 1px solid #E5E7EB;
+      border-bottom: 1px solid #D6E4F0;
     }
 
     .diff-card:last-child {
@@ -224,29 +207,26 @@ const styles = `
   }
 `;
 
-// ==========================================
-// 2. SVG ICONS
-// ==========================================
 const TargetIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0F3D2E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#007BFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="9" />
     <circle cx="12" cy="12" r="5" />
-    <circle cx="12" cy="12" r="1.5" fill="#0F3D2E" />
+    <circle cx="12" cy="12" r="1.5" fill="#007BFF" />
   </svg>
 );
 
 const ChatIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0F3D2E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#007BFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z" />
     <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" />
   </svg>
 );
 
 const SpeedometerIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0F3D2E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#007BFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <path d="M3.34 19a10 10 0 1 1 17.32 0" />
     <path d="m12 14 4-4" />
-    <circle cx="12" cy="14" r="1.5" fill="#0F3D2E" />
+    <circle cx="12" cy="14" r="1.5" fill="#007BFF" />
     <line x1="5" y1="17" x2="7" y2="17" />
     <line x1="17" y1="17" x2="19" y2="17" />
     <line x1="7" y1="11" x2="8.5" y2="12" />
@@ -254,19 +234,16 @@ const SpeedometerIcon = () => (
 );
 
 const GrowthChartIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0F3D2E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#007BFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <path d="M4 20h16" />
-    <rect x="6" y="13" width="3" height="6" rx="0.5" fill="#0F3D2E" />
-    <rect x="11" y="10" width="3" height="9" rx="0.5" fill="#0F3D2E" />
-    <rect x="16" y="7" width="3" height="12" rx="0.5" fill="#0F3D2E" />
+    <rect x="6" y="13" width="3" height="6" rx="0.5" fill="#007BFF" />
+    <rect x="11" y="10" width="3" height="9" rx="0.5" fill="#007BFF" />
+    <rect x="16" y="7" width="3" height="12" rx="0.5" fill="#007BFF" />
     <path d="M6 9 C 10 5, 14 4, 19 5" />
     <path d="M19 5 L 17 3 M19 5 L 17 7" />
   </svg>
 );
 
-// ==========================================
-// 3. DATA FOR CARDS
-// ==========================================
 const diffData = [
   {
     icon: <TargetIcon />,
@@ -303,7 +280,6 @@ const WhatMakesUsDifferentSection = () => {
       <section className="different-section">
         <div className="different-container">
           
-          {/* Header */}
           <div className="different-header">
             <div className="different-label">
               <div className="different-line"></div>
@@ -311,7 +287,6 @@ const WhatMakesUsDifferentSection = () => {
               <div className="different-line"></div>
             </div>
 
-           
             <h2 className="different-heading">
               A Smarter Approach to <span className="different-highlight">Real Results</span>
             </h2>
@@ -321,12 +296,10 @@ const WhatMakesUsDifferentSection = () => {
             </p>
           </div>
 
-          {/* Cards Grid */}
           <div className="different-grid">
             {diffData.map((item, index) => (
               <div className="diff-card" key={index}>
                 
-                {/* Icon + Number */}
                 <div className="card-top">
                   <div className="icon-wrapper">
                     {item.icon}
@@ -337,7 +310,6 @@ const WhatMakesUsDifferentSection = () => {
                   </div>
                 </div>
 
-                {/* Text Content */}
                 <h3 className="card-title">{item.title}</h3>
                 <p className="card-desc">{item.desc}</p>
 
