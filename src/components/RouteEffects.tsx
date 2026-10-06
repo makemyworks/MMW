@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { pageMeta, services } from "../data/services";
+import { pageMeta } from "../data/site";
 
-function setMeta(desc: string) {
+function setDescription(desc: string) {
   let el = document.querySelector('meta[name="description"]');
   if (!el) {
     el = document.createElement("meta");
@@ -12,31 +12,37 @@ function setMeta(desc: string) {
   el.setAttribute("content", desc);
 }
 
-/** Scrolls to top on page change and sets the page title and description. */
+/** On every page change: scroll to the right place and set the page title + description. */
 export default function RouteEffects() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
     if (hash) {
-      const el = document.getElementById(hash.slice(1));
-      if (el) {
-        el.scrollIntoView();
-        return;
-      }
+      const id = decodeURIComponent(hash.slice(1));
+      let tries = 0;
+      const timer = window.setInterval(() => {
+        const el = document.getElementById(id);
+        tries += 1;
+        if (el) {
+          el.scrollIntoView();
+          window.clearInterval(timer);
+        } else if (tries > 20) {
+          window.clearInterval(timer);
+        }
+      }, 50);
+      return () => window.clearInterval(timer);
     }
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [pathname, hash]);
 
   useEffect(() => {
-    const svc = services.find((s) => pathname === "/services/" + s.slug);
-    if (svc) {
-      document.title = svc.title + " | Alpha Zeta World";
-      setMeta(svc.meta);
-      return;
+    const meta = pageMeta[pathname];
+    if (meta) {
+      document.title = meta.title;
+      setDescription(meta.desc);
+    } else {
+      document.title = "Page not found | Make My Works";
     }
-    const m = pageMeta[pathname];
-    document.title = m ? m.title : "Page not found | Alpha Zeta World";
-    if (m) setMeta(m.desc);
   }, [pathname]);
 
   return null;

@@ -1,47 +1,43 @@
-import { Link } from "react-router-dom";
-import "../components/agency.css";
-import { AgencyCTA } from "../components/AgencyBits";
-
-const work = [
-  { img: "/Images/eco.webp", title: "Furniture E-commerce Website", type: "Website & E-commerce", slug: "ecommerce-business-solutions", text: "A clean online store layout with category browsing, product highlights and a clear path to purchase." },
-  { img: "/Images/hospital.webp", title: "Healthcare Website", type: "Website Development", slug: "website-app-development", text: "A trustworthy hospital site with doctor information, departments and easy appointment booking." },
-  { img: "/Images/dash.webp", title: "Business Dashboard", type: "Web Application", slug: "website-app-development", text: "A lead and sales dashboard that turns numbers into clear charts and simple tables." },
-  { img: "/Images/homemo.webp", title: "AI Video Ads & Social Content", type: "AI & Video", slug: "video-creative-content", text: "Short ads and reels for Instagram, YouTube and TikTok, created with a mix of AI and expert editing." },
-  { img: "/Images/homedigi.webp", title: "Property App Design", type: "UI/UX & App Design", slug: "branding-graphic-design", text: "Mobile and web screens for a real-estate browsing experience." },
-  { img: "/Images/servicecard.webp", title: "Brand Poster & Social Creative", type: "Branding & Graphic Design", slug: "branding-graphic-design", text: "Consistent branded creatives for social media and print." },
-];
+import { CTA, PageHero } from "../components/Bits";
+import { work } from "../data/site";
 
 export default function OurWork() {
   return (
-    <div className="az">
-      <section className="az-hero">
-        <div className="az-wrap">
-          <h1>Our work</h1>
-          <p>A look at the kinds of projects we create across websites, apps, AI content, branding and marketing. These are sample and concept projects that show our style and standard.</p>
-          <div className="az-btns">
-            <Link to="/products-lab" className="az-btn s">See Our Product Lab</Link>
-            <Link to="/contact" className="az-btn p">Start Yours</Link>
-          </div>
-        </div>
-      </section>
+    <>
+      <PageHero
+        eyebrow="Our work"
+        title="The kind of work we create"
+        text="A look at our style across websites, apps, video and design. These are sample and concept projects that show our standard."
+      />
 
-      <section className="az-sec">
-        <div className="az-wrap">
-          <div className="az-grid" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))" }}>
+      <section className="mw-section">
+        <div className="mw-wrap">
+          <div className="mw-grid mw-grid-3">
             {work.map((w) => (
-              <Link key={w.title} to={`/services/${w.slug}`} className="az-card" style={{ padding: "1rem" }}>
-                <img className="az-img" src={w.img} alt={w.title} loading="lazy" />
-                <span className="az-tag">{w.type}</span>
-                <h3>{w.title}</h3>
-                <p>{w.text}</p>
-                <span className="az-more">See this service →</span>
-              </Link>
+              <article key={w.title} className="mw-card mw-work-card">
+                <img src={w.img} alt={w.title} loading="lazy" width={1672} height={941} />
+                <div className="mw-work-body">
+                  <span className="mw-tag">{w.tag}</span>
+                  <h3>{w.title}</h3>
+                  <p>{w.text}</p>
+                </div>
+              </article>
             ))}
+            <article className="mw-card mw-work-card">
+              <div className="mw-work-brand">
+                <img src="/brand/logo-light.png" alt="Make My Works logo" width={240} height={147} loading="lazy" />
+              </div>
+              <div className="mw-work-body">
+                <span className="mw-tag">Logo & Branding</span>
+                <h3>Brand Identity</h3>
+                <p>A clear logo, colours and style that make a business look trusted everywhere.</p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <AgencyCTA title="Want results like these?" text="Tell us about your idea and we will suggest the best way to build it." />
-    </div>
+      <CTA title="Want results like these?" text="Tell us your idea and we will suggest the best way to build it." />
+    </>
   );
 }
