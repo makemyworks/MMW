@@ -119,22 +119,19 @@ export default function Header() {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <span
-                role="button"
-                tabIndex={0}
-                className={
-                  servicesOpen
+              <NavLink
+                to="/services"
+                className={({ isActive }) =>
+                  servicesOpen || isActive
                     ? "header-link header-services-link header-link-active"
                     : "header-link header-services-link"
                 }
-                onClick={toggleServices}
-                onKeyDown={(e) => {
-                  if (
-                    e.key === "Enter" ||
-                    e.key === " "
-                  ) {
+                onClick={(e) => {
+                  if (isTouchDevice() && !servicesOpen) {
                     e.preventDefault();
-                    toggleServices(e);
+                    setServicesOpen(true);
+                  } else {
+                    closeMenu();
                   }
                 }}
               >
@@ -145,10 +142,15 @@ export default function Header() {
                       ? "header-arrow header-arrow-open"
                       : "header-arrow"
                   }
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setServicesOpen((prev) => !prev);
+                  }}
                 >
                   ▾
                 </span>
-              </span>
+              </NavLink>
 
               <div
                 className={
