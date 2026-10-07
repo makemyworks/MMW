@@ -1,20 +1,88 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 
 const ContactPage: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      alert('Please fill all required fields.');
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const response = await fetch(
+        'https://alphazetaworld.onrender.com/api/contacts',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to submit contact form');
+      }
+
+      alert('Thank you! Your message has been sent successfully.');
+
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+      });
+    } catch (error) {
+      console.error('Contact form error:', error);
+      alert('Unable to send your message. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
-      {/* Load Google Fonts */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link 
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" 
-        rel="stylesheet" 
+      <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossOrigin="anonymous"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
       />
 
       <style>
         {`
-          /* --- CSS Variables --- */
           :root {
             --bg-white: #FFFFFF;
             --bg-light-blue: #F0F6FF;
@@ -26,7 +94,6 @@ const ContactPage: React.FC = () => {
             --font-sans: 'Inter', system-ui, sans-serif;
           }
 
-          /* --- Base Layout --- */
           .page-wrapper {
             font-family: var(--font-sans);
             color: var(--text-dark);
@@ -39,7 +106,6 @@ const ContactPage: React.FC = () => {
             box-sizing: border-box;
           }
 
-          /* ================= HERO SECTION ================= */
           .hero-section {
             background-color: var(--bg-light-blue);
             padding: 3rem 2rem;
@@ -47,7 +113,6 @@ const ContactPage: React.FC = () => {
             overflow: hidden;
           }
 
-          /* Decorative background wave shapes */
           .hero-section::before {
             content: '';
             position: absolute;
@@ -122,7 +187,6 @@ const ContactPage: React.FC = () => {
             max-width: 40rem;
           }
 
-          /* ================= MAIN CONTENT ================= */
           .main-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -133,7 +197,6 @@ const ContactPage: React.FC = () => {
             background-color: var(--bg-white);
           }
 
-          /* --- Left Column: Info --- */
           .info-column {
             display: flex;
             flex-direction: column;
@@ -203,7 +266,6 @@ const ContactPage: React.FC = () => {
             margin-top: 0.15rem;
           }
 
-          /* --- Right Column: Form --- */
           .form-card {
             background-color: #FFFFFF;
             border: 1px solid var(--border-color);
@@ -306,6 +368,11 @@ const ContactPage: React.FC = () => {
             background-color: var(--color-primary-hover);
           }
 
+          .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+          }
+
           .submit-btn svg {
             transition: transform 0.3s ease;
           }
@@ -314,20 +381,23 @@ const ContactPage: React.FC = () => {
             transform: translateX(4px);
           }
 
-          /* ================= MEDIA QUERIES ================= */
           @media (min-width: 768px) {
             .hero-section {
               padding: 4rem 3rem;
             }
+
             .hero-title {
               font-size: 3.5rem;
             }
+
             .main-content {
               padding: 4rem 3rem;
             }
+
             .contact-form {
               grid-template-columns: 1fr 1fr;
             }
+
             .form-group.full-width {
               grid-column: span 2;
             }
@@ -338,9 +408,11 @@ const ContactPage: React.FC = () => {
               grid-template-columns: 5fr 7fr;
               gap: 4rem;
             }
+
             .hero-title {
               font-size: 4rem;
             }
+
             .form-card {
               padding: 2.5rem;
             }
@@ -350,10 +422,9 @@ const ContactPage: React.FC = () => {
 
       <div className="page-wrapper">
 
-        {/* ================= HERO SECTION ================= */}
         <section className="hero-section">
           <div className="hero-content">
-            
+
             <div className="eyebrow-wrapper">
               <span className="eyebrow-text">Contact Us</span>
               <div className="eyebrow-line"></div>
@@ -367,49 +438,57 @@ const ContactPage: React.FC = () => {
               Have a project in mind or want to know more about our services?<br />
               We'd love to hear from you.
             </p>
+
           </div>
         </section>
 
-        {/* ================= MAIN CONTENT ================= */}
         <section className="main-content">
-          
-          {/* --- Left Column: Info --- */}
+
           <div className="info-column">
-            
+
             <h2 className="info-heading">Get in Touch</h2>
+
             <p className="info-subtext">
               Reach out to us through any of the following channels. Our team is always ready to help.
             </p>
 
-            {/* Phone Card */}
             <div className="info-card">
               <div className="info-icon-box">
                 <Phone size={20} />
               </div>
+
               <div className="info-details">
                 <p className="info-title">Phone</p>
-                <a href="tel:+919876543210" className="info-value">+91  77039 77002</a>
-                <p className="info-sub">Mon - Sat, 10:00 AM - 6:00 PM</p>
+                <a href="tel:+917703977002" className="info-value">
+                  +91 77039 77002
+                </a>
+                <p className="info-sub">
+                  Mon - Sat, 10:00 AM - 6:00 PM
+                </p>
               </div>
             </div>
 
-            {/* Email Card */}
             <div className="info-card">
               <div className="info-icon-box">
                 <Mail size={20} />
               </div>
+
               <div className="info-details">
                 <p className="info-title">Email</p>
-                <a href="mailto:info@makemywork.com" className="info-value">info@makemywork.com</a>
-                <p className="info-sub">We reply within 24 hours</p>
+                <a href="mailto:info@makemywork.com" className="info-value">
+                  info@makemywork.com
+                </a>
+                <p className="info-sub">
+                  We reply within 24 hours
+                </p>
               </div>
             </div>
 
-            {/* Location Card */}
             <div className="info-card">
               <div className="info-icon-box">
                 <MapPin size={20} />
               </div>
+
               <div className="info-details">
                 <p className="info-title">Location</p>
                 <p className="info-value">Gurgaon, India</p>
@@ -418,35 +497,78 @@ const ContactPage: React.FC = () => {
 
           </div>
 
-          {/* --- Right Column: Form --- */}
           <div className="form-card">
-            
+
             <h2 className="form-heading">Send Us a Message</h2>
+
             <p className="form-subtext">
               Fill out the form and our team will get back to you soon.
             </p>
 
-            <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+            <form className="contact-form" onSubmit={handleSubmit}>
 
               <div className="form-group">
-                <label className="form-label">Full Name <span className="required">*</span></label>
-                <input type="text" className="form-input" placeholder="Your name" />
+                <label className="form-label">
+                  Full Name <span className="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  name="name"
+                  className="form-input"
+                  placeholder="Your name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
               </div>
 
               <div className="form-group">
-                <label className="form-label">Email Address <span className="required">*</span></label>
-                <input type="email" className="form-input" placeholder="yourname@example.com" />
+                <label className="form-label">
+                  Email Address <span className="required">*</span>
+                </label>
+
+                <input
+                  type="email"
+                  name="email"
+                  className="form-input"
+                  placeholder="yourname@example.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
               </div>
 
               <div className="form-group">
-                <label className="form-label">Phone Number</label>
-                <input type="tel" className="form-input" placeholder="+91 98765 43210" />
+                <label className="form-label">
+                  Phone Number
+                </label>
+
+                <input
+                  type="tel"
+                  name="phone"
+                  className="form-input"
+                  placeholder="+91 98765 43210"
+                  value={formData.phone}
+                  onChange={handleChange}
+                />
               </div>
 
               <div className="form-group">
-                <label className="form-label">Subject <span className="required">*</span></label>
-                <select className="form-input form-select" defaultValue="">
-                  <option value="" disabled>Select a subject</option>
+                <label className="form-label">
+                  Subject <span className="required">*</span>
+                </label>
+
+                <select
+                  name="subject"
+                  className="form-input form-select"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="" disabled>
+                    Select a subject
+                  </option>
                   <option value="general">General Inquiry</option>
                   <option value="project">Project Request</option>
                   <option value="support">Support</option>
@@ -455,18 +577,33 @@ const ContactPage: React.FC = () => {
               </div>
 
               <div className="form-group full-width">
-                <label className="form-label">Message <span className="required">*</span></label>
-                <textarea className="form-input" placeholder="Tell us about your project..."></textarea>
+                <label className="form-label">
+                  Message <span className="required">*</span>
+                </label>
+
+                <textarea
+                  name="message"
+                  className="form-input"
+                  placeholder="Tell us about your project..."
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                />
               </div>
 
               <div className="form-group full-width">
-                <button type="submit" className="submit-btn">
-                  Send Message
+                <button
+                  type="submit"
+                  className="submit-btn"
+                  disabled={loading}
+                >
+                  {loading ? 'Sending...' : 'Send Message'}
                   <ArrowRight size={16} />
                 </button>
               </div>
 
             </form>
+
           </div>
 
         </section>
