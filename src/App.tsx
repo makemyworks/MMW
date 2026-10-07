@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Services from "./pages/Services";
+import ServiceDetail from "./pages/ServiceDetail";
 import Products from "./pages/Products";
 
 import Contact from "./pages/Contact";
@@ -36,13 +37,9 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/:id" element={<ServiceDetail />} />
           <Route path="/products" element={<Products />} />
           <Route path="/contact" element={<Contact />} />
-          <Route
-            path="/web-app-development"
-            element={<WebAppDevelopment />}
-          />
-          <Route path="/ai-video" element={<AiVideo />} />
           {/* <Route path="/products-lab" element={<ProductsLab />} /> */}
           <Route path="/seo-ai" element={<SeoAi />} />
         </Route>

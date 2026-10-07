@@ -400,19 +400,19 @@ const ContactPage: React.FC = () => {
               </div>
               <div className="info-details">
                 <p className="info-title">Email</p>
-                <a href="mailto:hello@makemyworks.com" className="info-value">hello@makemyworks.com</a>
+                <a href="mailto:info@makemywork.com" className="info-value">info@makemywork.com</a>
                 <p className="info-sub">We reply within 24 hours</p>
               </div>
             </div>
 
-            {/* Office Card */}
+            {/* Location Card */}
             <div className="info-card">
               <div className="info-icon-box">
                 <MapPin size={20} />
               </div>
               <div className="info-details">
-                <p className="info-title">Our Office</p>
-                <p className="info-value">Ahmedabad, Gujarat, India</p>
+                <p className="info-title">Location</p>
+                <p className="info-value">Gurgaon, India</p>
               </div>
             </div>
 

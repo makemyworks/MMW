@@ -459,11 +459,11 @@ const Footer: React.FC = () => {
                 <li><Link to="/services/website-development" className="footer-link">Website Development</Link></li>
                 <li><Link to="/services/ai-video-generation" className="footer-link">AI Video Generation</Link></li>
                 <li><Link to="/services/ai-image-generation" className="footer-link">AI Image Generation</Link></li>
-                <li><Link to="/services/seo" className="footer-link">SEO & Google AI SEO</Link></li>
-                <li><Link to="/services/digital-solutions" className="footer-link">Digital & Tech Solutions</Link></li>
+                <li><Link to="/services/seo-ai-seo" className="footer-link">SEO & Google AI SEO</Link></li>
+                <li><Link to="/services/digital-tech-solutions" className="footer-link">Digital & Tech Solutions</Link></li>
                 <li><Link to="/services/tech-support" className="footer-link">Tech Support & More</Link></li>
-                <li><Link to="/services/social-media" className="footer-link">Social Media Setup</Link></li>
-                <li><Link to="/services/branding" className="footer-link">Logo Design & Branding</Link></li>
+                <li><Link to="/services/social-media-setup" className="footer-link">Social Media Setup</Link></li>
+                <li><Link to="/services/logo-branding" className="footer-link">Logo Design & Branding</Link></li>
                 <li><Link to="/services/whatsapp-automation" className="footer-link">WhatsApp Automation</Link></li>
               </ul>
             </div>
@@ -480,7 +480,7 @@ const Footer: React.FC = () => {
                   </div>
                   <div className="contact-text">
                     <span className="contact-label">Email</span>
-                    <a href="mailto:info@makemyworks.com" className="contact-value">info@makemyworks.com</a>
+                    <a href="mailto:info@makemywork.com" className="contact-value">info@makemywork.com</a>
                   </div>
                 </li>
                 

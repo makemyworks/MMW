@@ -7,10 +7,16 @@ type ServiceItem = {
 };
 
 const serviceDropdown: ServiceItem[] = [
-  { label: "Digital Solution", path: "/services" },
-  { label: "Web App Development", path: "/web-app-development" },
-  { label: "AI Video Content", path: "/ai-video" },
-  { label: "SEO AI Search", path: "/seo-ai" },
+  { label: "App Development", path: "/services/app-development" },
+  { label: "Website Development", path: "/services/website-development" },
+  { label: "AI Video Generation", path: "/services/ai-video-generation" },
+  { label: "AI Image Generation", path: "/services/ai-image-generation" },
+  { label: "SEO & Google AI SEO", path: "/services/seo-ai-seo" },
+  { label: "Digital & Tech Solutions", path: "/services/digital-tech-solutions" },
+  { label: "Tech Support & More", path: "/services/tech-support" },
+  { label: "Social Media Setup", path: "/services/social-media-setup" },
+  { label: "Logo Design & Branding", path: "/services/logo-branding" },
+  { label: "WhatsApp Automation", path: "/services/whatsapp-automation" },
 ];
 
 export default function Header() {
