@@ -295,7 +295,7 @@ export default function Header() {
 
         .site-header .brand-name {
           font-family: inherit;
-          font-size: 1.1rem;
+          font-size: 1.5rem;
           font-weight: 800;
           letter-spacing: -0.02em;
           color: #0f2044;
@@ -304,7 +304,7 @@ export default function Header() {
 
         .site-header .brand-tagline {
           font-family: inherit;
-          font-size: 0.58rem;
+          font-size: 0.65rem;
           font-weight: 500;
           letter-spacing: 0.1em;
           text-transform: uppercase;
