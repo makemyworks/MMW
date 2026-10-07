@@ -168,7 +168,7 @@ const Footer: React.FC = () => {
                   <li className="ft-contact-item">
                     <span className="ft-contact-label">Address:</span>
                     <span className="ft-contact-value">
-                      Hitech City, Madhapur, Hyderabad, Telangana 500081
+                      Ahmedabad, Gujarat, India
                     </span>
                   </li>
 
