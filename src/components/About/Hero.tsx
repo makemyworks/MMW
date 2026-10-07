@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const styles = `
   .people-section {
     width: 100%;
@@ -36,8 +35,8 @@ const styles = `
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start; 
-    text-align: left;       
+    align-items: flex-start;
+    text-align: left;
     z-index: 20;
   }
 
@@ -50,7 +49,7 @@ const styles = `
   .section-label {
     display: flex;
     align-items: center;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     gap: 16px;
     margin-bottom: 24px;
   }
@@ -71,22 +70,22 @@ const styles = `
 
   .main-heading {
     font-family: 'Georgia', 'Times New Roman', serif;
-    font-size: 48px;           
-    font-weight: 700;          
-    color: #0F2044;            
+    font-size: 48px;
+    font-weight: 700;
+    color: #0F2044;
     line-height: 1.1;
     margin: 0 0 24px 0;
     letter-spacing: -1px;
-    text-align: left;          
-    display: flex;            
-    flex-direction: column;    
-    align-items: flex-start;   
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .main-heading span {
-    display: block;          
-    text-align: left;        
-    width: 100%;               
+    display: block;
+    text-align: left;
+    width: 100%;
   }
 
   .highlight-blue {
@@ -99,11 +98,12 @@ const styles = `
     line-height: 1.6;
     margin-bottom: 32px;
     max-width: 450px;
-    text-align: left;         
-    margin-left: 0;            
+    text-align: left;
+    margin-left: 0;
     margin-right: 0;
   }
 
+  /* ✅ CTA now works as an anchor */
   .cta-button {
     background-color: #007BFF;
     color: white;
@@ -118,7 +118,8 @@ const styles = `
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     width: fit-content;
-    margin: 0;              
+    margin: 0;
+    text-decoration: none;
   }
 
   .cta-button:hover {
@@ -186,15 +187,15 @@ const styles = `
 `;
 
 const ArrowRightIcon: React.FC = () => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    width="18" 
-    height="18" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
     strokeLinejoin="round"
   >
     <path d="M5 12h14" />
@@ -203,15 +204,24 @@ const ArrowRightIcon: React.FC = () => (
 );
 
 const PeopleBehindSection: React.FC = () => {
+  // Smooth-scroll to the Model section
+  const handleGetToKnow = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const target = document.getElementById("model");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <>
       <style>{styles}</style>
-      
+
       <section className="people-section">
         <div className="people-container">
-          
+
           <div className="people-left">
-            
+
             <div className="section-label">
               <span>About Us</span>
               <div className="label-line"></div>
@@ -227,18 +237,23 @@ const PeopleBehindSection: React.FC = () => {
               We are a team of passionate creators, developers and strategists building digital solutions that help businesses grow, innovate and make a real impact.
             </p>
 
-            <button className="cta-button">
+            {/* ✅ Get to Know Us → scrolls to Model section */}
+            <a
+              href="#model"
+              className="cta-button"
+              onClick={handleGetToKnow}
+            >
               Get to Know Us
               <ArrowRightIcon />
-            </button>
+            </a>
 
             <div className="dots-pattern"></div>
           </div>
 
           <div className="people-right">
-            <img 
-              src="/Images/abouthero.webp" 
-              alt="Office Workspace" 
+            <img
+              src="/Images/abouthero.webp"
+              alt="Office Workspace"
             />
           </div>
 

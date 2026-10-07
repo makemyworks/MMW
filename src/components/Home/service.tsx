@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Icons = {
   Image: () => <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>,
@@ -7,6 +7,7 @@ const Icons = {
   Smartphone: () => <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>,
   Eye: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>,
   ArrowRight: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>,
+  Close: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>,
 };
 
 function FeatureItem({ icon, title }: { icon: React.ReactNode; title: string }) {
@@ -19,8 +20,9 @@ function FeatureItem({ icon, title }: { icon: React.ReactNode; title: string }) 
 }
 
 export default function ServicesOverview() {
-  const IMAGE_URL = "/Images/servicecard.webp";
+  const IMAGE_URL = "/Images/servicecard.jpeg";
   const DOWNLOAD_FILENAME = "AlphaZetaWorld-Services-Overview.png";
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   const handleDownload = async () => {
     try {
@@ -45,9 +47,30 @@ export default function ServicesOverview() {
     }
   };
 
+  // ✅ Preview now opens an in-app modal instead of a new tab
   const handlePreview = () => {
-    window.open(IMAGE_URL, "_blank");
+    setIsPreviewOpen(true);
   };
+
+  const closePreview = () => setIsPreviewOpen(false);
+
+  // Close modal on ESC + lock body scroll while open
+  useEffect(() => {
+    if (!isPreviewOpen) return;
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closePreview();
+    };
+    document.addEventListener("keydown", onKey);
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [isPreviewOpen]);
 
   return (
     <>
@@ -218,6 +241,90 @@ export default function ServicesOverview() {
           .sow-image-frame { height: 280px; }
           .sow-heading { font-size: 1.35rem; }
         }
+
+        /* ---------- Preview Modal ---------- */
+        .sow-modal-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(15, 32, 68, 0.85);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          z-index: 99999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 24px;
+          animation: sowFadeIn 0.25s ease;
+        }
+
+        .sow-modal-content {
+          position: relative;
+          max-width: 90vw;
+          max-height: 90vh;
+          background: #ffffff;
+          border-radius: 16px;
+          padding: 12px;
+          box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
+          animation: sowZoomIn 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .sow-modal-content img {
+          display: block;
+          max-width: 100%;
+          max-height: calc(90vh - 24px);
+          width: auto;
+          height: auto;
+          object-fit: contain;
+          border-radius: 10px;
+        }
+
+        .sow-modal-close {
+          position: absolute;
+          top: -14px;
+          right: -14px;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: #ffffff;
+          color: #0F2044;
+          border: 1px solid #E6EEF7;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+          transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+          z-index: 2;
+        }
+
+        .sow-modal-close:hover {
+          background: #007BFF;
+          color: #ffffff;
+          transform: rotate(90deg);
+        }
+
+        @keyframes sowFadeIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+
+        @keyframes sowZoomIn {
+          from { opacity: 0; transform: scale(0.9); }
+          to   { opacity: 1; transform: scale(1); }
+        }
+
+        @media (max-width: 640px) {
+          .sow-modal-overlay { padding: 12px; }
+          .sow-modal-close {
+            top: 6px;
+            right: 6px;
+            width: 36px;
+            height: 36px;
+          }
+        }
       `}</style>
 
       <div className="sow-container">
@@ -235,7 +342,7 @@ export default function ServicesOverview() {
             </h1>
 
             <p className="sow-para">
-              Get a complete overview of Alpha Zeta World's digital solutions,
+              Get a complete overview of Make My Work digital solutions,
               including all our services, benefits, and contact details in a single
               high-quality image. Download, share, or use it for your reference
               anytime.
@@ -282,6 +389,36 @@ export default function ServicesOverview() {
 
         </div>
       </div>
+
+      {/* ---------- Preview Modal ---------- */}
+      {isPreviewOpen && (
+        <div
+          className="sow-modal-overlay"
+          onClick={closePreview}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Services Overview Preview"
+        >
+          <div
+            className="sow-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="sow-modal-close"
+              onClick={closePreview}
+              aria-label="Close preview"
+            >
+              <Icons.Close />
+            </button>
+
+            <img
+              src={IMAGE_URL}
+              alt="Alpha Zeta World Services Overview — full preview"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }

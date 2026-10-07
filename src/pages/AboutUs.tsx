@@ -7,19 +7,22 @@ import Count from "../components/About/count";
 import CTA from "../components/Home/CTA";
 import Different from "../components/About/different";
 
-export default function Home() {
+export default function About() {
   return (
     <>
       <Hero />
-      <Model />
+
+      {/* ✅ Add id="model" so the "Get to Know Us" button can scroll here */}
+      <div id="model">
+        <Model />
+      </div>
+
       <Execution />
       <Different />
       <Count />
-      <Principles  />
-
+      <Principles />
       <Team />
       <CTA />
-      
     </>
   );
 }

@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
             </h1>
 
             <p className="hero-description">
-              At AlphaZetaWorld, we help businesses grow with
+              At Make My Work, we help businesses grow with
               innovative digital solutions in SEO, AI Videos,
               Web Development and Digital Solutions.
             </p>

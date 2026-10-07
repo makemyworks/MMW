@@ -1,6 +1,15 @@
 import React from "react";
 
 const DigitalSolutionsHero: React.FC = () => {
+  // Smooth-scroll to the Solutions section
+  const handleOurWork = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const target = document.getElementById("solutions");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <>
       <style>{`
@@ -277,7 +286,7 @@ const DigitalSolutionsHero: React.FC = () => {
             <div className="digital-buttons">
 
               <a
-                href="#contact"
+                href="/contact"
                 className="digital-btn digital-btn-primary"
               >
                 Get a Free Consultation
@@ -286,9 +295,11 @@ const DigitalSolutionsHero: React.FC = () => {
                 </span>
               </a>
 
+              {/* ✅ Our Work → scrolls to Solutions section */}
               <a
-                href="#work"
+                href="#solutions"
                 className="digital-btn digital-btn-secondary"
+                onClick={handleOurWork}
               >
                 Our Work
                 <span className="digital-arrow">

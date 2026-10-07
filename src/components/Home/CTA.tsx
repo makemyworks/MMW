@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CTASection: React.FC = () => {
   return (
@@ -11,7 +12,7 @@ const CTASection: React.FC = () => {
 
         <p className="cta-description">
           Whether you need a custom platform, AI-powered content, or search
-          visibility – let's talk. Alpha Zeta World is ready to build,
+          visibility – let's talk. Make My Work is ready to build,
           <br />
           launch, and grow with you.
         </p>
@@ -21,14 +22,16 @@ const CTASection: React.FC = () => {
         </h3>
 
         <div className="cta-buttons">
-          <button className="cta-primary">
+          {/* ✅ Start a Project → /contact */}
+          <Link to="/contact" className="cta-primary">
             <span>Start a Project</span>
             <span className="cta-arrow">→</span>
-          </button>
+          </Link>
 
-          <button className="cta-secondary">
+          {/* ✅ Book a Strategy Call → /book-call */}
+          <Link to="/contact" className="cta-secondary">
             Book a Strategy Call
-          </button>
+          </Link>
         </div>
 
       </div>
@@ -100,6 +103,7 @@ const CTASection: React.FC = () => {
           font-weight: 600;
           cursor: pointer;
           transition: all 0.3s ease;
+          text-decoration: none;
         }
 
         .cta-primary {
@@ -143,6 +147,10 @@ const CTASection: React.FC = () => {
           border: 1.5px solid #007BFF;
           background: #ffffff;
           color: #007BFF;
+
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .cta-secondary:hover {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const styles = `
   .why-choose-section {
@@ -79,6 +80,7 @@ const styles = `
     max-width: 450px;
   }
 
+  /* ✅ Story link now uses anchor styling (works with React Router <Link>) */
   .story-btn {
     background-color: #007BFF;
     color: white;
@@ -91,13 +93,15 @@ const styles = `
     gap: 10px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
     width: fit-content;
     margin-bottom: 24px; 
+    text-decoration: none;
   }
 
   .story-btn:hover {
     background-color: #0F2044;
+    transform: translateY(-2px);
   }
 
   .image-block-wrapper {
@@ -358,17 +362,18 @@ const WhyChooseSection = () => {
 
             <h2 className="main-heading">
               Why Choose <br />
-              <span className="highlight-blue">AlphaZetaWorld?</span>
+              <span className="highlight-blue">Make My Work?</span>
             </h2>
 
             <p className="description">
               We go beyond just delivering services. We become your growth partner, combining strategy, creativity and technology to build solutions that create real impact.
             </p>
 
-            <button className="story-btn">
+            {/* ✅ Our Story button — now a React Router Link */}
+            <Link to="/about" className="story-btn">
               Our Story
               <ArrowRightIcon />
-            </button>
+            </Link>
 
             <div className="image-block-wrapper">
               <div className="image-bg-patch"></div>

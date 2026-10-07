@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const styles = `
   .build-deliver-section {
@@ -206,6 +207,7 @@ const styles = `
     z-index: 10;
   }
 
+  /* ✅ Explore button now also works as an anchor (React Router <Link>) */
   .explore-btn {
     background-color: #007BFF;
     color: white;
@@ -220,6 +222,7 @@ const styles = `
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     box-shadow: 0 10px 15px -3px rgba(0, 123, 255, 0.3);
+    text-decoration: none;
   }
 
   .explore-btn:hover {
@@ -353,11 +356,12 @@ const WhatWeBuildSection = () => {
             ))}
           </div>
 
+          {/* ✅ Explore All Services — now a React Router Link */}
           <div className="explore-btn-wrapper">
-            <button className="explore-btn">
+            <Link to="/services" className="explore-btn">
               Explore All Services
               <ArrowRightIcon />
-            </button>
+            </Link>
           </div>
 
         </div>

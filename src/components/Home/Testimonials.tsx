@@ -11,7 +11,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Mark Roberts",
     role: "Founder, GreenEarth Eco Store",
-    text: "The web app Alpha Zeta World built for us is exactly what we envisioned – clean, fast, and scalable. Their AI video ads have been performing exceptionally well across our social channels.",
+    text: "The web app Make My Work built for us is exactly what we envisioned – clean, fast, and scalable. Their AI video ads have been performing exceptionally well across our social channels.",
     image: "/images/testimonial-1.png",
   },
   {
@@ -23,7 +23,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Michael Brown",
     role: "Marketing Director, TechFlow",
-    text: "Alpha Zeta World transformed our digital presence from the ground up. Their development and content strategy helped us reach a much wider audience.",
+    text: "Make My Work transformed our digital presence from the ground up. Their development and content strategy helped us reach a much wider audience.",
     image: "/images/testimonial-3.png",
   },
   {
@@ -35,7 +35,7 @@ const testimonials: Testimonial[] = [
   {
     name: "David Wilson",
     role: "Founder, BrightCommerce",
-    text: "Working with Alpha Zeta World was a smooth experience from start to finish. The team delivered a fast, modern and scalable digital solution for our business.",
+    text: "Working with Make My Work was a smooth experience from start to finish. The team delivered a fast, modern and scalable digital solution for our business.",
     image: "/images/testimonial-5.png",
   },
   {
@@ -53,13 +53,13 @@ const testimonials: Testimonial[] = [
   {
     name: "Olivia Martin",
     role: "Marketing Lead, HealthPlus",
-    text: "From strategy to execution, the Alpha Zeta World team was transparent and responsive. Their work helped us improve visibility and generate better engagement.",
+    text: "From strategy to execution, the Make My Work team was transparent and responsive. Their work helped us improve visibility and generate better engagement.",
     image: "/images/testimonial-8.png",
   },
   {
     name: "Daniel Thomas",
     role: "Founder, NextGen Solutions",
-    text: "We needed one team that could handle development, content and search together. Alpha Zeta World gave us exactly that and delivered excellent results.",
+    text: "We needed one team that could handle development, content and search together. Make My Work gave us exactly that and delivered excellent results.",
     image: "/images/testimonial-9.png",
   },
 ];
@@ -107,7 +107,7 @@ const Testimonials: React.FC = () => {
           </h2>
 
           <p>
-            Real experiences from businesses that trusted Alpha Zeta World
+            Real experiences from businesses that trusted Make My Work
             to transform their digital presence.
           </p>
         </div>

@@ -17,7 +17,7 @@ const AboutSection: React.FC = () => {
           </h2>
 
           <p className="about-description">
-            At AlphaZetaWorld, we are a team of passionate creators,
+            At Make My Work, we are a team of passionate creators,
             developers and marketers dedicated to building digital
             solutions that help businesses grow, engage and stay ahead
             in a rapidly changing world.

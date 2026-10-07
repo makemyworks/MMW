@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const styles = `
   .projects-section {
@@ -68,6 +69,7 @@ const styles = `
     .section-title { font-size: 40px; }
   }
 
+  /* ✅ View All link — works as anchor (React Router <Link>) */
   .view-all-link {
     display: inline-flex;
     align-items: center;
@@ -108,6 +110,8 @@ const styles = `
     gap: 12px;
     cursor: pointer;
     transition: transform 0.3s ease;
+    text-decoration: none;
+    color: inherit;
   }
 
   .project-card:hover {
@@ -203,10 +207,11 @@ const ProjectsSection = () => {
               </h2>
             </div>
 
-            <button className="view-all-link">
+            {/* ✅ View All Projects — now a React Router Link */}
+            <Link to="/web-app-development " className="view-all-link">
               View All Projects
               <ArrowRightIcon />
-            </button>
+            </Link>
           </div>
 
           <div className="projects-grid">
