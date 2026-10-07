@@ -1,64 +1,4 @@
-<<<<<<< HEAD
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { 
-  Search, 
-  FileText, 
-  Link as LinkIcon, 
-  Settings, 
-  Bot, 
-  MapPin, 
-  PenTool, 
-  PieChart,
-  ArrowRight
-} from 'lucide-react';
-
-const ComprehensiveServices: React.FC = () => {
-  const services = [
-    {
-      icon: <Search size={22} strokeWidth={2} />,
-      title: "Keyword Research & Strategy",
-      description: "Find the right keywords that drive real business opportunities."
-    },
-    {
-      icon: <FileText size={22} strokeWidth={2} />,
-      title: "On-Page SEO Optimization",
-      description: "Optimize content, meta tags, structure and internal linking."
-    },
-    {
-      icon: <LinkIcon size={22} strokeWidth={2} />,
-      title: "Off-Page SEO & Link Building",
-      description: "Build high-quality backlinks to improve authority."
-    },
-    {
-      icon: <Settings size={22} strokeWidth={2} />,
-      title: "Technical SEO",
-      description: "Improve site speed, indexing, crawlability and overall performance."
-    },
-    {
-      icon: <Bot size={22} strokeWidth={2} />,
-      title: "AI Search Optimization",
-      description: "Optimize for ChatGPT, Google SGE, Perplexity and other AI search platforms."
-    },
-    {
-      icon: <MapPin size={22} strokeWidth={2} />,
-      title: "Local SEO",
-      description: "Help your business rank in local searches and Google Maps."
-    },
-    {
-      icon: <PenTool size={22} strokeWidth={2} />,
-      title: "Content Strategy & Creation",
-      description: "Create SEO-friendly content that engages and converts."
-    },
-    {
-      icon: <PieChart size={22} strokeWidth={2} />,
-      title: "Analytics & Reporting",
-      description: "Track rankings, traffic, leads and ROI with detailed reports."
-    }
-  ];
-=======
 import React from "react";
->>>>>>> 1fbc728 (theme update)
 
 const SeoServices: React.FC = () => {
   return (
@@ -280,28 +220,6 @@ const SeoServices: React.FC = () => {
             </p>
           </div>
 
-<<<<<<< HEAD
-          {/* --- Cards Grid Section --- */}
-          <div className="cs-grid">
-            {services.map((service, index) => (
-              <div key={index} className="cs-card">
-                
-                {/* Icon Circle */}
-                <div className="cs-icon-wrap">
-                  {service.icon}
-                </div>
-                
-                {/* Text Content */}
-                <h3 className="cs-card-title">{service.title}</h3>
-                <p className="cs-card-desc">{service.description}</p>
-                
-                {/* Learn More Link */}
-                <Link to="/contact" className="cs-learn-more">
-                  Learn More 
-                  <ArrowRight size={14} strokeWidth={2.5} />
-                </Link>
-                
-=======
           {/* --- Cards --- */}
           <div className="seo-grid">
 
@@ -312,7 +230,6 @@ const SeoServices: React.FC = () => {
                   <rect x="3" y="3" width="18" height="18" rx="2" />
                   <path d="M9 12l2 2 4-4" />
                 </svg>
->>>>>>> 1fbc728 (theme update)
               </div>
               <h3>Technical SEO</h3>
               <p>

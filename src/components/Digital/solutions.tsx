@@ -1,18 +1,4 @@
-<<<<<<< HEAD
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { 
-  Monitor, 
-  BarChart2, 
-  PenTool, 
-  Users, 
-  FileText, 
-  PieChart, 
-  ArrowRight 
-} from 'lucide-react';
-=======
 import React from "react";
->>>>>>> 1fbc728 (theme update)
 
 const DigitalSolutions: React.FC = () => {
   const solutions = [
@@ -20,28 +6,28 @@ const DigitalSolutions: React.FC = () => {
       icon: "code",
       title: "Web & App Development",
       description: "Custom websites and web applications tailored to your business goals.",
-      image: "/Images/web1.png",
+      image: "/Images/solution-web-app.png",
       features: ["Custom Development", "Scalable Architecture", "Modern Technologies"],
     },
     {
       icon: "gear",
       title: "Business Automation",
       description: "Automate repetitive tasks and streamline your business workflows.",
-      image: "/Images/web2.png",
+      image: "/Images/solution-automation.png",
       features: ["Workflow Automation", "Integrations", "Save Time & Cost"],
     },
     {
       icon: "database",
       title: "CRM Solutions",
       description: "Manage leads, customers and sales with a powerful CRM system.",
-      image: "/Images/web3.png",
+      image: "/Images/solution-crm.png",
       features: ["Lead Management", "Sales Tracking", "Reports & Analytics"],
     },
     {
       icon: "cloud",
       title: "Cloud & IT Solutions",
       description: "Scalable cloud infrastructure and IT solutions for business growth.",
-      image: "/Images/web4.png",
+      image: "/Images/solution-cloud.png",
       features: ["Cloud Deployment", "Secure Infrastructure", "24/7 Support"],
     },
   ];
@@ -268,19 +254,6 @@ const DigitalSolutions: React.FC = () => {
                 <div className="dsc-icon-wrap">
                   <SolutionIcon name={s.icon} />
                 </div>
-<<<<<<< HEAD
-                
-                {/* Text Content */}
-                <h3 className="swo-card-title">{service.title}</h3>
-                <p className="swo-card-desc">{service.description}</p>
-                
-                {/* Learn More Link */}
-                <Link to="/contact" className="swo-learn-more">
-                  Learn More 
-                  <ArrowRight size={14} strokeWidth={2.5} />
-                </Link>
-                
-=======
 
                 <h3 className="dsc-card-title">{s.title}</h3>
                 <p className="dsc-card-desc">{s.description}</p>
@@ -302,7 +275,6 @@ const DigitalSolutions: React.FC = () => {
                   ))}
                 </ul>
 
->>>>>>> 1fbc728 (theme update)
               </div>
             ))}
           </div>

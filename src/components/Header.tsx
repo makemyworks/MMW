@@ -1,69 +1,46 @@
-import { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import Logo from "./Logo";
-import Icon from "./Icon";
-import { services } from "../data/site";
+import { NavLink } from "react-router-dom";
+import { useState, type MouseEvent, type KeyboardEvent } from "react";
 
-const links = [
-  { to: "/", label: "Home", end: true },
-  { to: "/our-work", label: "Our Work", end: false },
-  { to: "/about", label: "About", end: false },
-  { to: "/contact", label: "Contact", end: false },
+type ServiceItem = {
+  label: string;
+  path: string;
+};
+
+const serviceDropdown: ServiceItem[] = [
+  {
+    label: "Digital Solution",
+    path: "/services",
+  },
+  {
+    label: "Web App Development",
+    path: "/web-app-development",
+  },
+  {
+    label: "AI Video Content",
+    path: "/ai-video",
+  },
+  {
+    label: "SEO AI Search",
+    path: "/seo-ai",
+  },
 ];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const { pathname } = useLocation();
+  const [servicesOpen, setServicesOpen] = useState(false);
 
-  useEffect(() => {
+  const closeMenu = () => {
     setOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-<<<<<<< HEAD
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
-
-  const closeDropdown = () => {
-    const el = document.activeElement;
-    if (el instanceof HTMLElement) el.blur();
+    setServicesOpen(false);
   };
 
-  return (
-    <header className={scrolled ? "mw-header is-scrolled" : "mw-header"}>
-      <div className="mw-wrap mw-header-inner">
-        <Logo />
+  const toggleServices = (
+    e: MouseEvent<HTMLSpanElement> | KeyboardEvent<HTMLSpanElement>
+  ) => {
+    e.preventDefault();
+    setServicesOpen((prev) => !prev);
+  };
 
-        <nav className={open ? "mw-nav mw-nav-open" : "mw-nav"} aria-label="Main menu">
-          <NavLink to="/" end className={({ isActive }) => (isActive ? "mw-nav-link active" : "mw-nav-link")}>
-            Home
-          </NavLink>
-
-          <div className="mw-dd">
-            <NavLink to="/services" className={({ isActive }) => (isActive ? "mw-nav-link active" : "mw-nav-link")}>
-              Services <Icon name="chevron" size={14} />
-            </NavLink>
-            <div className="mw-dd-menu">
-              {services.map((s) => (
-                <Link key={s.id} to={`/services#${s.id}`} className="mw-dd-item" onClick={closeDropdown}>
-                  <span className="mw-dd-icon"><Icon name={s.icon} size={18} /></span>
-                  <span>{s.title}</span>
-                </Link>
-              ))}
-=======
   const isTouchDevice = () => {
     if (typeof window === "undefined") return false;
     return window.matchMedia("(hover: none)").matches;
@@ -197,41 +174,19 @@ export default function Header() {
                   </NavLink>
                 ))}
               </div>
->>>>>>> 1fbc728 (theme update)
             </div>
-          </div>
 
-<<<<<<< HEAD
-          {links.slice(1).map((l) => (
-=======
->>>>>>> 1fbc728 (theme update)
             <NavLink
-              key={l.to}
-              to={l.to}
-              end={l.end}
-              className={({ isActive }) => (isActive ? "mw-nav-link active" : "mw-nav-link")}
+              to="/products-lab"
+              className={({ isActive }) =>
+                isActive
+                  ? "header-link header-link-active"
+                  : "header-link"
+              }
+              onClick={closeMenu}
             >
-              {l.label}
+              Products
             </NavLink>
-<<<<<<< HEAD
-          ))}
-          <NavLink to="/contact" className="mw-btn mw-btn-primary mw-nav-cta">
-            Get Free Quote
-          </NavLink>
-        </nav>
-
-        <button
-          type="button"
-          className="mw-menu-btn"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <Icon name={open ? "close" : "menu"} size={26} />
-        </button>
-      </div>
-    </header>
-=======
 
             <NavLink
               to="/contact"
@@ -818,6 +773,5 @@ export default function Header() {
         }
       `}</style>
     </>
->>>>>>> 1fbc728 (theme update)
   );
 }
