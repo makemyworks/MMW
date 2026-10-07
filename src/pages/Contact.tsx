@@ -388,7 +388,7 @@ const ContactPage: React.FC = () => {
               </div>
               <div className="info-details">
                 <p className="info-title">Phone</p>
-                <a href="tel:+919876543210" className="info-value">+91 98765 43210</a>
+                <a href="tel:+919876543210" className="info-value">+91  77039 77002</a>
                 <p className="info-sub">Mon - Sat, 10:00 AM - 6:00 PM</p>
               </div>
             </div>
