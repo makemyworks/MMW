@@ -10,13 +10,7 @@ import "sweetalert2/dist/sweetalert2.min.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <BrowserRouter
-    basename={
-        window.location.pathname.startsWith("/mmw_control-pannel")
-            ? "/mmw_control-pannel"
-            : ""
-    }
->
+        <BrowserRouter>
             <AuthProvider>
                 <App />
             </AuthProvider>
