@@ -21,7 +21,7 @@ function FeatureItem({ icon, title }: { icon: React.ReactNode; title: string }) 
 
 export default function ServicesOverview() {
   const IMAGE_URL = "/Images/servicecard.jpeg";
-  const DOWNLOAD_FILENAME = "AlphaZetaWorld-Services-Overview.png";
+  const DOWNLOAD_FILENAME = "MakeMyWorks-Services-Overview.png";
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   const handleDownload = async () => {
@@ -342,7 +342,7 @@ export default function ServicesOverview() {
             </h1>
 
             <p className="sow-para">
-              Get a complete overview of Make My Work digital solutions,
+              Get a complete overview of Make My Works digital solutions,
               including all our services, benefits, and contact details in a single
               high-quality image. Download, share, or use it for your reference
               anytime.

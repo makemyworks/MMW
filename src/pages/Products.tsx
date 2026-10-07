@@ -5,7 +5,7 @@ export default function Products() {
         <h1>Products</h1>
         <p>
           Digital products designed for real-world use. Explore a growing
-          collection of solutions from AlphaZetaWorld.
+          collection of solutions from Make My Works.
         </p>
         <p>
           <strong>Alpha Connect (Platform):</strong> A platform for keeping people,

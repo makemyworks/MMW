@@ -4,7 +4,7 @@ const DigitalSolutions: React.FC = () => {
   const solutions = [
     {
       icon: "code",
-      title: "Web & App Development",
+      title: "🌐 Website Development",
       description: "Custom websites and web applications tailored to your business goals.",
       image: "/Images/web1.png",
       features: ["Custom Development", "Scalable Architecture", "Modern Technologies"],

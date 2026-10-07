@@ -19,7 +19,7 @@ const Testimonials: React.FC = () => {
       role: "CEO, TechNova",
     },
     {
-      quote: "From strategy to execution, everything was smooth. Make My Work built us a fast, scalable digital platform.",
+      quote: "From strategy to execution, everything was smooth. Make My Works built us a fast, scalable digital platform.",
       name: "Sneha Kapoor",
       role: "Product Lead, FinEdge",
     },

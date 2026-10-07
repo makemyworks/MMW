@@ -19,7 +19,7 @@ const ClientFeedback: React.FC = () => {
       role: "CEO, TechNova",
     },
     {
-      quote: "Working with Make My Work was smooth from day one. They delivered a fast, scalable digital platform for our business.",
+      quote: "Working with Make My Works was smooth from day one. They delivered a fast, scalable digital platform for our business.",
       name: "Sneha Kapoor",
       role: "Product Lead, FinEdge",
     },

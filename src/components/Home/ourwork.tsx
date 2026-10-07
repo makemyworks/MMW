@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const styles = `
   .projects-section {
     width: 100%;
-    background-color: #F4F7FB;
+    background: linear-gradient(135deg, #F7FAFF 0%, #EEF5FF 45%, #E7F0FF 100%);
     padding: 60px 20px 80px 20px;
     font-family: system-ui, -apple-system, sans-serif;
     box-sizing: border-box;
@@ -169,22 +169,22 @@ const ArrowRightIcon = () => (
 const projectsData = [
   {
     title: 'E-commerce Website',
-    category: 'Web Development',
+    category: '🌐 Website Development',
     img: '/Images/eco.webp'
   },
   {
     title: 'Hospital Website',
-    category: 'Web Development',
+    category: '🌐 Website Development',
     img: '/Images/hospital.webp'
   },
   {
     title: 'CRM Dashboard',
-    category: 'Web Application',
+    category: '📱 App Development',
     img: 'Images/dash.webp'
   },
   {
     title: 'Digital Marketing Campaign',
-    category: 'SEO & Digital Solutions',
+    category: '📈 SEO & Google AI SEO',
     img: 'Images/digi.webp'
   }
 ];

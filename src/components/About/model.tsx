@@ -234,7 +234,7 @@ const OurStory: React.FC = () => {
 
             <div className="story-text">
               <p>
-                AlphaZetaWorld was founded with a simple belief — technology 
+                Make My Works was founded with a simple belief — technology
                 and creativity can solve real business challenges. What started 
                 as a small team with big ideas has grown into a digital agency 
                 trusted by businesses across different industries.
@@ -249,7 +249,7 @@ const OurStory: React.FC = () => {
 
             <div className="story-signature-block">
               <h3 className="story-signature">
-                AlphaZetaWorld
+                Make My Works
               </h3>
               <p className="story-signature-sub">
                 Our Journey Continues...

@@ -8,7 +8,7 @@ import type { IconName } from "../components/Icon";
 export const BRAND = {
   name: "Make My Works",
   short: "MMW",
-  tagline: "We Make You Grow",
+  tagline: "We Make. You Grow.",
   url: "https://www.makemyworks.com",
 };
 
@@ -237,7 +237,7 @@ export const values = [
 ];
 
 export const pageMeta: Record<string, { title: string; desc: string }> = {
-  "/": { title: "Make My Works | We Make You Grow", desc: "Websites, apps, logo and branding, video, Google marketing and AI tools from one friendly team. We Make You Grow." },
+  "/": { title: "Make My Works | We Make. You Grow.", desc: "Websites, apps, logo and branding, video, Google marketing and AI tools from one friendly team. We Make. You Grow." },
   "/services": { title: "Our Services | Make My Works", desc: "Websites and apps, logo and branding, video, Google marketing, AI tools and online stores, all explained in simple words." },
   "/our-work": { title: "Our Work | Make My Works", desc: "See the kind of websites, apps, videos and designs Make My Works creates for growing businesses." },
   "/about": { title: "About Us | Make My Works", desc: "Meet Make My Works, the friendly digital team that helps businesses build, brand and grow online." },

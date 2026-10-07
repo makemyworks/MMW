@@ -10,11 +10,14 @@ const Hero: React.FC = () => {
         <div className="hero-container">
           <div className="hero-content">
             <div className="hero-eyebrow">
-              <span>
-                DIGITAL SOLUTIONS FOR A BRIGHTER TOMORROW
-              </span>
+              <span>MAKE MY WORKS</span>
               <i></i>
             </div>
+
+            <h2 className="hero-tagline">
+              <span className="tagline-dark">We Make.</span>{" "}
+              <span className="tagline-light">You Grow.</span>
+            </h2>
 
             <h1>
               Ideas Today.
@@ -26,9 +29,7 @@ const Hero: React.FC = () => {
             </h1>
 
             <p className="hero-description">
-              At Make My Work, we help businesses grow with
-              innovative digital solutions in SEO, AI Videos,
-              Web Development and Digital Solutions.
+              At Make My Works, we help businesses grow with innovative digital solutions across websites, apps, AI, SEO, branding and automation.
             </p>
 
             <div className="hero-buttons">
@@ -49,109 +50,42 @@ const Hero: React.FC = () => {
                 Explore Services
               </a>
             </div>
-
-            <div className="hero-stats">
-              <div className="stat">
-                <h3>150+</h3>
-                <p>Projects Delivered</p>
-              </div>
-
-              <div className="stat-divider"></div>
-
-              <div className="stat">
-                <h3>100+</h3>
-                <p>Happy Clients</p>
-              </div>
-
-              <div className="stat-divider"></div>
-
-              <div className="stat">
-                <h3>5+</h3>
-                <p>Years of Experience</p>
-              </div>
-
-              <div className="stat-divider"></div>
-
-              <div className="stat">
-                <h3>98%</h3>
-                <p>Client Satisfaction</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      <section className="trusted-section">
-        <div className="trusted-container">
-          <div className="trusted-heading">
-            <h2>
-              Trusted by
-              <br />
-              <strong>Leading Brands</strong>
-            </h2>
-          </div>
-
-          <div className="trusted-main-divider"></div>
-
-          <div className="brand-slider">
-            <div className="brand-list">
-              <div className="brand">
-                <span className="google-logo">Google</span>
-              </div>
-
-              <div className="brand">
-                <span className="meta-logo"><b>∞</b>Meta</span>
-              </div>
-
-              <div className="brand">
-                <span className="aws-logo">aws</span>
-              </div>
-
-              <div className="brand">
-                <span className="microsoft-logo">
-                  <b className="microsoft-icon">
-                    <i></i><i></i><i></i><i></i>
-                  </b>
-                  Microsoft
-                </span>
-              </div>
-
-              <div className="brand">
-                <span className="hubspot-logo">HubSpot</span>
-              </div>
-
-              <div className="brand">
-                <span className="canva-logo">Canva</span>
-              </div>
-
-              <div className="brand">
-                <span className="notion-logo"><b>N</b>Notion</span>
-              </div>
-
-              <div className="brand brand-duplicate"><span className="google-logo">Google</span></div>
-              <div className="brand brand-duplicate"><span className="meta-logo"><b>∞</b>Meta</span></div>
-              <div className="brand brand-duplicate"><span className="aws-logo">aws</span></div>
-              <div className="brand brand-duplicate">
-                <span className="microsoft-logo">
-                  <b className="microsoft-icon"><i></i><i></i><i></i><i></i></b>
-                  Microsoft
-                </span>
-              </div>
-              <div className="brand brand-duplicate"><span className="hubspot-logo">HubSpot</span></div>
-              <div className="brand brand-duplicate"><span className="canva-logo">Canva</span></div>
-              <div className="brand brand-duplicate"><span className="notion-logo"><b>N</b>Notion</span></div>
+      <section className="services-marquee-section">
+        <div className="marquee-container">
+          <div className="marquee-content">
+            <div className="marquee-list">
+              <span className="marquee-item">✦ App Development</span>
+              <span className="marquee-item">✦ Website Development</span>
+              <span className="marquee-item">✦ AI Video Generation</span>
+              <span className="marquee-item">✦ AI Image Generation</span>
+              <span className="marquee-item">✦ SEO & Google AI SEO</span>
+              <span className="marquee-item">✦ Digital & Tech Solutions</span>
+              <span className="marquee-item">✦ Tech Support & More</span>
+              <span className="marquee-item">✦ Social Media Setup</span>
+              <span className="marquee-item">✦ Logo Design & Branding</span>
+              <span className="marquee-item">✦ WhatsApp Automation</span>
+            </div>
+            <div className="marquee-list" aria-hidden="true">
+              <span className="marquee-item">✦ App Development</span>
+              <span className="marquee-item">✦ Website Development</span>
+              <span className="marquee-item">✦ AI Video Generation</span>
+              <span className="marquee-item">✦ AI Image Generation</span>
+              <span className="marquee-item">✦ SEO & Google AI SEO</span>
+              <span className="marquee-item">✦ Digital & Tech Solutions</span>
+              <span className="marquee-item">✦ Tech Support & More</span>
+              <span className="marquee-item">✦ Social Media Setup</span>
+              <span className="marquee-item">✦ Logo Design & Branding</span>
+              <span className="marquee-item">✦ WhatsApp Automation</span>
             </div>
           </div>
         </div>
       </section>
 
       <style>{`
-        .hero-section,
-        .hero-section *,
-        .trusted-section,
-        .trusted-section * {
-          box-sizing: border-box;
-        }
 
         .hero-section {
           position: relative;
@@ -227,6 +161,22 @@ const Hero: React.FC = () => {
           height: 2px;
           flex-shrink: 0;
           background: #007bff;
+        }
+
+        .hero-tagline {
+          margin: 0 0 10px 0;
+          font-size: clamp(24px, 2.5vw, 32px);
+          font-weight: 700;
+          letter-spacing: 0.5px;
+          line-height: 1.2;
+        }
+
+        .tagline-dark {
+          color: #071126;
+        }
+
+        .tagline-light {
+          color: #1677F2;
         }
 
         .hero-content h1 {
@@ -312,251 +262,6 @@ const Hero: React.FC = () => {
           transform: translateY(-2px);
         }
 
-        .hero-stats {
-          width: 640px;
-          display: flex;
-          align-items: center;
-          margin-top: 28px;
-        }
-
-        .stat {
-          min-width: 125px;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .stat h3 {
-          margin: 0;
-          padding: 0;
-          color: #0f2044;
-          font-size: 27px;
-          line-height: 1.1;
-          font-weight: 700;
-        }
-
-        .stat p {
-          margin: 5px 0 0 0;
-          padding: 0;
-          color: #4e5963;
-          font-size: 13px;
-          line-height: 1.3;
-        }
-
-        .stat-divider {
-          width: 1px;
-          height: 45px;
-          margin: 0 22px;
-          flex-shrink: 0;
-          background: #007bff;
-          opacity: 0.4;
-        }
-
-        .trusted-section {
-          width: 100%;
-          margin: 0;
-          padding: 0;
-          background: #ffffff;
-          border-top: 1px solid #eeeeee;
-          border-bottom: 1px solid #eeeeee;
-          overflow: hidden;
-        }
-
-        .trusted-container {
-          width: min(1280px, calc(100% - 64px));
-          min-height: 130px;
-          margin: 0 auto;
-          display: flex;
-          align-items: center;
-        }
-
-        .trusted-heading {
-          width: 235px;
-          flex-shrink: 0;
-        }
-
-        .trusted-label {
-          display: flex;
-          align-items: center;
-          gap: 9px;
-          margin-bottom: 7px;
-        }
-
-        .trusted-label span {
-          width: 32px;
-          height: 2px;
-          flex-shrink: 0;
-          background: #007bff;
-        }
-
-        .trusted-label p {
-          margin: 0;
-          color: #4e5963;
-          font-size: 10px;
-          font-weight: 600;
-          letter-spacing: 1.7px;
-        }
-
-        .trusted-heading h2 {
-          margin: 0;
-          color: #0f2044;
-          font-size: 24px;
-          line-height: 1.15;
-          font-weight: 700;
-          letter-spacing: -0.6px;
-        }
-
-        .trusted-heading h2 strong {
-          color: #007bff;
-          font-weight: 700;
-        }
-
-        .trusted-main-divider {
-          width: 1px;
-          height: 65px;
-          margin-right: 20px;
-          flex-shrink: 0;
-          background: #d8dddb;
-        }
-
-        .brand-slider {
-          flex: 1;
-          min-width: 0;
-          overflow: hidden;
-          position: relative;
-        }
-
-        .brand-list {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          flex-wrap: nowrap;
-          width: max-content;
-          min-width: max-content;
-          height: 54px;
-          margin: 0;
-          padding: 0;
-          animation: trustedPartnersSlide 28s linear infinite;
-          will-change: transform;
-        }
-
-        .brand-slider:hover .brand-list {
-          animation-play-state: paused;
-        }
-
-        @keyframes trustedPartnersSlide {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        .brand {
-          width: 160px;
-          min-width: 160px;
-          height: 54px;
-          padding: 0 14px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex: 0 0 160px;
-          border-right: 1px solid #e4e7e6;
-        }
-
-        .brand:last-child {
-          border-right: none;
-        }
-
-        .brand-duplicate {
-          display: flex;
-        }
-
-        .google-logo {
-          color: #555d66;
-          font-size: 24px;
-          font-weight: 500;
-          letter-spacing: -1px;
-        }
-
-        .meta-logo {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          color: #555d66;
-          font-size: 23px;
-          font-weight: 500;
-        }
-
-        .meta-logo b {
-          font-size: 30px;
-          font-weight: 400;
-          line-height: 1;
-        }
-
-        .aws-logo {
-          color: #555d66;
-          font-size: 27px;
-          font-weight: 700;
-        }
-
-        .microsoft-logo {
-          display: flex;
-          align-items: center;
-          gap: 7px;
-          color: #555d66;
-          font-size: 17px;
-          font-weight: 600;
-        }
-
-        .microsoft-icon {
-          width: 24px;
-          height: 24px;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-template-rows: 1fr 1fr;
-          gap: 2px;
-        }
-
-        .microsoft-icon i {
-          display: block;
-          background: #555d66;
-        }
-
-        .hubspot-logo {
-          color: #555d66;
-          font-size: 18px;
-          font-weight: 600;
-        }
-
-        .canva-logo {
-          color: #555d66;
-          font-size: 26px;
-          font-family: cursive;
-          font-style: italic;
-          font-weight: 600;
-        }
-
-        .notion-logo {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          color: #555d66;
-          font-size: 17px;
-          font-weight: 600;
-        }
-
-        .notion-logo b {
-          width: 24px;
-          height: 24px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: 2px solid #555d66;
-          border-radius: 4px;
-          font-size: 14px;
-        }
-
         @media (max-width: 1000px) {
           .hero-section {
             min-height: 570px;
@@ -577,68 +282,13 @@ const Hero: React.FC = () => {
             letter-spacing: -2.3px;
           }
 
+          .hero-tagline {
+            font-size: 28px;
+            margin-bottom: 8px;
+          }
+
           .hero-description {
             font-size: 16px;
-          }
-
-          .hero-stats {
-            width: 570px;
-          }
-
-          .stat {
-            min-width: 110px;
-          }
-
-          .stat-divider {
-            margin: 0 13px;
-          }
-
-          .trusted-container {
-            width: calc(100% - 48px);
-          }
-
-          .trusted-heading {
-            width: 190px;
-          }
-
-          .trusted-heading h2 {
-            font-size: 21px;
-          }
-
-          .trusted-main-divider {
-            margin-right: 10px;
-          }
-
-          .brand {
-            width: 120px;
-            min-width: 120px;
-            flex: 0 0 120px;
-            padding: 0 7px;
-          }
-
-          .google-logo,
-          .meta-logo {
-            font-size: 18px;
-          }
-
-          .aws-logo {
-            font-size: 21px;
-          }
-
-          .microsoft-logo {
-            font-size: 13px;
-          }
-
-          .hubspot-logo {
-            font-size: 14px;
-          }
-
-          .canva-logo {
-            font-size: 20px;
-          }
-
-          .notion-logo {
-            font-size: 13px;
           }
         }
 
@@ -720,6 +370,11 @@ const Hero: React.FC = () => {
             letter-spacing: -1.4px;
           }
 
+          .hero-tagline {
+            font-size: 24px;
+            margin-bottom: 8px;
+          }
+
           .hero-description {
             width: 100%;
             max-width: 100%;
@@ -758,176 +413,6 @@ const Hero: React.FC = () => {
           .button-arrow {
             font-size: 16px;
           }
-
-          .hero-stats {
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px 18px;
-            margin-top: 25px;
-          }
-
-          .stat {
-            min-width: 0;
-          }
-
-          .stat h3 {
-            margin: 0;
-            font-size: 22px;
-            line-height: 1.1;
-          }
-
-          .stat p {
-            margin: 4px 0 0 0;
-            font-size: 10.5px;
-            line-height: 1.3;
-          }
-
-          .stat-divider {
-            display: none;
-          }
-
-          .trusted-section {
-            width: 100%;
-            margin-top: 22px;
-            padding: 0 0 20px;
-            overflow: hidden;
-          }
-
-          .trusted-container {
-            width: calc(100% - 28px);
-            min-height: auto;
-            margin: 0 auto;
-            padding: 34px 0 8px;
-            display: block;
-          }
-
-          .trusted-heading {
-            width: 100%;
-            margin: 0 0 20px;
-            text-align: center;
-          }
-
-          .trusted-label {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 0 7px;
-          }
-
-          .trusted-label span {
-            display: none;
-          }
-
-          .trusted-label p {
-            margin: 0;
-            font-size: 9px;
-            line-height: 1.2;
-            letter-spacing: 1.5px;
-            text-align: center;
-          }
-
-          .trusted-heading h2 {
-            margin: 0;
-            text-align: center;
-            font-size: 23px;
-            line-height: 1.05;
-          }
-
-          .trusted-main-divider {
-            display: none;
-          }
-
-          .brand-slider {
-            display: block;
-            width: 100%;
-            height: 72px;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            position: relative;
-            visibility: visible;
-            opacity: 1;
-          }
-
-          .brand-list {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            flex-wrap: nowrap;
-            width: max-content;
-            min-width: max-content;
-            height: 72px;
-            margin: 0;
-            padding: 0;
-            animation: trustedPartnersSlide 32s linear infinite;
-            will-change: transform;
-          }
-
-          .brand {
-            width: 150px;
-            min-width: 150px;
-            height: 72px;
-            padding: 8px 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex: 0 0 150px;
-            border-right: 1px solid #e4e7e6;
-            border-bottom: none;
-            background: #ffffff;
-          }
-
-          .brand-duplicate {
-            display: flex;
-          }
-
-          .brand-slider:hover .brand-list {
-            animation-play-state: paused;
-          }
-
-          .google-logo {
-            font-size: 18px;
-          }
-
-          .meta-logo {
-            font-size: 18px;
-          }
-
-          .meta-logo b {
-            font-size: 25px;
-          }
-
-          .aws-logo {
-            font-size: 21px;
-          }
-
-          .microsoft-logo {
-            font-size: 13px;
-          }
-
-          .microsoft-icon {
-            width: 21px;
-            height: 21px;
-          }
-
-          .hubspot-logo {
-            font-size: 14px;
-          }
-
-          .canva-logo {
-            font-size: 21px;
-          }
-
-          .notion-logo {
-            font-size: 13px;
-          }
-
-          .notion-logo b {
-            width: 21px;
-            height: 21px;
-            font-size: 12px;
-          }
         }
 
         @media (max-width: 420px) {
@@ -946,6 +431,10 @@ const Hero: React.FC = () => {
             font-size: 34px;
             line-height: 1.05;
             letter-spacing: -1.2px;
+          }
+
+          .hero-tagline {
+            font-size: 20px;
           }
 
           .hero-description {
@@ -978,32 +467,94 @@ const Hero: React.FC = () => {
             font-size: 10px;
           }
 
-          .trusted-section {
-            margin-top: 24px;
-          }
-
-          .trusted-container {
-            width: calc(100% - 26px);
-            padding-top: 32px;
-          }
-
-          .trusted-heading h2 {
-            font-size: 22px;
-          }
-
-          .brand {
-            width: 140px;
-            min-width: 140px;
-            flex-basis: 140px;
-          }
-
           .hero-image {
             height: 220px;
             margin-top: 8px;
             background-position: center;
           }
         }
-      `}</style>
+      
+        .services-marquee-section {
+          width: 100%;
+          height: 65px;
+          background-color: #1677F2;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          position: relative;
+        }
+
+        .services-marquee-section,
+        .services-marquee-section * {
+          box-sizing: border-box;
+        }
+
+        .marquee-container {
+          width: 100%;
+          overflow: hidden;
+          position: relative;
+          display: flex;
+        }
+
+        .marquee-content {
+          display: flex;
+          white-space: nowrap;
+          animation: scroll-marquee 20s linear infinite;
+        }
+
+        .marquee-content:hover {
+          animation-play-state: paused;
+        }
+
+        .marquee-list {
+          display: flex;
+          align-items: center;
+          padding-right: 40px;
+        }
+
+        .marquee-item {
+          color: #FFFFFF;
+          font-size: 18px;
+          font-weight: 600;
+          margin-right: 40px;
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+        }
+
+        @keyframes scroll-marquee {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        @media (max-width: 1000px) {
+          .marquee-item {
+            font-size: 16px;
+            margin-right: 30px;
+          }
+          .marquee-list {
+            padding-right: 30px;
+          }
+        }
+
+        @media (max-width: 760px) {
+          .services-marquee-section {
+            height: 60px;
+            margin-top: 0;
+          }
+          .marquee-item {
+            font-size: 15px;
+            margin-right: 25px;
+          }
+          .marquee-list {
+            padding-right: 25px;
+          }
+        }
+    `}</style>
     </>
   );
 };

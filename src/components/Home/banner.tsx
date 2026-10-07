@@ -17,7 +17,7 @@ const AboutSection: React.FC = () => {
           </h2>
 
           <p className="about-description">
-            At Make My Work, we are a team of passionate creators,
+            At Make My Works, we are a team of passionate creators,
             developers and marketers dedicated to building digital
             solutions that help businesses grow, engage and stay ahead
             in a rapidly changing world.
@@ -51,7 +51,7 @@ const AboutSection: React.FC = () => {
           <div className="about-main-image">
             <img
               src="/Images/about.webp"
-              alt="AlphaZetaWorld Team"
+              alt="Make My Works Team"
             />
           </div>
         </div>
@@ -65,7 +65,7 @@ const AboutSection: React.FC = () => {
 
         .about-section {
           width: 100%;
-          background: #ffffff;
+          background: linear-gradient(135deg, #F7FAFF 0%, #EEF5FF 45%, #E7F0FF 100%);
           padding: 70px 0 80px;
           overflow: hidden;
           font-family:

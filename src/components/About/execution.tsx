@@ -3,8 +3,8 @@ import React from 'react';
 const styles = `
   .mvg-section {
     width: 100%;
-    background-color: #F4F7FB;
-    padding: 40px 20px 60px 20px;
+    background-color: #F6F8FC;
+    padding: 60px 20px 80px 20px;
     font-family: system-ui, -apple-system, sans-serif;
     box-sizing: border-box;
   }

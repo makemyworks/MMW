@@ -3,7 +3,7 @@ import React from 'react';
 const styles = `
   .process-section {
     width: 100%;
-    background-color: #F4F7FB;
+    background-color: #FFFFFF;
     padding: 80px 20px;
     font-family: system-ui, -apple-system, sans-serif;
     box-sizing: border-box;
