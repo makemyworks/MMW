@@ -226,28 +226,36 @@ export default function Services() {
           position: absolute;
           top: 28px;
           right: 28px;
-          font-size: 32px;
+          font-size: 56px;
+          font-family: var(--font-sans), sans-serif;
           font-weight: 800;
-          color: rgba(20,127,245,0.1);
+          color: transparent;
+          -webkit-text-stroke: 2px #CBE0FF;
           line-height: 1;
+          transition: -webkit-text-stroke 0.3s ease;
+        }
+        .srv-card:hover .srv-card-num {
+          -webkit-text-stroke: 2px #147FF5;
         }
 
         .srv-card-icon {
-          width: 48px;
-          height: 48px;
-          background: #F0F6FF;
-          border-radius: 12px;
+          width: 64px;
+          height: 64px;
+          background: #EEF5FF;
+          border-radius: 20px;
           display: flex;
           align-items: center;
           justify-content: center;
           color: #147FF5;
-          margin-bottom: 24px;
-          transition: transform 0.3s ease;
+          margin-bottom: 32px;
+          transition: all 0.3s ease;
         }
         .srv-card:hover .srv-card-icon {
+          background: #147FF5;
+          color: #FFFFFF;
           transform: scale(1.1);
         }
-        .srv-card-icon svg { width: 24px; height: 24px; }
+        .srv-card-icon svg { width: 28px; height: 28px; }
 
         .srv-card-cat {
           font-size: 10px;
@@ -285,16 +293,11 @@ export default function Services() {
         .srv-card-link span { transition: transform 0.3s ease; }
         .srv-card:hover .srv-card-link span { transform: translateX(4px); }
 
-        .srv-card-full {
-          grid-column: 1 / -1;
-          flex-direction: row;
-          align-items: center;
-          gap: 40px;
-          padding: 40px;
+        @media (min-width: 1025px) {
+          .srv-card-centered {
+            grid-column: 2;
+          }
         }
-        .srv-card-full .srv-card-num { display: none; }
-        .srv-card-full .srv-card-icon { margin-bottom: 0; flex-shrink: 0; width: 64px; height: 64px; border-radius: 16px; }
-        .srv-card-full .srv-card-icon svg { width: 32px; height: 32px; }
 
         /* Final CTA */
         .srv-cta {
@@ -408,11 +411,10 @@ export default function Services() {
         /* Responsive */
         @media (max-width: 1024px) {
           .srv-hero-content { grid-template-columns: 1fr; text-align: center; }
-          .srv-label::before { display: none; }
+          .srv-label::before, .srv-label::after { display: none; }
           .srv-label { padding-left: 0; }
           .srv-desc { margin: 0 auto 40px auto; }
           .srv-grid { grid-template-columns: repeat(2, 1fr); }
-          .srv-card-full { flex-direction: column; align-items: flex-start; gap: 20px; }
         }
 
         @media (max-width: 768px) {
@@ -464,11 +466,11 @@ export default function Services() {
         <section className="srv-container">
           <div className="srv-grid">
             {servicesList.map((service, idx) => {
-              const isFull = idx === 9;
+              const isCentered = idx === 9;
               return (
                 <div 
                   key={service.id} 
-                  className={`srv-card ${isFull ? 'srv-card-full' : ''}`}
+                  className={`srv-card ${isCentered ? 'srv-card-centered' : ''}`}
                   style={{ animationDelay: `${(idx % 3) * 0.1}s` }}
                 >
                   <div className="srv-card-num">{String(idx + 1).padStart(2, '0')}</div>

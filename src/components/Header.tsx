@@ -107,34 +107,41 @@ export default function Header() {
               className="header-dropdown"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-            >
-              <span
-                role="button"
-                tabIndex={0}
+              <div
                 className={
                   servicesOpen
                     ? "header-link header-services-link header-link-active"
                     : "header-link header-services-link"
                 }
-                onClick={toggleServices}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    toggleServices(e);
-                  }
-                }}
+                style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
               >
-                <span>Services</span>
+                <NavLink 
+                  to="/services"
+                  onClick={closeMenu}
+                  style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }}
+                >
+                  Services
+                </NavLink>
                 <span
+                  role="button"
+                  tabIndex={0}
                   className={
                     servicesOpen
                       ? "header-arrow header-arrow-open"
                       : "header-arrow"
                   }
+                  onClick={toggleServices}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      toggleServices(e);
+                    }
+                  }}
+                  style={{ padding: '0 4px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}
                 >
                   ▾
                 </span>
-              </span>
+              </div>
 
               <div
                 className={
