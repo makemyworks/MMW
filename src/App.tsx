@@ -8,7 +8,7 @@ import AboutUs from "./pages/AboutUs";
 import Services from "./pages/Services";
 import Products from "./pages/Products";
 
-import Contact from "./pages/Contact/Contact";
+import Contact from "./pages/Contact";
 import WebAppDevelopment from "./pages/WebAppDevelopment/WebAppDevelopment";
 import AiVideo from "./pages/AiVideo/AiVideo";
 // import ProductsLab from "./pages/ProductsLab/ProductsLab";

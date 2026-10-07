@@ -2,25 +2,15 @@ import { NavLink } from "react-router-dom";
 import { useState, type MouseEvent, type KeyboardEvent } from "react";
 
 type ServiceItem = {
-  icon: string;
   label: string;
   path: string;
 };
 
-const servicesColumn1: ServiceItem[] = [
-  { icon: "📱", label: "App Development", path: "/services/app-development" },
-  { icon: "🌐", label: "Website Development", path: "/services/website-development" },
-  { icon: "🎬", label: "AI Video Generation", path: "/services/ai-video-generation" },
-  { icon: "🖼️", label: "AI Image Generation", path: "/services/ai-image-generation" },
-  { icon: "📈", label: "SEO & Google AI SEO", path: "/services/seo" },
-];
-
-const servicesColumn2: ServiceItem[] = [
-  { icon: "⚙️", label: "Digital & Tech Solutions", path: "/services/digital-solutions" },
-  { icon: "🛠️", label: "Tech Support & More", path: "/services/tech-support" },
-  { icon: "📱", label: "Social Media Setup", path: "/services/social-media" },
-  { icon: "🎨", label: "Logo Design & Branding", path: "/services/branding" },
-  { icon: "💬", label: "WhatsApp Automation", path: "/services/whatsapp-automation" },
+const serviceDropdown: ServiceItem[] = [
+  { label: "Digital Solution", path: "/services" },
+  { label: "Web App Development", path: "/web-app-development" },
+  { label: "AI Video Content", path: "/ai-video" },
+  { label: "SEO AI Search", path: "/seo-ai" },
 ];
 
 export default function Header() {
@@ -58,16 +48,19 @@ export default function Header() {
     <>
       <header className="site-header">
         <div className="header-container">
-          <NavLink
-            to="/"
-            className="header-brand"
-            onClick={closeMenu}
-          >
+          <NavLink to="/" className="header-brand" onClick={closeMenu}>
+            {/* Logo Image on the LEFT */}
             <img
               src="/Images/logo.png"
-              alt="Alpha Zeta World"
+              alt="Make My Works"
               className="header-logo"
             />
+
+            {/* Brand Text right next to the logo */}
+            <div className="brand-text">
+              <span className="brand-name">Make My Works</span>
+              <span className="brand-tagline">We Make You Grow</span>
+            </div>
           </NavLink>
 
           <button
@@ -83,19 +76,11 @@ export default function Header() {
             {open ? "✕" : "☰"}
           </button>
 
-          <nav
-            className={
-              open
-                ? "header-nav header-nav-open"
-                : "header-nav"
-            }
-          >
+          <nav className={open ? "header-nav header-nav-open" : "header-nav"}>
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive
-                  ? "header-link header-link-active"
-                  : "header-link"
+                isActive ? "header-link header-link-active" : "header-link"
               }
               onClick={closeMenu}
             >
@@ -105,9 +90,7 @@ export default function Header() {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                isActive
-                  ? "header-link header-link-active"
-                  : "header-link"
+                isActive ? "header-link header-link-active" : "header-link"
               }
               onClick={closeMenu}
             >
@@ -119,19 +102,19 @@ export default function Header() {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <NavLink
-                to="/services"
-                className={({ isActive }) =>
-                  servicesOpen || isActive
+              <span
+                role="button"
+                tabIndex={0}
+                className={
+                  servicesOpen
                     ? "header-link header-services-link header-link-active"
                     : "header-link header-services-link"
                 }
-                onClick={(e) => {
-                  if (isTouchDevice() && !servicesOpen) {
+                onClick={toggleServices}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
-                    setServicesOpen(true);
-                  } else {
-                    closeMenu();
+                    toggleServices(e);
                   }
                 }}
               >
@@ -142,91 +125,56 @@ export default function Header() {
                       ? "header-arrow header-arrow-open"
                       : "header-arrow"
                   }
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setServicesOpen((prev) => !prev);
-                  }}
                 >
                   ▾
                 </span>
-              </NavLink>
+              </span>
 
               <div
                 className={
                   servicesOpen
-                    ? "header-mega-menu header-dropdown-open"
-                    : "header-mega-menu"
+                    ? "header-dropdown-menu header-dropdown-open"
+                    : "header-dropdown-menu"
                 }
               >
-                <div className="mega-menu-column">
-                  {servicesColumn1.map((item) => (
-                    <NavLink
-                      key={item.path}
-                      to={item.path}
-                      className={({ isActive }) =>
-                        isActive
-                          ? "mega-dropdown-item mega-dropdown-item-active"
-                          : "mega-dropdown-item"
-                      }
-                      onClick={closeMenu}
-                    >
-                      <span className="mega-icon">{item.icon}</span>
-                      <span className="mega-label">{item.label}</span>
-                    </NavLink>
-                  ))}
-                </div>
-                <div className="mega-menu-column">
-                  {servicesColumn2.map((item) => (
-                    <NavLink
-                      key={item.path}
-                      to={item.path}
-                      className={({ isActive }) =>
-                        isActive
-                          ? "mega-dropdown-item mega-dropdown-item-active"
-                          : "mega-dropdown-item"
-                      }
-                      onClick={closeMenu}
-                    >
-                      <span className="mega-icon">{item.icon}</span>
-                      <span className="mega-label">{item.label}</span>
-                    </NavLink>
-                  ))}
-                </div>
+                {serviceDropdown.map((item) => (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    className={({ isActive }) =>
+                      isActive
+                        ? "header-dropdown-item header-dropdown-item-active"
+                        : "header-dropdown-item"
+                    }
+                    onClick={closeMenu}
+                  >
+                    {item.label}
+                  </NavLink>
+                ))}
               </div>
             </div>
 
-            {/*
             <NavLink
               to="/products-lab"
               className={({ isActive }) =>
-                isActive
-                  ? "header-link header-link-active"
-                  : "header-link"
+                isActive ? "header-link header-link-active" : "header-link"
               }
               onClick={closeMenu}
             >
               Products
             </NavLink>
-            */}
 
             <NavLink
               to="/contact"
               className={({ isActive }) =>
-                isActive
-                  ? "header-link header-link-active"
-                  : "header-link"
+                isActive ? "header-link header-link-active" : "header-link"
               }
               onClick={closeMenu}
             >
               Contact Us
             </NavLink>
 
-            <NavLink
-              to="/contact"
-              className="header-cta"
-              onClick={closeMenu}
-            >
+            <NavLink to="/contact" className="header-cta" onClick={closeMenu}>
               Get Started
             </NavLink>
           </nav>
@@ -247,9 +195,9 @@ export default function Header() {
           left: 0;
           z-index: 1000;
           width: 100%;
-          height: 64px;
-          min-height: 64px;
-          max-height: 64px;
+          height: 76px; /* Increased to fit taller logo */
+          min-height: 76px;
+          max-height: 76px;
           margin: 0;
           padding: 0;
           background: rgba(255, 255, 255, 0.96);
@@ -271,66 +219,82 @@ export default function Header() {
         .header-container {
           width: 100%;
           max-width: 1280px;
-          height: 64px;
-          min-height: 64px;
-          max-height: 64px;
+          height: 76px;
+          min-height: 76px;
+          max-height: 76px;
           margin: 0 auto;
           padding: 0 2rem;
           display: flex;
           align-items: center;
           justify-content: flex-start;
           position: relative;
-          border: none;
-          outline: none;
-          box-shadow: none;
         }
 
+        /* ---------- BRAND (Logo + Text) ---------- */
         .site-header .header-brand {
           width: auto;
-          height: 64px;
-          min-width: 190px;
+          height: 76px;
           margin: 0;
           padding: 0;
           display: flex;
           align-items: center;
           justify-content: flex-start;
+          gap: 0.75rem;
           flex-shrink: 0;
           text-decoration: none;
-          border: none;
-          outline: none;
-          box-shadow: none;
         }
 
         .site-header .header-logo {
           display: block;
           width: auto;
-          height: 66px;
-          max-width: 190px;
+          height: 58px; /* Increased from 46px */
+          max-width: 80px;
           margin: 0;
           padding: 0;
           object-fit: contain;
-          object-position: left center;
-          border: none;
-          outline: none;
+          object-position: center;
           transition: transform 0.2s ease;
         }
 
         .site-header .header-logo:hover {
-          transform: scale(1.02);
+          transform: scale(1.05);
         }
 
+        .site-header .brand-text {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          line-height: 1;
+        }
+
+        .site-header .brand-name {
+          font-family: inherit;
+          font-size: 1.1rem;
+          font-weight: 800;
+          letter-spacing: -0.02em;
+          color: #0f2044;
+          line-height: 1.1;
+        }
+
+        .site-header .brand-tagline {
+          font-family: inherit;
+          font-size: 0.58rem;
+          font-weight: 500;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #6b7a8f;
+          margin-top: 3px;
+          line-height: 1.1;
+        }
+
+        /* ---------- NAV ---------- */
         .site-header .header-nav {
-          height: 64px;
-          min-height: 64px;
+          height: 76px;
           margin-left: auto;
-          padding: 0;
           display: flex;
           align-items: center;
           justify-content: flex-end;
           gap: 2rem;
-          border: none;
-          outline: none;
-          box-shadow: none;
         }
 
         .site-header .header-link {
@@ -338,13 +302,12 @@ export default function Header() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          height: 64px;
+          height: 76px;
           margin: 0;
           padding: 0;
           color: #1f2a3d;
           background: transparent;
           border: none;
-          outline: none;
           font-family: inherit;
           font-size: 0.9rem;
           font-weight: 500;
@@ -360,7 +323,7 @@ export default function Header() {
           content: "";
           position: absolute;
           left: 0;
-          bottom: 8px;
+          bottom: 12px;
           width: 0;
           height: 2px;
           background: #0f2044;
@@ -384,15 +347,12 @@ export default function Header() {
           width: 100%;
         }
 
+        /* ---------- DROPDOWN ---------- */
         .site-header .header-dropdown {
           position: relative;
-          height: 64px;
+          height: 76px;
           display: flex;
           align-items: center;
-          justify-content: center;
-          margin: 0;
-          padding: 0;
-          border: none;
         }
 
         .site-header .header-services-link {
@@ -413,109 +373,91 @@ export default function Header() {
           transform: rotate(180deg);
         }
 
-        
-        .site-header .header-mega-menu {
+        .site-header .header-dropdown-menu {
           position: absolute;
           top: calc(100% + 2px);
           left: 50%;
-          width: max-content;
-          display: flex;
-          gap: 20px;
-          margin: 0;
-          padding: 20px;
-          background: #ffffff;
+          min-width: 225px;
+          padding: 6px;
+          background: rgba(255, 255, 255, 0.98);
           border: 1px solid #e5ece9;
-          border-radius: 16px;
+          border-radius: 12px;
           box-shadow:
-            0 10px 25px rgba(0, 0, 0, 0.05);
+            0 18px 35px rgba(15, 32, 68, 0.10),
+            0 5px 15px rgba(0, 0, 0, 0.05);
           transform: translateX(-50%) translateY(8px);
           opacity: 0;
           visibility: hidden;
           pointer-events: none;
           transition:
-            opacity 0.25s ease,
-            transform 0.25s ease,
-            visibility 0.25s ease;
+            opacity 0.2s ease,
+            transform 0.2s ease,
+            visibility 0.2s ease;
           z-index: 100;
         }
-        .site-header .mega-menu-column {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-    
 
-        
         .site-header .header-dropdown-open {
           transform: translateX(-50%) translateY(3px);
           opacity: 1;
           visibility: visible;
           pointer-events: auto;
         }
-    
 
-        
+        .site-header .header-dropdown-menu::before {
+          content: "";
+          position: absolute;
+          top: -5px;
+          left: 50%;
+          width: 10px;
+          height: 10px;
+          transform: translateX(-50%) rotate(45deg);
+          background: #ffffff;
+          border-top: 1px solid #e5ece9;
+          border-left: 1px solid #e5ece9;
+        }
 
-        
-        .site-header .mega-dropdown-item {
+        .site-header .header-dropdown-item {
           display: flex;
           align-items: center;
           width: 100%;
-          padding: 8px 12px;
-          margin: 0;
-          color: #071126;
+          min-height: 38px;
+          padding: 0.65rem 0.85rem;
+          color: #1f2a3d;
           background: transparent;
-          border: none;
           border-radius: 8px;
           font-family: inherit;
-          font-size: 0.9rem;
+          font-size: 0.86rem;
           font-weight: 500;
+          line-height: 1.2;
           text-decoration: none;
-          transition: background 0.2s ease, transform 0.2s ease;
+          transition:
+            background 0.2s ease,
+            color 0.2s ease;
         }
-        .site-header .mega-icon {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 24px;
-          height: 24px;
-          margin-right: 12px;
-          font-size: 16px;
-          color: #1677F2;
-        }
-        .site-header .mega-label {
-          color: #071126;
-        }
-    
 
-        
-        .site-header .mega-dropdown-item:hover {
-          background: #E8F2FF;
-          transform: translateX(2px);
+        .site-header .header-dropdown-item:hover {
+          color: #0f2044;
+          background: #f3f7f5;
         }
-    
 
-        
-        .site-header .mega-dropdown-item-active {
-          background: #E8F2FF;
+        .site-header .header-dropdown-item-active {
+          color: #0f2044;
+          background: #ecfdf5;
           font-weight: 600;
         }
-    
 
+        /* ---------- CTA ---------- */
         .site-header .header-cta {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          height: 36px;
-          padding: 0 1.1rem;
-          margin: 0;
+          height: 40px;
+          padding: 0 1.15rem;
           color: #ffffff;
           background: #0f2044;
-          border: none;
-          outline: none;
           border-radius: 20px;
           font-family: inherit;
-          font-size: 0.83rem;
+          font-size: 0.85rem;
           font-weight: 600;
           line-height: 1;
           text-decoration: none;
@@ -533,22 +475,19 @@ export default function Header() {
           box-shadow: 0 8px 18px rgba(15, 32, 68, 0.20);
         }
 
+        /* ---------- MOBILE MENU BUTTON ---------- */
         .site-header .header-menu-btn {
           display: none;
           align-items: center;
           justify-content: center;
-          width: 36px;
-          height: 36px;
-          min-width: 36px;
-          min-height: 36px;
+          width: 38px;
+          height: 38px;
           margin: 0 0 0 auto;
           padding: 0;
           color: #0f2044;
           background: #ffffff;
           border: 1px solid #dce8e3;
-          outline: none;
           border-radius: 8px;
-          font-family: inherit;
           font-size: 16px;
           line-height: 1;
           cursor: pointer;
@@ -556,45 +495,43 @@ export default function Header() {
 
         @media (max-width: 1000px) {
           .site-header {
-            height: 60px;
-            min-height: 60px;
-            max-height: 60px;
+            height: 70px;
+            min-height: 70px;
+            max-height: 70px;
           }
-
           .header-container {
-            height: 60px;
-            min-height: 60px;
-            max-height: 60px;
+            height: 70px;
+            min-height: 70px;
+            max-height: 70px;
             padding: 0 1.5rem;
           }
-
           .site-header .header-brand {
-            height: 60px;
-            min-width: 180px;
+            height: 70px;
+            gap: 0.65rem;
           }
-
           .site-header .header-logo {
-            height: 44px;
-            max-width: 180px;
+            height: 54px; /* Increased */
+            max-width: 72px;
           }
-
+          .site-header .brand-name {
+            font-size: 1rem;
+          }
+          .site-header .brand-tagline {
+            font-size: 0.55rem;
+          }
           .site-header .header-nav {
-            height: 60px;
-            min-height: 60px;
+            height: 70px;
             gap: 1.5rem;
           }
-
           .site-header .header-link {
-            height: 60px;
+            height: 70px;
             font-size: 0.86rem;
           }
-
           .site-header .header-dropdown {
-            height: 60px;
+            height: 70px;
           }
-
           .site-header .header-cta {
-            height: 34px;
+            height: 36px;
             padding: 0 0.95rem;
             font-size: 0.8rem;
           }
@@ -602,43 +539,42 @@ export default function Header() {
 
         @media (max-width: 760px) {
           .site-header {
-            height: 56px;
-            min-height: 56px;
-            max-height: 56px;
+            height: 64px;
+            min-height: 64px;
+            max-height: 64px;
             overflow: visible;
           }
-
           .header-container {
-            height: 56px;
-            min-height: 56px;
-            max-height: 56px;
+            height: 64px;
+            min-height: 64px;
+            max-height: 64px;
             padding: 0 1rem;
           }
-
           .site-header .header-brand {
-            height: 56px;
-            min-height: 56px;
-            max-height: 56px;
-            min-width: 0;
+            height: 64px;
+            gap: 0.55rem;
           }
-
           .site-header .header-logo {
-            height: 38px;
-            max-width: 140px;
+            height: 46px; /* Increased */
+            max-width: 60px;
           }
-
+          .site-header .brand-name {
+            font-size: 0.92rem;
+          }
+          .site-header .brand-tagline {
+            font-size: 0.5rem;
+          }
           .site-header .header-menu-btn {
             display: flex;
           }
-
           .site-header .header-nav {
             position: absolute;
-            top: 56px;
+            top: 64px;
             left: 0;
             right: 0;
             width: 100%;
             height: auto;
-            max-height: calc(100vh - 56px);
+            max-height: calc(100vh - 64px);
             overflow-y: auto;
             margin: 0;
             padding: 0.35rem 1rem 0.8rem;
@@ -649,9 +585,6 @@ export default function Header() {
             gap: 0;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: none;
-            outline: none;
             box-shadow: 0 10px 20px rgba(15, 32, 68, 0.07);
             transform: translateY(-8px);
             opacity: 0;
@@ -663,103 +596,45 @@ export default function Header() {
               visibility 0.2s ease;
             z-index: 999;
           }
-
           .site-header .header-nav-open {
             transform: translateY(0);
             opacity: 1;
             visibility: visible;
             pointer-events: auto;
           }
-
           .site-header .header-nav > .header-link {
             width: 100%;
             height: 42px;
-            min-height: 42px;
-            max-height: 42px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             border-bottom: 1px solid #eef3f1;
           }
-
           .site-header .header-nav > .header-link::after {
             display: none;
           }
-
           .site-header .header-dropdown {
             position: static;
             width: 100%;
             height: auto;
             display: block;
-            margin: 0;
-            padding: 0;
             border-bottom: 1px solid #eef3f1;
           }
-
           .site-header .header-services-link {
             width: 100%;
             height: 42px;
-            min-height: 42px;
-            max-height: 42px;
             display: flex;
             align-items: center;
             justify-content: space-between;
           }
-
           .site-header .header-services-link::after {
             display: none;
           }
-
-          
-          .site-header .header-mega-menu {
+          .site-header .header-dropdown-menu {
             position: static;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            padding: 0;
-            margin: 0;
-            transform: none;
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-            background: #ffffff;
-            border: none;
-            border-left: 2px solid #1677F2;
-            border-radius: 0;
-            box-shadow: none;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-          }
-
-          .site-header .header-dropdown-open {
-            max-height: 600px;
-            padding: 0.5rem 0;
-          }
-
-          .site-header .mega-menu-column {
-            gap: 0;
-          }
-
-          .site-header .mega-dropdown-item {
-            width: 100%;
-            padding: 10px 1rem;
-            border-radius: 0;
-            font-size: 0.85rem;
-          }
-
-          .site-header .mega-dropdown-item:hover {
-            background: #E8F2FF;
-            transform: none;
-          }
-/* 
-            width: 100%;
-            min-width: 0;
-            max-width: 100%;
-            max-height: 0;
-            overflow: hidden;
-            margin: 0;
             padding: 0;
             transform: none;
             opacity: 1;
@@ -774,29 +649,26 @@ export default function Header() {
               max-height 0.25s ease,
               padding 0.2s ease;
           }
-
-          */
-/*
+          .site-header .header-dropdown-open {
+            max-height: 400px;
             padding: 0.15rem 0;
           }
-
-          */
-
-          /*
+          .site-header .header-dropdown-menu::before {
+            display: none;
+          }
+          .site-header .header-dropdown-item {
+            width: 100%;
             height: 38px;
-            min-height: 38px;
             padding: 0 0.9rem;
-            border: none;
             border-radius: 0;
             font-size: 0.84rem;
           }
-
-          */
-
+          .site-header .header-dropdown-item:hover {
+            background: #eaf3f0;
+          }
           .site-header .header-cta {
             width: 100%;
             height: 38px;
-            min-height: 38px;
             margin-top: 0.6rem;
             padding: 0 1rem;
             border-radius: 20px;
@@ -806,41 +678,36 @@ export default function Header() {
 
         @media (max-width: 420px) {
           .site-header {
-            height: 54px;
-            min-height: 54px;
-            max-height: 54px;
+            height: 60px;
+            min-height: 60px;
+            max-height: 60px;
           }
-
           .header-container {
-            height: 54px;
-            min-height: 54px;
-            max-height: 54px;
+            height: 60px;
+            min-height: 60px;
+            max-height: 60px;
             padding: 0 0.8rem;
           }
-
           .site-header .header-brand {
-            height: 54px;
-            min-height: 54px;
-            max-height: 54px;
+            height: 60px;
           }
-
           .site-header .header-logo {
-            height: 36px;
-            max-width: 132px;
+            height: 42px; /* Increased */
+            max-width: 54px;
           }
-
+          .site-header .brand-name {
+            font-size: 0.85rem;
+          }
+          .site-header .brand-tagline {
+            font-size: 0.48rem;
+          }
           .site-header .header-menu-btn {
-            width: 33px;
-            height: 33px;
-            min-width: 33px;
-            min-height: 33px;
-            max-width: 33px;
-            max-height: 33px;
+            width: 34px;
+            height: 34px;
           }
-
           .site-header .header-nav {
-            top: 54px;
-            max-height: calc(100vh - 54px);
+            top: 60px;
+            max-height: calc(100vh - 60px);
           }
         }
       `}</style>
