@@ -154,6 +154,7 @@ export default function Header() {
               </div>
             </div>
 
+            {/*
             <NavLink
               to="/products-lab"
               className={({ isActive }) =>
@@ -162,6 +163,17 @@ export default function Header() {
               onClick={closeMenu}
             >
               Products
+            </NavLink>
+            */}
+
+            <NavLink
+              to="/our-work"
+              className={({ isActive }) =>
+                isActive ? "header-link header-link-active" : "header-link"
+              }
+              onClick={closeMenu}
+            >
+              Our Work
             </NavLink>
 
             <NavLink
