@@ -110,13 +110,16 @@ export default function Services() {
         .srv-hero {
           position: relative;
           padding: 80px 0 120px;
-          background: radial-gradient(circle at 70% 30%, rgba(238,245,255,0.8) 0%, rgba(255,255,255,0) 60%);
+          background: url('/Images/service_hero_bg_full.png') no-repeat center right;
+          background-size: cover;
+          overflow: hidden;
+          z-index: 1;
         }
 
         .srv-hero-content {
           display: grid;
-          grid-template-columns: 1fr 1.1fr;
-          gap: 60px;
+          grid-template-columns: 1.25fr 1fr;
+          gap: 40px;
           align-items: center;
         }
 
@@ -162,25 +165,6 @@ export default function Services() {
           max-width: 480px;
           animation: srvFadeUp 0.6s ease 0.1s forwards;
           opacity: 0;
-        }
-
-        /* Hero Visual */
-        .srv-visual-wrapper {
-          position: relative;
-          width: 100%;
-          height: 500px;
-          animation: srvFloat 8s ease-in-out infinite;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        
-        .srv-visual-image {
-          max-width: 110%;
-          height: auto;
-          object-fit: contain;
-          z-index: 2;
-          transform: translateX(5%);
         }
 
         /* Intro */
@@ -438,17 +422,8 @@ export default function Services() {
                 </h1>
                 <p className="srv-desc">We build practical digital solutions that help businesses<br/>grow, connect and stand out.</p>
               </div>
-              <div className="srv-visual-wrapper">
-                <img 
-                  src="/Images/hero section.webp" 
-                  alt="Digital Solutions Built for Your Growth" 
-                  className="srv-visual-image"
-                  onError={(e) => {
-                    // Fallback to digitalhero.png if hero section.webp doesn't work
-                    (e.target as HTMLImageElement).src = '/Images/digitalhero.png';
-                  }}
-                />
-              </div>
+              {/* The right side visual is now entirely part of the hero background image */}
+              <div className="srv-visual-wrapper"></div>
             </div>
           </div>
         </section>
