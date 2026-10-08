@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
+
 const styles = `
   .projects-section {
     width: 100%;
@@ -193,10 +195,10 @@ const ProjectsSection = () => {
   return (
     <>
       <style>{styles}</style>
-      
+
       <section className="projects-section">
         <div className="projects-container">
-          
+
           <div className="projects-header">
             <div className="header-left">
               <div className="section-label">
@@ -217,7 +219,7 @@ const ProjectsSection = () => {
           <div className="projects-grid">
             {projectsData.map((project, index) => (
               <div className="project-card" key={index}>
-                
+
                 <div className="project-image-wrapper">
                   <img src={project.img} alt={project.title} />
                 </div>
