@@ -47,7 +47,7 @@ const socialPlatforms: SocialPlatform[] = [
     icon: <FaFacebookF />,
     iconBg: "#1877f2",
     position: "left",
-    url: "#",
+    url: "https://www.facebook.com/profile.php?id=61594974970890",
   },
   {
     id: 4,
@@ -592,7 +592,7 @@ export default function SocialConnect() {
               <div className="avatar-count">10K+</div>
             </div>
             <a 
-              href="https://instagram.com/yourusername" 
+              href="https://www.instagram.com/make_my_works" 
               target="_blank" 
               rel="noopener noreferrer"
               className="follow-btn"
