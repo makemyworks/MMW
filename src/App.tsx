@@ -14,7 +14,8 @@ import WebAppDevelopment from "./pages/WebAppDevelopment/WebAppDevelopment";
 import AiVideo from "./pages/AiVideo/AiVideo";
 // import ProductsLab from "./pages/ProductsLab/ProductsLab";
 import SeoAi from "./pages/SeoAi";
-
+import Ourwork from "./pages/ourwork";
+import Links from "./pages/links";
 function MainLayout() {
   return (
     <>
@@ -42,6 +43,8 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           {/* <Route path="/products-lab" element={<ProductsLab />} /> */}
           <Route path="/seo-ai" element={<SeoAi />} />
+          <Route path="/ourwork" element={<Ourwork />} />
+          <Route path="/links" element={<Links />} />
         </Route>
       </Routes>
     </BrowserRouter>

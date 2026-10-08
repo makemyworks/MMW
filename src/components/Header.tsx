@@ -170,6 +170,17 @@ export default function Header() {
 
             {/*
             <NavLink
+              to="/ourwork"
+              className={({ isActive }) =>
+                isActive ? "header-link header-link-active" : "header-link"
+              }
+              onClick={closeMenu}
+            >
+              Our Work
+            </NavLink>
+
+
+            <NavLink
               to="/products-lab"
               className={({ isActive }) =>
                 isActive ? "header-link header-link-active" : "header-link"
@@ -191,7 +202,7 @@ export default function Header() {
             </NavLink>
 
             <NavLink
-              to="/contact"
+              to="https://support.makemyworks.com/"
               className={({ isActive }) =>
                 isActive ? "header-link header-link-active" : "header-link"
               }
