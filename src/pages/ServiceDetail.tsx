@@ -521,6 +521,29 @@ export default function ServiceDetail() {
           justify-content: center;
         }
 
+        .sd-btn-primary {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: #147FF5;
+          color: #FFFFFF;
+          padding: 0 28px;
+          height: 50px;
+          border-radius: 25px;
+          font-weight: 600;
+          font-size: 15px;
+          text-decoration: none;
+          box-shadow: 0 4px 15px rgba(20, 127, 245, 0.25);
+          gap: 10px;
+          transition: all 0.2s;
+        }
+        .sd-btn-primary:hover {
+          background: #0B6CE6;
+          color: #FFFFFF;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(20, 127, 245, 0.35);
+        }
+
         .sd-btn-whatsapp {
           display: inline-flex;
           align-items: center;
