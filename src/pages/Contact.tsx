@@ -26,7 +26,13 @@ const ContactPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.phone ||
+      !formData.subject ||
+      !formData.message
+    ) {
       alert('Please fill all required fields.');
       return;
     }
@@ -41,7 +47,13 @@ const ContactPage: React.FC = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({
+            fullName: formData.name,
+            email: formData.email,
+            contactNumber: formData.phone,
+            services: formData.subject ? [formData.subject] : [],
+            description: formData.message,
+          }),
         }
       );
 
@@ -541,7 +553,7 @@ const ContactPage: React.FC = () => {
 
               <div className="form-group">
                 <label className="form-label">
-                  Phone Number
+                  Phone Number <span className="required">*</span>
                 </label>
 
                 <input
@@ -551,6 +563,7 @@ const ContactPage: React.FC = () => {
                   placeholder="+91 98765 43210"
                   value={formData.phone}
                   onChange={handleChange}
+                  required
                 />
               </div>
 
