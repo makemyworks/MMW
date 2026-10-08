@@ -192,7 +192,7 @@ export default function Header() {
             */}
 
             <NavLink
-              to="/our-work"
+              to="/ourwork"
               className={({ isActive }) =>
                 isActive ? "header-link header-link-active" : "header-link"
               }
