@@ -6,6 +6,7 @@ const footerLinks = {
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
     { label: "Contact", path: "/contact" },
+    { label: "Link", path: "/links " },
   ],
   services: [
     { label: "Web & App Development", path: "/web-app-development" },
