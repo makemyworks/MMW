@@ -452,6 +452,7 @@ const Footer: React.FC = () => {
                 <li><Link to="/services" className="footer-link">Services</Link></li>
                 <li><Link to="/ourwork" className="footer-link">Our Work</Link></li>
                 <li><Link to="/contact" className="footer-link">Contact</Link></li>
+                <li><a href="https://www.makemyworks.com/links" className="footer-link" target="_blank" rel="noopener noreferrer">Social Links</a></li>
               </ul>
             </div>
 
