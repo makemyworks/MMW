@@ -1,5 +1,7 @@
+
 import { useState } from "react";
 import { AuthContext } from "./auth-context";
+import api from "../api/axios";
 
 export const AuthProvider = ({ children }) => {
     const [admin, setAdmin] = useState(() => {
@@ -9,6 +11,7 @@ export const AuthProvider = ({ children }) => {
             return null;
         }
     });
+
     const [token, setToken] = useState(
         localStorage.getItem("admin_token")
     );
@@ -21,12 +24,20 @@ export const AuthProvider = ({ children }) => {
         setToken(jwtToken);
     };
 
-    const logout = () => {
-        localStorage.removeItem("admin_token");
-        localStorage.removeItem("admin_user");
+    const logout = async () => {
+        try {
+            if (localStorage.getItem("admin_token")) {
+                await api.post("/admin/logout");
+            }
+        } catch (error) {
+            console.error("Could not record logout activity:", error);
+        } finally {
+            localStorage.removeItem("admin_token");
+            localStorage.removeItem("admin_user");
 
-        setAdmin(null);
-        setToken(null);
+            setAdmin(null);
+            setToken(null);
+        }
     };
 
     return (
