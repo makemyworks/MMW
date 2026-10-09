@@ -1,10 +1,29 @@
+
 const ActivityLog = require("../models/ActivityLog");
 
-const getIpAddress = (req) => String(req.headers["x-forwarded-for"] || req.ip || "").split(",")[0].trim();
+const getIpAddress = (req) => {
+    const forwardedFor = req?.headers?.["x-forwarded-for"];
 
-const logActivity = async (req, { action, resource, resourceId = "", description, metadata = {} }) => {
+    return String(
+        forwardedFor || req?.ip || req?.socket?.remoteAddress || ""
+    )
+        .split(",")[0]
+        .trim();
+};
+
+const logActivity = async (
+    req,
+    {
+        action,
+        resource,
+        resourceId = "",
+        description,
+        metadata = {}
+    }
+) => {
     try {
-        const actor = req.admin || {};
+        const actor = req?.admin || {};
+
         await ActivityLog.create({
             actor: actor.id || null,
             actorName: actor.name || "Admin",
@@ -16,7 +35,6 @@ const logActivity = async (req, { action, resource, resourceId = "", description
             ipAddress: getIpAddress(req)
         });
     } catch (error) {
-        // Auditing must never prevent the requested admin operation from completing.
         console.error("ACTIVITY LOG ERROR:", error.message);
     }
 };
