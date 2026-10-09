@@ -7,9 +7,7 @@ const { logActivity } = require("../services/activityLog.service");
 const { ADMIN_PERMISSIONS } = require("../constants/adminPermissions");
 
 const permissionsFor = (admin) =>
-    Array.isArray(admin.permissions)
-        ? admin.permissions
-        : [...ADMIN_PERMISSIONS];
+    Array.isArray(admin.permissions) ? admin.permissions : [...ADMIN_PERMISSIONS];
 
 const toAdminDto = (admin) => ({
     id: admin._id,
@@ -24,9 +22,7 @@ const toAdminDto = (admin) => ({
 const validPermissions = (permissions) =>
     Array.isArray(permissions) &&
     permissions.length > 0 &&
-    permissions.every((permission) =>
-        ADMIN_PERMISSIONS.includes(permission)
-    ) &&
+    permissions.every((permission) => ADMIN_PERMISSIONS.includes(permission)) &&
     new Set(permissions).size === permissions.length;
 
 const permissionsWithin = (permissions, granted) =>
@@ -36,7 +32,7 @@ const samePermissions = (left, right) =>
     left.length === right.length &&
     left.every((permission) => right.includes(permission));
 
-// ADMIN LOGIN + LOGIN ACTIVITY
+// ADMIN LOGIN
 const loginAdmin = async (req, res, next) => {
     try {
         const { email, password } = req.body || {};
@@ -54,7 +50,6 @@ const loginAdmin = async (req, res, next) => {
             email: normalizedEmail
         }).select("+password");
 
-        // Failed login: account not found
         if (!admin) {
             await logActivity(req, {
                 action: "login_failed",
@@ -72,16 +67,9 @@ const loginAdmin = async (req, res, next) => {
             });
         }
 
-        // Failed login: inactive account
         if (!admin.isActive) {
             await logActivity(
-                {
-                    ...req,
-                    admin: {
-                        id: admin._id,
-                        name: admin.name
-                    }
-                },
+                { ...req, admin: { id: admin._id, name: admin.name } },
                 {
                     action: "login_failed",
                     resource: "authentication",
@@ -105,16 +93,9 @@ const loginAdmin = async (req, res, next) => {
             admin.passwordHash || admin.password
         );
 
-        // Failed login: incorrect password
         if (!passwordMatch) {
             await logActivity(
-                {
-                    ...req,
-                    admin: {
-                        id: admin._id,
-                        name: admin.name
-                    }
-                },
+                { ...req, admin: { id: admin._id, name: admin.name } },
                 {
                     action: "login_failed",
                     resource: "authentication",
@@ -133,7 +114,6 @@ const loginAdmin = async (req, res, next) => {
             });
         }
 
-        // Generate authentication token
         const token = jwt.sign(
             {
                 id: admin._id,
@@ -146,15 +126,8 @@ const loginAdmin = async (req, res, next) => {
             }
         );
 
-        // Successful login activity
         await logActivity(
-            {
-                ...req,
-                admin: {
-                    id: admin._id,
-                    name: admin.name
-                }
-            },
+            { ...req, admin: { id: admin._id, name: admin.name } },
             {
                 action: "login",
                 resource: "authentication",
@@ -181,6 +154,25 @@ const loginAdmin = async (req, res, next) => {
         });
     } catch (error) {
         console.error("ADMIN LOGIN ERROR:", error);
+        next(error);
+    }
+};
+
+// ADMIN LOGOUT
+const logoutAdmin = async (req, res, next) => {
+    try {
+        await logActivity(req, {
+            action: "logout",
+            resource: "authentication",
+            resourceId: req.admin.id,
+            description: `${req.admin.name} signed out`
+        });
+
+        return res.json({
+            success: true,
+            message: "Logout recorded successfully"
+        });
+    } catch (error) {
         next(error);
     }
 };
@@ -218,10 +210,7 @@ const changeAdminPassword = async (req, res, next) => {
 
         const storedHash = admin.passwordHash || admin.password;
 
-        if (
-            !storedHash ||
-            !(await bcrypt.compare(currentPassword, storedHash))
-        ) {
+        if (!storedHash || !(await bcrypt.compare(currentPassword, storedHash))) {
             return res.status(401).json({
                 success: false,
                 message: "Current password is incorrect"
@@ -256,10 +245,7 @@ const listAdmins = async (req, res, next) => {
                 ? req.query.search.trim()
                 : "";
 
-        const escapedSearch = search.replace(
-            /[.*+?^${}()|[\]\\]/g,
-            "\\$&"
-        );
+        const escapedSearch = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
         const filter = search
             ? {
@@ -356,8 +342,7 @@ const createAdmin = async (req, res, next) => {
 // UPDATE ADMIN
 const updateAdmin = async (req, res, next) => {
     try {
-        const { name, email, password, isActive, permissions } =
-            req.body || {};
+        const { name, email, password, isActive, permissions } = req.body || {};
 
         const admin = await Admin.findById(req.params.id).select("+password");
 
@@ -441,10 +426,7 @@ const updateAdmin = async (req, res, next) => {
         }
 
         if (typeof isActive === "boolean") {
-            if (
-                String(admin._id) === String(req.admin.id) &&
-                !isActive
-            ) {
+            if (String(admin._id) === String(req.admin.id) && !isActive) {
                 return res.status(400).json({
                     success: false,
                     message: "You cannot deactivate your own account"
@@ -484,8 +466,7 @@ const deleteAdmin = async (req, res, next) => {
             });
         }
 
-        const existing = await Admin.findById(req.params.id)
-            .select("permissions");
+        const existing = await Admin.findById(req.params.id).select("permissions");
 
         if (!existing) {
             return res.status(404).json({
@@ -570,6 +551,7 @@ const listActivityLogs = async (req, res, next) => {
 
 module.exports = {
     loginAdmin,
+    logoutAdmin,
     changeAdminPassword,
     listAdmins,
     createAdmin,
