@@ -206,7 +206,9 @@ const Dashboard = () => {
             ) : analytics.recentLogins.length === 0 ? (
                 <div className="table-state">
                     <strong>No login activity found</strong>
-                    <span>New login attempts will appear here when recorded.</span>
+                    <span>
+                        New login attempts will appear here when recorded.
+                    </span>
                 </div>
             ) : (
                 <div className="table-wrap">
@@ -227,10 +229,14 @@ const Dashboard = () => {
                                         <span className="activity-type">
                                             {entry.action === "login"
                                                 ? "Successful login"
-                                                : "Failed login"}
+                                                : entry.action === "logout"
+                                                    ? "Logout"
+                                                    : "Failed login"}
                                         </span>
                                     </td>
-                                    <td>{entry.metadata?.email || "Unavailable"}</td>
+                                    <td>
+                                        {entry.metadata?.email || "Unavailable"}
+                                    </td>
                                     <td>{formatDate(entry.createdAt)}</td>
                                 </tr>
                             ))}
@@ -273,7 +279,14 @@ const Dashboard = () => {
                 </div>
             )}
 
-            <div style={{ marginTop: 16, display: "flex", alignItems: "center", gap: 8 }}>
+            <div
+                style={{
+                    marginTop: 16,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8
+                }}
+            >
                 <Clock size={15} />
                 <span className="muted">
                     Login statistics are based on recorded authentication events.
