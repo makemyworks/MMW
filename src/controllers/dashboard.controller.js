@@ -23,31 +23,40 @@ const getDashboardSummary = async (req, res, next) => {
             Service.countDocuments({ status: "active" }),
             Contact.countDocuments(),
 
+            // Total successful logins
             ActivityLog.countDocuments({
                 action: "login",
                 resource: "authentication"
             }),
 
+            // Total failed login attempts
             ActivityLog.countDocuments({
                 action: "login_failed",
                 resource: "authentication"
             }),
 
+            // Successful logins today
             ActivityLog.countDocuments({
                 action: "login",
                 resource: "authentication",
                 createdAt: { $gte: startOfDay }
             }),
 
+            // Recent login, failed login and logout activity
             ActivityLog.find({
-                action: { $in: ["login", "login_failed"] },
+                action: {
+                    $in: ["login", "login_failed", "logout"]
+                },
                 resource: "authentication"
             })
                 .sort({ createdAt: -1 })
                 .limit(10)
-                .select("actor actorName action description metadata ipAddress createdAt")
+                .select(
+                    "actor actorName action description metadata ipAddress createdAt"
+                )
                 .lean(),
 
+            // Successful login statistics by admin
             ActivityLog.aggregate([
                 {
                     $match: {
@@ -68,7 +77,7 @@ const getDashboardSummary = async (req, res, next) => {
             ])
         ]);
 
-        res.json({
+        return res.json({
             success: true,
             data: {
                 products,
