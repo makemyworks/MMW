@@ -38,7 +38,7 @@ const socialPlatforms: SocialPlatform[] = [
     icon: <FaLinkedinIn />,
     iconBg: "#0077b5",
     position: "right",
-    url: "https://www.linkedin.com/company/alphazetaworld/",
+    url: "https://www.linkedin.com/company/makemyworks/",
   },
   {
     id: 3,
@@ -65,11 +65,11 @@ const socialPlatforms: SocialPlatform[] = [
     icon: <FaBloggerB />,
     iconBg: "#ff5722",
     position: "left",
-    url: "#",
+    url: "https://blog.makemyworks.com/",
   },
   {
     id: 6,
-    name: "WhatsApp",
+    name: "WhatsApp Channel",
     description: "Direct Connect",
     icon: <FaWhatsapp />,
     iconBg: "#25d366",
