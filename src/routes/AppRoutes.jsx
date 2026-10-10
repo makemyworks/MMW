@@ -10,7 +10,7 @@ import CatalogForm from "../pages/CatalogForm";
 import ContactList from "../pages/contact/ContactList";
 import StaffList from "../pages/StaffList";
 import ActivityLog from "../pages/ActivityLog";
-import AdminPageTracker from "../components/AdminPageTracker";
+
 
 import { getFirstPermittedPath } from "../constants/permissions";
 import { useAuth } from "../context/useAuth";
@@ -26,10 +26,8 @@ const AppRoutes = () => {
             {/* Protected Admin Routes */}
             <Route element={<ProtectedRoute />}>
                 <Route element={<AdminLayout />}>
-                    {/* Track admin page visits */}
-                    <Route
-                        element={<AdminPageTracker />}
-                    />
+                
+                   
 
                     <Route
                         index
