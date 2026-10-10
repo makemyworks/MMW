@@ -18,6 +18,7 @@ const {
 
 const requireAdmin = require("../middleware/requireAdmin");
 const requirePermission = require("../middleware/requirePermission");
+
 const {
     getDashboardSummary
 } = require("../controllers/dashboard.controller");
@@ -122,7 +123,7 @@ router.post("/page-visits", requireAdmin, async (req, res, next) => {
 router.get(
     "/page-analytics",
     requireAdmin,
-    requirePermission("dashboard"),
+    requirePermission("analytics"),
     getAdminPageAnalytics
 );
 
