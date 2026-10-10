@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
+import Analytics from "../pages/Analytics";
 import AdminLayout from "../layouts/AdminLayout";
 import ProtectedRoute from "./ProtectedRoute";
 import CatalogList from "../pages/CatalogList";
@@ -10,7 +11,6 @@ import CatalogForm from "../pages/CatalogForm";
 import ContactList from "../pages/contact/ContactList";
 import StaffList from "../pages/StaffList";
 import ActivityLog from "../pages/ActivityLog";
-
 
 import { getFirstPermittedPath } from "../constants/permissions";
 import { useAuth } from "../context/useAuth";
@@ -26,9 +26,8 @@ const AppRoutes = () => {
             {/* Protected Admin Routes */}
             <Route element={<ProtectedRoute />}>
                 <Route element={<AdminLayout />}>
-                
-                   
 
+                    {/* Default route */}
                     <Route
                         index
                         element={
@@ -39,6 +38,7 @@ const AppRoutes = () => {
                         }
                     />
 
+                    {/* Dashboard */}
                     <Route element={<ProtectedRoute permission="dashboard" />}>
                         <Route
                             path="/dashboard"
@@ -46,6 +46,15 @@ const AppRoutes = () => {
                         />
                     </Route>
 
+                    {/* Analytics */}
+                    <Route element={<ProtectedRoute permission="analytics" />}>
+                        <Route
+                            path="/analytics"
+                            element={<Analytics />}
+                        />
+                    </Route>
+
+                    {/* Products */}
                     <Route element={<ProtectedRoute permission="products" />}>
                         <Route
                             path="/products"
@@ -61,6 +70,7 @@ const AppRoutes = () => {
                         />
                     </Route>
 
+                    {/* Services */}
                     <Route element={<ProtectedRoute permission="services" />}>
                         <Route
                             path="/services"
@@ -76,6 +86,7 @@ const AppRoutes = () => {
                         />
                     </Route>
 
+                    {/* Contacts */}
                     <Route element={<ProtectedRoute permission="contacts" />}>
                         <Route
                             path="/contacts"
@@ -83,6 +94,7 @@ const AppRoutes = () => {
                         />
                     </Route>
 
+                    {/* Staff */}
                     <Route element={<ProtectedRoute permission="staff" />}>
                         <Route
                             path="/staff"
@@ -90,12 +102,14 @@ const AppRoutes = () => {
                         />
                     </Route>
 
+                    {/* Activity Log */}
                     <Route element={<ProtectedRoute permission="activity-log" />}>
                         <Route
                             path="/activity-log"
                             element={<ActivityLog />}
                         />
                     </Route>
+
                 </Route>
             </Route>
 
@@ -109,4 +123,3 @@ const AppRoutes = () => {
 };
 
 export default AppRoutes;
-
