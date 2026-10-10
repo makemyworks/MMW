@@ -12,15 +12,25 @@ const {
     listActivityLogs
 } = require("../controllers/admin.controller");
 
+const {
+    getAdminPageAnalytics
+} = require("../controllers/analytics.controller");
+
 const requireAdmin = require("../middleware/requireAdmin");
 const requirePermission = require("../middleware/requirePermission");
-const { getDashboardSummary } = require("../controllers/dashboard.controller");
+const {
+    getDashboardSummary
+} = require("../controllers/dashboard.controller");
+
+const AdminPageVisit = require("../models/AdminPageVisit");
 
 const router = express.Router();
 
+// Authentication
 router.post("/login", loginAdmin);
 router.post("/logout", requireAdmin, logoutAdmin);
 
+// Dashboard summary
 router.get(
     "/dashboard-summary",
     requireAdmin,
@@ -28,13 +38,43 @@ router.get(
     getDashboardSummary
 );
 
-router.post("/change-password", requireAdmin, changeAdminPassword);
+// Change password
+router.post(
+    "/change-password",
+    requireAdmin,
+    changeAdminPassword
+);
 
-router.get("/staff", requireAdmin, requirePermission("staff"), listAdmins);
-router.post("/staff", requireAdmin, requirePermission("staff"), createAdmin);
-router.patch("/staff/:id", requireAdmin, requirePermission("staff"), updateAdmin);
-router.delete("/staff/:id", requireAdmin, requirePermission("staff"), deleteAdmin);
+// Staff management
+router.get(
+    "/staff",
+    requireAdmin,
+    requirePermission("staff"),
+    listAdmins
+);
 
+router.post(
+    "/staff",
+    requireAdmin,
+    requirePermission("staff"),
+    createAdmin
+);
+
+router.patch(
+    "/staff/:id",
+    requireAdmin,
+    requirePermission("staff"),
+    updateAdmin
+);
+
+router.delete(
+    "/staff/:id",
+    requireAdmin,
+    requirePermission("staff"),
+    deleteAdmin
+);
+
+// Activity logs
 router.get(
     "/activity-logs",
     requireAdmin,
@@ -42,10 +82,7 @@ router.get(
     listActivityLogs
 );
 
-
-const AdminPageVisit = require("../models/AdminPageVisit");
-
-// Track admin page visits
+// Record admin page visits
 router.post("/page-visits", requireAdmin, async (req, res, next) => {
     try {
         const { pagePath, pageTitle } = req.body || {};
@@ -66,9 +103,10 @@ router.post("/page-visits", requireAdmin, async (req, res, next) => {
             adminId: req.admin.id,
             adminName: req.admin.name || "Admin",
             pagePath,
-            pageTitle: typeof pageTitle === "string"
-                ? pageTitle.slice(0, 150)
-                : ""
+            pageTitle:
+                typeof pageTitle === "string"
+                    ? pageTitle.slice(0, 150)
+                    : ""
         });
 
         return res.status(201).json({
@@ -79,5 +117,13 @@ router.post("/page-visits", requireAdmin, async (req, res, next) => {
         next(error);
     }
 });
+
+// Page analytics summary
+router.get(
+    "/page-analytics",
+    requireAdmin,
+    requirePermission("dashboard"),
+    getAdminPageAnalytics
+);
 
 module.exports = router;
