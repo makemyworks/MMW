@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.makemyworks.com/</loc><priority>1.0</priority></url>
-  <url><loc>https://www.makemyworks.com/services</loc><priority>0.9</priority></url>
-  <url><loc>https://www.makemyworks.com/our-work</loc><priority>0.8</priority></url>
-  <url><loc>https://www.makemyworks.com/about</loc><priority>0.7</priority></url>
-  <url><loc>https://www.makemyworks.com/contact</loc><priority>0.9</priority></url>
-  <url><loc>https://www.makemyworks.com/privacy-policy</loc><priority>0.3</priority></url>
-  <url><loc>https://www.makemyworks.com/terms-and-conditions</loc><priority>0.3</priority></url>
-  <url><loc>https://www.makemyworks.com/cookie-policy</loc><priority>0.3</priority></url>
+  <url><loc>https://www.makemyworks.com/</loc></url>
+  <url><loc>https://www.makemyworks.com/about</loc></url>
+  <url><loc>https://www.makemyworks.com/services</loc></url>
+  <url><loc>https://www.makemyworks.com/services/websites-apps</loc></url>
+  <url><loc>https://www.makemyworks.com/services/logo-branding</loc></url>
+  <url><loc>https://www.makemyworks.com/services/video-social</loc></url>
+  <url><loc>https://www.makemyworks.com/services/google-marketing</loc></url>
+  <url><loc>https://www.makemyworks.com/services/ai-automation</loc></url>
+  <url><loc>https://www.makemyworks.com/services/online-store</loc></url>
+  <url><loc>https://www.makemyworks.com/products</loc></url>
+  <url><loc>https://www.makemyworks.com/contact</loc></url>
+  <url><loc>https://www.makemyworks.com/seo-ai</loc></url>
+  <url><loc>https://www.makemyworks.com/ourwork</loc></url>
+  <url><loc>https://www.makemyworks.com/links</loc></url>
 </urlset>
