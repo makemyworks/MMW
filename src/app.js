@@ -1,13 +1,15 @@
+
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
+const path = require("node:path");
 
 const contactRoutes = require("./routes/contact.routes");
 const adminRoutes = require("./routes/admin.routes");
 const productRoutes = require("./routes/product.routes");
 const serviceRoutes = require("./routes/service.routes");
 const uploadRoutes = require("./routes/upload.routes");
-const path = require("node:path");
+const websiteAnalyticsRoutes = require("./routes/websiteAnalytics.routes");
 
 const app = express();
 
@@ -21,17 +23,30 @@ const normalizeOrigin = (value) => {
     }
 };
 
-const allowedOrigins = (process.env.FRONTEND_URL || "http://localhost:5173,http://127.0.0.1:5173")
+const allowedOrigins = (
+    process.env.FRONTEND_URL ||
+    "http://localhost:5173,http://127.0.0.1:5173"
+)
     .split(",")
     .map(normalizeOrigin)
     .filter(Boolean);
 
 app.use(cors({
     origin: (origin, callback) => {
-        const normalizedOrigin = origin ? normalizeOrigin(origin) : "";
-        const localDevelopmentOrigin = process.env.NODE_ENV !== "production" &&
+        const normalizedOrigin = origin
+            ? normalizeOrigin(origin)
+            : "";
+
+        const localDevelopmentOrigin =
+            process.env.NODE_ENV !== "production" &&
             /^http:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin || "");
-        callback(null, !origin || allowedOrigins.includes(normalizedOrigin) || localDevelopmentOrigin);
+
+        callback(
+            null,
+            !origin ||
+            allowedOrigins.includes(normalizedOrigin) ||
+            localDevelopmentOrigin
+        );
     },
     methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
@@ -59,14 +74,27 @@ app.use((req, res, next) => {
         delete details.success;
         delete details.message;
         delete details.data;
+
         const result = body.data;
         let data = null;
-        const hasResult = Object.prototype.hasOwnProperty.call(body, "data");
+
+        const hasResult =
+            Object.prototype.hasOwnProperty.call(body, "data");
         const hasDetails = Object.keys(details).length > 0;
 
-        if (hasResult && hasDetails && Object.prototype.hasOwnProperty.call(details, "pagination")) {
+        if (
+            hasResult &&
+            hasDetails &&
+            Object.prototype.hasOwnProperty.call(details, "pagination")
+        ) {
             data = { items: result, ...details };
-        } else if (hasResult && hasDetails && result && !Array.isArray(result) && typeof result === "object") {
+        } else if (
+            hasResult &&
+            hasDetails &&
+            result &&
+            !Array.isArray(result) &&
+            typeof result === "object"
+        ) {
             data = { ...result, ...details };
         } else if (hasResult && hasDetails) {
             data = { result, ...details };
@@ -78,9 +106,12 @@ app.use((req, res, next) => {
 
         return sendJson({
             status,
-            message: typeof body.message === "string" && body.message.trim()
-                ? body.message
-                : status ? "Request successful" : "Request failed",
+            message:
+                typeof body.message === "string" && body.message.trim()
+                    ? body.message
+                    : status
+                        ? "Request successful"
+                        : "Request failed",
             data
         });
     };
@@ -88,10 +119,16 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use("/uploads", (req, res, next) => {
-    res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
-    next();
-}, express.static(path.join(__dirname, "../uploads"), { index: false }));
+app.use(
+    "/uploads",
+    (req, res, next) => {
+        res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+        next();
+    },
+    express.static(path.join(__dirname, "../uploads"), {
+        index: false
+    })
+);
 
 app.get("/", (req, res) => {
     res.json({
@@ -100,14 +137,15 @@ app.get("/", (req, res) => {
     });
 });
 
-// Routes
+// API routes
 app.use("/api/contacts", contactRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/uploads", uploadRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/services", serviceRoutes);
+app.use("/api/website-analytics", websiteAnalyticsRoutes);
 
-// 404
+// 404 handler
 app.use((req, res) => {
     res.status(404).json({
         success: false,
@@ -128,8 +166,8 @@ app.use((error, req, res, next) => {
 
     const isValidationError = error.name === "ValidationError";
     const isCastError = error.name === "CastError";
-
     const isUploadError = error.name === "MulterError";
+
     const status =
         isInvalidJson ||
         isValidationError ||
@@ -140,13 +178,14 @@ app.use((error, req, res, next) => {
 
     const response = {
         success: false,
-        message:
-            isInvalidJson
-                ? "Request body must be valid JSON"
-                : isValidationError
-                    ? "Please check the submitted fields"
+        message: isInvalidJson
+            ? "Request body must be valid JSON"
+            : isValidationError
+                ? "Please check the submitted fields"
                 : isUploadError
-                    ? error.code === "LIMIT_FILE_SIZE" ? "Image must be 5 MB or smaller" : "Invalid image upload"
+                    ? error.code === "LIMIT_FILE_SIZE"
+                        ? "Image must be 5 MB or smaller"
+                        : "Invalid image upload"
                     : isCastError
                         ? "Invalid resource identifier"
                         : status === 500
