@@ -1,4 +1,4 @@
-```js
+
 const express = require("express");
 const WebsiteAnalytics = require("../models/WebsiteAnalytics");
 const requireAdmin = require("../middleware/requireAdmin");
@@ -118,4 +118,4 @@ router.get(
 );
 
 module.exports = router;
-```
+
