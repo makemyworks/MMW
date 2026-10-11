@@ -1,4 +1,4 @@
-```js
+
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -210,4 +210,3 @@ app.use((error, req, res, next) => {
 });
 
 module.exports = app;
-```
