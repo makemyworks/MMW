@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import NotFound from "./NotFound";
 
 // -- Data Definition --
 type ServiceData = {
@@ -112,12 +113,7 @@ export default function ServiceDetail() {
   const service = id ? servicesData[id] : null;
 
   if (!service) {
-    return (
-      <div style={{ padding: "100px", textAlign: "center", fontFamily: "system-ui" }}>
-        <h2>Service not found</h2>
-        <Link to="/services" style={{ color: "#147FF5" }}>Back to Services</Link>
-      </div>
-    );
+    return <NotFound />;
   }
 
   return (

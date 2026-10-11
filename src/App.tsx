@@ -18,6 +18,18 @@ import SeoAi from "./pages/SeoAi";
 import Ourwork from "./pages/ourwork";
 import Links from "./pages/links";
 
+// Legal, help, and error pages
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
+import CookiePolicy from "./pages/CookiePolicy";
+import RefundCancellationPolicy from "./pages/RefundCancellationPolicy";
+import Disclaimer from "./pages/Disclaimer";
+import DataDeletion from "./pages/DataDeletion";
+import Accessibility from "./pages/Accessibility";
+import FAQ from "./pages/FAQ";
+import Sitemap from "./pages/Sitemap";
+import NotFound from "./pages/NotFound";
+
 function MainLayout() {
   return (
     <>
@@ -49,6 +61,21 @@ export default function App() {
           <Route path="/seo-ai" element={<SeoAi />} />
           <Route path="/ourwork" element={<Ourwork />} />
           <Route path="/links" element={<Links />} />
+
+          {/* Legal and support pages */}
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
+          <Route path="/terms-and-conditions" element={<TermsConditions />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/refund-cancellation" element={<RefundCancellationPolicy />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/data-deletion" element={<DataDeletion />} />
+          <Route path="/accessibility" element={<Accessibility />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/sitemap" element={<Sitemap />} />
+
+          {/* Unknown URLs should display the site's own 404 page. Keep last. */}
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

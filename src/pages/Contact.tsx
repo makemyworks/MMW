@@ -487,8 +487,8 @@ const ContactPage: React.FC = () => {
 
               <div className="info-details">
                 <p className="info-title">Email</p>
-                <a href="mailto:info@makemywork.com" className="info-value">
-                  info@makemywork.com
+                <a href="mailto:info@makemyworks.com" className="info-value">
+                  info@makemyworks.com
                 </a>
                 <p className="info-sub">
                   We reply within 24 hours

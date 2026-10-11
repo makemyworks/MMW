@@ -4,7 +4,7 @@ import "./legal-pages.css";
 
 export default function NotFound() {
   return (
-    <main className="lgl-standalone" aria-labelledby="not-found-title">
+    <section className="lgl-standalone" aria-labelledby="not-found-title">
       <section className="lgl-standalone-card">
         <span className="lgl-standalone-icon"><Compass size={31} /></span>
         <span className="lgl-standalone-kicker">OOPS — WRONG TURN</span>
@@ -17,6 +17,6 @@ export default function NotFound() {
           <button type="button" className="lgl-secondary-btn" onClick={() => window.history.back()}><ArrowLeft size={16} /> Go back</button>
         </div>
       </section>
-    </main>
+    </section>
   );
 }

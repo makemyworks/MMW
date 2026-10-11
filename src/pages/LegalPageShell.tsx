@@ -31,7 +31,7 @@ export default function LegalPageShell({
   updatedOn = "11 October 2026",
 }: LegalPageShellProps) {
   return (
-    <main className="lgl-page">
+    <div className="lgl-page">
       <section className="lgl-hero">
         <div className="lgl-hero-glow lgl-hero-glow-one" aria-hidden="true" />
         <div className="lgl-hero-glow lgl-hero-glow-two" aria-hidden="true" />
@@ -100,6 +100,6 @@ export default function LegalPageShell({
           <Link to="/contact" className="lgl-primary-btn">Start a conversation <ArrowRight size={17} /></Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

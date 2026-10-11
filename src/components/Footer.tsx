@@ -317,7 +317,9 @@ const Footer: React.FC = () => {
         .footer-legal {
           display: flex;
           align-items: center;
-          gap: 16px;
+          justify-content: flex-end;
+          flex-wrap: wrap;
+          gap: 10px 16px;
         }
 
         .legal-link {
@@ -487,7 +489,7 @@ const Footer: React.FC = () => {
                   </div>
                   <div className="contact-text">
                     <span className="contact-label">Email</span>
-                    <a href="mailto:info@makemywork.com" className="contact-value">info@makemywork.com</a>
+                    <a href="mailto:info@makemyworks.com" className="contact-value">info@makemyworks.com</a>
                   </div>
                 </li>
 
@@ -519,13 +521,17 @@ const Footer: React.FC = () => {
 
           <div className="footer-bottom">
             <p className="footer-copy">© 2026 Make My Works. All rights reserved.</p>
-            <div className="footer-legal">
+            <nav className="footer-legal" aria-label="Legal and help links">
               <Link to="/privacy-policy" className="legal-link">Privacy Policy</Link>
-              <span className="legal-sep">|</span>
               <Link to="/terms-conditions" className="legal-link">Terms & Conditions</Link>
-              <span className="legal-sep">|</span>
+              <Link to="/cookie-policy" className="legal-link">Cookie Policy</Link>
+              <Link to="/refund-cancellation" className="legal-link">Refunds & Cancellations</Link>
+              <Link to="/disclaimer" className="legal-link">Disclaimer</Link>
+              <Link to="/data-deletion" className="legal-link">Data Requests</Link>
+              <Link to="/accessibility" className="legal-link">Accessibility</Link>
+              <Link to="/faq" className="legal-link">FAQs</Link>
               <Link to="/sitemap" className="legal-link">Sitemap</Link>
-            </div>
+            </nav>
           </div>
 
         </div>
