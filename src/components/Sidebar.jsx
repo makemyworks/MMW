@@ -26,7 +26,7 @@ const Sidebar = () => {
         {
             to: "/analytics",
             label: "Analytics",
-            permission: "dashboard",
+            permission: "analytics",
             icon: ChartNoAxesCombined
         },
         {
@@ -58,7 +58,7 @@ const Sidebar = () => {
             label: "Activity log",
             permission: "activity-log",
             icon: ScrollText
-        },
+        }
     ];
 
     return (
@@ -69,13 +69,16 @@ const Sidebar = () => {
                 aria-label="Alpha Zeta World home"
             >
                 <span className="brand-mark">AZ</span>
+
                 <span className="brand-copy">
                     <strong>Alpha Zeta</strong>
                     <small>WORLD ADMIN</small>
                 </span>
             </NavLink>
 
-            <div className="sidebar-section-label">WORKSPACE</div>
+            <div className="sidebar-section-label">
+                WORKSPACE
+            </div>
 
             <nav aria-label="Main navigation">
                 {items
