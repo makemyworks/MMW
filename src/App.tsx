@@ -1,14 +1,15 @@
+
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import WebsiteAnalyticsTracker from "./components/WebsiteAnalyticsTracker";
 
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
 import Products from "./pages/Products";
-
 import Contact from "./pages/Contact";
 import WebAppDevelopment from "./pages/WebAppDevelopment/WebAppDevelopment";
 import AiVideo from "./pages/AiVideo/AiVideo";
@@ -16,6 +17,7 @@ import AiVideo from "./pages/AiVideo/AiVideo";
 import SeoAi from "./pages/SeoAi";
 import Ourwork from "./pages/ourwork";
 import Links from "./pages/links";
+
 function MainLayout() {
   return (
     <>
@@ -33,6 +35,8 @@ function MainLayout() {
 export default function App() {
   return (
     <BrowserRouter>
+      <WebsiteAnalyticsTracker />
+
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
