@@ -1,0 +1,43 @@
+MAKE MY WORKS — OPTIONAL ROUTE INTEGRATION
+
+This pack contains new files only. No original app, footer, stylesheet, configuration, or asset file has been changed.
+
+1) Copy every .tsx file in src/pages/ into the same folder in your project. Copy legal-pages.css alongside them.
+
+2) Add these imports to src/App.tsx (leave all existing imports and code in place):
+
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
+import CookiePolicy from "./pages/CookiePolicy";
+import RefundCancellationPolicy from "./pages/RefundCancellationPolicy";
+import Disclaimer from "./pages/Disclaimer";
+import DataDeletion from "./pages/DataDeletion";
+import Accessibility from "./pages/Accessibility";
+import FAQ from "./pages/FAQ";
+import Sitemap from "./pages/Sitemap";
+import NotFound from "./pages/NotFound";
+// Optional: use only after your contact form confirms successful submission.
+import ThankYou from "./pages/ThankYou";
+
+3) Inside your existing <Route element={<MainLayout />}> block, add the new routes before that block's closing </Route>:
+
+<Route path="/privacy-policy" element={<PrivacyPolicy />} />
+<Route path="/terms-conditions" element={<TermsConditions />} />
+<Route path="/terms-and-conditions" element={<TermsConditions />} />
+<Route path="/cookie-policy" element={<CookiePolicy />} />
+<Route path="/refund-cancellation" element={<RefundCancellationPolicy />} />
+<Route path="/disclaimer" element={<Disclaimer />} />
+<Route path="/data-deletion" element={<DataDeletion />} />
+<Route path="/accessibility" element={<Accessibility />} />
+<Route path="/faq" element={<FAQ />} />
+<Route path="/sitemap" element={<Sitemap />} />
+{/* Optional: wire to a confirmed successful form submission only. */}
+<Route path="/thank-you" element={<ThankYou />} />
+{/* Keep this last so the normal header and footer also surround the 404 page. */}
+<Route path="*" element={<NotFound />} />
+
+Notes:
+- Do not add the wildcard route outside MainLayout unless you intentionally want the 404 page without the normal site header/footer.
+- The terms alias is provided for both /terms-conditions (existing footer link) and /terms-and-conditions (existing page metadata).
+- The sitemap lists only current site sections plus pages in this pack; links to new pages work after you add the routes above.
+- The ThankYou route is optional and should not be used as a success destination until the form/backend reports success.
