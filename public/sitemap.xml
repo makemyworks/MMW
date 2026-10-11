@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Make My Works website -->
   <url><loc>https://www.makemyworks.com/</loc></url>
   <url><loc>https://www.makemyworks.com/about</loc></url>
   <url><loc>https://www.makemyworks.com/services</loc></url>
-  <url><loc>https://www.makemyworks.com/services/websites-apps</loc></url>
-  <url><loc>https://www.makemyworks.com/services/logo-branding</loc></url>
-  <url><loc>https://www.makemyworks.com/services/video-social</loc></url>
-  <url><loc>https://www.makemyworks.com/services/google-marketing</loc></url>
-  <url><loc>https://www.makemyworks.com/services/ai-automation</loc></url>
-  <url><loc>https://www.makemyworks.com/services/online-store</loc></url>
+  <url><loc>https://www.makemyworks.com/services/app-development</loc></url>
+  <url><loc>https://www.makemyworks.com/services/website-development</loc></url>
+  <url><loc>https://www.makemyworks.com/services/ai-video-generation</loc></url>
+  <url><loc>https://www.makemyworks.com/services/ai-image-generation</loc></url>
+  <url><loc>https://www.makemyworks.com/services/seo</loc></url>
+  <url><loc>https://www.makemyworks.com/services/digital-solutions</loc></url>
+  <url><loc>https://www.makemyworks.com/services/tech-support</loc></url>
+  <url><loc>https://www.makemyworks.com/services/social-media</loc></url>
+  <url><loc>https://www.makemyworks.com/services/branding</loc></url>
+  <url><loc>https://www.makemyworks.com/services/whatsapp-automation</loc></url>
   <url><loc>https://www.makemyworks.com/products</loc></url>
   <url><loc>https://www.makemyworks.com/contact</loc></url>
   <url><loc>https://www.makemyworks.com/seo-ai</loc></url>
   <url><loc>https://www.makemyworks.com/ourwork</loc></url>
   <url><loc>https://www.makemyworks.com/links</loc></url>
+
+  <!-- Public blog pages and currently published articles -->
+  <url><loc>https://blog.makemyworks.com/</loc></url>
+  <url><loc>https://blog.makemyworks.com/about</loc></url>
+  <url><loc>https://blog.makemyworks.com/contact</loc></url>
+  <url><loc>https://blog.makemyworks.com/privacy</loc></url>
+  <url><loc>https://blog.makemyworks.com/category/software-and-technology</loc></url>
+  <url><loc>https://blog.makemyworks.com/blog/nvidia-rtx-5090-discontinuation-what-we-know-so-far</loc></url>
+  <url><loc>https://blog.makemyworks.com/blog/starlink-in-india-delay-benefits-disadvantages</loc></url>
+
+  <!-- Public support information; private ticket/tracking pages are intentionally excluded -->
+  <url><loc>https://support.makemyworks.com/</loc></url>
+  <url><loc>https://support.makemyworks.com/faq</loc></url>
+  <url><loc>https://support.makemyworks.com/privacy</loc></url>
+  <url><loc>https://support.makemyworks.com/terms</loc></url>
 </urlset>
