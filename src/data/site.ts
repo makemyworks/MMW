@@ -14,9 +14,9 @@ export const BRAND = {
 
 export const CONTACT = {
   email: "info@makemyworks.com",
-  email2: "makemyworks.studio@gmail.com",
+  email2: "info@makemyworks.com",
   /* The contact form delivers to this inbox */
-  formEmail: "makemyworks.studio@gmail.com",
+  formEmail: "info@makemyworks.com",
   phoneDisplay: "+91 77039 77002",
   phoneTel: "tel:+917703977002",
   whatsappNumber: "917703977002",
