@@ -43,7 +43,16 @@ export const hasPermission = (admin, permission) => {
     const granted = admin?.permissions;
 
     // Admin records created before page permissions were added keep full access.
-    return !Array.isArray(granted) || granted.includes(permission);
+    if (!Array.isArray(granted)) return true;
+
+    if (granted.includes(permission)) return true;
+
+    // Analytics is part of the workspace overview; permit if admin has dashboard access or admin role
+    if (permission === "analytics" && (granted.includes("dashboard") || admin?.role === "admin")) {
+        return true;
+    }
+
+    return false;
 };
 
 export const getFirstPermittedPath = (admin) => {

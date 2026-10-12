@@ -85,6 +85,7 @@ const Header = () => {
     const displayName = admin?.name || admin?.email || "Administrator";
     const pageSections = [
         ["/dashboard", "Dashboard"],
+        ["/analytics", "Analytics"],
         ["/products", "Products"],
         ["/services", "Services"],
         ["/contacts", "Contacts"],

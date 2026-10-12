@@ -8,7 +8,8 @@ import {
     LogIn,
     ShieldAlert,
     CalendarCheck,
-    Clock
+    Clock,
+    ChartNoAxesCombined
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import api from "../api/axios";
@@ -98,6 +99,13 @@ const Dashboard = () => {
             count: counts.contacts,
             to: "/contacts",
             icon: MessageSquareText
+        },
+        {
+            title: "Analytics",
+            description: "Traffic, page visits and events",
+            count: "View",
+            to: "/analytics",
+            icon: ChartNoAxesCombined
         }
     ].filter(({ to }) => hasPermission(admin, to.slice(1)));
 
